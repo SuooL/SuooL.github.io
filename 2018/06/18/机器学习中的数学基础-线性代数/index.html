@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="SuooL's Blog" type="application/atom+xml" />
 
@@ -83,18 +81,18 @@
 
 
 
-<meta name="description" content="线性代数 标量、向量、矩阵和张量  标量(scalar): 一个标量就是一个单独的数，它不同于线性代数中研究的其他大部分对象(通常是多个数的数组)。 向量(vector): 一个向量是一列数。这些数是有序排列的。通过次序中的索引，我们可以确定每个单独的数。 矩阵(matrix): 矩阵是一个二维数组，其中的每一个元素被两个索引(而非一个)所确定。 张量(tensor): 在某些情况下，我们会讨论坐">
+<meta name="description" content="线性代数标量、向量、矩阵和张量 标量(scalar): 一个标量就是一个单独的数，它不同于线性代数中研究的其他大部分对象(通常是多个数的数组)。 向量(vector): 一个向量是一列数。这些数是有序排列的。通过次序中的索引，我们可以确定每个单独的数。 矩阵(matrix): 矩阵是一个二维数组，其中的每一个元素被两个索引(而非一个)所确定。 张量(tensor): 在某些情况下，我们会讨论坐标超">
 <meta name="keywords" content="线性代数,机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习中的数学基础--线性代数">
 <meta property="og:url" content="http://suool.net/2018/06/18/机器学习中的数学基础-线性代数/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="线性代数 标量、向量、矩阵和张量  标量(scalar): 一个标量就是一个单独的数，它不同于线性代数中研究的其他大部分对象(通常是多个数的数组)。 向量(vector): 一个向量是一列数。这些数是有序排列的。通过次序中的索引，我们可以确定每个单独的数。 矩阵(matrix): 矩阵是一个二维数组，其中的每一个元素被两个索引(而非一个)所确定。 张量(tensor): 在某些情况下，我们会讨论坐">
+<meta property="og:description" content="线性代数标量、向量、矩阵和张量 标量(scalar): 一个标量就是一个单独的数，它不同于线性代数中研究的其他大部分对象(通常是多个数的数组)。 向量(vector): 一个向量是一列数。这些数是有序排列的。通过次序中的索引，我们可以确定每个单独的数。 矩阵(matrix): 矩阵是一个二维数组，其中的每一个元素被两个索引(而非一个)所确定。 张量(tensor): 在某些情况下，我们会讨论坐标超">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-17T17:48:34.552Z">
+<meta property="og:updated_time" content="2018-06-17T18:24:46.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习中的数学基础--线性代数">
-<meta name="twitter:description" content="线性代数 标量、向量、矩阵和张量  标量(scalar): 一个标量就是一个单独的数，它不同于线性代数中研究的其他大部分对象(通常是多个数的数组)。 向量(vector): 一个向量是一列数。这些数是有序排列的。通过次序中的索引，我们可以确定每个单独的数。 矩阵(matrix): 矩阵是一个二维数组，其中的每一个元素被两个索引(而非一个)所确定。 张量(tensor): 在某些情况下，我们会讨论坐">
+<meta name="twitter:description" content="线性代数标量、向量、矩阵和张量 标量(scalar): 一个标量就是一个单独的数，它不同于线性代数中研究的其他大部分对象(通常是多个数的数组)。 向量(vector): 一个向量是一列数。这些数是有序排列的。通过次序中的索引，我们可以确定每个单独的数。 矩阵(matrix): 矩阵是一个二维数组，其中的每一个元素被两个索引(而非一个)所确定。 张量(tensor): 在某些情况下，我们会讨论坐标超">
 
 
 
@@ -234,16 +232,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            Commonweal 404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -377,98 +365,75 @@
       
 
       
-        <h1 id="线性代数">线性代数</h1>
-<h2 id="标量向量矩阵和张量">标量、向量、矩阵和张量</h2>
-<ul>
+        <h1 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h1><h2 id="标量、向量、矩阵和张量"><a href="#标量、向量、矩阵和张量" class="headerlink" title="标量、向量、矩阵和张量"></a>标量、向量、矩阵和张量</h2><ul>
 <li>标量(scalar): 一个标量就是一个单独的数，它不同于线性代数中研究的其他大部分对象(通常是多个数的数组)。</li>
 <li>向量(vector): 一个向量是一列数。这些数是有序排列的。通过次序中的索引，我们可以确定每个单独的数。</li>
 <li>矩阵(matrix): 矩阵是一个二维数组，其中的每一个元素被两个索引(而非一个)所确定。</li>
 <li>张量(tensor): 在某些情况下，我们会讨论坐标超过两维的数组。一般地，一个数组中的元素分布在若干维坐标的规则网格中，我们称之为张量。</li>
 </ul>
-<p><strong>转置(transpose)</strong>是矩阵的重要操作之一。矩阵的转置是以对角线为轴的镜像， 这条从左上角到右下角的对角线被称为 主对角线(main diagonal)。我们将矩阵 A 的转置表示为 <span class="math inline">\(A^T\)</span>，定义如下</p>
-<p><span class="math display">\[(A^T)_{i,j} = A_{j,i} \tag{1}\]</span></p>
-<p>向量可以看作只有一列的矩阵。对应地，向量的转置可以看作是只有一行的矩阵。标量可以看作是只有一个元素的矩阵。</p>
+<p><strong>转置(transpose)</strong>是矩阵的重要操作之一。矩阵的转置是以对角线为轴的镜像， 这条从左上角到右下角的对角线被称为 主对角线(main diagonal)。我们将矩阵 A 的转置表示为 $A^T$，定义如下</p>
+<script type="math/tex; mode=display">(A^T)_{i,j} = A_{j,i} \tag{1}</script><p>向量可以看作只有一列的矩阵。对应地，向量的转置可以看作是只有一行的矩阵。标量可以看作是只有一个元素的矩阵。</p>
 <p>只要矩阵的形状一样，我们可以把两个矩阵相加。两个矩阵相加是指对应位置的元素相加。</p>
 <p>标量和矩阵相乘，或是和矩阵相加时，我们只需将其与矩阵的每个元素相乘或相加。</p>
-<h2 id="矩阵和向量相乘">矩阵和向量相乘</h2>
-<p>两个矩阵 <span class="math inline">\(\bf A\)</span> 和 $ _{i,j}$ 的步骤看作是 <span class="math inline">\(A\)</span> 的第 <span class="math inline">\(i\)</span> 行和 <span class="math inline">\(B\)</span> 的第 <span class="math inline">\(j\)</span> 列之间的点积。</p>
+<h2 id="矩阵和向量相乘"><a href="#矩阵和向量相乘" class="headerlink" title="矩阵和向量相乘"></a>矩阵和向量相乘</h2><p>两个矩阵 $\bf A$ 和 $ \bf B$ 的矩阵乘积 (matrix product) 是第三个矩阵 $\bf C$。为了使乘法定义良好，矩阵 $\bf A$ 的列数必须和矩阵 $\bf B$ 的行数相等。如果矩阵 $\bf A$的形状是 $m \times n$，矩阵 B 的形状是 $ n \times p$，那么矩阵$\bf C$的形状是 $ m \times p $ ，具体地，该乘法操作定义为 </p>
+<script type="math/tex; mode=display">
+C _{i,j} = \sum_{k} {A_{i,k}}B_{k,j}
+\tag{2}</script><p>两个相同维数的向量 x 和 y 的 点积 (dot product) 可看作是矩阵乘积 $x^⊤y$。我 们可以把矩阵乘积 $C=AB$ 中计算 $C_{i,j}$ 的步骤看作是 $A$ 的第 $i$ 行和 $B$ 的第 $j$ 列之间的点积。</p>
 <p>两个向量点积的结果是标量</p>
-<h2 id="单位矩阵和逆矩阵">单位矩阵和逆矩阵</h2>
-<p>单位矩阵 (identity matrix) 矩阵逆 (matrix inversion)</p>
-<p>任意向量和单位矩阵相乘，都不会改变。</p>
+<h2 id="单位矩阵和逆矩阵"><a href="#单位矩阵和逆矩阵" class="headerlink" title="单位矩阵和逆矩阵"></a>单位矩阵和逆矩阵</h2><p> 单位矩阵 (identity matrix)<br> 矩阵逆 (matrix inversion)</p>
+<p> 任意向量和单位矩阵相乘，都不会改变。</p>
 <p>单位矩阵的结构很简单:所有沿主对角线的元素都是 1，而所有其他位置的元素都是 0。如下所示。</p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
 \begin{bmatrix} 
-1 &amp; 0 &amp; 0 \\ 
-0 &amp; 1 &amp; 0 \\
-0 &amp; 0 &amp; 1 \\  
+1 & 0 & 0 \\ 
+0 & 1 & 0 \\
+0 & 0 & 1 \\  
 \end{bmatrix} 
-\tag{3}
-\]</span></p>
-<p>矩阵 <span class="math inline">\(A\)</span> 的矩阵逆(matrix inversion)记作 <span class="math inline">\(A^{−1}\)</span>，其定义的矩阵满足如下条件 <span class="math display">\[A^{−1}A = I_n.\tag{4}\]</span></p>
-<p>一组向量的线性组合，是指每个向量乘以对应标量系数之后的和，即: <span class="math display">\[
-\sum_{i} {c_iv^i}.\tag{5}
-\]</span></p>
-<p>一组向量的<strong>生成子空间(span)</strong>是原始向量线性组合后所能抵达的点的集合</p>
+\tag{3}</script><p>矩阵 $A$ 的矩阵逆(matrix inversion)记作 $A^{−1}$，其定义的矩阵满足如下条件</p>
+<script type="math/tex; mode=display">A^{−1}A = I_n.\tag{4}</script><p>一组向量的线性组合，是指每个向量乘以对应标量系数之后的和，即:</p>
+<script type="math/tex; mode=display">
+\sum_{i} {c_iv^i}.\tag{5}</script><p>一组向量的<strong>生成子空间(span)</strong>是原始向量线性组合后所能抵达的点的集合</p>
 <p>如果一组向量中的任意一个向量都不能表示成其他向量的线性组合，那么这组向量称为<strong>线性无关 (linearly independent</strong>)。</p>
 <p>一个列向量线性相关的方阵被称为<strong>奇异的(singular)</strong></p>
-<h2 id="范数">范数</h2>
-<p>在机器学习中，我们经常使用被称为<strong>范数 (norm)</strong>的函数衡量向量大小。形式上，<span class="math inline">\(L^p\)</span> 范数定义如下</p>
-<p><span class="math display">\[
+<h2 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h2><p>在机器学习中，我们经常使用被称为<strong>范数 (norm)</strong>的函数衡量向量大小。形式上，$L^p$ 范数定义如下</p>
+<script type="math/tex; mode=display">
 ||x||_p=
 \left(
 \sum_{i}{|x_i|^p}
 \right)^{\frac{1}{p}}
-\tag{6}
-\]</span></p>
-<p>其中 $p R , p 1 $.</p>
-<p>范数(包括 <span class="math inline">\(L^p\)</span> 范数)是将向量映射到非负值的函数。直观上来说，向量 <span class="math inline">\(x\)</span> 的范数衡量从原点到点 <span class="math inline">\(x\)</span> 的距离。</p>
-<p>当 <span class="math inline">\(p = 2\)</span> 时，<span class="math inline">\(L^2\)</span> 范数被称为<strong>欧几里得范数(Euclidean norm)</strong>。它表示从原点出发到向量 <span class="math inline">\(x\)</span> 确定的点的欧几里得距离。<span class="math inline">\(L^2\)</span> 范数在机器学习中出现地十分频繁，经常简化表示为 <span class="math inline">\(∥x∥\)</span>，略去了下标 2。平方 <span class="math inline">\(L^2\)</span> 范数也经常用来衡量向量的大小，可以简单地通过点积 <span class="math inline">\(x^⊤x\)</span> 计算。</p>
-<p>平方 <span class="math inline">\(L^2\)</span> 范数在数学和计算上都比 <span class="math inline">\(L^2\)</span> 范数本身更方便。例如，平方 <span class="math inline">\(L^2\)</span> 范数对 <span class="math inline">\(x\)</span> 中每个元素的导数只取决于对应的元素，而 <span class="math inline">\(L^2\)</span> 范数对每个元素的导数却和整个向量相关。但是在很多情况下，平方 <span class="math inline">\(L^2\)</span> 范数也可能不受欢迎，因为它在原点附近增长 得十分缓慢。在某些机器学习应用中，区分恰好是零的元素和非零但值很小的元素 是很重要的。在这些情况下，我们转而使用在各个位置斜率相同，同时保持简单的数学形式的函数:<span class="math inline">\(L^1\)</span> 范数. <span class="math inline">\(L^1\)</span> 范数可以简化如下:</p>
-<p><span class="math display">\[
+\tag{6}</script><p>其中 $p \in R , p \geq 1 $.</p>
+<p>范数(包括 $L^p$ 范数)是将向量映射到非负值的函数。直观上来说，向量 $x$ 的范数衡量从原点到点 $x$ 的距离。</p>
+<p>当 $p = 2$ 时，$L^2$ 范数被称为<strong>欧几里得范数(Euclidean norm)</strong>。它表示从原点出发到向量 $x$ 确定的点的欧几里得距离。$L^2$ 范数在机器学习中出现地十分频繁，经常简化表示为 $∥x∥$，略去了下标 2。平方 $L^2$ 范数也经常用来衡量向量的大小，可以简单地通过点积 $x^⊤x$ 计算。</p>
+<p>平方 $L^2$ 范数在数学和计算上都比 $L^2$ 范数本身更方便。例如，平方 $L^2$ 范数对 $x$ 中每个元素的导数只取决于对应的元素，而 $L^2$ 范数对每个元素的导数却和整个向量相关。但是在很多情况下，平方 $L^2$ 范数也可能不受欢迎，因为它在原点附近增长 得十分缓慢。在某些机器学习应用中，区分恰好是零的元素和非零但值很小的元素 是很重要的。在这些情况下，我们转而使用在各个位置斜率相同，同时保持简单的数学形式的函数:$L^1$ 范数. $L^1$ 范数可以简化如下:</p>
+<script type="math/tex; mode=display">
 ||x||_1 = \sum_i {|x_i|}
-\tag{7}
-\]</span></p>
-<p>当机器学习问题中零和非零元素之间的差异非常重要时，通常会使用 <span class="math inline">\(L^1\)</span> 范数。每当 <span class="math inline">\(x\)</span> 中某个元素从 0 增加 <span class="math inline">\(\epsilon\)</span>，对应的 L1 范数也会增加 <span class="math inline">\(\epsilon\)</span> 。</p>
-<p>另外一个经常在机器学习中出现的范数是 <span class="math inline">\(L^\infty\)</span> 范数，也被称为<strong>最大范数(max norm)</strong>。这个范数表示向量中具有最大幅值的元素的绝对值:</p>
-<p><span class="math display">\[
+\tag{7}</script><p>当机器学习问题中零和非零元素之间的差异非常重要时，通常会使用 $L^1$ 范数。每当<br>$x$ 中某个元素从 0 增加 $\epsilon$，对应的 L1 范数也会增加 $\epsilon$ 。</p>
+<p>另外一个经常在机器学习中出现的范数是 $L^\infty$ 范数，也被称为<strong>最大范数(max norm)</strong>。这个范数表示向量中具有最大幅值的元素的绝对值:</p>
+<script type="math/tex; mode=display">
 ||x||_\infty = \underset{i}{max}|x_i|
-\tag{8}
-\]</span></p>
-<p>有时候我们可能也希望衡量矩阵的大小。在深度学习中，最常见的做法是使用 <strong>Frobenius 范数(Frobenius norm)</strong>，</p>
-<p><span class="math display">\[
+\tag{8}</script><p>有时候我们可能也希望衡量矩阵的大小。在深度学习中，最常见的做法是使用 <strong>Frobenius 范数(Frobenius norm)</strong>，</p>
+<script type="math/tex; mode=display">
 ||A||_F = \sqrt {\sum_{i,j}A^2_{i,j}}
-\tag{9}
-\]</span></p>
-<p>其类似于向量的 <span class="math inline">\(L^2\)</span> 范数。 两个向量的<strong>点积(dot product)</strong>可以用范数来表示。具体地，</p>
-<p><span class="math display">\[
-x^Ty=||x||_2||y||_2\cos\theta  \tag{10}
-\]</span></p>
-<p>其中 <span class="math inline">\(θ\)</span> 表示 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 之间的夹角。</p>
-<p>如果 <span class="math inline">\(x^⊤y = 0\)</span>，那么向量 <span class="math inline">\(x\)</span> 和向量 <span class="math inline">\(y\)</span> 互相<strong>正交(orthogonal)</strong>。如果两个向量都有非零范数，那么这两个向量之间的夹角是 90 度。在 <span class="math inline">\(R^n\)</span> 中，至多有 <span class="math inline">\(n\)</span> 个范数非零向量互相正交。如果这些向量不仅互相正交，并且范数都为 1，那么我们称它们 是<strong>标准正交(orthonormal)</strong>。</p>
-<p><strong>正交矩阵(orthogonal matrix)</strong>是指行向量和列向量是分别标准正交的方阵,<span class="math inline">\(A^{−1} = A^⊤\)</span></p>
-<h2 id="特征分解">特征分解</h2>
-<p><strong>特征分解(eigendecomposition)</strong>是使用最广的矩阵分解之一，即我们将矩阵分解成一组<strong>特征向量</strong>和<strong>特征值</strong>。 方阵 A 的<strong>特征向量(eigenvector)</strong>是指与 A 相乘后相当于对该向量进行缩放的非零向量 v: <span class="math display">\[
+\tag{9}</script><p>其类似于向量的 $L^2$ 范数。<br>两个向量的<strong>点积(dot product)</strong>可以用范数来表示。具体地，</p>
+<script type="math/tex; mode=display">
+x^Ty=||x||_2||y||_2\cos\theta  \tag{10}</script><p>其中 $θ$ 表示 $x$ 和 $y$ 之间的夹角。</p>
+<p>如果 $x^⊤y = 0$，那么向量 $x$ 和向量 $y$ 互相<strong>正交(orthogonal)</strong>。如果两个向量都有非零范数，那么这两个向量之间的夹角是 90 度。在 $R^n$ 中，至多有 $n$ 个范数非零向量互相正交。如果这些向量不仅互相正交，并且范数都为 1，那么我们称它们 是<strong>标准正交(orthonormal)</strong>。</p>
+<p><strong>正交矩阵(orthogonal matrix)</strong>是指行向量和列向量是分别标准正交的方阵,$A^{−1} = A^⊤$</p>
+<h2 id="特征分解"><a href="#特征分解" class="headerlink" title="特征分解"></a>特征分解</h2><p><strong>特征分解(eigendecomposition)</strong>是使用最广的矩阵分解之一，即我们将矩阵分解成一组<strong>特征向量</strong>和<strong>特征值</strong>。<br>方阵 A 的<strong>特征向量(eigenvector)</strong>是指与 A 相乘后相当于对该向量进行缩放的非零向量 v:</p>
+<script type="math/tex; mode=display">
 Av = \lambda v
-\tag{11}
-\]</span> 标量 <span class="math inline">\(λ\)</span> 被称为这个特征向量对应的<strong>特征值(eigenvalue)</strong></p>
+\tag{11}</script><p>标量 $λ$ 被称为这个特征向量对应的<strong>特征值(eigenvalue)</strong></p>
 <p>A 的<strong>特征分解(eigendecomposition)</strong>可以记作</p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
 A=Vdiag(\lambda)V^{-1}
-\tag{12}
-\]</span></p>
-<p>所有特征值都是正数的矩阵被称为<strong>正定(positive definite)</strong>;所有特征值都是非负数的矩阵被称为<strong>半正定(positive semidefinite)</strong>。同样地，所有特征值都是负数的 矩阵被称为<strong>负定(negative definite)</strong>;所有特征值都是非正数的矩阵被称为<strong>半负定(negative semidefinite)</strong>。半正定矩阵受到关注是因为它们保证 <span class="math inline">\(∀x, x^⊤Ax ≥ 0\)</span>。此外，正定矩阵还保证 <span class="math inline">\(x^⊤Ax = 0 ⇒ x = 0\)</span>。</p>
-<h2 id="奇异值分解">奇异值分解</h2>
-<p><strong>奇异值分解(singular value decomposition, SVD)</strong>，将矩阵分解为<strong>奇异向量(singular vector)</strong>和<strong>奇异值(singular value)</strong>。通过奇异值分解，我们会得到一些与特征分解相同类型的信息。每个实数矩阵都有一个奇异值分解，但不一定都有特征分解。例如，非方阵的矩阵没有特征分解，这时我们只能使用奇异值分解。</p>
-<p>分解表达式: <span class="math display">\[
-A = UDV^⊤. \tag{13}
-\]</span></p>
-<p>假设 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(m×n\)</span> 的矩阵，那么 <span class="math inline">\(U\)</span> 是一个 <span class="math inline">\(m×m\)</span> 的矩阵，<span class="math inline">\(D\)</span> 是一个 <span class="math inline">\(m×n\)</span> 的矩阵，<span class="math inline">\(V\)</span> 是一个 <span class="math inline">\(n × n\)</span> 矩阵。 这些矩阵中的每一个经定义后都拥有特殊的结构。矩阵 <span class="math inline">\(U\)</span> 和 <span class="math inline">\(V\)</span> 都定义为正交矩阵，而矩阵 <span class="math inline">\(D\)</span> 定义为对角矩阵。注意，矩阵 <span class="math inline">\(D\)</span> 不一定是方阵。 对角矩阵 <span class="math inline">\(D\)</span> 对角线上的元素被称为矩阵 <span class="math inline">\(A\)</span> 的<strong>奇异值(singular value)</strong>。矩阵 <span class="math inline">\(U\)</span> 的列向量被称为<strong>左奇异向量(left singular vector)</strong>，矩阵 <span class="math inline">\(V\)</span> 的列向量被称<strong>右奇异向量(right singular vector)</strong>。 事实上，我们可以用与 <span class="math inline">\(A\)</span> 相关的特征分解去解释 <span class="math inline">\(A\)</span> 的奇异值分解。<span class="math inline">\(A\)</span>的<strong>左奇异向量(left singular vector)</strong>是 <span class="math inline">\(AA^⊤\)</span> 的特征向量。<span class="math inline">\(A\)</span> 的<strong>右奇异向量(right singular vector)</strong>是 <span class="math inline">\(A^⊤A\)</span> 的特征向量。A 的非零奇异值是 <span class="math inline">\(A^⊤A\)</span> 特征值的平方根，同时也是 <span class="math inline">\(AA^⊤\)</span> 特征值的平方根。</p>
-<h2 id="迹运算">迹运算</h2>
-<p>迹运算返回的是矩阵对角元素的和: <span class="math display">\[
-Tr(A)=\sum_i {A_{i,i}}
-\]</span></p>
-
+\tag{12}</script><p>所有特征值都是正数的矩阵被称为<strong>正定(positive definite)</strong>;所有特征值都是非负数的矩阵被称为<strong>半正定(positive semidefinite)</strong>。同样地，所有特征值都是负数的 矩阵被称为<strong>负定(negative definite)</strong>;所有特征值都是非正数的矩阵被称为<strong>半负定(negative semidefinite)</strong>。半正定矩阵受到关注是因为它们保证 $∀x, x^⊤Ax ≥ 0$。此外，正定矩阵还保证 $x^⊤Ax = 0 ⇒ x = 0$。</p>
+<h2 id="奇异值分解"><a href="#奇异值分解" class="headerlink" title="奇异值分解"></a>奇异值分解</h2><p><strong>奇异值分解(singular value decomposition, SVD)</strong>，将矩阵分解为<strong>奇异向量(singular vector)</strong>和<strong>奇异值(singular value)</strong>。通过奇异值分解，我们会得到一些与特征分解相同类型的信息。每个实数矩阵都有一个奇异值分解，但不一定都有特征分解。例如，非方阵的矩阵没有特征分解，这时我们只能使用奇异值分解。</p>
+<p>分解表达式:</p>
+<script type="math/tex; mode=display">
+A = UDV^⊤. \tag{13}</script><p>假设 $A$ 是一个 $m×n$ 的矩阵，那么 $U$ 是一个 $m×m$ 的矩阵，$D$ 是一个 $m×n$<br>的矩阵，$V$ 是一个 $n × n$ 矩阵。 这些矩阵中的每一个经定义后都拥有特殊的结构。矩阵 $U$ 和 $V$ 都定义为正交矩阵，而矩阵 $D$ 定义为对角矩阵。注意，矩阵 $D$ 不一定是方阵。<br>对角矩阵 $D$ 对角线上的元素被称为矩阵 $A$ 的<strong>奇异值(singular value)</strong>。矩阵 $U$ 的列向量被称为<strong>左奇异向量(left singular vector)</strong>，矩阵 $V$ 的列向量被称<strong>右奇异向量(right singular vector)</strong>。<br>事实上，我们可以用与 $A$ 相关的特征分解去解释 $A$ 的奇异值分解。$A$的<strong>左奇异向量(left singular vector)</strong>是 $AA^⊤$ 的特征向量。$A$ 的<strong>右奇异向量(right singular vector)</strong>是 $A^⊤A$ 的特征向量。A 的非零奇异值是 $A^⊤A$ 特征值的平方根，同时也是 $AA^⊤$ 特征值的平方根。</p>
+<h2 id="迹运算"><a href="#迹运算" class="headerlink" title="迹运算"></a>迹运算</h2><p>迹运算返回的是矩阵对角元素的和:</p>
+<script type="math/tex; mode=display">
+Tr(A)=\sum_i {A_{i,i}}</script>
       
     </div>
     
@@ -634,10 +599,10 @@ Tr(A)=\sum_i {A_{i,i}}
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -645,10 +610,10 @@ Tr(A)=\sum_i {A_{i,i}}
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -702,7 +667,7 @@ Tr(A)=\sum_i {A_{i,i}}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性代数"><span class="nav-number">1.</span> <span class="nav-text">线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标量向量矩阵和张量"><span class="nav-number">1.1.</span> <span class="nav-text">标量、向量、矩阵和张量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵和向量相乘"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵和向量相乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单位矩阵和逆矩阵"><span class="nav-number">1.3.</span> <span class="nav-text">单位矩阵和逆矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#范数"><span class="nav-number">1.4.</span> <span class="nav-text">范数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征分解"><span class="nav-number">1.5.</span> <span class="nav-text">特征分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇异值分解"><span class="nav-number">1.6.</span> <span class="nav-text">奇异值分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迹运算"><span class="nav-number">1.7.</span> <span class="nav-text">迹运算</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性代数"><span class="nav-number">1.</span> <span class="nav-text">线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标量、向量、矩阵和张量"><span class="nav-number">1.1.</span> <span class="nav-text">标量、向量、矩阵和张量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵和向量相乘"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵和向量相乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单位矩阵和逆矩阵"><span class="nav-number">1.3.</span> <span class="nav-text">单位矩阵和逆矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#范数"><span class="nav-number">1.4.</span> <span class="nav-text">范数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征分解"><span class="nav-number">1.5.</span> <span class="nav-text">特征分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇异值分解"><span class="nav-number">1.6.</span> <span class="nav-text">奇异值分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迹运算"><span class="nav-number">1.7.</span> <span class="nav-text">迹运算</span></a></li></ol></li></ol></div>
             
 
           </div>
