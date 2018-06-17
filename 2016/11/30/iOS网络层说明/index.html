@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS,组件文档," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="SuooL's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="iOS 网络层文档说明iOS 的网络层使用 YTKNetwork作为网络层底层架构，在  YTKNetwork的YTKRequest类和具体的业务请求层之间架设了一个中间业务类LSBaseRequest，所有具体的 API 请求都继承于此类。 关于 YTKNetwork   YTKNetwork主要用于请求的发送及回调处理，YTKNetwork 的基本的思想是把每一个网络请求封装成对象。使用 YT">
+<meta name="keywords" content="iOS,组件文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS网络层说明">
+<meta property="og:url" content="http://suool.net/2016/11/30/iOS网络层说明/index.html">
+<meta property="og:site_name" content="SuooL&#39;s Blog">
+<meta property="og:description" content="iOS 网络层文档说明iOS 的网络层使用 YTKNetwork作为网络层底层架构，在  YTKNetwork的YTKRequest类和具体的业务请求层之间架设了一个中间业务类LSBaseRequest，所有具体的 API 请求都继承于此类。 关于 YTKNetwork   YTKNetwork主要用于请求的发送及回调处理，YTKNetwork 的基本的思想是把每一个网络请求封装成对象。使用 YT">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/2016113096998iOS Network.png">
+<meta property="og:updated_time" content="2016-12-05T02:57:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS网络层说明">
+<meta name="twitter:description" content="iOS 网络层文档说明iOS 的网络层使用 YTKNetwork作为网络层底层架构，在  YTKNetwork的YTKRequest类和具体的业务请求层之间架设了一个中间业务类LSBaseRequest，所有具体的 API 请求都继承于此类。 关于 YTKNetwork   YTKNetwork主要用于请求的发送及回调处理，YTKNetwork 的基本的思想是把每一个网络请求封装成对象。使用 YT">
+<meta name="twitter:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/2016113096998iOS Network.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://suool.net/2016/11/30/iOS网络层说明/"/>
+
+
+
+
+
+  <title>iOS网络层说明 | SuooL's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SuooL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">胡振生写字的地方</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            Commonweal 404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2016/11/30/iOS网络层说明/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SuooL">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuooL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS网络层说明</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-30T16:44:02+08:00">
+                2016-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/30/iOS网络层说明/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/30/iOS网络层说明/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="iOS-网络层文档"><a href="#iOS-网络层文档" class="headerlink" title="iOS 网络层文档"></a>iOS 网络层文档</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>iOS 的网络层使用 <a href="https://github.com/yuantiku/YTKNetwork" target="_blank" rel="noopener">YTKNetwork</a>作为网络层底层架构，在  <a href="https://github.com/yuantiku/YTKNetwork" target="_blank" rel="noopener">YTKNetwork</a>的<code>YTKRequest</code>类和具体的业务请求层之间架设了一个中间业务类<code>LSBaseRequest</code>，所有具体的 API 请求都继承于此类。</p>
+<p>关于 <a href="https://github.com/yuantiku/YTKNetwork" target="_blank" rel="noopener">YTKNetwork</a> </p>
+<blockquote>
+<p>YTKNetwork主要用于请求的发送及回调处理，YTKNetwork 的基本的思想是把每一个网络请求封装成对象。使用 YTKNetwork，每一个请求都需要继承 YTKRequest 类，通过覆盖父类的一些方法来构造指定的网络请求。</p>
+</blockquote>
+<p>这里为了避免我们具体业务类的相关回调逻辑与 YTKNetwork 耦合过高，所以封装了<code>LSBaseRequest</code>来处理请求回调的公共逻辑。</p>
+<p>下面来一一说明。</p>
+<a id="more"></a>
+<h2 id="LSBaseRequest-类的设计"><a href="#LSBaseRequest-类的设计" class="headerlink" title="LSBaseRequest 类的设计"></a>LSBaseRequest 类的设计</h2><p><img src="http://7xjsv3.com1.z0.glb.clouddn.com/2016113096998iOS Network.png" alt="iOS Network.png"></p>
+<p>继承关系及中间层的 <code>BaseRequest</code>  的设计如上图所示。</p>
+<h3 id="基本的原理和字段说明："><a href="#基本的原理和字段说明：" class="headerlink" title="基本的原理和字段说明："></a>基本的原理和字段说明：</h3><p>首先一个请求的回调都是直接一个 JSON 的字符串，网络层的底层可以将这个字符串转化为<code>NSDictionary</code>类型的数据，这个是请求回调的第一次处理得到的数据。处理的具体过程如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此处是在网络请求完成的回调方法内拿到responseString的回调字符串的处理</span></span><br><span class="line"><span class="built_in">NSData</span> *data = [<span class="keyword">self</span>.responseString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line"><span class="keyword">if</span> (data) &#123;</span><br><span class="line">	<span class="built_in">NSMutableDictionary</span> *dictionary = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="built_in">NSJSONReadingMutableContainers</span> error:<span class="literal">nil</span>];</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  DDLogError(<span class="string">@"返回内容为空."</span>);</span><br><span class="line">  <span class="comment">// ... </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以，如果 API 的请求没有特殊的要求，可能直接拿到这个 <code>data</code>数据来提供给 ViewController 使用。</p>
+<p>但是，一般的请求并不会简单的直接要求<code>NSMutableDictionary</code>的 <code>data</code>数据，ViewController 希望能够直接拿到其需要的数据类型。而展示数据一般也只需要两种类型，分别是展示一个列表数据和展示一个实体模型的数据。所以业务请求 API 能够自己处理回调数据的“深加工”是View 和 ViewController希望看到的。因此，这里直接给 <code>BaseRequest</code>添加了两个属性，分别是泛型的回调列表数据和泛型的实体模型数据，而<code>NSDictionary</code>类型的<code>resultDic</code>属性是第一次处理的结果。</p>
+<p>根据以上的需求，具体的业务请求的 API 都会具有三种附加的状态属性，分别是该请求是否需要登录，该请求是否需要一个列表的回调数据，该请求是否需要一个实体模型的回调数据。在初始化具体的 API 请求的时候就会对这三个属性进行初始化。</p>
+<p>具体的对应数属性是：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> isLogin;  <span class="comment">// 是否需登录</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> isRetAry; <span class="comment">// 是否需要返回数组</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> isRetObj; <span class="comment">// 是否需要返回实体 model</span></span><br></pre></td></tr></table></figure>
+<p>所以<code>BaseRequest</code>的对外暴露的方法也只有三个，此处甚至可以减少到两个，即是所有的 API 请求自己处理自己的初始化，而不是像上面的使用中间类的初始化方法。</p>
+<p>而 API 的初始化方法中，需要传入该 API 请求需要的参数及其相关的状态属性。请求参数会根据请求的登录状态属性来决定是否添加<code>AccessToken 参数</code>。</p>
+<p>在具体的发送 API 请求的时候，会根据以上三个状态属性来确定如何发送请求，具体的处理逻辑如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)startRequest&#123;</span><br><span class="line">    sendCount ++; <span class="comment">// 请求重发的次数</span></span><br><span class="line">    <span class="built_in">BOOL</span> isOnline = [[LSUserDefaults sharedInstance] isOnLine];</span><br><span class="line">    <span class="keyword">if</span> (_isLogin &amp;&amp; isOnline) &#123;  <span class="comment">// 需要登录且目前用户已经登录</span></span><br><span class="line">        [<span class="keyword">self</span> start];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(_isLogin &amp;&amp; !isOnline) &#123; <span class="comment">// 需要登录但目前用户并没有登录</span></span><br><span class="line">        <span class="keyword">self</span>.failure(@&#123;<span class="string">@"code"</span> : NoLogin&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (!_isLogin) &#123;         <span class="comment">// 不需要登录，直接登录</span></span><br><span class="line">        [<span class="keyword">self</span> start];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请求完成之后的公共逻辑处理在<code>requestCompleteFilter</code>和<code>requestFailedFilter</code>回调方法中实现，这两个回调方法是 YTKNetwork 中暴露出来给请求结果回调处理使用的。</p>
+<p>而一旦请求发送成功，获得回调数据之后，回调数据统一处理逻辑会根据 API 初始化携带的状态来加工回调数据，具体如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)requestCompleteFilter&#123;</span><br><span class="line">    <span class="built_in">NSData</span> *data = [<span class="keyword">self</span>.responseString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    <span class="keyword">if</span> (data) &#123;</span><br><span class="line">		  <span class="comment">// 初次加工数据</span></span><br><span class="line">        <span class="built_in">NSMutableDictionary</span> *dictionary = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="built_in">NSJSONReadingMutableContainers</span> error:<span class="literal">nil</span>];</span><br><span class="line">        <span class="built_in">NSEnumerator</span> *enumerator = [dictionary keyEnumerator];</span><br><span class="line">        <span class="built_in">NSString</span> *key = <span class="string">@"code"</span>;</span><br><span class="line">        <span class="keyword">int</span> code = [dictionary[key] intValue];</span><br><span class="line">        <span class="built_in">BOOL</span> isExist = <span class="literal">NO</span>;</span><br><span class="line">        <span class="keyword">while</span> ((key = [enumerator nextObject])) &#123;</span><br><span class="line">            isExist = <span class="literal">YES</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (isExist) &#123;</span><br><span class="line">            <span class="keyword">switch</span> (code) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">200</span>:</span><br><span class="line">                    <span class="keyword">if</span> (_isRetAry) &#123; <span class="comment">// 如果要求返回的是数组，则在具体的 API 中再次深加工数据，并将加工之后的数据回调</span></span><br><span class="line">                        <span class="keyword">self</span>.successArray(<span class="keyword">self</span>.resultData);</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(_isRetObj) <span class="comment">// 如果要求返回的是实体，则在具体的 API 中再次深加工数据，并将加工之后的数据回调</span></span><br><span class="line">                        <span class="keyword">self</span>.successObject(<span class="keyword">self</span>.model);</span><br><span class="line">                    <span class="keyword">else</span> <span class="comment">// 如果要求返回没有额外的要求，则在数据回调中直接将初加工数据回调</span></span><br><span class="line">                        <span class="keyword">self</span>.success(dictionary);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">					  <span class="comment">// 请求成功但是获取的不是预期的成功数据</span></span><br><span class="line">                <span class="keyword">case</span> <span class="number">801</span>:&#123;</span><br><span class="line">                    <span class="comment">// 访问令牌失效，重新获取</span></span><br><span class="line">                    [<span class="keyword">self</span> requestTokenWithRetArray:_isRetAry retObj:_isRetObj];</span><br><span class="line">                &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">802</span>:</span><br><span class="line">                    [[PMStore store] removeUserDataAndLogOff];</span><br><span class="line">                    <span class="keyword">self</span>.failure(dictionary);</span><br><span class="line">				  <span class="comment">// 其他情况</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">self</span>.failure(@&#123;<span class="string">@"msg"</span> : <span class="string">@"服务暂时不可用，请稍后重试"</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		  <span class="comment">// 请求成功但是没有获取到数据</span></span><br><span class="line">        DDLogWarn(<span class="string">@"self.success(nil)"</span>);</span><br><span class="line">        <span class="keyword">self</span>.failure(@&#123;<span class="string">@"msg"</span> : <span class="string">@"服务暂时不可用，请稍后重试"</span>&#125;);;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体的深加工过程，在具体的 API 类中再做介绍。</p>
+<p>请求发送失败的公共处理逻辑：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)requestFailedFilter &#123;</span><br><span class="line">    <span class="built_in">NSData</span> *data = [<span class="keyword">self</span>.responseString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    <span class="keyword">if</span> (data) &#123;</span><br><span class="line">        <span class="built_in">NSMutableDictionary</span> *dictionary = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="built_in">NSJSONReadingMutableContainers</span> error:<span class="literal">nil</span>];</span><br><span class="line">        <span class="keyword">self</span>.failure(dictionary);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        DDLogError(<span class="string">@"返回内容为空."</span>);</span><br><span class="line">        <span class="keyword">self</span>.failure(@&#123;<span class="string">@"msg"</span> : <span class="string">@"服务暂时不可用，请稍后重试"</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处在请求成功发送并获取回调之后，会出现一种特殊的情况（上面 Code 为801 的情况）：如果该请求需要登录状态，即是会携带<code>AccessToken</code>来发送请求，但是请求的结果是服务端提示<code>AccessToken</code>过期，此时不能立即回调该结果给 API 的调用者，而是要发送一个<code>LSServerTokenAPI</code>请求来尝试跟服务端请求换取新的<code>AccessToken</code>，如果服务端成功的返回了新的<code>AccessToken</code>，则应该让该请求重新携带新的<code>AccessToken</code>重发请求数据。如果没有获取到新的<code>AccessToken</code>，则此时应该失败回调给调用者，告诉调用者该用户已经掉线，需要重新登录才能继续请求。<br>此处的具体处理逻辑代码如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)requestTokenWithRetArray:(<span class="built_in">BOOL</span>)isAry retObj:(<span class="built_in">BOOL</span>)isObj&#123;</span><br><span class="line">    <span class="built_in">NSMutableDictionary</span> *requrestDic = [<span class="built_in">NSMutableDictionary</span> dictionaryWithDictionary:<span class="keyword">self</span>.requestArgument];</span><br><span class="line">    <span class="comment">// accessToken 过期</span></span><br><span class="line">    LSServerTokenAPI *accessAPI = [[LSServerTokenAPI alloc]init];</span><br><span class="line">    [accessAPI startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) &#123;   <span class="comment">// 此处是直接使用的 YTKRequest 的回调方法</span></span><br><span class="line">        <span class="comment">// you can use self here, retain cycle won't happen</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"succeed"</span>);</span><br><span class="line">        <span class="built_in">NSData</span> *data = [request.responseString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">        <span class="built_in">NSMutableDictionary</span> *dictionary = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="built_in">NSJSONReadingMutableContainers</span> error:<span class="literal">nil</span>];</span><br><span class="line">        <span class="built_in">NSDictionary</span> *dic = (<span class="built_in">NSDictionary</span> *)dictionary[<span class="string">@"data"</span>][<span class="string">@"result"</span>];</span><br><span class="line">        HNUserModel *user = [HNUserModel mj_objectWithKeyValues:dic];</span><br><span class="line">        <span class="keyword">if</span> (user.accessToken) &#123;   <span class="comment">// 如果换取到新的 Token</span></span><br><span class="line">            [[PMStore store]saveDataWithUserInfo:user];</span><br><span class="line">            requrestDic[<span class="string">@"accessToken"</span>] = user.accessToken;</span><br><span class="line">            <span class="keyword">self</span>.baseRequestArgument = requrestDic;</span><br><span class="line">            <span class="keyword">if</span> (sendCount &gt; <span class="number">3</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.failure(@&#123;<span class="string">@"msg"</span> : <span class="string">@"重发系统错误，请稍后重试"</span>&#125;);  <span class="comment">// 重发最多三次，多余三次的直接回调失败</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               [<span class="keyword">self</span> startRequest];  <span class="comment">// 重发该请求</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            [[PMStore store] removeUserDataAndLogOff];</span><br><span class="line">            <span class="keyword">self</span>.failure(@&#123;<span class="string">@"code"</span> : NoLogin&#125;);  <span class="comment">// 没有获取到新的 Token，回调数据登录失效</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; failure:^(YTKBaseRequest *request) &#123;</span><br><span class="line">        <span class="comment">// you can use self here, retain cycle won't happen</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"failed"</span>);</span><br><span class="line">        <span class="built_in">NSData</span> *data = [request.responseString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">        <span class="keyword">if</span> (data) &#123;</span><br><span class="line">            <span class="built_in">NSMutableDictionary</span> *dictionary = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="built_in">NSJSONReadingMutableContainers</span> error:<span class="literal">nil</span>];</span><br><span class="line">            DDLogError(<span class="string">@"发送请求更新 accessToken 失败，返回内容：\n%@"</span>,dictionary);</span><br><span class="line">            <span class="keyword">self</span>.failure(dictionary);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">self</span>.failure(@&#123;<span class="string">@"msg"</span> : <span class="string">@"刷新 Token 系统错误，请稍后重试"</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是为了避免无限的循环调用，<code>LSServerTokenAPI</code>本身不是<code>LSBaseRequest</code>类型的，而是和<code>LSBaseRequest</code>一样都是直接继承自<code>YTKRequest</code>的，因此此处的<code>LSServerTokenAPI</code>请求的回调不会再次经过<code>LSBaseRequest</code> 在<code>requestCompleteFilter</code>和<code>requestFailedFilter</code>回调方法中的公共逻辑，而是直接调用的<code>startWithCompletionBlockWithSuccess:(YTKRequestCompletionBlock)success failure:(YTKRequestCompletionBlock)failure</code>方法处理数据回调数据。</p>
+<h2 id="operationAPI-类的设计"><a href="#operationAPI-类的设计" class="headerlink" title="operationAPI 类的设计"></a>operationAPI 类的设计</h2><p>具体的业务类非常的简单，因此非常多的回调处理逻辑都在<code>LSBaseRequest</code>内部完成处理了。<br>如果需要创建一个新的业务请求 API，只要创建一个继承自<code>LSBaseRequest</code>的 API 类，在类的头文件声明中，除特殊情况外，不需要做任何的处理，比如一个典型的请求个人信息的 API 接口声明如下：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@interface</span> <span class="attribute">HNUserInfoAPI </span>: LSBaseRequest</span><br><span class="line"><span class="comment">// 此处一般不需要声明任何额外的属性和方法</span></span><br><span class="line"><span class="variable">@end</span></span><br></pre></td></tr></table></figure>
+<p>  而具体业务的 API 实现，也只需要配置该 API 的 URL，API 的请求方式即可。</p>
+<h3 id="额外的数据逻辑处理需求"><a href="#额外的数据逻辑处理需求" class="headerlink" title="额外的数据逻辑处理需求"></a>额外的数据逻辑处理需求</h3><p>如果该 API 请求对于回调数据有特殊的加工需求：</p>
+<ul>
+<li>需要一个列表数据，则会增加下面这些处理逻辑，实现<code>LSBaseRequest</code>的<code>resultData</code>的获取方法 ，比如请求交易记录的 API ：</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此处是实现LSBaseRequest的属性</span></span><br><span class="line">- (<span class="built_in">NSArray</span> *)resultData&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">self</span> handleData:<span class="keyword">self</span>.resultDic];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 对请求的回调数据进行深加工，JSON 转列表</span></span><br><span class="line">- (<span class="built_in">NSArray</span> *)handleData:(<span class="built_in">NSDictionary</span> *)dictionary&#123;</span><br><span class="line">    <span class="built_in">NSMutableArray</span> *resultArray = [<span class="built_in">NSMutableArray</span> new];</span><br><span class="line">    <span class="keyword">if</span> ([dictionary count]) &#123;</span><br><span class="line">        <span class="built_in">NSDictionary</span> *resultDic = (<span class="built_in">NSDictionary</span> *)[[dictionary objectForKey:<span class="string">@"data"</span>] objectForKey:<span class="string">@"result"</span>];</span><br><span class="line">        [resultArray addObjectsFromArray:[HNTradeRecordModel mj_objectArrayWithKeyValuesArray:resultDic]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resultArray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要一个模型数据，则会增加下面这些处理逻辑， 实现<code>LSBaseRequest</code>的<code>model</code>的获取方法 ，比如请求个人信息的 API ：</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (id)model&#123;</span><br><span class="line">    <span class="keyword">return</span> [self <span class="string">handleData:</span>self.resultDic];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 对请求的数据进行深加工，JSON 转模型</span></span><br><span class="line">- (HNUserModel *)<span class="string">handleData:</span>(NSDictionary *)dictionary&#123;</span><br><span class="line">    <span class="keyword">if</span> ([dictionary count]) &#123;</span><br><span class="line">        [[PMStore store]<span class="string">handleUserDictionary:</span>dictionary <span class="string">resiterJpush:</span>NO];</span><br><span class="line">        NSDictionary *dic = [[dictionary <span class="string">objectForKey:</span>@<span class="string">"data"</span>] <span class="string">objectForKey:</span>@<span class="string">"result"</span>];</span><br><span class="line">        HNUserModel *model = [HNUserModel <span class="string">mj_objectWithKeyValues:</span>dic];</span><br><span class="line">        <span class="keyword">return</span> model;</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> NULL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果没有额外的数据需求，则上面这些逻辑都不需要。</li>
+</ul>
+<h2 id="具体业务流程说明："><a href="#具体业务流程说明：" class="headerlink" title="具体业务流程说明："></a>具体业务流程说明：</h2><p>如果需要新增一个新的业务请求类：</p>
+<ol>
+<li>新建一个新的基于<code>LSBaseRequest</code>类</li>
+<li>完成 API 类的基本配置，包括 URL 和请求方式的配置</li>
+<li>如果 该 API 类有更多的数据处理需求，按照上面所写的方式来处理</li>
+</ol>
+<p>在 ViewController 或者 View 中初始化 API，一个实例如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)loadDataFromService&#123;</span><br><span class="line">    <span class="comment">// API 请求的参数</span></span><br><span class="line">    <span class="built_in">NSMutableDictionary</span> *dic = [[<span class="built_in">NSMutableDictionary</span> alloc]initWithDictionary:@&#123;<span class="string">@"offset"</span>:<span class="keyword">self</span>.offset,</span><br><span class="line">                                                                                <span class="string">@"limit"</span>:<span class="string">@"10"</span>&#125;];</span><br><span class="line">	  <span class="comment">// 初始化 API 请求，传入需要的参数及状态信息</span></span><br><span class="line">    HNInquiryListAPI *request = [[HNInquiryListAPI alloc]initWithArgumentValueDictionary:dic isLogin:<span class="literal">YES</span> isRetAry:<span class="literal">YES</span> isRetObj:<span class="literal">NO</span>];</span><br><span class="line">    [request setSuccessArray:^(<span class="built_in">NSArray</span> *resultData) &#123;</span><br><span class="line">        <span class="comment">// 初始化的要求 API 能够对回调数据进行深加工——返回列表，所以这里直接设置列表的 block 回调处理逻辑。</span></span><br><span class="line">    &#125;];</span><br><span class="line">    [request setFailure:^(<span class="built_in">NSDictionary</span> *dictionary) &#123;</span><br><span class="line">		  <span class="comment">// 请求失败的回调</span></span><br><span class="line">    &#125;];</span><br><span class="line">    [request startRequest];  <span class="comment">// 发送请求</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上就是完整的网络层架构的说明及具体业务处理的流程。</p>
+<h2 id="其他说明——图片及文件上传请求"><a href="#其他说明——图片及文件上传请求" class="headerlink" title="其他说明——图片及文件上传请求"></a>其他说明——图片及文件上传请求</h2><p>上传图片的 API 不同于其他的业务处理 API，它不需要处理一堆的业务逻辑，而且目前也不需要登录等状态，因此网络层将上传图片的 API 直接独立了出来，直接继承与<code>YTKRequest</code>。目前的图片 API 如下，已经封装完成，图片微服务不做大的重构，此 API 也不需要做修改：</p>
+<p>声明：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;YTKRequest.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">HNUploadImageApi</span> : <span class="title">YTKRequest</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)initWithImage:(<span class="built_in">NSArray</span> *)image;  <span class="comment">// 需要上传的图片文件数组</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="keyword">id</span> baseRequestArgument;  <span class="comment">// 请求的参数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>实现部分 </p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"HNUploadImageApi.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">HNUploadImageApi</span></span>&#123;</span><br><span class="line">    <span class="built_in">NSArray</span> *_image;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)initWithImage:(<span class="built_in">NSArray</span> *)image &#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        _image = image;  <span class="comment">// 初始化图片数组的属性</span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (YTKRequestMethod)requestMethod &#123;</span><br><span class="line">    <span class="keyword">return</span> YTKRequestMethodPOST;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构建请求参数</span></span><br><span class="line">- (<span class="keyword">void</span>)setBaseRequestArgument:(<span class="keyword">id</span>)baseRequestArgument&#123;</span><br><span class="line">    <span class="keyword">if</span> (baseRequestArgument) &#123;</span><br><span class="line">        _baseRequestArgument = baseRequestArgument;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)requestArgument &#123;</span><br><span class="line">    <span class="keyword">if</span> (_baseRequestArgument) &#123;</span><br><span class="line">        <span class="keyword">return</span> _baseRequestArgument;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)requestUrl &#123;</span><br><span class="line">    <span class="keyword">return</span> UploadImageAPI;  <span class="comment">// 上传 URL 地址</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求的 body 的构造</span></span><br><span class="line">- (AFConstructingBlock)constructingBodyBlock &#123;</span><br><span class="line">    <span class="keyword">return</span> ^(<span class="keyword">id</span>&lt;AFMultipartFormData&gt; formData) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; _image.count; i++)&#123;</span><br><span class="line">            <span class="built_in">NSData</span> *data = <span class="built_in">UIImageJPEGRepresentation</span>(_image[i], <span class="number">0.5</span>);</span><br><span class="line">            <span class="keyword">if</span> ((<span class="keyword">float</span>)data.length/<span class="number">1024</span> &gt; <span class="number">1000</span>) &#123;</span><br><span class="line">                data = <span class="built_in">UIImageJPEGRepresentation</span>(_image[i], <span class="number">1024</span>*<span class="number">1000.0</span>/(<span class="keyword">float</span>)data.length);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">NSString</span> *name = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"image%d.png"</span>,i];</span><br><span class="line">            <span class="built_in">NSString</span> *type = <span class="string">@"image/jpeg"</span>;</span><br><span class="line">            [formData appendPartWithFileData:data name:<span class="string">@"image"</span> fileName:name mimeType:type];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>具体构建及发送请求的流程如下，以上传头像为例：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">HNUploadImageApi *api = [[HNUploadImageApi alloc] <span class="string">initWithImage:</span>@[scaleImage]]; <span class="comment">// 初始化请求，并传递需要上传的图片数组</span></span><br><span class="line">api.baseRequestArgument = @&#123;@<span class="string">"type"</span>:@<span class="string">"0"</span>&#125;;   <span class="comment">// 构造请求的参数</span></span><br><span class="line">[api <span class="string">startWithCompletionBlockWithSuccess:</span>^(YTKBaseRequest *request)&#123;</span><br><span class="line">    NSData *data = [request.responseString <span class="string">dataUsingEncoding:</span>NSUTF8StringEncoding];</span><br><span class="line">    <span class="keyword">if</span> (data) &#123;</span><br><span class="line">        NSMutableDictionary *dic = [NSJSONSerialization <span class="string">JSONObjectWithData:</span>data <span class="string">options:</span>NSJSONReadingMutableContainers <span class="string">error:</span>nil];</span><br><span class="line">		  <span class="comment">// 初次处理上传成功后的数据回调</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="string">failure:</span>^(YTKBaseRequest *request)&#123;</span><br><span class="line">    <span class="comment">// 上传失败后是回调</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>向我开炮</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/qr-wechat.jpeg" alt="SuooL WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/qr-alipay.jpeg" alt="SuooL Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/组件文档/" rel="tag"># 组件文档</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/27/无题/" rel="next" title="无题">
+                <i class="fa fa-chevron-left"></i> 无题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/05/iOS-引导图组件使用文档/" rel="prev" title="iOS 引导图组件使用文档">
+                iOS 引导图组件使用文档 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">SuooL</p>
+              <p class="site-description motion-element" itemprop="description">胡振生写字的地方</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/suool" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hu1020935219@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-网络层文档"><span class="nav-number">1.</span> <span class="nav-text">iOS 网络层文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">1.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LSBaseRequest-类的设计"><span class="nav-number">1.2.</span> <span class="nav-text">LSBaseRequest 类的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本的原理和字段说明："><span class="nav-number">1.2.1.</span> <span class="nav-text">基本的原理和字段说明：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#operationAPI-类的设计"><span class="nav-number">1.3.</span> <span class="nav-text">operationAPI 类的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#额外的数据逻辑处理需求"><span class="nav-number">1.3.1.</span> <span class="nav-text">额外的数据逻辑处理需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体业务流程说明："><span class="nav-number">1.4.</span> <span class="nav-text">具体业务流程说明：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他说明——图片及文件上传请求"><span class="nav-number">1.5.</span> <span class="nav-text">其他说明——图片及文件上传请求</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SuooL</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://suool.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://suool.net/2016/11/30/iOS网络层说明/';
+          this.page.identifier = '2016/11/30/iOS网络层说明/';
+          this.page.title = 'iOS网络层说明';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://suool.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
