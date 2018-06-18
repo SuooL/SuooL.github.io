@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="iOS 网络层文档说明iOS 的网络层使用 YTKNetwork作为网络层底层架构，在  YTKNetwork的YTKRequest类和具体的业务请求层之间架设了一个中间业务类LSBaseRequest，所有具体的 API 请求都继承于此类。 关于 YTKNetwork   YTKNetwork主要用于请求的发送及回调处理，YTKNetwork 的基本的思想是把每一个网络请求封装成对象。使用 YT">
+<meta name="description" content="iOS 网络层文档说明iOS 的网络层使用 YTKNetwork作为网络层底层架构，在  YTKNetwork的YTKRequest类和具体的业务请求层之间架设了一个中间业务类LSBaseRequest，所有具体的 API 请求都继承于此类。">
 <meta name="keywords" content="iOS,组件文档">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS网络层说明">
 <meta property="og:url" content="http://suool.net/2016/11/30/iOS网络层说明/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="iOS 网络层文档说明iOS 的网络层使用 YTKNetwork作为网络层底层架构，在  YTKNetwork的YTKRequest类和具体的业务请求层之间架设了一个中间业务类LSBaseRequest，所有具体的 API 请求都继承于此类。 关于 YTKNetwork   YTKNetwork主要用于请求的发送及回调处理，YTKNetwork 的基本的思想是把每一个网络请求封装成对象。使用 YT">
+<meta property="og:description" content="iOS 网络层文档说明iOS 的网络层使用 YTKNetwork作为网络层底层架构，在  YTKNetwork的YTKRequest类和具体的业务请求层之间架设了一个中间业务类LSBaseRequest，所有具体的 API 请求都继承于此类。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/2016113096998iOS Network.png">
-<meta property="og:updated_time" content="2016-12-05T02:57:11.000Z">
+<meta property="og:updated_time" content="2018-06-18T03:27:41.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS网络层说明">
-<meta name="twitter:description" content="iOS 网络层文档说明iOS 的网络层使用 YTKNetwork作为网络层底层架构，在  YTKNetwork的YTKRequest类和具体的业务请求层之间架设了一个中间业务类LSBaseRequest，所有具体的 API 请求都继承于此类。 关于 YTKNetwork   YTKNetwork主要用于请求的发送及回调处理，YTKNetwork 的基本的思想是把每一个网络请求封装成对象。使用 YT">
+<meta name="twitter:description" content="iOS 网络层文档说明iOS 的网络层使用 YTKNetwork作为网络层底层架构，在  YTKNetwork的YTKRequest类和具体的业务请求层之间架设了一个中间业务类LSBaseRequest，所有具体的 API 请求都继承于此类。">
 <meta name="twitter:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/2016113096998iOS Network.png">
 
 
@@ -367,14 +367,13 @@
       
 
       
-        <h1 id="iOS-网络层文档"><a href="#iOS-网络层文档" class="headerlink" title="iOS 网络层文档"></a>iOS 网络层文档</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>iOS 的网络层使用 <a href="https://github.com/yuantiku/YTKNetwork" target="_blank" rel="noopener">YTKNetwork</a>作为网络层底层架构，在  <a href="https://github.com/yuantiku/YTKNetwork" target="_blank" rel="noopener">YTKNetwork</a>的<code>YTKRequest</code>类和具体的业务请求层之间架设了一个中间业务类<code>LSBaseRequest</code>，所有具体的 API 请求都继承于此类。</p>
+        <h1 id="iOS-网络层文档"><a href="#iOS-网络层文档" class="headerlink" title="iOS 网络层文档"></a>iOS 网络层文档</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>iOS 的网络层使用 <a href="https://github.com/yuantiku/YTKNetwork" target="_blank" rel="noopener">YTKNetwork</a>作为网络层底层架构，在  <a href="https://github.com/yuantiku/YTKNetwork" target="_blank" rel="noopener">YTKNetwork</a>的<code>YTKRequest</code>类和具体的业务请求层之间架设了一个中间业务类<code>LSBaseRequest</code>，所有具体的 API 请求都继承于此类。<br> <a id="more"></a></p>
 <p>关于 <a href="https://github.com/yuantiku/YTKNetwork" target="_blank" rel="noopener">YTKNetwork</a> </p>
 <blockquote>
 <p>YTKNetwork主要用于请求的发送及回调处理，YTKNetwork 的基本的思想是把每一个网络请求封装成对象。使用 YTKNetwork，每一个请求都需要继承 YTKRequest 类，通过覆盖父类的一些方法来构造指定的网络请求。</p>
 </blockquote>
 <p>这里为了避免我们具体业务类的相关回调逻辑与 YTKNetwork 耦合过高，所以封装了<code>LSBaseRequest</code>来处理请求回调的公共逻辑。</p>
 <p>下面来一一说明。</p>
-<a id="more"></a>
 <h2 id="LSBaseRequest-类的设计"><a href="#LSBaseRequest-类的设计" class="headerlink" title="LSBaseRequest 类的设计"></a>LSBaseRequest 类的设计</h2><p><img src="http://7xjsv3.com1.z0.glb.clouddn.com/2016113096998iOS Network.png" alt="iOS Network.png"></p>
 <p>继承关系及中间层的 <code>BaseRequest</code>  的设计如上图所示。</p>
 <h3 id="基本的原理和字段说明："><a href="#基本的原理和字段说明：" class="headerlink" title="基本的原理和字段说明："></a>基本的原理和字段说明：</h3><p>首先一个请求的回调都是直接一个 JSON 的字符串，网络层的底层可以将这个字符串转化为<code>NSDictionary</code>类型的数据，这个是请求回调的第一次处理得到的数据。处理的具体过程如下：</p>
