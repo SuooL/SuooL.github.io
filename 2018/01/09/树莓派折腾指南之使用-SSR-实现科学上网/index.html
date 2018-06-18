@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="树莓派折腾指南之使用 SSR 实现科学上网p## 预备工作首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。其 github 地址是 libsodium ，编译安装的步骤如下： 首先安装 build-essential 软件包，其作用是提供编译程序必须软件包的列表信息，也即是，编译程序有了这">
+<meta name="description" content="树莓派折腾指南之使用 SSR 实现科学上网p## 预备工作首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta name="keywords" content="树莓派">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派折腾指南之使用 SSR 实现科学上网">
 <meta property="og:url" content="http://suool.net/2018/01/09/树莓派折腾指南之使用-SSR-实现科学上网/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="树莓派折腾指南之使用 SSR 实现科学上网p## 预备工作首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。其 github 地址是 libsodium ，编译安装的步骤如下： 首先安装 build-essential 软件包，其作用是提供编译程序必须软件包的列表信息，也即是，编译程序有了这">
+<meta property="og:description" content="树莓派折腾指南之使用 SSR 实现科学上网p## 预备工作首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15154976353553.jpg">
-<meta property="og:updated_time" content="2018-01-09T11:57:35.000Z">
+<meta property="og:updated_time" content="2018-06-18T03:20:22.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派折腾指南之使用 SSR 实现科学上网">
-<meta name="twitter:description" content="树莓派折腾指南之使用 SSR 实现科学上网p## 预备工作首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。其 github 地址是 libsodium ，编译安装的步骤如下： 首先安装 build-essential 软件包，其作用是提供编译程序必须软件包的列表信息，也即是，编译程序有了这">
+<meta name="twitter:description" content="树莓派折腾指南之使用 SSR 实现科学上网p## 预备工作首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta name="twitter:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15154976353553.jpg">
 
 
@@ -368,6 +368,7 @@
 
       
         <h1 id="树莓派折腾指南之使用-SSR-实现科学上网"><a href="#树莓派折腾指南之使用-SSR-实现科学上网" class="headerlink" title="树莓派折腾指南之使用 SSR 实现科学上网"></a>树莓派折腾指南之使用 SSR 实现科学上网</h1><p>p## 预备工作<br>首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。<br>其 github 地址是 <a href="https://github.com/jedisct1/libsodium/" target="_blank" rel="noopener">libsodium</a> ，编译安装的步骤如下：</p>
+<a id="more"></a>
 <p>首先安装 build-essential 软件包，其作用是提供编译程序必须软件包的列表信息，也即是，编译程序有了这个软件包它才能确定头文件在哪，才知道库函数在哪，还会下载依赖的软件包，最后才组成一个开发环境。<br>安装命令是：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install build-essential</span><br></pre></td></tr></table></figure>
 <p>安装完成后，就是下载编译 libsodium 库了，首先你要去它的<a href="https://github.com/jedisct1/libsodium/releases" target="_blank" rel="noopener">发布页</a>，确定当前最新的发布版本，替代我下面的当前的 VERSION 。主要命令如下：</p>
