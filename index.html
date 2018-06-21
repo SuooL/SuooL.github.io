@@ -283,6 +283,507 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/06/21/脑科学和贝叶斯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SuooL">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuooL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/21/脑科学和贝叶斯/" itemprop="url">机脑科学、贝叶斯及机器学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-21T20:23:21+08:00">
+                2018-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/21/脑科学和贝叶斯/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/21/脑科学和贝叶斯/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/06/21/脑科学和贝叶斯/" class="leancloud_visitors" data-flag-title="机脑科学、贝叶斯及机器学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,179 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>1956年，让机器来做聪明的事情的科学被称为“人工智能”。50年之后，人类创造出来能下象棋的电脑打败了世界冠军。</p>
+<p>信息论和计算机的发展表明，感知其实是一个很难解决的问题。但是，我们的脑却能够很简单的解决这个问题，这是否意味着，数字计算机不是人脑的一个好隐喻？或者，我们需要为计算机的运行找新的运算方式？</p>
+<p>信息论的发展使得我们看到物理事件和电脉冲是如何转化为精神事件和讯息的。但是，在最初表达中存在一个根本的问题。一条信息中的信息量，或者更通俗的说，任何刺激中的信息量完全由那个刺激源来决定，这种界定信息的方法看上去很完美，实际上会产生自相矛盾的结果。</p>
+<p>比如在图像的处理中，图片是由像素点组成的，以此形成不同的颜色。比如看这样一张图片，它是一张简单的以白色为背景的黑色正方形的图片，这张图片中的哪些要素含有最多的信息？当我们的眼睛扫过一个颜色不变的区域的时候，因为没有任何的改变，就不会产生任何的惊奇感。而当我们眼睛扫到边缘的时候，颜色突然变化，我们就会感到“惊奇”。因此，根据信息论，图片的边缘所含的信息量是最大的，这和我们的直觉也确实是相符的，假如我们用轮廓来代替这个物体，换句话说，只留下有信息的边缘，我们仍然能够认出这个物体。</p>
+<p><img src="https://suool-bolg.b0.upaiyun.com/2018/06/21/06E79D3A-1211-4697-A3AF-B712D13C4EAE-1.png" alt="轮廓信息"></p>
+<p>但是，这种表述实际上是自相矛盾的，按照这种界定，当我们用眼睛扫一幅图片的时候，我们预测不到接下来会发生什么，这样子的图片所含的信息量最多，完全有随机的点构成。比如电视机出现故障的时候出现的“雪花”屏幕，如果说这样子的图片含有最丰富的信息，恐怕你是不会同意的。<br><img src="https://suool-bolg.b0.upaiyun.com/2018/06/21/BAD85663-52A5-47A4-BCAB-3FF1D50B4FA6-1.png" alt="雪花"></p>
+<p>出现这种矛盾的问题在于，信息论没有考虑到观看者本身，更根本的说，是没有考虑到观看者的先验知识和预期期望，这些不同会明显的影响我们对事物的感知。</p>
+<p>比如刚刚提到的黑色正方形，对于一些观看者来说，这就是一个黑色正方形，但是这个黑色正方形是俄罗斯绘画至上主义者的幻想、非具象艺术的首例，它是 Kazimir Malevich 于1913年展示的。这个例子里，知道“这是一件重要的艺术品”的先验知识，可以改变你对这个黑色正方形的感知，虽然它的信息量并无改变。<br><img src="https://suool-bolg.b0.upaiyun.com/2018/06/21/A905B126-2523-491D-9574-1313E36D0557.png" alt="Kazimir Malevich"></p>
+<h2 id="Thomas-Bayes-牧师"><a href="#Thomas-Bayes-牧师" class="headerlink" title="Thomas Bayes 牧师"></a>Thomas Bayes 牧师</h2><p>那么如何修正信息论使它能够考虑到观察者的不同经历和期望呢？我们可以说一条讯息携带的信息量可以达到改变接受者对世界信念的程度。要知道讯息承载了多少信息量给接收者，我们就得在讯息到达之前了解接收者的信念，然后才能知道接受者在收到讯息之后的信念改变了多少。但是，能否测量出接受者前先前的信念和信念的变化呢？</p>
+<p>这个问题的答案就是现在目前每个学习过概率论和数理统计的人都知道的贝叶斯定理。</p>
+<p>提出贝叶斯定理的 Thomas Bayes 牧师不是一个墨守成规的人，他的一生（1702-1761）没有发表过一篇论文，但是他在1742年却成为了英国皇家学会的会员。直到去世后两年，他的经典论文才被发表，而后的一百多年来，他的经典论文也一直为人遗忘而无人问津。直到20世纪20年代，他才声名鹊起。对于当时的英国皇家协会主席和统计学界的人看来，Bayes 是一个的的确确的伟人，而在统计学界之外，他毫无名气，而且那些了解贝叶斯统计的人也常常认为它缺少适当的客观性。</p>
+<p>然而，20世纪末至今，Thomas Bayes 成为了一个超级巨星。如今当你学习概率论或者想要入门人工智能，一个绕不过去的坎就是贝叶斯定理以及由此引发出的各种理论。</p>
+<p>贝叶斯定理的火起来之后，也导致了统计学的贝叶斯学派和频率学派的不休的争论。理解这二者的区别，对于理解贝叶斯定理也有一定的帮助，这里就简单的说一下。</p>
+<h3 id="频率学派"><a href="#频率学派" class="headerlink" title="频率学派"></a>频率学派</h3><p>频率学派认为，我们要观察的现象，其分布是确定的，是一直不变的，而我们所需要做的就是不断的做试验来接近它。因此对于频率学派来说，可以通过大量的独立重复实验，观察事件出现的频率来估计它出现的概率。针对模型$P(x;θ)$来说，频率学派认为模型的参数是存在且固定的，我们要做的就是求出让$P(x;θ)$值最大的参数$θ$（我们认为这样的参数更接近于客观存在的那个真实的参数），也就是通过不断的调整参数来使得通过该模型在该参数下我们所观察到的现象出现的概率最大。</p>
+<p>可以看出频率学派是针对似然来进行建模的，他更关心的的是似然$P(x|θ)$，也就是在怎样的参数$θ$下能使得我们所观察到的现象出现的概率最大。因此针对这样的关注重点，通常使用极大似然法来求解模型参数。<br>基于这种思想的方法，其缺点很明显，就是很容易过拟合，因为它的目标是尽最大努力来重现当前观察到的数据，这就是这种方法最大的问题所在。因此如何解决过拟合问题是基于频率思想方法必然要考虑的。通常我们会使用以下两种方法来缓解过拟合问题：（当然不限于此类问题的解决，很多其他的算法都可以用这些方法来解决 Over Fitting 的问题）</p>
+<ul>
+<li>使用 $L1 \;或\; L2$ 正则化，即在目标函数中加入正则项；</li>
+<li>使用交叉验证方法</li>
+</ul>
+<h3 id="贝叶斯学派"><a href="#贝叶斯学派" class="headerlink" title="贝叶斯学派"></a>贝叶斯学派</h3><p>对于贝叶斯学派，其不再相信上帝的存在，即不再相信任何的事件发生的背后都拥有一个固定不变的分布，其更倾向于认为世界上所有的事情都是不确定的，而这种不确定型更多是由于观察者自身所储备的先验知识所带来的。因此对于贝叶斯学派，其通常会基于观察到的事件来假设一个先验分布$P(y)$，然后利用贝叶斯公式：</p>
+<script type="math/tex; mode=display">
+P(y|x)= \frac {P(x，y)} {P(x)} = \frac {P(x|y)P(y)} {P(x)} = \frac {P(x|y)P(y)} {\sum_{y \in Y} P(x|y)P(y)} \tag{1}</script><p>来求得后验分布。而后验分布我们又可以认为是在得到新的知识$x$后对先验分布的一个修正。因此对于贝叶斯学派，其认为对于事物的观察是一个不断学习不断修正的过程。 </p>
+<p>这里站在脑科学的层面对上面的贝叶斯公式做一个解释，假定现象 $y$ 是我们要了解的，观察资料 $x$ 是关于 $y$ 的证据，贝叶斯定理告诉我们，鉴于新证据 $x$ ，我们应该更新多少关于 $y$ 的知识。我们可以先不必担心这个等式的细节。重要的是，这个等式恰好是我们一直在寻找的关于信念的数学等式。在这里，表达信念的数学术语是概率。概率提供了我们对某事的信任尺度。当我们对于某件事是完全确定的时候（比如太阳从东方升起），概率就是 1，可以表示为 $p(日出东方)=1$。如果确定某件事不会发生，那么概率就是 0。但是，我们大部分的时候信念是不坚定的，处于 0 和 1 之间，比如 $p(今天上班可能要迟到)=0.5$，我得到了新的证据，那么这个处于中间的信念的概率就会不断地修正调整，比如上班之前，看了天气预报，等下要下大暴雨，那么这个信念可能就会发生显著地变化，当然有时候可能并不会发生什么变化。</p>
+<p>贝叶斯定理可以精确的说明在已知新证据 $x$ 的情况下，我们应该改变多少关于 $y$ 的信念，这个等式中，$P(y)$ 是新证据 $x$ 出现之前我对于 $y$ 的先验信念。 $P(x|y)$ 是在 $y$ 确定的前提下，得到证据 $x$ 的可能性。 $P(y|x)$ 是在考虑新证据后我对于 $y$ 的后验信念。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>而事实上，我们可以认为我们对世界的感知是一种与现实相符的幻觉。</p>
+<p>首先我们对于现实世界的感知的一切都来自于脑的反馈，而大脑是如何做出一个判断的呢？比如在你看到这篇文章的每个字，每个标点，每句话的时候，我们的大脑是如何做出判断的呢？</p>
+<p>显然，脑的判断来自于各个感官（眼睛、耳朵等）的感觉，综合各个感官所提供的证据 $p(x|y)$，我们的大脑会做出一个基于我们已有的先验知识的判断，并以此更新我们的对于先验知识的信念，这在某程度上来说，正是我们学习的过程。</p>
+<p>当大脑的判断出现错误或者误差的时候，我们的大脑也会利用这些新的误差（新的证据）来更新我们对于世界的信念，并产生一个更好的信念 $p(y|x)$，一旦这种更新发生，我们的脑就对世界产生了一个新得信念，并通过感官察觉的活动模式进行新的预测。大脑每重复一次这样的过程，每循环一次，预测的误差就会减少一些，当误差变得足够小的时候，大脑就可以“知道”外在世界的东西到底是何物了。</p>
+<p>这样一个认知的过程，除了在学习新的信念（比如学习心得语言或者技能）的时候，我们能深刻的体会到，大部分时候我们是几乎体验不到的，因为，处理平常判断的时候，大脑的运算速度非常之快，快到我们自以为判断客观世界的物体到底是何物是一件轻而易举的事情，但是我们的大脑却永远的陷入这种永无止境的贝叶斯预测和更新循环当中。</p>
+<p>所以，先验知识是非常重要的学习依据，当我们面对一个毫无先验知识的物体的时候，恐怕真的会像《West World》中的 host 那样脱口而出一句话：“It doesn’t look like anything to me”。</p>
+<p>而这种思维在机器学习领域的应用也非常广泛且效果显著。</p>
+<p>下一次，我将将贝叶斯定理应用于机器学习，和你分享如何使用朴素的贝叶斯方法来进行简单的分类工作，比如识别手写数字，新闻素材的主题分类。</p>
+<blockquote>
+<p>本文的部分内容综合自《心智的构建——脑如何创造我们的精神世界》一书，这是一本很久前读的书，最近学习机器学习的时候，觉得贝叶斯这一块异常的熟悉，仔细一想便想到这本书中谈到过，因此，重新翻出，形成本文，推荐对于脑科学和认知科学感兴趣的同学可以阅读一下，是一本不可多得的好书。</p>
+</blockquote>
+<hr>
+<p>Reference：</p>
+<ol>
+<li>Chris Frith .心智的构建［M].华东师范大学出版社，2012-7.</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/06/18/矩阵论之线性空间和内积空间/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SuooL">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuooL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/18/矩阵论之线性空间和内积空间/" itemprop="url">矩阵论之线性空间和内积空间</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-18T16:54:57+08:00">
+                2018-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/18/矩阵论之线性空间和内积空间/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/18/矩阵论之线性空间和内积空间/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/06/18/矩阵论之线性空间和内积空间/" class="leancloud_visitors" data-flag-title="矩阵论之线性空间和内积空间">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  404 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="预备知识-集合-映射-数域"><a href="#预备知识-集合-映射-数域" class="headerlink" title="预备知识:集合, 映射, 数域"></a>预备知识:集合, 映射, 数域</h2><h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><ul>
+<li>定义<ul>
+<li>集合: 由具有某种性质所确定的事物的总体.</li>
+</ul>
+</li>
+<li>表示法<ul>
+<li>列举法</li>
+<li>概括法</li>
+</ul>
+</li>
+<li>其他概念<ul>
+<li>子集</li>
+<li>包含关系</li>
+<li>集合相等</li>
+<li>有限集</li>
+<li>无限集</li>
+<li>空集</li>
+</ul>
+</li>
+<li>集合运算<ul>
+<li>并集<script type="math/tex; mode=display">
+A \cup B = \{x\mid x \in A  \text { 或 } x\in B\} \tag{1}</script></li>
+<li>交集<script type="math/tex; mode=display">
+A \cap B = \{ x \mid x \in A \text { 且 } x \in B \} \tag{2}</script></li>
+<li>二元关系<ul>
+<li>集合的 Descartes 积</li>
+<li>$A \times B$ 的子集 R 是$A \times B$中的一个二元关系</li>
+<li>等价关系</li>
+<li>等价类</li>
+<li>商集</li>
+<li>分类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h3><p>映射是函数概念的推广, 描述了两个集合的元素之间的关系</p>
+<ul>
+<li><p>基本概念</p>
+<ul>
+<li>映射</li>
+<li>像</li>
+<li>原像</li>
+<li>定义域</li>
+<li>值域</li>
+<li>符号<script type="math/tex; mode=display">f : A \to B \tag{3}</script></li>
+<li>恒等映射/单位映射</li>
+<li>单映射</li>
+<li>满映射</li>
+<li>双映射</li>
+<li>映射相等</li>
+<li>映射的乘积<ul>
+<li>设 $A, B, C$ 是三个非空集合,并设有两个映射 $f_1: A \to B$ , $f_2: B \to C$ , 由$f_1 \text{ 和 } f_2 $ 确定的 $A$ 到 $C$ 的映射 $f_3: a \to f_2(f_1(a)), a \in A$  成为映射$f_1 \text{ 和 } f_2 $ 的乘积, 记为 $f_3 = f_2 \cdot f_1$</li>
+<li>映射的乘积不具有交换律, 具有结合律</li>
+</ul>
+</li>
+<li><p>逆映射 $f^{-1}$ </p>
+<ul>
+<li>可逆映射的逆映射唯一</li>
+<li>可逆映射的充要条件是一一映射 </li>
+</ul>
+<h3 id="数域和代数运算"><a href="#数域和代数运算" class="headerlink" title="数域和代数运算"></a>数域和代数运算</h3></li>
+<li><p>定义</p>
+<ul>
+<li>设 ${\displaystyle {\mathcal {P}}}$ 是复数域 ${\displaystyle \mathbb {C} } $ 的子集。若 ${\displaystyle {\mathcal {P}}}$ 中包含0与1，并且 ${\displaystyle {\mathcal {P}}}$ 中任两个数的和、差、乘积以及商（约定除数不为0）都仍在 ${\displaystyle {\mathcal {P}}}$ 中，就称 ${\displaystyle {\mathcal {P}}}$ 为一个数域</li>
+</ul>
+</li>
+<li><p>代数运算</p>
+</li>
+<li>二元运算 </li>
+</ul>
+</li>
+</ul>
+<h2 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h2><h2 id="线性方程组"><a href="#线性方程组" class="headerlink" title="线性方程组"></a>线性方程组</h2><h2 id="向量组的极大线性无关组和秩"><a href="#向量组的极大线性无关组和秩" class="headerlink" title="向量组的极大线性无关组和秩"></a>向量组的极大线性无关组和秩</h2><h2 id="矩阵的秩及等价标准形"><a href="#矩阵的秩及等价标准形" class="headerlink" title="矩阵的秩及等价标准形"></a>矩阵的秩及等价标准形</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://suool.net/2018/06/18/机器学习中的数学基础-线性代数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1852,405 +2353,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suool.net/2016/10/27/无题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SuooL">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SuooL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/27/无题/" itemprop="url">无题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-27T10:20:49+08:00">
-                2016-10-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/思考/" itemprop="url" rel="index">
-                    <span itemprop="name">思考</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/10/27/无题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/27/无题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/10/27/无题/" class="leancloud_visitors" data-flag-title="无题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,205 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>不知道到底该取什么样的题目了, 就像打的标签一样, 想写的东西有点多, 取什么名字都有点不合适.</p>
-<p>马克思说,人和动物的根本区别在于能够制造和利用工具. 确实是这样, 但是真正使得人类进步的却应该是mistake, 是不断的犯错, 不断的改正和积累, 才能不断的进化, 才成为人.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/10/27/无题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suool.net/2016/10/02/踏过所有的过往/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SuooL">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SuooL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/02/踏过所有的过往/" itemprop="url">踏过所有的过往</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-02T10:20:49+08:00">
-                2016-10-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/思考/" itemprop="url" rel="index">
-                    <span itemprop="name">思考</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/10/02/踏过所有的过往/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/02/踏过所有的过往/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/10/02/踏过所有的过往/" class="leancloud_visitors" data-flag-title="踏过所有的过往">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  501 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>睡到凌晨被噩梦惊醒。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/10/02/踏过所有的过往/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2301,7 +2403,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2312,7 +2414,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2323,7 +2425,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2397,7 +2499,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.3k</span>
+    <span title="Site words total count">20.9k</span>
   
 </div>
 
