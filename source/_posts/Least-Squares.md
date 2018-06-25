@@ -11,7 +11,6 @@ category: [机器学习]
 这是最小二乘法的维基解释。 
 
 
-
 ## Reference
 
 [^1]: 维基百科[最小二乘法](https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95)
