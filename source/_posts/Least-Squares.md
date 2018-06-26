@@ -1,4 +1,4 @@
-title: '最小二乘法'
+title: '最小二乘法的朴素实现'
 date: 2018-06-21 20:23:21
 tags: [机器学习]
 category: [机器学习]
@@ -21,6 +21,8 @@ $$
 其中 $y_m$ 表示我们拟合函数得到的拟合结果，$y_i$ 表示真实值。
 
 &emsp; &emsp; “最小二乘法”是最优化问题中建立经验公式的一种实现方法。了解它的原理，对于了解后面“Logistic回归”和“支持向量机的学习”都很有裨益。
+
+这次就是最小二乘法的朴素实现，即是不借助矩阵、向量等，纯粹借助数学推导完成。
 
 ## 起源背景
 
@@ -88,6 +90,50 @@ $$
 \right. 
 $$
 
+###代码实现 
+有了上述的表达式，直接使用代码计算得出的结果如下：
+![5C466B2C-2AF5-4469-A8F5-5325E8C7D2B5](media/5C466B2C-2AF5-4469-A8F5-5325E8C7D2B5.png)
+
+代码实现如下：
+
+```
+# -*- coding: utf-8 -*
+import matplotlib.pyplot as plt
+import numpy as np
+
+x_cord = []
+y_cord = []
+def drawScatterDiagram(fileName):
+    fr=open(fileName)
+    for line in fr.readlines():
+        lineArr=line.split(',')
+        x_cord.append(float(lineArr[0]))
+        y_cord.append(float(lineArr[1]))
+    plt.scatter(x_cord,y_cord,s=30,c='red',marker='o', alpha=0.7)
+    plt.xlabel("year")
+    plt.ylabel("time")
+    plt.title("result of game")
+
+def linearCalculate():
+    x = np.array(x_cord)
+    y = np.array(y_cord)
+    x_mean = np.mean(x_cord)
+    y_mean = np.mean(y_cord)
+    xy_mean = np.mean(x*y)
+    x_square_mean = np.mean(x**2)
+
+    w1 = (xy_mean-x_mean*y_mean)/(x_square_mean-x_mean**2)
+    w0 = y_mean - w1*x_mean
+    xasix = np.linspace(1896, 2008, 112)
+    yasix = w1 * xasix + w0
+    plt.plot(xasix,yasix, label='linear line')
+    plt.legend(loc='upper right')
+
+if __name__ == '__main__':
+    drawScatterDiagram("olympic100m.txt")
+    linearCalculate()
+    plt.show()
+```
 
 ## Reference
 
