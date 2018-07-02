@@ -1,5 +1,5 @@
 ---
-title: 最小二乘法的矩阵表示及非线性建模
+title: 最小二乘法矩阵表示及非线性响应
 date: 2018-06-26 13:43:19
 tags: [机器学习]
 category: [机器学习]
@@ -82,11 +82,119 @@ $$
 从而得到使损失最小的$w$值，$\hat w$ 的矩阵公式为：
 
 $$
-\hat w = (X^TX)^{-1}X^Tt
+\hat w = (X^TX)^{-1}X^Tt \tag{2.5}
 $$
 
 根据此公式解出的值与上次用标量形式解出的是一样的。
 
+## 线性模型的非线性响应
 
+前面我们所假设的是拟合函数是一次函数，但是可以明显的看出拟合效果并不好，所以需要往更高次的多项式延伸，假如是二次的话，那么可以表示为：
+
+$$
+f(x;w) = w^Tx = w_0+w_1x+w_2x^2
+$$
+
+更一般的，扩展 $x$ 的幂次到任意任意阶的多项式函数，对于一个 K 阶多项式，可以扩展数据矩阵为：
+
+$$
+t = \begin{bmatrix} 
+x_1^0 & x_1^1 & x_1^2 & \cdots & x_1^k \\ 
+x_2^0 & x_2^1 & x_2^2 & \cdots & x_2^k\\ 
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+x_n^0 & x_n^1 & x_n^2 & \cdots & x_n^k \\
+\end{bmatrix}
+$$
+
+函数表达为更一般的形式：
+
+$$
+f(x;w)= \sum^K_{k=0} w_kx^k
+$$
+
+其解一样适用于式 $2.5$
+
+可以求得其八阶线性拟合结果如下：
+
+![FE170A95-A609-4B5D-AE3C-4090B7B63FA2](media/FE170A95-A609-4B5D-AE3C-4090B7B63FA2.png)
+
+代入如下:
+
+```
+# -*- coding: utf-8 -*
+import matplotlib.pyplot as plt
+import matplotlib
+import numpy as np
+
+x_cord = []
+y_cord = []
+def drawScatterDiagram(fileName):
+    fr=open(fileName)
+    for line in fr.readlines():
+        lineArr=line.split(',')
+        x_cord.append(float(lineArr[0]))
+        y_cord.append(float(lineArr[1]))
+    # plt.scatter(x_cord,y_cord,s=30,c='red',marker='o', alpha=0.7,label='比赛成绩 ')
+    # plt.xlabel("year")
+    # plt.ylabel("time")
+    # plt.title("result of game")
+
+def noLinearMoreTimesCalculate():
+    x_mat = np.ones((len(x_cord),1))
+    y_mat = np.mat(y_cord).T
+    test = np.array(x_cord)
+    test = (test - 1896)/4.0  // 数据预处理，缩小化
+    # x_mat = np.mat(np.c_[x_zeros,test])
+    for index in range(1,9):
+        x_temp = test**index
+        x_mat = np.mat(np.c_[x_mat, x_temp])
+    print(x_mat)
+    w_mat = ((x_mat.T * x_mat).I*x_mat.T*y_mat)[::-1]
+    w_mat = w_mat.T
+    c = np.squeeze([i for i in w_mat])
+    print(c)
+    func = np.poly1d(c)
+    x_mLo = np.linspace(0, 29, 112)
+
+    y_mLo = func(x_mLo)
+
+    plt.scatter(test,y_cord,s=30,c='red',marker='o', alpha=0.7,label='比赛成绩 ')
+    plt.xlabel("year")
+    plt.ylabel("time")
+    plt.title("result of game")
+
+    plt.plot(x_mLo,y_mLo, c="yellow",label='线性拟合-8阶')
+    plt.legend(loc='upper right')
+
+if __name__ == '__main__':
+    drawScatterDiagram("olympic100m.txt")
+    # linearCalculate()
+    # noLinearCalculate()
+    noLinearMoreTimesCalculate()
+    plt.show()
+```
+
+## 过拟合与验证
+从上次的一阶线性拟合到现在的八阶拟合，从直观上看，八阶的拟合效果比一阶的明显好很多，但是我们做拟合的根本目的是为了做预测，不是纯粹为了拟合而拟合，因为理论上说，一般 N 个数据点的拟合， N-1 阶的表达式可以完全拟合所有的数据点，但是这样子的拟合结果对于预测而言可能是极其差的。
+
+那么如何衡量呢?
+和拟合是一样的思想，看模型在泛化问题时候的表现，即是在预测验证数据上的表现，如果其损失很小，那么可以认为这个模型的预测能力不错。
+
+### 验证数据
+克服过拟合问题的一般方法是使用第二个数据集，即是验证集。用其来验证模型的预测性能，验证集可以是单独提供的，也可以从原始训练集中拿出来的。
+
+从验证集计算的损失对于验证集数据的选择敏感，如果验证集非常小，那就更加困难了，而交叉验证是一个有效使用现有数据集的方法。
+
+一般是 K 折交叉验证，当 K = N 的时候，及 K 恰好是等于数据集中的可观测数据的数量，每个观测数据依次拿出用作测试其他 N-1 个对象训练得到的模型，其又叫 留一交叉验证 （Leave-One-Out Cross Validation, LOOCV）,对于 LOOCV 的均方验证为：
+
+$$
+\mathcal{L}^{CV} = \frac {1}{N} \sum^N_{n=1}(t_n-\hat{w}^T_{-n}x_n)^2
+$$
+
+其中 $\hat{w}_{-n}$ 是除去第 n 个训练样例的参数估计值。
+
+###代码实现
+
+![51A2EEB0-A96E-44EC-BFC9-10C5C196D](media/51A2EEB0-A96E-44EC-BFC9-10C5C196DC89.png)
 
 
