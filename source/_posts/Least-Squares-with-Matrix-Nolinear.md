@@ -12,7 +12,7 @@ category: [机器学习]
 > 从某种角度来说，我们都是天生的科学家。我们解释着他人的行为，通常足够快也足够准确，以适应我们日常生活的需要。当他人的行为具有一致性而且与众不同时，我们会把其行为归因于他们的人格。例如。如果你发现一个人说话总是对人冷嘲热讽．你可能就会推断此人秉性不良，然后便设法尽量避免与他的接触。
 
 当然这是指更大范围内的人类心理，在对数据和模型的痴迷上，人类的欲望显然也是强烈的，人类总是想尽一切的办法打破现有的桎梏，在创造了更多的不确定性之后，期望通过对数据的把控和预测以看到更确切的未来。
-
+<!--more-->
 这次我们来从矩阵和向量的角度来解释最小二乘法及非线性的模拟建模。
 
 ## LS 的矩阵推导
@@ -116,11 +116,11 @@ $$
 
 可以求得其八阶线性拟合结果如下：
 
-![FE170A95-A609-4B5D-AE3C-4090B7B63FA2](media/FE170A95-A609-4B5D-AE3C-4090B7B63FA2.png)
+![FE170A95-A609-4B5D-AE3C-4090B7B63FA2](https://suool-bolg.b0.upaiyun.com/2018/07/03/FE170A95-A609-4B5D-AE3C-4090B7B63FA2.png)
 
 代入如下:
 
-```
+```python
 # -*- coding: utf-8 -*
 import matplotlib.pyplot as plt
 import matplotlib
@@ -203,18 +203,128 @@ $$
 
 使用如上的矩阵式，对数据进行不同阶数的拟合，得到的结果如下:
 
-![51A2EEB0-A96E-44EC-BFC9-10C5C196D](media/51A2EEB0-A96E-44EC-BFC9-10C5C196DC89.png)
+![51A2EEB0-A96E-44EC-BFC9-10C5C196D](https://suool-bolg.b0.upaiyun.com/2018/07/03/51A2EEB0-A96E-44EC-BFC9-10C5C196DC89.png)
 
 然后，分别对比训练损失、测试损失及使用 LOOCV 方法拟合及其损失随着阶数增高而变化的曲线如下图所示:
 
-![274FF482-8C88-4A58-B39D-3231ADBBFAF4](media/274FF482-8C88-4A58-B39D-3231ADBBFAF4.png)
+![274FF482-8C88-4A58-B39D-3231ADBBFAF4](https://suool-bolg.b0.upaiyun.com/2018/07/03/274FF482-8C88-4A58-B39D-3231ADBBFAF4.png)
   
   可以从图中看出，在 3 阶的时候，测试损失和 LOOCV 损失达到最小，且 3 阶拟合之后训练损失不明显，但是测试损失明显增高，即产生了过拟合的现象。
+  
+  实现代码如下:
+  
+```python
+# -*- coding: utf-8 -*
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.random.randint(-5000,5000, size=[100,1]) / 1000.0
+
+t = 5*(x**3)  - x**2 + x + 100*np.random.randn(100, 1);
+
+testx = np.linspace(-5,5,1001)
+
+testt = 5*(testx**3) - testx**2 + testx + 100*np.random.randn(1001, 1)
+plt.figure()
+plt.subplot(2,1,1)
+plt.scatter(x, t, s=35, c="red", marker='o', alpha=0.9)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("points of train")
+
+x_mat = np.ones((len(x),1))
+y_mat = np.mat(t)
+
+color = ["","",""]
+
+degrees = np.arange(2, 10)
+trainLoss = []
+predictLoss = []
+LOOCVLoss = []
+
+def trainAndGetLoss():
+    for degree in degrees:
+        global x_mat
+        global y_mat
+        tempX = x_mat
+        tempY = y_mat
+        for index in range(1, degree):
+            x_temp = x ** index
+            tempX = np.mat(np.c_[tempX, x_temp])
+        # print(tempX)
+        print("计算")
+        print(type(tempX.T*tempX))
+        w_mat = ((tempX.T * tempX).I * tempX.T * tempY)[::-1]
+        w_mat = w_mat.T
+        c = np.squeeze([i for i in w_mat])
+        print(c)
+        func = np.poly1d(c)
+        if degree ==2 or degree == 3 or degree == 5 :
+            x_mLo = np.linspace(-5, 5, 100)
+            y_mLo = func(x_mLo)
+            plt.subplot(2, 1, 1)
+            plt.plot(x_mLo, y_mLo, linewidth=2, c=np.random.rand(3,), label='线性拟合-%d阶' % (degree - 1))
+            plt.legend(loc='upper left')
+        #  训练数据损失
+        y_train = func(x)
+        print(np.mean((y_train-t)**2), type(y_train), len(y_train))
+        trainLoss.append(np.mean((y_train-t)**2))
+        # 预测数据损失
+        y_predict = func(testx)
+        print(np.mean((y_predict-testt)**2), type(y_predict), len(y_predict))
+        predictLoss.append(np.mean((y_predict-testt)**2))
+    plt.subplot(2,3,4)
+    new_ticks = np.linspace(1, 8, 8)
+    plt.xticks(new_ticks)
+    plt.plot(new_ticks, trainLoss, 'o-', color='g')
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.title("训练数据损失")
+
+    plt.subplot(2,3,5)
+    plt.xticks(new_ticks)
+    plt.plot(new_ticks, predictLoss, 'o-', color='g')
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.title("预测数据损失")
+
+def trainLOOCVAndGetLoss():
+    for degree in degrees:
+        trainLoocv = []
+        for index in range(0, 100):
+            # 准备训练数据
+            index_x = (index)
+            new_x = np.delete(x, index_x)
+            new_y = np.delete(t, index_x)
+            tempX = np.ones([99, 1])
+            tempY = np.mat(new_y).T
+            for index in range(1, degree):
+                x_temp = new_x ** index
+                tempX = np.mat(np.c_[tempX, x_temp])
+            w_mat = ((tempX.T * tempX).I * tempX.T * tempY)[::-1]
+            w_mat = w_mat.T
+            c = np.squeeze([i for i in w_mat])
+            func = np.poly1d(c)
+            if index_x == 0:
+                print((func(x[index,0])-t[index,0])**2)
+            trainLoocv.append((func(x[index,0])-t[index,0])**2)
+        LOOCVLoss.append(np.mean(trainLoocv))
+        plt.subplot(2, 3, 6)
+        new_ticks = np.linspace(1, 8, 8)
+        plt.xticks(new_ticks)
+        plt.plot(new_ticks, predictLoss, 'o-', color='g')
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.title("LOOCV损失")
+
+
+if __name__ == '__main__':
+    trainAndGetLoss()
+    trainLOOCVAndGetLoss()
+    plt.show()
+```
   
   ## Next
   
   下一次是真正入门啦，将之前说过的贝叶斯定理应用于机器学习，和你分享如何使用朴素的贝叶斯方法来进行简单的分类工作，比如识别手写数字，新闻素材的主题分类。（具体是挖那个主题的坑，还不知道 
-  
-
-
 
