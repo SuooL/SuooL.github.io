@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>2C89CBDF82EEC92378AF04AAC45AC86C</key>
+	<array>
+		<dict>
+			<key>localURL</key>
+			<string>media/handinput.gif</string>
+			<key>remoteURL</key>
+			<string>https://suool-bolg.b0.upaiyun.com/2018/07/08/handinput.gif</string>
+		</dict>
+		<dict>
+			<key>localURL</key>
+			<string>media/traintype.png</string>
+			<key>remoteURL</key>
+			<string>https://suool-bolg.b0.upaiyun.com/2018/07/08/traintype.png</string>
+		</dict>
+		<dict>
+			<key>localURL</key>
+			<string>media/dataprocess-1.png</string>
+			<key>remoteURL</key>
+			<string>https://suool-bolg.b0.upaiyun.com/2018/07/08/dataprocess-1.png</string>
+		</dict>
+		<dict>
+			<key>localURL</key>
+			<string>media/FE2F3FF5-7847-4F83-9C62-400196BB55FF.png</string>
+			<key>remoteURL</key>
+			<string>https://suool-bolg.b0.upaiyun.com/2018/07/08/FE2F3FF5-7847-4F83-9C62-400196BB55FF.png</string>
+		</dict>
+		<dict>
+			<key>localURL</key>
+			<string>media/EAFE6D9C-EC29-4806-80D2-055FCE2CFFB5.png</string>
+			<key>remoteURL</key>
+			<string>https://suool-bolg.b0.upaiyun.com/2018/07/08/EAFE6D9C-EC29-4806-80D2-055FCE2CFFB5.png</string>
+		</dict>
+		<dict>
+			<key>localURL</key>
+			<string>media/15310514214661.jpg</string>
+			<key>remoteURL</key>
+			<string>https://suool-bolg.b0.upaiyun.com/2018/07/08/15310514214661.jpg</string>
+		</dict>
+		<dict>
+			<key>localURL</key>
+			<string>media/8EAA5A09-8E40-45F3-85EC-D20F83C5C844.png</string>
+			<key>remoteURL</key>
+			<string>https://suool-bolg.b0.upaiyun.com/2018/07/08/8EAA5A09-8E40-45F3-85EC-D20F83C5C844.png</string>
+		</dict>
+	</array>
+	<key>selectedItem</key>
+	<string>2C89CBDF82EEC92378AF04AAC45AC86C</string>
+</dict>
+</plist>
