@@ -77,6 +77,7 @@ $$
 
 训练预测结果如下:
 ![597C98CC-BFA6-4998-9E03-A43C6BAF6620](https://suool-bolg.b0.upaiyun.com/2018/07/10/597C98CC-BFA6-4998-9E03-A43C6BAF6620.png)
+
 可以看出，测试 2100 个图片，用了1218秒，20多分钟，效率非常慢。
 ![A535D08C-349E-46B2-8147-E59F88076FB1](https://suool-bolg.b0.upaiyun.com/2018/07/10/A535D08C-349E-46B2-8147-E59F88076FB1.png)
 
@@ -95,7 +96,7 @@ $$
 ---
 
 附KNN 算法的线性暴搜实现如下:
-```Python
+```python
 # -*- coding: utf-8 -*
 import time
 import matplotlib.pyplot as plt
