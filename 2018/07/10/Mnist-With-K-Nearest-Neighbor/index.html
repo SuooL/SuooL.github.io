@@ -81,21 +81,21 @@
 
 
 
-<meta name="description" content="引言k 近邻法（k-nearest-neighbor, KNN）是一种基本的分类和回归方法。现在只讨论其分类方面的应用，它不具备明显的学习过程，实际上是利用已知的训练数据集对输入特征向量空间进行划分，并作为其分类的“模型”。 其中 k 值的选择、距离的度量及分类决策规则是 k 近邻模型的三个基本要素。 本文将按照以下提纲进行：  k 近邻法阐述 k 近邻的模型 k 近邻在手写数字识别上的实战  k">
+<meta name="description" content="引言k 近邻法（k-nearest-neighbor, KNN）是一种基本的分类和回归方法。现在只讨论其分类方面的应用，它不具备明显的学习过程，实际上是利用已知的训练数据集对输入特征向量空间进行划分，并作为其分类的“模型”。">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K 近邻法及其在手写数字识别的简单实战">
 <meta property="og:url" content="http://suool.net/2018/07/10/Mnist-With-K-Nearest-Neighbor/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="引言k 近邻法（k-nearest-neighbor, KNN）是一种基本的分类和回归方法。现在只讨论其分类方面的应用，它不具备明显的学习过程，实际上是利用已知的训练数据集对输入特征向量空间进行划分，并作为其分类的“模型”。 其中 k 值的选择、距离的度量及分类决策规则是 k 近邻模型的三个基本要素。 本文将按照以下提纲进行：  k 近邻法阐述 k 近邻的模型 k 近邻在手写数字识别上的实战  k">
+<meta property="og:description" content="引言k 近邻法（k-nearest-neighbor, KNN）是一种基本的分类和回归方法。现在只讨论其分类方面的应用，它不具备明显的学习过程，实际上是利用已知的训练数据集对输入特征向量空间进行划分，并作为其分类的“模型”。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/10/CC3A072A-F73B-4A54-A6F9-94EF80316B66.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/10/597C98CC-BFA6-4998-9E03-A43C6BAF6620.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/10/A535D08C-349E-46B2-8147-E59F88076FB1.png">
-<meta property="og:updated_time" content="2018-07-10T10:41:30.000Z">
+<meta property="og:updated_time" content="2018-07-10T10:42:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K 近邻法及其在手写数字识别的简单实战">
-<meta name="twitter:description" content="引言k 近邻法（k-nearest-neighbor, KNN）是一种基本的分类和回归方法。现在只讨论其分类方面的应用，它不具备明显的学习过程，实际上是利用已知的训练数据集对输入特征向量空间进行划分，并作为其分类的“模型”。 其中 k 值的选择、距离的度量及分类决策规则是 k 近邻模型的三个基本要素。 本文将按照以下提纲进行：  k 近邻法阐述 k 近邻的模型 k 近邻在手写数字识别上的实战  k">
+<meta name="twitter:description" content="引言k 近邻法（k-nearest-neighbor, KNN）是一种基本的分类和回归方法。现在只讨论其分类方面的应用，它不具备明显的学习过程，实际上是利用已知的训练数据集对输入特征向量空间进行划分，并作为其分类的“模型”。">
 <meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/10/CC3A072A-F73B-4A54-A6F9-94EF80316B66.png">
 
 
@@ -333,7 +333,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-10T18:41:30+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-10T18:42:47+08:00">
                 2018-07-10
               </time>
             
@@ -442,7 +442,7 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>k 近邻法（k-nearest-neighbor, KNN）是一种基本的分类和回归方法。现在只讨论其分类方面的应用，它不具备明显的学习过程，实际上是利用已知的训练数据集对输入特征向量空间进行划分，并作为其分类的“模型”。</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>k 近邻法（k-nearest-neighbor, KNN）是一种基本的分类和回归方法。现在只讨论其分类方面的应用，它不具备明显的学习过程，实际上是利用已知的训练数据集对输入特征向量空间进行划分，并作为其分类的“模型”。<br><a id="more"></a></p>
 <p>其中 k 值的选择、距离的度量及分类决策规则是 k 近邻模型的三个基本要素。</p>
 <p>本文将按照以下提纲进行：</p>
 <ul>
