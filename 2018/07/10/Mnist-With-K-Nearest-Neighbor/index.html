@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/10/CC3A072A-F73B-4A54-A6F9-94EF80316B66.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/10/597C98CC-BFA6-4998-9E03-A43C6BAF6620.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/10/A535D08C-349E-46B2-8147-E59F88076FB1.png">
-<meta property="og:updated_time" content="2018-07-10T10:42:47.000Z">
+<meta property="og:updated_time" content="2018-07-10T10:45:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K 近邻法及其在手写数字识别的简单实战">
 <meta name="twitter:description" content="引言k 近邻法（k-nearest-neighbor, KNN）是一种基本的分类和回归方法。现在只讨论其分类方面的应用，它不具备明显的学习过程，实际上是利用已知的训练数据集对输入特征向量空间进行划分，并作为其分类的“模型”。">
@@ -333,7 +333,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-10T18:42:47+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-10T18:45:27+08:00">
                 2018-07-10
               </time>
             
@@ -475,7 +475,8 @@ f:R^n \to \{c_1,c_2,\cdots, c_K\}</script><p>那么对给定的实例 $x\in X$�
 <p>同时多数表决可以加权表决，可以一定程度提高表决结果的准确性。</p>
 <h2 id="k-近邻在手写数字识别上的实战"><a href="#k-近邻在手写数字识别上的实战" class="headerlink" title="k 近邻在手写数字识别上的实战"></a>k 近邻在手写数字识别上的实战</h2><p> 数据集的读取和解析和<a href="https://suool.net/2018/07/08/navie-bayes-handwriting-recognition/">朴素贝叶斯法识别手写数字</a>的原理一样，这里不再赘述。 </p>
 <p>代码实现算法上，这里先采用线性暴搜的方法，效率上明显是非常低的，耗时也比朴素贝叶斯慢的多，但是准确率却非常高，目前表决数为 k=3 的情况下且不加权的预测准确率可以达到 94% 以上。</p>
-<p>训练预测结果如下:<br><img src="https://suool-bolg.b0.upaiyun.com/2018/07/10/597C98CC-BFA6-4998-9E03-A43C6BAF6620.png" alt="597C98CC-BFA6-4998-9E03-A43C6BAF6620"><br>可以看出，测试 2100 个图片，用了1218秒，20多分钟，效率非常慢。<br><img src="https://suool-bolg.b0.upaiyun.com/2018/07/10/A535D08C-349E-46B2-8147-E59F88076FB1.png" alt="A535D08C-349E-46B2-8147-E59F88076FB1"></p>
+<p>训练预测结果如下:<br><img src="https://suool-bolg.b0.upaiyun.com/2018/07/10/597C98CC-BFA6-4998-9E03-A43C6BAF6620.png" alt="597C98CC-BFA6-4998-9E03-A43C6BAF6620"></p>
+<p>可以看出，测试 2100 个图片，用了1218秒，20多分钟，效率非常慢。<br><img src="https://suool-bolg.b0.upaiyun.com/2018/07/10/A535D08C-349E-46B2-8147-E59F88076FB1.png" alt="A535D08C-349E-46B2-8147-E59F88076FB1"></p>
 <p>但是准确率异常高，且比较稳定。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li><p>更高效率的 k 近邻寻找方法是 k-d树（k-dimensional树的简称），这是一种分割 k 维数据空间的数据结构，主要应用于多维空间关键数据的搜索。</p>
@@ -486,7 +487,7 @@ f:R^n \to \{c_1,c_2,\cdots, c_K\}</script><p>那么对给定的实例 $x\in X$�
 <h2 id="NEXT"><a href="#NEXT" class="headerlink" title="NEXT"></a>NEXT</h2><p>下一次将实践以上的两点总结，看看具体的表现如何吧。</p>
 <hr>
 <p>附KNN 算法的线性暴搜实现如下:</p>
-<pre><code class="lang-Python"># -*- coding: utf-8 -*
+<pre><code class="lang-python"># -*- coding: utf-8 -*
 import time
 import matplotlib.pyplot as plt
 import testLibrary as tl
