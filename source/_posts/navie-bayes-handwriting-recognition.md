@@ -85,13 +85,13 @@ $$
 $$
 P(Y=c_k) = \frac{\sum^{N}_{i=1} I(y_i=c_k)}{N} ，k = 1,2,\cdots,K
 $$
-设第 j 个特征 $x^{j}$ 可能的取值的集合为 $\{a_{j1},a_{j2},\cdots, a_{jS_j}\}$，则条件概率的极大似然估计为：
+设第 j 个特征 $x^{j}$ 可能的取值的集合为 ![0EE6F321-E6D7-495F-BEDD-0CA48526F6EB](https://suool-bolg.b0.upaiyun.com/2018/07/08/0EE6F321-E6D7-495F-BEDD-0CA48526F6EB.png)，则条件概率的极大似然估计为：
 
 $$
 P(X^{(j)} = a_{jl} \mid Y=c_k) = \frac{\sum^{N}_{i=1} I (x_i^{(j)} = a_{jl}, y_i = c_k)}{\sum^{N}_{i=1}I (y_i=c_k)} \tag{3}
 $$
 
- 其中 $j = 1,2,\cdots,n; l=1,2,\cdots,S_j; k=1,2,\cdots,K $，且 $x_i^{(j)}$表示第 i 个样本的第 j 个特征；$a_{jl}$ 是第 j 个特征可能取的第 l 个值；$I$ 是指示函数
+![D5690E7F-DC11-4F6C-8842-77972CDFEBE8](https://suool-bolg.b0.upaiyun.com/2018/07/08/D5690E7F-DC11-4F6C-8842-77972CDFEBE8.png)
 
 ####**贝叶斯估计**
 
