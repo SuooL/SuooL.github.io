@@ -7,6 +7,7 @@ category: [机器学习]
 
 ##引言
 决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 `if-then` 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。
+<!--more-->
 
 其优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测的时，对新的数据利用训练建立的决策树模型来分类。
 
@@ -46,8 +47,266 @@ $$
 ![熵的定义](media/02E0F04F-0D7E-463B-BBEC-92B7909204F8.png)
 ![条件熵](media/E16F35E0-799D-4CD7-8927-2CCC0BFBBC17.png)
 
-信息增益的定义：特征 A 对训练集 D 对信息增益   g(D,A)，定义为集合 D 的经验熵 H(D) 与特征 A 给定的条件下 D 的经验条件熵 H(D|A) 之差，即是：
+**信息增益的定义**：特征 A 对训练集 D 对信息增益   g(D,A)，定义为集合 D 的经验熵 H(D) 与特征 A 给定的条件下 D 的经验条件熵 H(D|A) 之差，即是：
 $$
 g(D,A) = H(D)-H(D|A)
 $$
+
+**信息增益算法**
+
+- 基本假设
+    ![基本元素定义](media/D145C82E-3CEC-40BA-BBA3-223CC39CE9AB.png)
+
+于是信息增益算法如下：
+**输入**：训练数据集 D 和特征 A；
+**输出**：特征 A 对训练数据集 D 的信息增益 g(D,A)
+![算法步骤](media/18A795F2-9690-479B-B780-B893C562ED4D.png)
+
+## 决策树生成
+
+ID3 算法的核心是在决策树各个节点上应用信息增益准则选择特征，递归的构建决策树。具体点方法是：从根结点开始，对节点计算所有可能的特征的信息增益，选择信息增益最大的特征作为节点的特征，由该特征的不同取值建立子节点；再对子节点递归的调用以上方法，构建决策树；知道所有的特征的信心增益均很小或者没有特征可以选择为止。最后得到一个决策树，ID3 算法相当于用最大似然估计进行概率模型的选择。
+
+###ID3 算法
+**输入：**训练数据 D，特征集 A，阈值 $\epsilon$
+**输出：**决策树
+![ID3-1](media/A2008824-0C64-4C99-AB08-27B6AD708FE0.png)
+![ID3-2](media/5D4D317A-2635-47DC-81B5-CCF172A6BD72.png)
+
+ID3 算法只有树的生成，所以其生成的树很容易过拟合。
+
+以下为该算法的代码在 Mnist 数据集上实现的准确率，86.7%，比不上 KNN 的准确度，但是速度比其快的多。
+
+![预测准确率](media/8959541E-8E3F-4094-997E-C839D795ACA9.png)
+
+代码如下：
+```python
+#encoding=utf-8
+
+import cv2
+import time
+import logging
+import numpy as np
+import matplotlib.pyplot as plt
+import testLibrary as tl
+
+
+ALL_DATA = 60000
+
+total_class = 10
+
+
+def log(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        logging.debug('start %s()' % func.__name__)
+        ret = func(*args, **kwargs)
+
+        end_time = time.time()
+        logging.debug('end %s(), cost %s seconds' % (func.__name__,end_time-start_time))
+
+        return ret
+    return wrapper
+
+
+# 二值化
+def binaryzation(img):
+    cv_img = img.astype(np.uint8)
+    cv2.threshold(cv_img,50,1,cv2.cv.CV_THRESH_BINARY_INV,cv_img)
+    return cv_img
+
+
+@log
+def binaryzation_features(trainset):
+    features = []
+
+    for img in trainset:
+        img = np.reshape(img,(28,28))
+        cv_img = img.astype(np.uint8)
+
+        img_b = binaryzation(cv_img)
+        # hog_feature = np.transpose(hog_feature)
+        features.append(img_b)
+
+    features = np.array(features)
+    features = np.reshape(features, (-1, 784))
+
+    return features
+
+
+class Tree(object):
+    def __init__(self, node_type, Class=None, feature=None):
+        self.node_type = node_type
+        self.dict = {}
+        self.Class = Class
+        self.feature = feature
+
+    def add_tree(self, val, tree):
+        self.dict[val] = tree
+
+    def predict(self, features):
+        if self.node_type == 'leaf':
+            return self.Class
+
+        tree = self.dict[features[self.feature]]
+        return tree.predict(features)
+
+
+def calc_ent(x):
+    """
+        calculate shanno ent of x
+    """
+
+    x_value_list = set([x[i] for i in range(x.shape[0])])
+    ent = 0.0
+    for x_value in x_value_list:
+        p = float(x[x == x_value].shape[0]) / x.shape[0]
+        logp = np.log2(p)
+        ent -= p * logp
+    return ent
+
+
+def calc_condition_ent(x, y):
+    """
+        calculate ent H(y|x)
+    """
+
+    # calc ent(y|x)
+    x_value_list = set([x[i] for i in range(x.shape[0])])
+    ent = 0.0
+    for x_value in x_value_list:
+        sub_y = y[x == x_value]
+        temp_ent = calc_ent(sub_y)
+        ent += (float(sub_y.shape[0]) / y.shape[0]) * temp_ent
+
+    return ent
+
+#
+# def calc_ent_grap(x,y):
+#     """
+#         calculate ent grap
+#     """
+#     base_ent = calc_ent(y)
+#     condition_ent = calc_condition_ent(x, y)
+#     ent_grap = base_ent - condition_ent
+#
+#     return ent_grap
+
+def recurse_train(train_set, train_label, features, epsilon):
+    global total_class
+
+    LEAF = 'leaf'
+    INTERNAL = 'internal'
+
+    # 步骤1——如果train_set中的所有实例都属于同一类Ck
+    label_set = set(train_label)
+    if len(label_set) == 1:
+        return Tree(LEAF, Class=label_set.pop())
+
+    # 步骤2——如果features为空
+    (max_class, max_len) = max([(i, len([x for x in train_label if x == i])) for i in range(total_class)],key = lambda x:x[1])
+
+    if len(features) == 0:
+        return Tree(LEAF, Class=max_class)
+
+    # 步骤3——计算信息增益
+    max_feature = 0
+    max_gda = 0
+
+    d = train_label
+    hd = calc_ent(d)
+    for feature in features:
+        A = np.array(train_set[:, feature].flat)
+        gda = hd - calc_condition_ent(A, d)
+
+        if gda > max_gda:
+            max_gda, max_feature = gda, feature
+
+    # 步骤4——小于阈值
+    if max_gda < epsilon:
+        return Tree(LEAF, Class=max_class)
+
+    # 步骤5——构建非空子集
+    sub_features = [x for x in features if x != max_feature]
+    tree = Tree(INTERNAL, feature=max_feature)
+
+    feature_col = np.array(train_set[:, max_feature].flat)
+    feature_value_list = set([feature_col[i] for i in range(feature_col.shape[0])])
+    for feature_value in feature_value_list:
+
+        index = []
+        for i in range(len(train_label)):
+            if train_set[i][max_feature] == feature_value:
+                index.append(i)
+
+        sub_train_set = train_set[index]
+        sub_train_label = train_label[index]
+
+        sub_tree = recurse_train(sub_train_set,sub_train_label,sub_features,epsilon)
+        tree.add_tree(feature_value,sub_tree)
+
+    return tree
+
+
+@log
+def train(train_set, train_label, features, epsilon):
+    return recurse_train(train_set, train_label, features, epsilon)
+
+
+@log
+def predict(test_set, tree):
+
+    result = []
+    for features in test_set:
+        tmp_predict = tree.predict(features)
+        result.append(tmp_predict)
+    return np.array(result)
+
+
+def calculate_accuracy(predict_ary, test):
+    right_count = 0.0
+    accuracy_ary = []
+    for index in range(len(predict_ary)):
+        if predict_ary[index] == test[index]:
+            right_count += 1
+            if (index + 1) % 500 == 0:
+                accuracy_ary.append(float(right_count) / (index + 1))
+        print("预测值：%d 实际值： %d" % (predict_ary[index], test[index]))
+    return right_count/len(test), accuracy_ary
+
+
+if __name__ == '__main__':
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+
+    # 读取训练数据集和测试数据集的方法和朴素贝叶斯方法一致
+    print('Start read train data')
+    time_1 = time.time()
+    data_map, labels = tl.loadCSVfile("data.csv")
+    print(data_map.shape, labels.shape)
+    time_2 = time.time()
+    print('read data train cost ', time_2 - time_1, ' seconds', '\n')
+
+    print('Start read predict data')
+    time_3 = time.time()
+    test_data_map, test_labels = tl.loadCSVfile("dataTest.csv")
+    print(test_data_map.shape, test_data_map.shape)
+    time_4 = time.time()
+    print('read predict data cost ', time_4 - time_3, ' seconds', '\n')
+
+    tree = train(data_map, labels, [i for i in range(784)], 0.1)
+    test_predict = predict(test_data_map, tree)
+
+    rate, accuracy = calculate_accuracy(test_predict, test_labels)
+
+    print("The accuracy score is ", rate)
+    new_ticks = np.linspace(1, 20, 20)
+    plt.xticks(new_ticks)
+    plt.ylim(ymin=0.7, ymax=1)
+    plt.plot(new_ticks, accuracy, 'o-', color='g')
+    plt.xlabel("x -- 1:500")
+    plt.ylabel("y")
+    plt.title(u"预测准确率")
+    plt.show()
+```
+
 
