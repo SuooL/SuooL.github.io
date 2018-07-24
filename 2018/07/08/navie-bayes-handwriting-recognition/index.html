@@ -84,7 +84,7 @@
 <meta name="description" content="引言我们都见过或者用过的一个东西就是输入法的手写键盘，如下面的动图所示，那么输入法是如何识别出我们手写的字迹是什么字的呢？这是一个对人而言非常简单（前提是你写的字体不过于潦草），但是对于程序而言，可能就没有那么简单了，这次我就从一个更简单的角度来试一下，如何去识别手写的数字。 [1]">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="朴素贝叶斯应用之识别手写数字">
+<meta property="og:title" content="朴素贝叶斯应用之在手写数字识别的实践">
 <meta property="og:url" content="http://suool.net/2018/07/08/navie-bayes-handwriting-recognition/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
 <meta property="og:description" content="引言我们都见过或者用过的一个东西就是输入法的手写键盘，如下面的动图所示，那么输入法是如何识别出我们手写的字迹是什么字的呢？这是一个对人而言非常简单（前提是你写的字体不过于潦草），但是对于程序而言，可能就没有那么简单了，这次我就从一个更简单的角度来试一下，如何去识别手写的数字。 [1]">
@@ -98,9 +98,9 @@
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/08/EAFE6D9C-EC29-4806-80D2-055FCE2CFFB5.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/08/15310514214661.jpg">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/08/8EAA5A09-8E40-45F3-85EC-D20F83C5C844.png">
-<meta property="og:updated_time" content="2018-07-10T08:12:56.000Z">
+<meta property="og:updated_time" content="2018-07-19T02:35:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="朴素贝叶斯应用之识别手写数字">
+<meta name="twitter:title" content="朴素贝叶斯应用之在手写数字识别的实践">
 <meta name="twitter:description" content="引言我们都见过或者用过的一个东西就是输入法的手写键盘，如下面的动图所示，那么输入法是如何识别出我们手写的字迹是什么字的呢？这是一个对人而言非常简单（前提是你写的字体不过于潦草），但是对于程序而言，可能就没有那么简单了，这次我就从一个更简单的角度来试一下，如何去识别手写的数字。 [1]">
 <meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/08/handinput.gif">
 
@@ -138,7 +138,7 @@
 
 
 
-  <title>朴素贝叶斯应用之识别手写数字 | SuooL's Blog</title>
+  <title>朴素贝叶斯应用之在手写数字识别的实践 | SuooL's Blog</title>
   
 
 
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">朴素贝叶斯应用之识别手写数字</h1>
+          <h1 class="post-title" itemprop="name headline">朴素贝叶斯应用之在手写数字识别的实践</h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-10T16:12:56+08:00">
-                2018-07-10
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-19T10:35:52+08:00">
+                2018-07-19
               </time>
             
           </span>
@@ -386,7 +386,7 @@
 
           
           
-             <span id="/2018/07/08/navie-bayes-handwriting-recognition/" class="leancloud_visitors" data-flag-title="朴素贝叶斯应用之识别手写数字">
+             <span id="/2018/07/08/navie-bayes-handwriting-recognition/" class="leancloud_visitors" data-flag-title="朴素贝叶斯应用之在手写数字识别的实践">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -687,7 +687,7 @@ P(X^{(j)} = a_{jl} \mid Y=c_k) = \frac{\sum^{N}_{i=1} I (x_i^{(j)} = a_{jl}, y_i
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -799,7 +799,7 @@ P(X^{(j)} = a_{jl} \mid Y=c_k) = \frac{\sum^{N}_{i=1} I (x_i^{(j)} = a_{jl}, y_i
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">30.9k</span>
+    <span title="Site words total count">33.2k</span>
   
 </div>
 
@@ -939,7 +939,7 @@ P(X^{(j)} = a_{jl} \mid Y=c_k) = \frac{\sum^{N}_{i=1} I (x_i^{(j)} = a_{jl}, y_i
         var disqus_config = function () {
           this.page.url = 'http://suool.net/2018/07/08/navie-bayes-handwriting-recognition/';
           this.page.identifier = '2018/07/08/navie-bayes-handwriting-recognition/';
-          this.page.title = '朴素贝叶斯应用之识别手写数字';
+          this.page.title = '朴素贝叶斯应用之在手写数字识别的实践';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://suool.disqus.com/embed.js';
