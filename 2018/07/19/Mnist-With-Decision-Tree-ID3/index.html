@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/24/A2008824-0C64-4C99-AB08-27B6AD708FE0.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/24/5D4D317A-2635-47DC-81B5-CCF172A6BD72.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/24/8959541E-8E3F-4094-997E-C839D795ACA9.png">
-<meta property="og:updated_time" content="2018-07-24T14:42:48.543Z">
+<meta property="og:updated_time" content="2018-07-24T14:50:20.659Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树及其在手写数字识别的实践">
 <meta name="twitter:description" content="引言决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 if-then 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。">
@@ -338,7 +338,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-24T22:42:48+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-24T22:50:20+08:00">
                 2018-07-24
               </time>
             
@@ -461,7 +461,7 @@
 <p><img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/D295E3E5-FD3E-4509-BBA7-D80D26317A61.png" alt="D295E3E5-FD3E-4509-BBA7-D80D26317A61"></p>
 <h3 id="决策树学习"><a href="#决策树学习" class="headerlink" title="决策树学习"></a>决策树学习</h3><p>决策树学习，假设给定训练数据集：</p>
 <script type="math/tex; mode=display">
-D=\{(x_1,y_1),(x_2,y_2),\cdots,(x_N,y_N)\}</script><p>其中，$x_i = (x_i^1,x_i^2,\cdots,x_i^n)$ 为输入实力（特征向量），n为特征个数， $y_i\in{1,2,\cdots,K}$为类标记，$i=1,2,\cdots,\N$，N 为样本容量。学习的目标是根据给定的训练数据集构建一个决策树模型，使他能够进行正确的分类。</p>
+D=\{(x_1,y_1),(x_2,y_2),\cdots,(x_N,y_N)\}</script><p>其中，$x_i = (x_i^1,x_i^2,\cdots,x_i^n)$ 为输入实力（特征向量），n为特征个数， $y_i\in{1,2,\cdots,K}$为类标记，$i=1,2,\cdots,N$，N 为样本容量。学习的目标是根据给定的训练数据集构建一个决策树模型，使他能够进行正确的分类。</p>
 <p>而通过上面决策树的概念介绍，我们可以知道，决策树学习本质上是从训练数据集中归纳出一组分类规则。与训练数据集不相矛盾的决策树（即是能对训练数据进行正确分类的决策树）可能有多个，有可能一个都没有。我们需要的是一个与训练数据矛盾较小的决策树，同时有较好的泛化能力。</p>
 <p>决策树学习的损失函数通常是正则化的极大似然函数。决策树学习的策略也自然是以损失函数为目标函数的最小化。而这是一个 NP 问题，所以一般采用启发式的方法求得一个次最优解。</p>
 <p>决策树学习的算法通常是一个递归的选择最优特征，并根据该特征对训练数据进行分割，使得对各个子数据集有一个最好的分类的过程。</p>
