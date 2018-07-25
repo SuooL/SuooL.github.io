@@ -96,6 +96,7 @@ $$
 ---
 
 附KNN 算法的线性暴搜实现如下:
+
 ```python
 # -*- coding: utf-8 -*
 import time
@@ -199,3 +200,4 @@ if __name__ == '__main__':
     print("The accuracy rate is ", score)
     print("All data processing cost %s seconds" % (time_6 - time_0))
 ``` 
+
