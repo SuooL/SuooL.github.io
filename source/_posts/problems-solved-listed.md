@@ -23,6 +23,7 @@ Add the current user to the docker group. This can be achieved by typing
 sudo usermod -a -G docker $USER
 ```
 **You have to log out and log in again** for the group membership to take effect.
+<!--more-->
 
 **2.Docker 换源**
 
