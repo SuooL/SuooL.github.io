@@ -23,6 +23,7 @@ Add the current user to the docker group. This can be achieved by typing
 sudo usermod -a -G docker $USER
 ```
 **You have to log out and log in again** for the group membership to take effect.
+
 <!--more-->
 
 **2.Docker 换源**
@@ -92,3 +93,10 @@ Xcode 在长时间运行之后，会出现一个问题，那就是 例如 return
     - 把.pch里的内容全部注释掉，clean掉项目里的内容，把.pch里的注释去掉，编译。代码高亮，语法提示功能都回来了。
 
 
+## VSCode
+[mac vscode Python配置](https://segmentfault.com/a/1190000012322533)
+[使用vs(visual studio code)写python代码遇到的import requests失败问题](https://blog.csdn.net/ever_now_future/article/details/79075581)
+## TensorFlow
+[源码编译安装TensorFlow](https://www.jianshu.com/p/1d305ac47d61)
+[TensorFlow如何充分使用所有CPU核数，提高TensorFlow的CPU使用率，以及Intel的MKL加速](http://nooverfit.com/wp/tensorflow%E5%A6%82%E4%BD%95%E5%85%85%E5%88%86%E4%BD%BF%E7%94%A8%E6%89%80%E6%9C%89cpu%E6%A0%B8%E6%95%B0%EF%BC%8C%E6%8F%90%E9%AB%98tensorflow%E7%9A%84cpu%E4%BD%BF%E7%94%A8%E7%8E%87%EF%BC%8C%E4%BB%A5/)
+[Tensorflow并行计算：多核(multicore)，多线程(multi-thread)，图分割(Graph Partition)](https://blog.csdn.net/rockingdingo/article/details/55652662)
