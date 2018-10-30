@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="SuooL&#39;s Blog">
 <meta property="og:description" content="引言前面的文章中使用 feed forward neural network 实现了简单的手写数字识别，但是这不能直接照搬到 kaggle上面，因为 kaggle 使用的数据集是 CSV 文件，因此需要自定义一个 pytorch 的数据类型，来完成这个入门题目。 本文的提纲如下:  自定义 Dataset  模型搭建保存与读取">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-30T02:38:43.332Z">
+<meta property="og:updated_time" content="2018-10-30T02:39:59.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pytorch 自定义数据集及 Kaggle 101 数字识别">
 <meta name="twitter:description" content="引言前面的文章中使用 feed forward neural network 实现了简单的手写数字识别，但是这不能直接照搬到 kaggle上面，因为 kaggle 使用的数据集是 CSV 文件，因此需要自定义一个 pytorch 的数据类型，来完成这个入门题目。 本文的提纲如下:  自定义 Dataset  模型搭建保存与读取">
@@ -329,7 +329,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-30T10:38:43+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-30T10:39:59+08:00">
                 2018-10-30
               </time>
             
@@ -443,7 +443,10 @@
 <ol>
 <li>自定义 Dataset </li>
 <li>模型搭建保存与读取<a id="more"></a>
-<h2 id="自定义-Dataset"><a href="#自定义-Dataset" class="headerlink" title="自定义 Dataset"></a>自定义 Dataset</h2>Pytorch的数据读取主要包含三个类:</li>
+</li>
+</ol>
+<h2 id="自定义-Dataset"><a href="#自定义-Dataset" class="headerlink" title="自定义 Dataset"></a>自定义 Dataset</h2><p>Pytorch的数据读取主要包含三个类:</p>
+<ol>
 <li>Dataset</li>
 <li>DataLoader</li>
 <li>DataLoaderIter</li>
