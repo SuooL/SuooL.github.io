@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="SuooL&#39;s Blog">
 <meta property="og:description" content="前言了解了什么是蒙特卡罗方法之后，自然引出了马尔可夫链这个概念，其在 WIKI 的解释如下：  马尔可夫链（英语：Markov chain），又称离散时间马尔可夫链（discrete-time Markov chain，缩写为DTMC），因俄国数学家安德烈·马尔可夫得名，为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备“无记忆”的性质：下一状态的概率分布只能由当前状态决定，在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/media/15423528014563.jpg">
-<meta property="og:updated_time" content="2018-11-16T08:19:52.641Z">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423528014563.jpg">
+<meta property="og:updated_time" content="2018-11-16T08:20:41.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="马尔科夫链及其采样方法">
 <meta name="twitter:description" content="前言了解了什么是蒙特卡罗方法之后，自然引出了马尔可夫链这个概念，其在 WIKI 的解释如下：  马尔可夫链（英语：Markov chain），又称离散时间马尔可夫链（discrete-time Markov chain，缩写为DTMC），因俄国数学家安德烈·马尔可夫得名，为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备“无记忆”的性质：下一状态的概率分布只能由当前状态决定，在">
-<meta name="twitter:image" content="http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/media/15423528014563.jpg">
+<meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423528014563.jpg">
 
 
 
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T16:19:52+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T16:20:41+08:00">
                 2018-11-16
               </time>
             
@@ -449,7 +449,7 @@
 <p>如果用精确的数学定义来描述，则假设我们的序列状态是$…X<em>{t-2}, X</em>{t-1}, X<em>{t},  X</em>{t+1},…$那么我们的在时刻 $X_{t+1}$ 的状态的条件概率仅仅依赖于时刻 $X_t$，即：</p>
 <script type="math/tex; mode=display">
 P(X_{t+1} |...X_{t-2}, X_{t-1}, X_{t} ) = P(X_{t+1} | X_{t})</script><p>既然某一时刻状态转移的概率只依赖于它的前一个状态，那么我们只要能求出系统中任意两个状态之间的转换概率，这个马尔科夫链的模型就定了。我们来看看下图这个马尔科夫链模型的具体的例子(来源于维基百科)。</p>
-<p><img src="media/15423528014563.jpg" alt="股市概率转移"></p>
+<p><img src="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423528014563.jpg" alt="股市概率转移"></p>
 <p>这个马尔科夫链是表示股市模型的，共有三种状态：牛市（Bull market）, 熊市（Bear market）和横盘（Stagnant market）。每一个状态都以一定的概率转化到下一个状态。比如，牛市以0.025的概率转化到横盘的状态。这个状态概率转化图可以以矩阵的形式表示。如果我们定义矩阵P某一位置$P(i,j)$的值为$P(j|i)$,即从状态i转化到状态j的概率，并定义牛市为状态0， 熊市为状态1, 横盘为状态2. 这样我们得到了马尔科夫链模型的状态转移矩阵为：</p>
 <script type="math/tex; mode=display">
 P=\left( \begin{array}{ccc} 0.9&0.075&0.025 \\ 0.15&0.80& 0.05 \\ 0.25&0.25&0.5 \end{array} \right)</script><p>假设已知当前处在熊市、牛市、横盘的人的比例是概率分布向量$π<em>0=[π_0(1),π_0(2),π_0(3)]$,那么第一天的分布比例将是$π_1=π_0P$, 第二天的分布比例将是$π_2=π_1P=π_0P^2$ ，第n天分布比例将是$π_n=π</em>{n−1}P=π_0P^n$。</p>
