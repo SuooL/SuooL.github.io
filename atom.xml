@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://suool.net/"/>
-  <updated>2018-11-16T03:56:01.826Z</updated>
+  <updated>2018-11-16T03:56:36.855Z</updated>
   <id>http://suool.net/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>NLP 之分词技术概述税控盘肯定</title>
+    <title>马尔科夫链蒙特卡罗方法概述</title>
     <link href="http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/"/>
     <id>http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/</id>
     <published>2018-11-16T02:36:19.000Z</published>
-    <updated>2018-11-16T03:56:01.826Z</updated>
+    <updated>2018-11-16T03:56:36.855Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
     
