@@ -85,11 +85,11 @@
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NLP 之分词技术概述">
-<meta property="og:url" content="http://suool.net/2018/11/15/Text-Segmentation-1/index.html">
+<meta property="og:url" content="http://suool.net/2018/11/16/Text-Segmentation-1/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
 <meta property="og:description" content="前言NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-16T03:44:14.074Z">
+<meta property="og:updated_time" content="2018-11-16T07:11:05.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NLP 之分词技术概述">
 <meta name="twitter:description" content="前言NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://suool.net/2018/11/15/Text-Segmentation-1/"/>
+  <link rel="canonical" href="http://suool.net/2018/11/16/Text-Segmentation-1/"/>
 
 
 
@@ -284,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/15/Text-Segmentation-1/">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/16/Text-Segmentation-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SuooL">
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T22:01:00+08:00">
-                2018-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-16T20:01:00+08:00">
+                2018-11-16
               </time>
             
 
@@ -329,7 +329,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T11:44:14+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T15:11:05+08:00">
                 2018-11-16
               </time>
             
@@ -366,9 +366,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/15/Text-Segmentation-1/#comments" itemprop="discussionUrl">
+                <a href="/2018/11/16/Text-Segmentation-1/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/11/15/Text-Segmentation-1/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/11/16/Text-Segmentation-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -376,7 +376,7 @@
 
           
           
-             <span id="/2018/11/15/Text-Segmentation-1/" class="leancloud_visitors" data-flag-title="NLP 之分词技术概述">
+             <span id="/2018/11/16/Text-Segmentation-1/" class="leancloud_visitors" data-flag-title="NLP 之分词技术概述">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -459,7 +459,7 @@ P(S)&=P(W_1,W_2,...,W_n) \\
 &=P(W_1)P(W_2|W_1)\cdots P(W_n|W_1,W_2,...W_{n−1})
 \end{align}</script><p>可是这样的方法存在两个致命的缺陷：</p>
 <ul>
-<li><strong>參数空间过大</strong>：条件概率$P(W<em>n|W_1,W_2,…W</em>{n−1})$的可能性太多，无法估算，不可能有用；</li>
+<li><strong>參数空间过大</strong>：条件概率 $P(W<em>n|W_1,W_2,…W</em>{n−1})$ 的可能性太多，无法估算，不可能有用；</li>
 <li><strong>数据稀疏严重</strong>：对于非常多词对的组合，在语料库中都没有出现，依据最大似然估计得到的概率将会是0。</li>
 </ul>
 <p>为了解决參数空间过大的问题。引入了<strong>马尔科夫假设：随意一个词出现的概率只与它前面出现的有限的一个或者几个词有关</strong>。</p>
@@ -532,8 +532,8 @@ P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})</script><p>一般�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/15/HMM-Viterbi/" rel="next" title="隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用">
-                <i class="fa fa-chevron-left"></i> 隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用
+              <a href="/2018/11/16/Markov-Chain-Monte-Carlo-2/" rel="next" title="马尔科夫链及其采样方法">
+                <i class="fa fa-chevron-left"></i> 马尔科夫链及其采样方法
               </a>
             
           </div>
@@ -542,8 +542,8 @@ P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})</script><p>一般�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/16/Markov-Chain-Monte-Carlo-1/" rel="prev" title="蒙特卡罗方法概述">
-                蒙特卡罗方法概述 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/16/HMM-Viterbi/" rel="prev" title="隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用">
+                隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -743,7 +743,7 @@ P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})</script><p>一般�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">45.6k</span>
+    <span title="Site words total count">47.8k</span>
   
 </div>
 
@@ -881,8 +881,8 @@ P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})</script><p>一般�
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://suool.net/2018/11/15/Text-Segmentation-1/';
-          this.page.identifier = '2018/11/15/Text-Segmentation-1/';
+          this.page.url = 'http://suool.net/2018/11/16/Text-Segmentation-1/';
+          this.page.identifier = '2018/11/16/Text-Segmentation-1/';
           this.page.title = 'NLP 之分词技术概述';
         };
         var d = document, s = d.createElement('script');

@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="SuooL&#39;s Blog">
 <meta property="og:description" content="前言作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。 从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-1/media/15423393056582.jpg">
-<meta property="og:updated_time" content="2018-11-16T03:53:47.879Z">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423393056582.jpg">
+<meta property="og:updated_time" content="2018-11-16T07:02:59.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蒙特卡罗方法概述">
 <meta name="twitter:description" content="前言作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。 从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先">
-<meta name="twitter:image" content="http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-1/media/15423393056582.jpg">
+<meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423393056582.jpg">
 
 
 
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T11:53:47+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T15:02:59+08:00">
                 2018-11-16
               </time>
             
@@ -446,7 +446,7 @@
 <p>它非常强大和灵活，又相当简单易懂，很容易实现。对于许多问题来说，它往往是最简单的计算方法，有时甚至是唯一可行的方法。</p>
 <p>具体的适合理解的例子参考<a href="http://www.ruanyifeng.com/blog/2015/07/monte-carlo-method.html" target="_blank" rel="noopener">这篇文章</a></p>
 <p>给定统计样本集，如何估计产生这个样本集的随机变量概率密度函数,是我们比较熟悉的概率密度估计问题。<br>求解概率密度估计问题的常用方法是最大似然估计、最大后验估计等。但是，我们思考概率密度估计问题的逆问题:给定一个概率分布p(x)，如何让计算机生成满足这个概率分布的样本。<br>这个问题就是统计模拟中研究的重要问题–采样(Sampling)。</p>
-<p>如果有一个我们很难求解出$f(x)$的原函数的函数, 现要求其在定义域 [a, b] 上的积分, 如果这个函数是均匀分布, 那么我们可以采样 [a,b] 区间的 n 个值：${x<em>0,x_1,…x</em>{n-1}}$,用它们的均值来代表 [a,b] 区间上所有的$f(x)$的值。这样我们上面的定积分的近似求解为: </p>
+<p>如果有一个我们很难求解出$f(x)$的原函数的函数, 现要求其在定义域 [a, b] 上的积分, 如果这个函数是均匀分布, 那么我们可以采样 [a,b] 区间的 n 个值：${x<em>0,x_1,…x</em>{n-1}}$,用它们的均值来代表 [a,b] 区间上所有的 f(x) 的值。这样我们上面的定积分的近似求解为: </p>
 <script type="math/tex; mode=display">
 \theta = \int_a^b f(x)dx = \frac{b-a}{n}\sum\limits_{i=0}^{n-1}f(x_i)</script><p>如果不是均匀分布, 并<strong>假设我们可以得到 $x$ 在$[a,b]$的概率分布函数$p(x)$</strong>，那么我们的定积分求和可以这样进行：</p>
 <script type="math/tex; mode=display">
@@ -467,7 +467,7 @@ Z_2 = \sqrt{-2 ln X_1}sin(2\pi X_2)</script><p>其他一些常见的连续分布
 <p>不过很多时候，我们的x的概率分布不是常见的分布，这意味着我们没法方便的得到这些非常见的概率分布的样本集。那这个问题怎么解决呢？</p>
 <h3 id="接受-拒绝采样"><a href="#接受-拒绝采样" class="headerlink" title="接受-拒绝采样"></a>接受-拒绝采样</h3><p>对于概率分布不是常见的分布，一个可行的办法是采用接受-拒绝采样来得到该分布的样本。既然 $p(x)$ 太复杂在程序中没法直接采样，那么我设定一个程序可采样的分布 $q(x$) 比如高斯分布，然后按照一定的方法拒绝某些样本，以达到接近 $p(x)$ 分布的目的，其中$q(x)$叫做 <code>proposal distribution</code>。</p>
 <p>具体采用过程如下，设定一个方便采样的常用概率分布函数 q(x)，以及一个常量 k，使得 p(x) 总在 kq(x) 的下方。</p>
-<p><img src="media/15423393056582.jpg" alt="接受-拒绝采样-w283"></p>
+<p><img src="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423393056582.jpg" alt="接受-拒绝采样-w283"></p>
 <p>首先，采样得到<code>q(x)</code>的一个样本$z<em>0$，采样方法如上，使用<code>uniform(0,1)</code>转换得到。然后，从均匀分布$(0,kq(z_0))$中采样得到一个值$u$。如果$u$落在了上图中的灰色区域，则拒绝这次抽样，否则接受这个样本$z_0$。重复以上过程得到 n 个接受的样本 $z_0,z_1,…z</em>{n−1}$,则最后的蒙特卡罗方法求解结果为：</p>
 <script type="math/tex; mode=display">
 \frac{1}{n}\sum\limits_{i=0}^{n-1}\frac{f(z_i)}{p(z_i)}</script><p>整个过程中，我们通过一系列的接受拒绝决策来达到用q(x)模拟p(x)概率分布的目的。</p>
@@ -537,8 +537,8 @@ Z_2 = \sqrt{-2 ln X_1}sin(2\pi X_2)</script><p>其他一些常见的连续分布
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/15/Text-Segmentation-1/" rel="next" title="NLP 之分词技术概述">
-                <i class="fa fa-chevron-left"></i> NLP 之分词技术概述
+              <a href="/2018/11/01/self-analysis/" rel="next" title="自剖">
+                <i class="fa fa-chevron-left"></i> 自剖
               </a>
             
           </div>
@@ -547,8 +547,8 @@ Z_2 = \sqrt{-2 ln X_1}sin(2\pi X_2)</script><p>其他一些常见的连续分布
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/16/Markov-Chain-Monte-Carlo-2/" rel="prev" title="马尔科夫链蒙特卡罗方法概述">
-                马尔科夫链蒙特卡罗方法概述 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/16/Markov-Chain-Monte-Carlo-2/" rel="prev" title="马尔科夫链及其采样方法">
+                马尔科夫链及其采样方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -748,7 +748,7 @@ Z_2 = \sqrt{-2 ln X_1}sin(2\pi X_2)</script><p>其他一些常见的连续分布
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">45.6k</span>
+    <span title="Site words total count">47.8k</span>
   
 </div>
 
