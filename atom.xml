@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://suool.net/"/>
-  <updated>2018-10-31T23:18:31.964Z</updated>
+  <updated>2018-11-16T03:44:14.074Z</updated>
   <id>http://suool.net/</id>
   
   <author>
@@ -17,11 +17,60 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>NLP 之分词技术概述</title>
+    <link href="http://suool.net/2018/11/15/Text-Segmentation-1/"/>
+    <id>http://suool.net/2018/11/15/Text-Segmentation-1/</id>
+    <published>2018-11-15T14:01:00.000Z</published>
+    <updated>2018-11-16T03:44:14.074Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。<br><a id="more"></a></p><h3 id="基于规则的分词"><a href="#基于规则的分词" class="headerlink" title="基于规则的分词"></a>基于规则的分词</h3><p>中文分词技术是中文 NLP 领域一个非常基础而核心的问题。在此问题被提出来之后，主要有三种思路出现，分别是：基于规则的分词、基于统计的分词、混合方式分词（规则+统计）。</p><p>基于规则的分词是一种机械的分词方法，主要通过维护词典，在切分语句的时候，通过将语句中的每个字符串与词表中的词语逐一匹配，找到即切分，否则不切分。按照匹配切分的方法，主要有：正向最大匹配法（MM），逆向最大匹配法（RMM）以及双向最大匹配法（BM）。</p><p>基于规则的方式其优点和缺点都显而易见，当今的环境下，这种方式已不再是主流，不再细说。</p><h3 id="基于统计的分词"><a href="#基于统计的分词" class="headerlink" title="基于统计的分词"></a>基于统计的分词</h3><p>基于统计的分词其主要思想是把每个词看作是由词的最小单位的各个字组成的，如果相连的字在不同的文本中出现的次数越多，就说明这个相连的字很可能就是一个词。因此可以利用字与字相邻出现的频率来反映其组成词的可靠度，统计语料库中相邻共现的各个字的组合的频度，当这个频度高于某一个临界值的时候，便可以认为这个字的组合是一个词语。</p><p>基于统计的分词，基本操作有两个：</p><ol><li>建立语言模型</li><li>对句子进行单词划分，然后对划分结果进行概率计算，获得概率最大的分词方式，这里面用到的统计算法主要有隐马尔科夫模型（HMM）、条件随机场（CRF）等。</li></ol><h2 id="语言模型"><a href="#语言模型" class="headerlink" title="语言模型"></a>语言模型</h2><p>语言模型主要有统计语言模型（n-gram语言模型）和神经网络语言模型等，这里主要详细说明统计语言模型。</p><h3 id="n-gram语言模型"><a href="#n-gram语言模型" class="headerlink" title="n-gram语言模型"></a>n-gram语言模型</h3><p>统计语言模型简单来讲，就是计算一个句子的概率，更确切的说是计算组成这个句子一系列词语的概率。</p><p>比如给定一个已知词语序列的句子：</p><script type="math/tex; mode=display">S = W_1,W_2,\cdots,W_n</script><p>一个好的语言模型应该会给这个句子比较高的概率。因为这个句子在语义语法上都没有任何问题。我们可以用如下的公式来计算概率：</p><script type="math/tex; mode=display">\begin{align}P(S)&=P(W_1,W_2,...,W_n) \\&=P(W_1)P(W_2|W_1)\cdots P(W_n|W_1,W_2,...W_{n−1})\end{align}</script><p>可是这样的方法存在两个致命的缺陷：</p><ul><li><strong>參数空间过大</strong>：条件概率$P(W<em>n|W_1,W_2,…W</em>{n−1})$的可能性太多，无法估算，不可能有用；</li><li><strong>数据稀疏严重</strong>：对于非常多词对的组合，在语料库中都没有出现，依据最大似然估计得到的概率将会是0。</li></ul><p>为了解决參数空间过大的问题。引入了<strong>马尔科夫假设：随意一个词出现的概率只与它前面出现的有限的一个或者几个词有关</strong>。</p><p>如果 n=1，即假设每个单词之间相互独立，那么就会得到 unigram 也就是一元语言模型：<br><strong>Unigram model</strong></p><script type="math/tex; mode=display">P(W_1,W_2,W_3,...,W_n)=∏^n_{i=1}P(W_i)</script><p>如果 n=2 则为 bi-gram 模型表示，因为，下一个单词和之前一个单词是有很强的关联性<br><strong>Bigram model</strong></p><script type="math/tex; mode=display">P(W_1,W_2,W_3,...,W_n)=∏^n_{i=2}P(W_i|W_{i−1})</script><p>假设一个词的出现仅依赖于它前面出现的两个词，即是 n=3，那么我们就称之为trigram：<br><strong>Trigram model</strong></p><script type="math/tex; mode=display">P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})</script><p>一般来说，N 元模型就是假设当前词的出现概率只与它前面的 N-1 个词有关。而这些概率参数都是可以通过大规模语料库来计算.</p><p>同时，n一般不会超过3, 否则参数空间过大，数据稀疏严重，时间复杂度高，精度却提高的不多。对于非常对多词对的组合，在语料库中没有出现，依据最大似然估计得到的概率将会是0。</p><p>当然，对于n-gram模型来说，有很多的平滑方法。即对频率为0的n元对进行估计，典型的平滑算法有加法平滑、Good-Turing平滑、Katz平滑、插值平滑，等等</p><h3 id="隐马尔科夫模型"><a href="#隐马尔科夫模型" class="headerlink" title="隐马尔科夫模型"></a>隐马尔科夫模型</h3><p>隐马尔科夫模型（Hidden Markov Model，以下简称HMM）是比较经典的机器学习模型，它在语言识别，自然语言处理，模式识别等领域得到广泛的应用。当然，随着目前深度学习的崛起，尤其是RNN，LSTM等神经网络序列模型的火热，HMM的地位有所下降。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://suool.net/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://suool.net/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用</title>
+    <link href="http://suool.net/2018/11/15/HMM-Viterbi/"/>
+    <id>http://suool.net/2018/11/15/HMM-Viterbi/</id>
+    <published>2018-11-15T11:32:35.000Z</published>
+    <updated>2018-11-16T03:44:09.913Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://suool.net/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="NLP" scheme="http://suool.net/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/NLP/"/>
+    
+    
+      <category term="NLP" scheme="http://suool.net/tags/NLP/"/>
+    
+  </entry>
+  
+  <entry>
     <title>自剖</title>
     <link href="http://suool.net/2018/11/01/self-analysis/"/>
     <id>http://suool.net/2018/11/01/self-analysis/</id>
     <published>2018-10-31T23:15:32.000Z</published>
-    <updated>2018-10-31T23:18:31.964Z</updated>
+    <updated>2018-10-31T23:29:09.775Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="说明前面"><a href="#说明前面" class="headerlink" title="说明前面"></a>说明前面</h2><p>这是一篇去年差不多这个时候写的东西，现在读起来依然适用现在的自己。</p><p>最近这几天是真的有点不好受，昨晚几乎失眠了一整晚，缺少很多的东西，对未来看不清楚，对自己没有信心，心里面就充满了怀疑。<br><a id="more"></a></p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>我终究还是成为了现在的我，我迷失了自我。</p><p>如今的我变成了什么样子呢？<br>直观的感受来说，我变成了一个越来越封闭，一个离内在自我越来越远的自己了。这个过程像是我自己亲手给我自己筑了一堵墙，或者说我亲手抛弃了我自己，任由他在那里腐化、堕落、锈蚀，然后，至于此地，我越来越觉得难辨真正的自己是什么样了。</p><p>现在看上一次写这些东西，那时的我的确发现一些问题所在，但是也仅是止步于此，而后至今，我非但未能解决问题，反而使问题更加复杂和难以解决了。</p><p>现在的我越来越认同“最难也最重要的是经营好自己”这句话了。不仅是我现在近乎彻底失败于经营自己，也是在自察我的生活，直观的感觉就是众多问题都是由我而起。<br>自身都经营不好，谈何经营一段良好的亲密关系，谈何拥有一个好的未来。与人关系及美好的未来，如若缺少一个足够好的自己存在，怎么想都觉得不可能。</p><p>自我的经营，包括内在自我的经营和外在自我的经营。<br>近些日子，读了一些书，对于内在的自我和意识有了更多更深刻清晰的认识，所以，多谈一下这方面。</p><p>内在的自我不仅仅是指那个理性、逻辑的意识自我，也包括在潜意识中的自我。<br>内在的意识的自我是我的脑的活动的直接映射，而我的脑的活动则更多的是先验自我的映射，也即是昨日的我造就了今日的我，今日我蕴含着明日的我。<br>因此，经营内在自我的关键明显就在于经营当下的自我，因为当下所做的每个选择，每个情绪反应都是为以后的自我埋下伏笔，现时的每次情绪反馈和选择都不可避免的成为我的脑的先验自我的经验的一部分，从而成为其下一次重复当下的一个可能选择，重复这个选择即是再次强化意识中的自我，意识又会继续强化我的感受和情绪，进而形成了一个正向的反馈循环。<br>至此，改变内在自己我的唯一可能就是打破这个过去自我与当下自我的循环，从而造就新的当下自我和未来自我的新的循环的可能。说的在直接点，就是改变当下自我不如过去自我一样的选择和情绪反应，才能为产生一个新的明日自我提供可能。</p><p>纵观这些日子，我则在一遍又一遍的强化那个懒惰、消极、贪婪、放纵的自我，一次又一次的不断重复过去自我所做的错误选择，成为了今日的我，算是“修得正果”。</p><p>外在的自我的经营首先是对自己身体的经营，强身健体，其意义显然无需赘言。其次是外界关系的经营，人际沟通，心智交流。</p><p>这段时间里，在自己的亲密关系里面，因为自己不自觉的要去选择封闭自己，隐藏自己的感受，导致很多问题不仅没有被解决而且变得更加复杂和不堪。对于自己的不满意也使得自己缺少很多的耐心。</p><p>然后，现在就又回到了那个亘古难题：明明知道自己该怎么做，该做什么，但是就是不去做，做不好。</p><p>这里，我先自我剖析我的实际情况：<br>首先，很多情况下只有在当下这种自剖的时候，我才清醒的意识到自己该做什么，真正在日常生活中，往往是<em>由着自己的大脑做着潜意识下的决定</em>而走了。<br>其次，即是偶尔能够在面对选择和决定的时候（比如早上起床）意识到自己真正应该做的决定，但是要么是自己创造了一个理由没有去选择，要么是选择了但是具体执行的时候效果很不好。<br>最后，在自己做了不该做的选择之后，偶尔会意识到自己不应该如此，但是却无法去改变自己的方向，无法停止之前错误的选择造成的行为，而是继续任由自己错误下去。</p><p>根据上面的自己的实际情况，改变自己的可以尝试的方式是，每当自己面临比较关键的选择的时候，主动的去注意观察自己大脑的反应，观察自己潜意识的意图是什么，然后停下来，试着和自己的情绪和感受共处，不要急于做不同的决定，先试着跟它共处。<br>试着学会觉察自己的潜意识做决定时候的意图，站在一个第三方的角度去看自己的情绪和感受，与这个时候的自己共处，与自我的懒惰、拖延、放纵的意图保持觉察的链接。会对自己更深刻的认识和了解，多去练习这个过程。</p><p>比如早上闹钟响起，要做起不起床的决定的时候，去观察下此时自己内心的意图，不用急着说服自己起床，就纯粹是与此刻自己这个无论是要起床还是继续睡觉的意图保持链接，停下来和它共处，观察，然后再去做决定。</p><p>类似的还有在要不要锻炼，要不要赶紧关上灯关上手机睡觉等等这些决定的时候都一样，试着去观察自己当时的意图，并停下来和它共处。</p><p>这样子必然存在一定的困难，因为这是有意识的觉察无意识决定的过程，但是只要用心去做，还是做得到的，不用急着改变想法，只是尝试着要去观察并且和它共处，把它当作客观存在的东西，把自己当成一个观察的第三者。</p><p>改变，特别是向好的改变，意味着打破大脑同意识的旧有循环，而旧有循环之所以能够成为一个固化的循环，就是因为他能给大脑带来舒适，给意识带来愉悦。因此，改变，便意味这个打破这个正向反馈的“舒适愉悦”的循环，必然伴随着大脑的不适应及情绪上的痛苦体验，也必然是不易的。<br>但是，好的改变，都值得去尝试和牺牲。</p><p>学会和糟糕的自己和解，同做糟糕决定的大脑和意识共处，去觉察自己的懒惰、放纵等意图闪现的瞬间，然后停下来和他们共处。这是有意识觉察无意识的意图的练习。努力将有意识觉察养成无意识觉察的习惯，会发现更多关于深层次自我的东西。</p><p>这次找出了一些问题，也想了一些解决的方法，试试看吧。</p>]]></content>
     
@@ -450,55 +499,6 @@
     
     
       <category term="树莓派" scheme="http://suool.net/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>云南五天四晚游</title>
-    <link href="http://suool.net/2016/12/28/%E4%BA%91%E5%8D%97%E4%BA%94%E5%A4%A9%E5%9B%9B%E6%99%9A%E6%B8%B8/"/>
-    <id>http://suool.net/2016/12/28/云南五天四晚游/</id>
-    <published>2016-12-28T06:22:41.000Z</published>
-    <updated>2018-10-29T12:53:08.546Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="一些基本原则："><a href="#一些基本原则：" class="headerlink" title="一些基本原则："></a>一些基本原则：</h2><ol><li><em>一定要防晒，不要问我为什么。</em></li><li><em>不推荐在古城买东西，不管是丽江古城，还是束河古镇，还是大理古城，里面东西不保证真假，而且价格虚高。</em></li><li><em>需要买东西可以直接去当地的超市或者批发市场，买东西都要杀价，觉得贵的直接对半砍价。</em></li><li><em>当地的昼夜温差很大，白天可以穿少点，晚上回来晚的话一定要带多点衣服，不然要冻成狗。</em></li><li><em>出行可以选择滴滴打车</em></li></ol><a id="more"></a><h2 id="液体随身-乘机"><a href="#液体随身-乘机" class="headerlink" title="液体随身(乘机)"></a>液体随身(乘机)</h2><ol><li>爽肤水 </li><li>防晒霜 </li><li>柔肤水 </li><li>护手霜 </li><li>隔离霜 </li><li>遮瑕霜 </li><li>洗面奶 </li><li>面霜 </li><li>洗头水 </li><li>沐浴露</li><li>精华液</li><li>身体乳</li><li>卸妆水</li></ol><p>PS： 坐飞机的话，注意每种不能带超过一百毫升，最好买分装瓶，我们买的是四合一那种的，买四个（16小瓶）就足够了，以后还能循环利用，并且这个要放在外面，乘飞机的时候拿出来安检。</p><h2 id="行程"><a href="#行程" class="headerlink" title="行程"></a>行程</h2><p>初步规划7号下午下班后出发去广州, 在广州机场附近休息一下, 在12号凌晨4:00左右赶往机场候机.<br>计划于12号从丽江机场返回广州.</p><p>中间的行程：</p><ul><li><em>8号安排</em></li></ul><p><code>早上9:30</code>飞机抵达到达丽江，预估10:30到达古城，去宾馆休息整顿之后。<br>下午和晚上可以逛一下古城及周边地区。<br>晚上<code>住在丽江</code></p><p>PS：束河古镇，从北门进入不需要门票</p><p>PPS： 丽江古城，晚上去比较好，而且晚上七点之后去不再需要门票。</p><hr><ul><li><em>9号安排</em></li></ul><p><code>早上9点</code>出发去玉龙雪山<code>(一小时车程)</code><br><code>上午10点到下午4点</code>游玩玉龙雪山。<br><code>下午5点</code>回程丽江。<br><code>晚上7点</code>出发去丽江火车站<br><code>晚上8点</code>坐火车出发去大理<code>(两个小时车程)</code><br><code>晚上10点</code>到大理<br>晚上<code>住在大理</code></p><p>PS：强烈推荐直接<em>报纯玩的一日团</em>（我们包的一个人580，相对于自己组织和购买门票等费用没差多少），包车来回，提供羽绒服和氧气，中午还有顿本地农家饭，我们体验的感觉很不错。不建议自己坐大巴或者其他包车方式。</p><p>PPS：关于登玉龙雪山</p><ol><li><em>氧气：</em>上雪山一定要备好氧气，学会如何使用氧气，有高原反应不能硬撑的，最好出发前几日就吃红景天，出发前一晚一定要休息好。</li><li><em>药物：</em>最好备用感冒药、头痛药、止吐药如维生素B6，不然到时一旦高原反应，又吐有头痛，没有药会很难受。</li><li><em>食物：</em>最好带点高热量的食物，比如巧克力，带点热水。</li><li><em>莫急：</em>登山的时候千万不能过赶，高原氧气本来就稀薄，一旦运动过赶，会严重的缺氧头晕。</li></ol><hr><ul><li><em>10号安排</em></li></ul><p>10号一天在洱海游玩（洱海周边）<br>晚上<code>住在大理</code></p><p>PS：推荐租小电驴，一天60块钱，可以骑车绕着环海西线或者东线转，去喜洲和海舌公园看日落与洱海的黄昏，非常值得一看。但是记得穿多点衣服，晚上的洱海旁边会非常非常非常的冷，海风也非常非常非常的大。如果条件允许，直接租一个小电车也是很不错的选择，不过预算可能需要多一点。</p><p>PPS：推荐住洱海边的民宿，大理古城附近的青旅和客栈都是酒店那个样子，不如直接去 Airbnb 上找靠海边的民宿是最好的，一晚上100块左右。民宿非常有当地特色而且安静。</p><hr><ul><li><em>11号安排</em></li></ul><p>离开洱海。<br>第一个推荐去的地方是<code>崇圣寺</code>，电视剧中经常出现的<code>大理国</code>很多镜头都是在这里，<code>三塔映月</code>及最大的佛教寺庙——<em>佛都</em>。<br>门票可以自己美团上定优惠票一个人88，官方价要121。<br>其次古城可以晚上去看，主要是买买买了。</p><p>晚上<code>住在大理古城附近</code></p><hr><ul><li><em>12号安排</em></li></ul><p><code>早上9:00</code>坐火车出发去丽江<code>(三个小时车程)</code><br><code>下午1:00</code>拉市海游玩<br><code>晚上9:00</code>到机场候机<br><code>晚上11:10</code>飞机回广州</p><p>PS：游玩拉市海可以直接报团，也可以自己找个车来回，自己去的时候选线路之后记得砍价，而且冬季的话，玩那个线路都没什么差别…山上差不多都没什么东西，就骑马转一圈。砍价的空间非常的大….</p><p>PPS：买拉市海的票记得要求他包括划船的费用，去拉市海划船，看海鸟很不错。</p><p>PPPS: 可以试一下那边的高山茶，很不错，买的时候也要杀价。对半砍都可以。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;一些基本原则：&quot;&gt;&lt;a href=&quot;#一些基本原则：&quot; class=&quot;headerlink&quot; title=&quot;一些基本原则：&quot;&gt;&lt;/a&gt;一些基本原则：&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;em&gt;一定要防晒，不要问我为什么。&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;不推荐在古城买东西，不管是丽江古城，还是束河古镇，还是大理古城，里面东西不保证真假，而且价格虚高。&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;需要买东西可以直接去当地的超市或者批发市场，买东西都要杀价，觉得贵的直接对半砍价。&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;当地的昼夜温差很大，白天可以穿少点，晚上回来晚的话一定要带多点衣服，不然要冻成狗。&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;出行可以选择滴滴打车&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>iOS 引导图组件使用文档</title>
-    <link href="http://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/"/>
-    <id>http://suool.net/2016/12/05/iOS-引导图组件使用文档/</id>
-    <published>2016-12-05T02:48:04.000Z</published>
-    <updated>2018-10-29T12:53:08.400Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="iOS-引导图组件使用文档"><a href="#iOS-引导图组件使用文档" class="headerlink" title="iOS 引导图组件使用文档"></a>iOS 引导图组件使用文档</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><h3 id="实际效果"><a href="#实际效果" class="headerlink" title="实际效果"></a>实际效果</h3><ul><li>引导图实际显示效果截图如下:<a id="more"></a></li></ul><p><img src="http://7xjsv3.com1.z0.glb.clouddn.com/2016120576244Simulator Screen Shot Dec 5, 2016, 9.43.40 AM.png" alt="引导图示例.png"></p><ul><li>引导图的动态显示效果如下视频：<br><a href="https://appetize.io/embed/29xabc89e2u0j8uh3y0dkkk0yg?device=iphone5s&amp;scale=75&amp;orientation=portrait&amp;osVersion=9.3" target="_blank" rel="noopener">引导图 Live Video</a></li></ul><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>当 APP 第一次安装启动或者大版本更新第一次启动的时候，运营有新的引导图介绍 APP 的重点功能或更新的，需要使用引导图完成。</p><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>本引导图组件基于 <a href="https://github.com/squarezw/ZWIntroductionViewController" target="_blank" rel="noopener">ZWIntroductionViewController</a>修改。</p><p>只要设置引导图组件的 cover images ，初始化后将其加入到APPDelegate 的window即可， 对 APP 侵入性小，使用灵活。</p><h2 id="使用文档"><a href="#使用文档" class="headerlink" title="使用文档"></a>使用文档</h2><ul><li>首先是滑动的需求：<br>在组件的<code>ZWIntroductionViewController</code>类中的<code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView</code>方法中几行关键代码：</li></ul><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当滑动到最后一个的时候,禁止左滑动,只能通过点击按钮来去除引导图</span></span><br><span class="line"><span class="built_in">CGFloat</span> x = (_pageControl.numberOfPages<span class="number">-1</span>) * YYScreenSize().width;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (scrollView.contentOffset.x&gt;x) &#123;</span><br><span class="line">    [scrollView setContentOffset:<span class="built_in">CGPointMake</span>(x, scrollView.contentOffset.y) animated:<span class="literal">NO</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一个的时候不能右滑动</span></span><br><span class="line"><span class="keyword">if</span> (scrollView.contentOffset.x&lt;=<span class="number">0.0</span>) &#123;</span><br><span class="line">    [scrollView setContentOffset:<span class="built_in">CGPointMake</span>(<span class="number">0.0</span>, scrollView.contentOffset.y) animated:<span class="literal">NO</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上的代码是控制在引导图第一页的时候不能向右滑动，在最后一页的时候不能通过继续左滑结束引导，只能通过点击按钮进入 APP 中。<br>（如果没有以上需求，将代码注释即可。）</p><ul><li>其次是指示器颜色和进入按钮的需求：<br>如果对于<code>pageControl</code>的指示器颜色有特殊的需求，比如需要指示器的颜色及进入 APP 的按钮样式，需要修改<code>ZWIntroductionViewController</code>类中的<code>- (void)viewDidLoad</code>方法，指示器颜色修改具体的代码如下：</li></ul><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.pageControl.pageIndicatorTintColor = [<span class="built_in">UIColor</span> grayColor];</span><br><span class="line"><span class="keyword">self</span>.pageControl.currentPageIndicatorTintColor = GlobalColor;</span><br></pre></td></tr></table></figure><p>按钮相关的修改如下：</p><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.enterButton setTitle:<span class="built_in">NSLocalizedString</span>(<span class="string">@"立即体验"</span>, <span class="literal">nil</span>) forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">[<span class="keyword">self</span>.enterButton setTitleColor:GlobalColor forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line"><span class="keyword">self</span>.enterButton.layer.borderWidth = <span class="number">1.0</span>;</span><br><span class="line"><span class="keyword">self</span>.enterButton.layer.cornerRadius = <span class="number">20.0</span>;</span><br><span class="line"><span class="keyword">self</span>.enterButton.layer.borderColor = GlobalColor.CGColor;</span><br></pre></td></tr></table></figure><ul><li>最后是使用的规范：<br>下面是一个使用示例：</li></ul><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)isFirstLaunch&#123;</span><br><span class="line">    <span class="keyword">if</span>(![[<span class="built_in">NSUserDefaults</span> standardUserDefaults] boolForKey:<span class="string">@"firstStart_V2"</span>])&#123;</span><br><span class="line">  <span class="comment">// 如果是第一次启动，设置对应的版本标示</span></span><br><span class="line">        [[LSUserDefaults sharedInstance]setNewVeisonCode:<span class="string">@"1"</span>];</span><br><span class="line">        [[<span class="built_in">NSUserDefaults</span> standardUserDefaults] setBool:<span class="literal">YES</span> forKey:<span class="string">@"firstStart_V2"</span>];</span><br><span class="line">  <span class="comment">// 设置引导图的图片</span></span><br><span class="line">        <span class="built_in">NSArray</span> *coverImageNames = @[<span class="string">@"leadPage_1"</span>, <span class="string">@"leadPage_2"</span>, <span class="string">@"leadPage_3"</span>,<span class="string">@"leadPage_4"</span>];</span><br><span class="line">  <span class="comment">// 初始化引导图组件</span></span><br><span class="line">        <span class="keyword">self</span>.introductionView = [[ZWIntroductionViewController alloc] initWithCoverImageNames:coverImageNames backgroundImageNames:<span class="literal">nil</span>];</span><br><span class="line">  <span class="comment">// 添加组件</span></span><br><span class="line">        [<span class="keyword">self</span>.window addSubview:<span class="keyword">self</span>.introductionView.view];</span><br><span class="line">        __<span class="keyword">weak</span> AppDelegate *weakSelf = <span class="keyword">self</span>;</span><br><span class="line">  <span class="comment">// 引导完成后的回调</span></span><br><span class="line">        <span class="keyword">self</span>.introductionView.didSelectedEnter = ^() &#123;</span><br><span class="line">            [weakSelf.introductionView.view removeFromSuperview];</span><br><span class="line">            weakSelf.introductionView = <span class="literal">nil</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>整个使用的过程如上代码所示。</p><p><em>以上就是引导图组件的文档说明</em></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;iOS-引导图组件使用文档&quot;&gt;&lt;a href=&quot;#iOS-引导图组件使用文档&quot; class=&quot;headerlink&quot; title=&quot;iOS 引导图组件使用文档&quot;&gt;&lt;/a&gt;iOS 引导图组件使用文档&lt;/h1&gt;&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;h3 id=&quot;实际效果&quot;&gt;&lt;a href=&quot;#实际效果&quot; class=&quot;headerlink&quot; title=&quot;实际效果&quot;&gt;&lt;/a&gt;实际效果&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;引导图实际显示效果截图如下:
-    
-    </summary>
-    
-      <category term="技术" scheme="http://suool.net/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="iOS" scheme="http://suool.net/tags/iOS/"/>
-    
-      <category term="组件文档" scheme="http://suool.net/tags/%E7%BB%84%E4%BB%B6%E6%96%87%E6%A1%A3/"/>
     
   </entry>
   

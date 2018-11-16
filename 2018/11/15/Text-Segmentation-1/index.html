@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="SuooL, 胡振生" />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="一些基本原则： 一定要防晒，不要问我为什么。 不推荐在古城买东西，不管是丽江古城，还是束河古镇，还是大理古城，里面东西不保证真假，而且价格虚高。 需要买东西可以直接去当地的超市或者批发市场，买东西都要杀价，觉得贵的直接对半砍价。 当地的昼夜温差很大，白天可以穿少点，晚上回来晚的话一定要带多点衣服，不然要冻成狗。 出行可以选择滴滴打车">
+<meta name="description" content="前言NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="云南五天四晚游">
-<meta property="og:url" content="http://suool.net/2016/12/28/云南五天四晚游/index.html">
+<meta property="og:title" content="NLP 之分词技术概述">
+<meta property="og:url" content="http://suool.net/2018/11/15/Text-Segmentation-1/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="一些基本原则： 一定要防晒，不要问我为什么。 不推荐在古城买东西，不管是丽江古城，还是束河古镇，还是大理古城，里面东西不保证真假，而且价格虚高。 需要买东西可以直接去当地的超市或者批发市场，买东西都要杀价，觉得贵的直接对半砍价。 当地的昼夜温差很大，白天可以穿少点，晚上回来晚的话一定要带多点衣服，不然要冻成狗。 出行可以选择滴滴打车">
+<meta property="og:description" content="前言NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-29T12:53:08.546Z">
+<meta property="og:updated_time" content="2018-11-16T03:44:14.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="云南五天四晚游">
-<meta name="twitter:description" content="一些基本原则： 一定要防晒，不要问我为什么。 不推荐在古城买东西，不管是丽江古城，还是束河古镇，还是大理古城，里面东西不保证真假，而且价格虚高。 需要买东西可以直接去当地的超市或者批发市场，买东西都要杀价，觉得贵的直接对半砍价。 当地的昼夜温差很大，白天可以穿少点，晚上回来晚的话一定要带多点衣服，不然要冻成狗。 出行可以选择滴滴打车">
+<meta name="twitter:title" content="NLP 之分词技术概述">
+<meta name="twitter:description" content="前言NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://suool.net/2016/12/28/云南五天四晚游/"/>
+  <link rel="canonical" href="http://suool.net/2018/11/15/Text-Segmentation-1/"/>
 
 
 
 
 
-  <title>云南五天四晚游 | SuooL's Blog</title>
+  <title>NLP 之分词技术概述 | SuooL's Blog</title>
   
 
 
@@ -283,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suool.net/2016/12/28/云南五天四晚游/">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/15/Text-Segmentation-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SuooL">
@@ -300,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">云南五天四晚游</h1>
+          <h1 class="post-title" itemprop="name headline">NLP 之分词技术概述</h1>
         
 
         <div class="post-meta">
@@ -312,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-28T14:22:41+08:00">
-                2016-12-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T22:01:00+08:00">
+                2018-11-15
               </time>
             
 
@@ -328,12 +329,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-29T20:53:08+08:00">
-                2018-10-29
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T11:44:14+08:00">
+                2018-11-16
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -343,9 +366,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/28/云南五天四晚游/#comments" itemprop="discussionUrl">
+                <a href="/2018/11/15/Text-Segmentation-1/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/28/云南五天四晚游/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/11/15/Text-Segmentation-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -353,7 +376,7 @@
 
           
           
-             <span id="/2016/12/28/云南五天四晚游/" class="leancloud_visitors" data-flag-title="云南五天四晚游">
+             <span id="/2018/11/15/Text-Segmentation-1/" class="leancloud_visitors" data-flag-title="NLP 之分词技术概述">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -378,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,283 字
+                  1,278 字
                 </span>
               
 
@@ -415,72 +438,41 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="一些基本原则："><a href="#一些基本原则：" class="headerlink" title="一些基本原则："></a>一些基本原则：</h2><ol>
-<li><em>一定要防晒，不要问我为什么。</em></li>
-<li><em>不推荐在古城买东西，不管是丽江古城，还是束河古镇，还是大理古城，里面东西不保证真假，而且价格虚高。</em></li>
-<li><em>需要买东西可以直接去当地的超市或者批发市场，买东西都要杀价，觉得贵的直接对半砍价。</em></li>
-<li><em>当地的昼夜温差很大，白天可以穿少点，晚上回来晚的话一定要带多点衣服，不然要冻成狗。</em></li>
-<li><em>出行可以选择滴滴打车</em></li>
-</ol>
-<a id="more"></a>
-<h2 id="液体随身-乘机"><a href="#液体随身-乘机" class="headerlink" title="液体随身(乘机)"></a>液体随身(乘机)</h2><ol>
-<li>爽肤水 </li>
-<li>防晒霜 </li>
-<li>柔肤水 </li>
-<li>护手霜 </li>
-<li>隔离霜 </li>
-<li>遮瑕霜 </li>
-<li>洗面奶 </li>
-<li>面霜 </li>
-<li>洗头水 </li>
-<li>沐浴露</li>
-<li>精华液</li>
-<li>身体乳</li>
-<li>卸妆水</li>
-</ol>
-<p>PS： 坐飞机的话，注意每种不能带超过一百毫升，最好买分装瓶，我们买的是四合一那种的，买四个（16小瓶）就足够了，以后还能循环利用，并且这个要放在外面，乘飞机的时候拿出来安检。</p>
-<h2 id="行程"><a href="#行程" class="headerlink" title="行程"></a>行程</h2><p>初步规划7号下午下班后出发去广州, 在广州机场附近休息一下, 在12号凌晨4:00左右赶往机场候机.<br>计划于12号从丽江机场返回广州.</p>
-<p>中间的行程：</p>
-<ul>
-<li><em>8号安排</em></li>
-</ul>
-<p><code>早上9:30</code>飞机抵达到达丽江，预估10:30到达古城，去宾馆休息整顿之后。<br>下午和晚上可以逛一下古城及周边地区。<br>晚上<code>住在丽江</code></p>
-<p>PS：束河古镇，从北门进入不需要门票</p>
-<p>PPS： 丽江古城，晚上去比较好，而且晚上七点之后去不再需要门票。</p>
-<hr>
-<ul>
-<li><em>9号安排</em></li>
-</ul>
-<p><code>早上9点</code>出发去玉龙雪山<code>(一小时车程)</code><br><code>上午10点到下午4点</code>游玩玉龙雪山。<br><code>下午5点</code>回程丽江。<br><code>晚上7点</code>出发去丽江火车站<br><code>晚上8点</code>坐火车出发去大理<code>(两个小时车程)</code><br><code>晚上10点</code>到大理<br>晚上<code>住在大理</code></p>
-<p>PS：强烈推荐直接<em>报纯玩的一日团</em>（我们包的一个人580，相对于自己组织和购买门票等费用没差多少），包车来回，提供羽绒服和氧气，中午还有顿本地农家饭，我们体验的感觉很不错。不建议自己坐大巴或者其他包车方式。</p>
-<p>PPS：关于登玉龙雪山</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。<br><a id="more"></a></p>
+<h3 id="基于规则的分词"><a href="#基于规则的分词" class="headerlink" title="基于规则的分词"></a>基于规则的分词</h3><p>中文分词技术是中文 NLP 领域一个非常基础而核心的问题。在此问题被提出来之后，主要有三种思路出现，分别是：基于规则的分词、基于统计的分词、混合方式分词（规则+统计）。</p>
+<p>基于规则的分词是一种机械的分词方法，主要通过维护词典，在切分语句的时候，通过将语句中的每个字符串与词表中的词语逐一匹配，找到即切分，否则不切分。按照匹配切分的方法，主要有：正向最大匹配法（MM），逆向最大匹配法（RMM）以及双向最大匹配法（BM）。</p>
+<p>基于规则的方式其优点和缺点都显而易见，当今的环境下，这种方式已不再是主流，不再细说。</p>
+<h3 id="基于统计的分词"><a href="#基于统计的分词" class="headerlink" title="基于统计的分词"></a>基于统计的分词</h3><p>基于统计的分词其主要思想是把每个词看作是由词的最小单位的各个字组成的，如果相连的字在不同的文本中出现的次数越多，就说明这个相连的字很可能就是一个词。因此可以利用字与字相邻出现的频率来反映其组成词的可靠度，统计语料库中相邻共现的各个字的组合的频度，当这个频度高于某一个临界值的时候，便可以认为这个字的组合是一个词语。</p>
+<p>基于统计的分词，基本操作有两个：</p>
 <ol>
-<li><em>氧气：</em>上雪山一定要备好氧气，学会如何使用氧气，有高原反应不能硬撑的，最好出发前几日就吃红景天，出发前一晚一定要休息好。</li>
-<li><em>药物：</em>最好备用感冒药、头痛药、止吐药如维生素B6，不然到时一旦高原反应，又吐有头痛，没有药会很难受。</li>
-<li><em>食物：</em>最好带点高热量的食物，比如巧克力，带点热水。</li>
-<li><em>莫急：</em>登山的时候千万不能过赶，高原氧气本来就稀薄，一旦运动过赶，会严重的缺氧头晕。</li>
+<li>建立语言模型</li>
+<li>对句子进行单词划分，然后对划分结果进行概率计算，获得概率最大的分词方式，这里面用到的统计算法主要有隐马尔科夫模型（HMM）、条件随机场（CRF）等。</li>
 </ol>
-<hr>
+<h2 id="语言模型"><a href="#语言模型" class="headerlink" title="语言模型"></a>语言模型</h2><p>语言模型主要有统计语言模型（n-gram语言模型）和神经网络语言模型等，这里主要详细说明统计语言模型。</p>
+<h3 id="n-gram语言模型"><a href="#n-gram语言模型" class="headerlink" title="n-gram语言模型"></a>n-gram语言模型</h3><p>统计语言模型简单来讲，就是计算一个句子的概率，更确切的说是计算组成这个句子一系列词语的概率。</p>
+<p>比如给定一个已知词语序列的句子：</p>
+<script type="math/tex; mode=display">
+S = W_1,W_2,\cdots,W_n</script><p>一个好的语言模型应该会给这个句子比较高的概率。因为这个句子在语义语法上都没有任何问题。我们可以用如下的公式来计算概率：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+P(S)&=P(W_1,W_2,...,W_n) \\
+&=P(W_1)P(W_2|W_1)\cdots P(W_n|W_1,W_2,...W_{n−1})
+\end{align}</script><p>可是这样的方法存在两个致命的缺陷：</p>
 <ul>
-<li><em>10号安排</em></li>
+<li><strong>參数空间过大</strong>：条件概率$P(W<em>n|W_1,W_2,…W</em>{n−1})$的可能性太多，无法估算，不可能有用；</li>
+<li><strong>数据稀疏严重</strong>：对于非常多词对的组合，在语料库中都没有出现，依据最大似然估计得到的概率将会是0。</li>
 </ul>
-<p>10号一天在洱海游玩（洱海周边）<br>晚上<code>住在大理</code></p>
-<p>PS：推荐租小电驴，一天60块钱，可以骑车绕着环海西线或者东线转，去喜洲和海舌公园看日落与洱海的黄昏，非常值得一看。但是记得穿多点衣服，晚上的洱海旁边会非常非常非常的冷，海风也非常非常非常的大。如果条件允许，直接租一个小电车也是很不错的选择，不过预算可能需要多一点。</p>
-<p>PPS：推荐住洱海边的民宿，大理古城附近的青旅和客栈都是酒店那个样子，不如直接去 Airbnb 上找靠海边的民宿是最好的，一晚上100块左右。民宿非常有当地特色而且安静。</p>
-<hr>
-<ul>
-<li><em>11号安排</em></li>
-</ul>
-<p>离开洱海。<br>第一个推荐去的地方是<code>崇圣寺</code>，电视剧中经常出现的<code>大理国</code>很多镜头都是在这里，<code>三塔映月</code>及最大的佛教寺庙——<em>佛都</em>。<br>门票可以自己美团上定优惠票一个人88，官方价要121。<br>其次古城可以晚上去看，主要是买买买了。</p>
-<p>晚上<code>住在大理古城附近</code></p>
-<hr>
-<ul>
-<li><em>12号安排</em></li>
-</ul>
-<p><code>早上9:00</code>坐火车出发去丽江<code>(三个小时车程)</code><br><code>下午1:00</code>拉市海游玩<br><code>晚上9:00</code>到机场候机<br><code>晚上11:10</code>飞机回广州</p>
-<p>PS：游玩拉市海可以直接报团，也可以自己找个车来回，自己去的时候选线路之后记得砍价，而且冬季的话，玩那个线路都没什么差别…山上差不多都没什么东西，就骑马转一圈。砍价的空间非常的大….</p>
-<p>PPS：买拉市海的票记得要求他包括划船的费用，去拉市海划船，看海鸟很不错。</p>
-<p>PPPS: 可以试一下那边的高山茶，很不错，买的时候也要杀价。对半砍都可以。</p>
+<p>为了解决參数空间过大的问题。引入了<strong>马尔科夫假设：随意一个词出现的概率只与它前面出现的有限的一个或者几个词有关</strong>。</p>
+<p>如果 n=1，即假设每个单词之间相互独立，那么就会得到 unigram 也就是一元语言模型：<br><strong>Unigram model</strong></p>
+<script type="math/tex; mode=display">
+P(W_1,W_2,W_3,...,W_n)=∏^n_{i=1}P(W_i)</script><p>如果 n=2 则为 bi-gram 模型表示，因为，下一个单词和之前一个单词是有很强的关联性<br><strong>Bigram model</strong></p>
+<script type="math/tex; mode=display">
+P(W_1,W_2,W_3,...,W_n)=∏^n_{i=2}P(W_i|W_{i−1})</script><p>假设一个词的出现仅依赖于它前面出现的两个词，即是 n=3，那么我们就称之为trigram：<br><strong>Trigram model</strong></p>
+<script type="math/tex; mode=display">
+P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})</script><p>一般来说，N 元模型就是假设当前词的出现概率只与它前面的 N-1 个词有关。而这些概率参数都是可以通过大规模语料库来计算.</p>
+<p>同时，n一般不会超过3, 否则参数空间过大，数据稀疏严重，时间复杂度高，精度却提高的不多。对于非常对多词对的组合，在语料库中没有出现，依据最大似然估计得到的概率将会是0。</p>
+<p>当然，对于n-gram模型来说，有很多的平滑方法。即对频率为0的n元对进行估计，典型的平滑算法有加法平滑、Good-Turing平滑、Katz平滑、插值平滑，等等</p>
+<h3 id="隐马尔科夫模型"><a href="#隐马尔科夫模型" class="headerlink" title="隐马尔科夫模型"></a>隐马尔科夫模型</h3><p>隐马尔科夫模型（Hidden Markov Model，以下简称HMM）是比较经典的机器学习模型，它在语言识别，自然语言处理，模式识别等领域得到广泛的应用。当然，随着目前深度学习的崛起，尤其是RNN，LSTM等神经网络序列模型的火热，HMM的地位有所下降。</p>
 
       
     </div>
@@ -525,6 +517,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
 
       
       
@@ -534,8 +532,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/05/iOS-引导图组件使用文档/" rel="next" title="iOS 引导图组件使用文档">
-                <i class="fa fa-chevron-left"></i> iOS 引导图组件使用文档
+              <a href="/2018/11/15/HMM-Viterbi/" rel="next" title="隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用">
+                <i class="fa fa-chevron-left"></i> 隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用
               </a>
             
           </div>
@@ -543,10 +541,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/07/树莓派折腾指南之系统安装及设备点亮/" rel="prev" title="树莓派折腾指南之系统安装及设备点亮">
-                树莓派折腾指南之系统安装及设备点亮 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -711,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些基本原则："><span class="nav-number">1.</span> <span class="nav-text">一些基本原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#液体随身-乘机"><span class="nav-number">2.</span> <span class="nav-text">液体随身(乘机)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行程"><span class="nav-number">3.</span> <span class="nav-text">行程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于规则的分词"><span class="nav-number">1.1.</span> <span class="nav-text">基于规则的分词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于统计的分词"><span class="nav-number">1.2.</span> <span class="nav-text">基于统计的分词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语言模型"><span class="nav-number">2.</span> <span class="nav-text">语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#n-gram语言模型"><span class="nav-number">2.1.</span> <span class="nav-text">n-gram语言模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔科夫模型"><span class="nav-number">2.2.</span> <span class="nav-text">隐马尔科夫模型</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -883,9 +877,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://suool.net/2016/12/28/云南五天四晚游/';
-          this.page.identifier = '2016/12/28/云南五天四晚游/';
-          this.page.title = '云南五天四晚游';
+          this.page.url = 'http://suool.net/2018/11/15/Text-Segmentation-1/';
+          this.page.identifier = '2018/11/15/Text-Segmentation-1/';
+          this.page.title = 'NLP 之分词技术概述';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://suool.disqus.com/embed.js';
