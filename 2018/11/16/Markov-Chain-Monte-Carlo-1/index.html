@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="前言作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。 从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先">
+<meta name="description" content="前言 作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。 从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蒙特卡罗方法概述">
 <meta property="og:url" content="http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-1/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="前言作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。 从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先">
+<meta property="og:description" content="前言 作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。 从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423393056582.jpg">
 <meta property="og:updated_time" content="2018-11-16T07:02:59.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蒙特卡罗方法概述">
-<meta name="twitter:description" content="前言作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。 从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先">
+<meta name="twitter:description" content="前言 作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。 从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首">
 <meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423393056582.jpg">
 
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,016 字
+                  2,139 字
                 </span>
               
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -439,41 +439,52 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。</p>
-<p>从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先得搞清楚蒙特卡罗方法和马尔科夫链的原理。<br><a id="more"></a></p>
-<h2 id="蒙特卡罗方法"><a href="#蒙特卡罗方法" class="headerlink" title="蒙特卡罗方法"></a>蒙特卡罗方法</h2><p>蒙特卡罗原来是一个赌场的名称，用它作为名字大概是因为蒙特卡罗方法是一种随机模拟的方法，这很像赌博场里面的扔骰子的过程。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2>
+<p>作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。</p>
+<p>从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先得搞清楚蒙特卡罗方法和马尔科夫链的原理。 <a id="more"></a></p>
+<h2 id="蒙特卡罗方法">蒙特卡罗方法</h2>
+<p>蒙特卡罗原来是一个赌场的名称，用它作为名字大概是因为蒙特卡罗方法是一种随机模拟的方法，这很像赌博场里面的扔骰子的过程。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。</p>
 <p>它非常强大和灵活，又相当简单易懂，很容易实现。对于许多问题来说，它往往是最简单的计算方法，有时甚至是唯一可行的方法。</p>
 <p>具体的适合理解的例子参考<a href="http://www.ruanyifeng.com/blog/2015/07/monte-carlo-method.html" target="_blank" rel="noopener">这篇文章</a></p>
-<p>给定统计样本集，如何估计产生这个样本集的随机变量概率密度函数,是我们比较熟悉的概率密度估计问题。<br>求解概率密度估计问题的常用方法是最大似然估计、最大后验估计等。但是，我们思考概率密度估计问题的逆问题:给定一个概率分布p(x)，如何让计算机生成满足这个概率分布的样本。<br>这个问题就是统计模拟中研究的重要问题–采样(Sampling)。</p>
-<p>如果有一个我们很难求解出$f(x)$的原函数的函数, 现要求其在定义域 [a, b] 上的积分, 如果这个函数是均匀分布, 那么我们可以采样 [a,b] 区间的 n 个值：${x<em>0,x_1,…x</em>{n-1}}$,用它们的均值来代表 [a,b] 区间上所有的 f(x) 的值。这样我们上面的定积分的近似求解为: </p>
-<script type="math/tex; mode=display">
-\theta = \int_a^b f(x)dx = \frac{b-a}{n}\sum\limits_{i=0}^{n-1}f(x_i)</script><p>如果不是均匀分布, 并<strong>假设我们可以得到 $x$ 在$[a,b]$的概率分布函数$p(x)$</strong>，那么我们的定积分求和可以这样进行：</p>
-<script type="math/tex; mode=display">
-\theta = \int_a^b f(x)dx =  \int_a^b \frac{f(x)}{p(x)}p(x)dx \approx \frac{1}{n}\sum\limits_{i=0}^{n-1}\frac{f(x_i)}{p(x_i)}</script><p>上式最右边的这个形式就是蒙特卡罗方法的一般形式。当然这里是连续函数形式的蒙特卡罗方法，但是在离散时一样成立。</p>
-<p>可以看出，最上面我们假设x在[a,b]之间是均匀分布的时候，p(xi)=1/(b−a)，带入我们有概率分布的蒙特卡罗积分的上式，可以得到：</p>
-<script type="math/tex; mode=display">
-\frac{1}{n}\sum\limits_{i=0}^{n-1}\frac{f(x_i)}{1/(b-a)} = \frac{b-a}{n}\sum\limits_{i=0}^{n-1}f(x_i)</script><p>也就是说，我们最上面的均匀分布也可以作为一般概率分布函数$p(x)$在均匀分布时候的特例。那么我们现在的问题转到了如何在已知分布求出 x 的分布$p(x)$对应的若干个样本上来。</p>
-<h2 id="采样方法"><a href="#采样方法" class="headerlink" title="采样方法"></a>采样方法</h2><p>主要有概率分布采样及接受-拒绝采样方法.</p>
-<h3 id="概率分布采样"><a href="#概率分布采样" class="headerlink" title="概率分布采样"></a>概率分布采样</h3><p>如果求出了$x$的概率分布，我们可以基于概率分布去采样基于这个概率分布的 n 个$x$的样本集，带入蒙特卡罗求和的式子即可求解。但是还有一个关键的问题需要解决，即如何基于概率分布去采样基于这个概率分布的 n 个$x$的样本集。</p>
-<p>一般而言均匀分布<code>Uniform(0,1)</code>的样本是相对容易生成的。 通过线性同余发生器可以生成伪随机数，我们用确定性算法生成[0,1]之间的伪随机数序列后，<br>这些序列的各种统计指标和均匀分布<code>Uniform(0,1)</code>的理论计算结果非常接近。这样的伪随机序列就有比较好的统计性质，可以被当成真实的随机数使用。线性同余随机数生成器如下:</p>
-<script type="math/tex; mode=display">
-x_{n+1}=(ax_n+c)~\textrm{mod}~m</script><p>式中$a，c，m$是数学推导出的合适的常数。这种算法产生的下一个随机数完全依赖当前的随机数，当随机数序列足够大的时候，随机数会出现重复子序列的情况。<br>当然，也有很多更加先进的随机数产生算法出现，比如<code>numpy</code>用的是 <code>Mersenne Twister</code> 等.</p>
+<p>给定统计样本集，如何估计产生这个样本集的随机变量概率密度函数,是我们比较熟悉的概率密度估计问题。 求解概率密度估计问题的常用方法是最大似然估计、最大后验估计等。但是，我们思考概率密度估计问题的逆问题:给定一个概率分布p(x)，如何让计算机生成满足这个概率分布的样本。 这个问题就是统计模拟中研究的重要问题–采样(Sampling)。</p>
+<p>如果有一个我们很难求解出<span class="math inline">\(f(x)\)</span>的原函数的函数, 现要求其在定义域 [a, b] 上的积分, 如果这个函数是均匀分布, 那么我们可以采样 [a,b] 区间的 n 个值：<span class="math inline">\({x_0,x_1,...x_{n-1}}\)</span>,用它们的均值来代表 [a,b] 区间上所有的 f(x) 的值。这样我们上面的定积分的近似求解为:</p>
+<p><span class="math display">\[
+\theta = \int_a^b f(x)dx = \frac{b-a}{n}\sum\limits_{i=0}^{n-1}f(x_i)
+\]</span></p>
+<p>如果不是均匀分布, 并<strong>假设我们可以得到 <span class="math inline">\(x\)</span> 在<span class="math inline">\([a,b]\)</span>的概率分布函数<span class="math inline">\(p(x)\)</span></strong>，那么我们的定积分求和可以这样进行： <span class="math display">\[
+\theta = \int_a^b f(x)dx =  \int_a^b \frac{f(x)}{p(x)}p(x)dx \approx \frac{1}{n}\sum\limits_{i=0}^{n-1}\frac{f(x_i)}{p(x_i)}
+\]</span></p>
+<p>上式最右边的这个形式就是蒙特卡罗方法的一般形式。当然这里是连续函数形式的蒙特卡罗方法，但是在离散时一样成立。</p>
+<p>可以看出，最上面我们假设x在[a,b]之间是均匀分布的时候，p(xi)=1/(b−a)，带入我们有概率分布的蒙特卡罗积分的上式，可以得到： <span class="math display">\[
+\frac{1}{n}\sum\limits_{i=0}^{n-1}\frac{f(x_i)}{1/(b-a)} = \frac{b-a}{n}\sum\limits_{i=0}^{n-1}f(x_i)
+\]</span></p>
+<p>也就是说，我们最上面的均匀分布也可以作为一般概率分布函数<span class="math inline">\(p(x)\)</span>在均匀分布时候的特例。那么我们现在的问题转到了如何在已知分布求出 x 的分布<span class="math inline">\(p(x)\)</span>对应的若干个样本上来。</p>
+<h2 id="采样方法">采样方法</h2>
+<p>主要有概率分布采样及接受-拒绝采样方法. ###概率分布采样 如果求出了<span class="math inline">\(x\)</span>的概率分布，我们可以基于概率分布去采样基于这个概率分布的 n 个<span class="math inline">\(x\)</span>的样本集，带入蒙特卡罗求和的式子即可求解。但是还有一个关键的问题需要解决，即如何基于概率分布去采样基于这个概率分布的 n 个<span class="math inline">\(x\)</span>的样本集。</p>
+<p>一般而言均匀分布<code>Uniform(0,1)</code>的样本是相对容易生成的。 通过线性同余发生器可以生成伪随机数，我们用确定性算法生成[0,1]之间的伪随机数序列后， 这些序列的各种统计指标和均匀分布<code>Uniform(0,1)</code>的理论计算结果非常接近。这样的伪随机序列就有比较好的统计性质，可以被当成真实的随机数使用。线性同余随机数生成器如下: <span class="math display">\[
+x_{n+1}=(ax_n+c)~\textrm{mod}~m
+\]</span> 式中<span class="math inline">\(a，c，m\)</span>是数学推导出的合适的常数。这种算法产生的下一个随机数完全依赖当前的随机数，当随机数序列足够大的时候，随机数会出现重复子序列的情况。 当然，也有很多更加先进的随机数产生算法出现，比如<code>numpy</code>用的是 <code>Mersenne Twister</code> 等.</p>
 <p>而其他常见的概率分布，无论是离散的分布还是连续的分布，它们的样本都可以通过<code>Uniform(0,1)</code>的样本转换而得, 但是如何产生满足其他分布下的随机数呢？</p>
-<p>比如二维正态分布的样本$(Z1,Z2)$可以通过通过独立采样得到的<code>uniform(0,1)</code>样本对$(X1,X2)$通过如下的式子转换而得：</p>
-<script type="math/tex; mode=display">
+<p>比如二维正态分布的样本<span class="math inline">\((Z1,Z2)\)</span>可以通过通过独立采样得到的<code>uniform(0,1)</code>样本对<span class="math inline">\((X1,X2)\)</span>通过如下的式子转换而得： <span class="math display">\[
 Z_1 = \sqrt{-2 ln X_1}cos(2\pi X_2) \\
-Z_2 = \sqrt{-2 ln X_1}sin(2\pi X_2)</script><p>其他一些常见的连续分布，比如<code>t分布</code>，<code>F分布</code>，<code>Beta分布</code>，<code>Gamma分布</code>等，都可以通过类似的方式从<code>uniform(0,1)</code>得到的采样样本转化得到。在python的<code>numpy</code>，<code>scikit-learn</code>等类库中，都有生成这些常用分布样本的函数可以使用。</p>
+Z_2 = \sqrt{-2 ln X_1}sin(2\pi X_2)
+\]</span></p>
+<p>其他一些常见的连续分布，比如<code>t分布</code>，<code>F分布</code>，<code>Beta分布</code>，<code>Gamma分布</code>等，都可以通过类似的方式从<code>uniform(0,1)</code>得到的采样样本转化得到。在python的<code>numpy</code>，<code>scikit-learn</code>等类库中，都有生成这些常用分布样本的函数可以使用。</p>
 <p>不过很多时候，我们的x的概率分布不是常见的分布，这意味着我们没法方便的得到这些非常见的概率分布的样本集。那这个问题怎么解决呢？</p>
-<h3 id="接受-拒绝采样"><a href="#接受-拒绝采样" class="headerlink" title="接受-拒绝采样"></a>接受-拒绝采样</h3><p>对于概率分布不是常见的分布，一个可行的办法是采用接受-拒绝采样来得到该分布的样本。既然 $p(x)$ 太复杂在程序中没法直接采样，那么我设定一个程序可采样的分布 $q(x$) 比如高斯分布，然后按照一定的方法拒绝某些样本，以达到接近 $p(x)$ 分布的目的，其中$q(x)$叫做 <code>proposal distribution</code>。</p>
+<h3 id="接受-拒绝采样">接受-拒绝采样</h3>
+<p>对于概率分布不是常见的分布，一个可行的办法是采用接受-拒绝采样来得到该分布的样本。既然 <span class="math inline">\(p(x)\)</span> 太复杂在程序中没法直接采样，那么我设定一个程序可采样的分布 <span class="math inline">\(q(x\)</span>) 比如高斯分布，然后按照一定的方法拒绝某些样本，以达到接近 <span class="math inline">\(p(x)\)</span> 分布的目的，其中<span class="math inline">\(q(x)\)</span>叫做 <code>proposal distribution</code>。</p>
 <p>具体采用过程如下，设定一个方便采样的常用概率分布函数 q(x)，以及一个常量 k，使得 p(x) 总在 kq(x) 的下方。</p>
-<p><img src="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423393056582.jpg" alt="接受-拒绝采样-w283"></p>
-<p>首先，采样得到<code>q(x)</code>的一个样本$z<em>0$，采样方法如上，使用<code>uniform(0,1)</code>转换得到。然后，从均匀分布$(0,kq(z_0))$中采样得到一个值$u$。如果$u$落在了上图中的灰色区域，则拒绝这次抽样，否则接受这个样本$z_0$。重复以上过程得到 n 个接受的样本 $z_0,z_1,…z</em>{n−1}$,则最后的蒙特卡罗方法求解结果为：</p>
-<script type="math/tex; mode=display">
-\frac{1}{n}\sum\limits_{i=0}^{n-1}\frac{f(z_i)}{p(z_i)}</script><p>整个过程中，我们通过一系列的接受拒绝决策来达到用q(x)模拟p(x)概率分布的目的。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>使用接受-拒绝采样，我们可以解决一些概率分布不是常见的分布的时候，得到其采样集并用蒙特卡罗方法求和的目的。但是接受-拒绝采样也只能部分满足我们的需求，在很多时候我们还是很难得到我们的概率分布的样本集。比如：</p>
-<ol>
-<li>对于一些二维分布$p(x,y)$，有时候我们只能得到条件分布$p(x|y)$和$p(y|x)$,却很难得到二维分布$p(x,y)$一般形式，这时我们无法用接受-拒绝采样得到其样本集。</li>
-<li>对于一些高维的复杂非常见分布$p(x_1,x_2,…,x_n)$，我们要找到一个合适的$q(x)和$k$非常困难。</li>
+<figure>
+<img src="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423393056582.jpg" alt="接受-拒绝采样-w283"><figcaption>接受-拒绝采样-w283</figcaption>
+</figure>
+<p>首先，采样得到<code>q(x)</code>的一个样本<span class="math inline">\(z_0\)</span>，采样方法如上，使用<code>uniform(0,1)</code>转换得到。然后，从均匀分布<span class="math inline">\((0,kq(z_0))\)</span>中采样得到一个值<span class="math inline">\(u\)</span>。如果<span class="math inline">\(u\)</span>落在了上图中的灰色区域，则拒绝这次抽样，否则接受这个样本<span class="math inline">\(z_0\)</span>。重复以上过程得到 n 个接受的样本 <span class="math inline">\(z_0,z_1,...z_{n−1}\)</span>,则最后的蒙特卡罗方法求解结果为： <span class="math display">\[
+\frac{1}{n}\sum\limits_{i=0}^{n-1}\frac{f(z_i)}{p(z_i)}
+\]</span> 整个过程中，我们通过一系列的接受拒绝决策来达到用q(x)模拟p(x)概率分布的目的。</p>
+<h2 id="小结">小结</h2>
+<p>使用接受-拒绝采样，我们可以解决一些概率分布不是常见的分布的时候，得到其采样集并用蒙特卡罗方法求和的目的。但是接受-拒绝采样也只能部分满足我们的需求，在很多时候我们还是很难得到我们的概率分布的样本集。比如：</p>
+<ol type="1">
+<li>对于一些二维分布<span class="math inline">\(p(x,y)\)</span>，有时候我们只能得到条件分布<span class="math inline">\(p(x|y)\)</span>和<span class="math inline">\(p(y|x)\)</span>,却很难得到二维分布<span class="math inline">\(p(x,y)\)</span>一般形式，这时我们无法用接受-拒绝采样得到其样本集。</li>
+<li>对于一些高维的复杂非常见分布<span class="math inline">\(p(x_1,x_2,...,x_n)\)</span>，我们要找到一个合适的<span class="math inline">\(q(x)和\)</span>k$非常困难。</li>
 </ol>
 <p>从上面可以看出，要想将蒙特卡罗方法作为一个通用的采样模拟求和的方法，必须解决如何方便得到各种复杂概率分布的对应的采样样本集的问题。</p>
 <p>此时就需要使用一些更加复杂的随机模拟的方法来生成样本。比如马尔科夫链蒙特卡罗方法，了解这个算法我们首先要对马尔科夫链的平稳分布的性质有基本的认识。</p>
@@ -635,7 +646,7 @@ Z_2 = \sqrt{-2 ln X_1}sin(2\pi X_2)</script><p>其他一些常见的连续分布
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -713,7 +724,7 @@ Z_2 = \sqrt{-2 ln X_1}sin(2\pi X_2)</script><p>其他一些常见的连续分布
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗方法"><span class="nav-number">2.</span> <span class="nav-text">蒙特卡罗方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#采样方法"><span class="nav-number">3.</span> <span class="nav-text">采样方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概率分布采样"><span class="nav-number">3.1.</span> <span class="nav-text">概率分布采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接受-拒绝采样"><span class="nav-number">3.2.</span> <span class="nav-text">接受-拒绝采样</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗方法"><span class="nav-number">2.</span> <span class="nav-text">蒙特卡罗方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#采样方法"><span class="nav-number">3.</span> <span class="nav-text">采样方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接受-拒绝采样"><span class="nav-number">3.1.</span> <span class="nav-text">接受-拒绝采样</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
@@ -747,7 +758,7 @@ Z_2 = \sqrt{-2 ln X_1}sin(2\pi X_2)</script><p>其他一些常见的连续分布
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.0k</span>
+    <span title="Site words total count">52.1k</span>
   
 </div>
 

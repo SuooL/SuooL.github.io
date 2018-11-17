@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="前言 了解了什么是蒙特卡罗方法之后，自然引出了马尔可夫链这个概念，其在 WIKI 的解释如下：  马尔可夫链（英语：Markov chain），又称离散时间马尔可夫链（discrete-time Markov chain，缩写为DTMC），因俄国数学家安德烈·马尔可夫得名，为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备“无记忆”的性质：下一状态的概率分布只能由当前状态决定，">
+<meta name="description" content="##前言 前面的文章已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。 如何能做到这一点呢？我们主要使用如下的定理。">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="马尔科夫链及其采样方法">
-<meta property="og:url" content="http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/index.html">
+<meta property="og:title" content="MCMC采样及M-H采样">
+<meta property="og:url" content="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="前言 了解了什么是蒙特卡罗方法之后，自然引出了马尔可夫链这个概念，其在 WIKI 的解释如下：  马尔可夫链（英语：Markov chain），又称离散时间马尔可夫链（discrete-time Markov chain，缩写为DTMC），因俄国数学家安德烈·马尔可夫得名，为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备“无记忆”的性质：下一状态的概率分布只能由当前状态决定，">
+<meta property="og:description" content="##前言 前面的文章已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。 如何能做到这一点呢？我们主要使用如下的定理。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423528014563.jpg">
-<meta property="og:updated_time" content="2018-11-17T02:15:23.325Z">
+<meta property="og:image" content="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/media/977C93F7-DC2F-4E60-BC0F-820B055DF4C4.png">
+<meta property="og:updated_time" content="2018-11-17T03:18:42.130Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="马尔科夫链及其采样方法">
-<meta name="twitter:description" content="前言 了解了什么是蒙特卡罗方法之后，自然引出了马尔可夫链这个概念，其在 WIKI 的解释如下：  马尔可夫链（英语：Markov chain），又称离散时间马尔可夫链（discrete-time Markov chain，缩写为DTMC），因俄国数学家安德烈·马尔可夫得名，为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备“无记忆”的性质：下一状态的概率分布只能由当前状态决定，">
-<meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423528014563.jpg">
+<meta name="twitter:title" content="MCMC采样及M-H采样">
+<meta name="twitter:description" content="##前言 前面的文章已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。 如何能做到这一点呢？我们主要使用如下的定理。">
+<meta name="twitter:image" content="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/media/977C93F7-DC2F-4E60-BC0F-820B055DF4C4.png">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/">
+  <link rel="canonical" href="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/">
 
 
 
 
 
-  <title>马尔科夫链及其采样方法 | SuooL's Blog</title>
+  <title>MCMC采样及M-H采样 | SuooL's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SuooL">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">马尔科夫链及其采样方法</h1>
+          <h1 class="post-title" itemprop="name headline">MCMC采样及M-H采样</h1>
         
 
         <div class="post-meta">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-16T10:36:19+08:00">
-                2018-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-17T10:12:15+08:00">
+                2018-11-17
               </time>
             
 
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-17T10:15:23+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-17T11:18:42+08:00">
                 2018-11-17
               </time>
             
@@ -368,8 +368,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/16/Markov-Chain-Monte-Carlo-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/16/Markov-Chain-Monte-Carlo-2/" itemprop="commentCount"></span>
+                <a href="/2018/11/17/Markov-Chain-Monte-Carlo-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/17/Markov-Chain-Monte-Carlo-3/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -377,7 +377,7 @@
 
           
           
-             <span id="/2018/11/16/Markov-Chain-Monte-Carlo-2/" class="leancloud_visitors" data-flag-title="马尔科夫链及其采样方法">
+             <span id="/2018/11/17/Markov-Chain-Monte-Carlo-3/" class="leancloud_visitors" data-flag-title="MCMC采样及M-H采样">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,379 字
+                  2,616 字
                 </span>
               
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -439,67 +439,102 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2>
-<p>了解了什么是蒙特卡罗方法之后，自然引出了马尔可夫链这个概念，其在 WIKI 的解释如下：</p>
-<blockquote>
-<p>马尔可夫链（英语：Markov chain），又称离散时间马尔可夫链（discrete-time Markov chain，缩写为DTMC），因俄国数学家安德烈·马尔可夫得名，为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备“无记忆”的性质：下一状态的概率分布只能由当前状态决定，在时间序列中它前面的事件均与之无关。这种特定类型的“无记忆性”称作马尔可夫性质。 在马尔可夫链的每一步，系统根据概率分布，可以从一个状态变到另一个状态，也可以保持当前状态。状态的改变叫做转移，与不同的状态改变相关的概率叫做转移概率。</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="定义及性质">定义及性质</h2>
-<p>依据上述 wiki 的定义可以知道，马尔可夫链能在很多时间序列模型中得到广泛的应用，比如循环神经网络RNN，隐式马尔科夫模型HMM等，当然MCMC也需要它。</p>
-<p>如果用精确的数学定义来描述，则假设我们的序列状态是<span class="math inline">\(...X_{t-2}, X_{t-1}, X_{t}, X_{t+1},...\)</span>那么我们的在时刻 <span class="math inline">\(X_{t+1}\)</span> 的状态的条件概率仅仅依赖于时刻 <span class="math inline">\(X_t\)</span>，即： <span class="math display">\[
-P(X_{t+1} |...X_{t-2}, X_{t-1}, X_{t} ) = P(X_{t+1} | X_{t})
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>##前言</p>
+<p><a href="https://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/">前面的文章</a>已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。</p>
+<p>如何能做到这一点呢？我们主要使用如下的定理。 <a id="more"></a></p>
+<h3 id="马尔科夫链的细致平稳条件">马尔科夫链的细致平稳条件</h3>
+<p><strong>细致平稳条件</strong>: 如果非周期马尔科夫链的状态转移矩阵<span class="math inline">\(P\)</span>和概率分布<span class="math inline">\(π(x)\)</span>对于所有的<span class="math inline">\(i,j\)</span>满足： <span class="math display">\[
+\pi(i)P(i,j) = \pi(j)P(j,i)
 \]</span></p>
-<p>既然某一时刻状态转移的概率只依赖于它的前一个状态，那么我们只要能求出系统中任意两个状态之间的转换概率，这个马尔科夫链的模型就定了。我们来看看下图这个马尔科夫链模型的具体的例子(来源于维基百科)。</p>
-<figure>
-<img src="https://suool-bolg.b0.upaiyun.com/2018/11/16/15423528014563.jpg" alt="股市转移概率"><figcaption>股市转移概率</figcaption>
-</figure>
-<p>这个马尔科夫链是表示股市模型的，共有三种状态：牛市（Bull market）, 熊市（Bear market）和横盘（Stagnant market）。每一个状态都以一定的概率转化到下一个状态。比如，牛市以0.025的概率转化到横盘的状态。这个状态概率转化图可以以矩阵的形式表示。如果我们定义矩阵P某一位置<span class="math inline">\(P(i,j)\)</span>的值为<span class="math inline">\(P(j|i)\)</span>,即从状态i转化到状态j的概率，并定义牛市为状态0， 熊市为状态1, 横盘为状态2. 这样我们得到了马尔科夫链模型的状态转移矩阵为： <span class="math display">\[
-P=\left( \begin{array}{ccc} 0.9&amp;0.075&amp;0.025 \\ 0.15&amp;0.80&amp; 0.05 \\ 0.25&amp;0.25&amp;0.5 \end{array} \right)
+<p>则称概率分布<span class="math inline">\(π(x)\)</span>是状态转移矩阵<span class="math inline">\(P\)</span>的平稳分布。上式被称为细致平稳条件(<code>detailed balance condition</code>)。</p>
+<p>其实这个定理是显而易见的，因为细致平稳条件的物理含义就是对于任何两个状态<span class="math inline">\(i,j\)</span>, 从<span class="math inline">\(i\)</span>转移出去到<span class="math inline">\(j\)</span>而丢失的概率质量，恰好会被从<span class="math inline">\(j\)</span>转移回<span class="math inline">\(i\)</span>的概率质量补充回来，所以状态上的概率质量<span class="math inline">\(π(i\)</span>)是稳定的，从而<span class="math inline">\(π(x)\)</span>是马尔科夫链的平稳分布。</p>
+<p>证明很简单,由细致平稳条件可知: <span class="math display">\[
+\sum\limits_{i=1}^{\infty}\pi(i)P(i,j)  = \sum\limits_{i=1}^{\infty} \pi(j)P(j,i) =  \pi(j)\sum\limits_{i=1}^{\infty} P(j,i) =  \pi(j)
 \]</span></p>
-<p>假设已知当前处在熊市、牛市、横盘的人的比例是概率分布向量<span class="math inline">\(π_0=[π_0(1),π_0(2),π_0(3)]\)</span>,那么第一天的分布比例将是<span class="math inline">\(π_1=π_0P\)</span>, 第二天的分布比例将是<span class="math inline">\(π_2=π_1P=π_0P^2\)</span> ，第n天分布比例将是<span class="math inline">\(π_n=π_{n−1}P=π_0P^n\)</span>。</p>
-<p>假设我们当前已知股市的概率分布为：[0.8,0.1,0.1],即80%概率的牛市，10%概率的熊盘与10%的横盘。然后这个状态作为序列概率分布的初始状态<span class="math inline">\(t_0\)</span>，将其带入这个状态转移矩阵计算<span class="math inline">\(t_1,t_2,t_3...\)</span>的状态。代码如下： <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">matrix = np.matrix([[<span class="number">0.9</span>,<span class="number">0.075</span>,<span class="number">0.025</span>],[<span class="number">0.15</span>,<span class="number">0.8</span>,<span class="number">0.05</span>],[<span class="number">0.25</span>,<span class="number">0.25</span>,<span class="number">0.5</span>]], dtype=float)</span><br><span class="line">vector1 = np.matrix([[<span class="number">0.8</span>,<span class="number">0.1</span>,<span class="number">0.1</span>]], dtype=float)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    vector1 = vector1*matrix</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"Current round:"</span> , i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> vector1</span><br></pre></td></tr></table></figure></p>
-<p>通过观察输出结果,可以看出在迭代一定次数之后,数据结果出现了如下的稳定情况 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Current round: <span class="number">48</span></span><br><span class="line"><span class="string">[[0.62500011 0.3124999  0.06249999]]</span></span><br><span class="line">Current round: <span class="number">49</span></span><br><span class="line"><span class="string">[[0.62500008 0.31249992 0.06249999]]</span></span><br><span class="line">Current round: <span class="number">50</span></span><br><span class="line"><span class="string">[[0.62500006 0.31249994 0.06249999]]</span></span><br><span class="line">.............</span><br><span class="line">Current round: <span class="number">59</span></span><br><span class="line"><span class="string">[[0.625  0.3125 0.0625]]</span></span><br><span class="line">Current round: <span class="number">60</span></span><br><span class="line"><span class="string">[[0.625  0.3125 0.0625]]</span></span><br><span class="line">Current round: <span class="number">61</span></span><br><span class="line"><span class="string">[[0.625  0.3125 0.0625]]</span></span><br><span class="line">Current round: <span class="number">62</span></span><br><span class="line"><span class="string">[[0.625  0.3125 0.0625]]</span></span><br><span class="line">........</span><br></pre></td></tr></table></figure></p>
-<p>可以发现，从第60轮开始，我们的状态概率分布就不变了，一直保持在[0.625 0.3125 0.0625]，即62.5%的牛市，31.25%的熊市与6.25%的横盘。</p>
-<p>我们现在换一个初始概率分布试一试，现在我们用[0.7,0.1,0.2]作为初始概率分布, 利用上述的代码计算,得出的结果一样出现的最终状态的概率分布趋于同一个稳定的概率分布[0.625 0.3125 0.0625], 也就是说我们的<strong>马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关</strong>。这是一个非常好的性质, 也就是说，如果我们得到了这个稳定概率分布对应的马尔科夫链模型的状态转移矩阵，则我们可以用任意的概率分布样本开始，代入马尔科夫链模型的状态转移矩阵，这样经过一些序列的转换，最终就可以得到符合对应稳定概率分布的样本。</p>
-<p>这个性质不光对我们上面的状态转移矩阵有效，对于绝大多数的其他的马尔科夫链模型的状态转移矩阵也有效。同时不光是离散状态，连续状态时也成立。</p>
-<p>同时这个性质也意味着，对于一个确定的状态转移矩阵 P，它的 n 次幂<span class="math inline">\(P^n\)</span>在当 n 大于一定的值的时候也可以发现是确定的.</p>
-<h3 id="性质的数学语言描述">性质的数学语言描述</h3>
-<p>如果一个非周期的马尔科夫链有状态转移矩阵P, 并且它的任何两个状态是连通的，那么<span class="math inline">\(\lim_{n \to \infty}P_{ij}^n\)</span>与 i 无关，我们有： <span class="math display">\[
-\lim_{n \to \infty}P_{ij}^n = \pi(j) \tag{1}
+<p>将上式用矩阵表示即为： <span class="math display">\[
+\pi P = \pi
 \]</span></p>
+<p>即满足马尔可夫链的收敛性质。也就是说，只要我们找到了可以使概率分布<span class="math inline">\(π(x)\)</span>满足细致平稳分布的矩阵<span class="math inline">\(P\)</span>即可。这给了我们寻找从平稳分布<span class="math inline">\(π\)</span>, 找到对应的马尔科夫链状态转移矩阵<span class="math inline">\(P\)</span>的新思路。</p>
+<p>不过不幸的是，仅仅从细致平稳条件还是很难找到合适的矩阵P。比如我们的目标平稳分布是<span class="math inline">\(π(x)\)</span>,随机找一个马尔科夫链状态转移矩阵<span class="math inline">\(Q\)</span>,它是很难满足细致平稳条件的，即: <span class="math display">\[
+\pi(i)Q(i,j) \neq \pi(j)Q(j,i)
+\]</span></p>
+<p>那么如何使这个等式满足呢？</p>
+<h2 id="mcmc采样">MCMC采样</h2>
+<p>由于一般情况下，目标平稳分布<span class="math inline">\(π(x)\)</span>和某一个马尔科夫链状态转移矩阵<span class="math inline">\(Q\)</span>不满足细致平稳条件，即: <span class="math display">\[
+\pi(i)Q(i,j) \neq \pi(j)Q(j,i)
+\]</span></p>
+<p>我们可以对上式做一个改造，使细致平稳条件成立。方法是引入一个<span class="math inline">\(α(i,j)\)</span>,使上式可以取等号，即：</p>
 <p><span class="math display">\[
-\lim_{n \to \infty}P^n = \left( \begin{array}{ccc} \pi(1)&amp;\pi(2)&amp;\ldots&amp;\pi(j)&amp;\ldots \\ \pi(1)&amp;\pi(2)&amp;\ldots&amp;\pi(j)&amp;\ldots \\ \ldots&amp;\ldots&amp;\ldots&amp;\ldots&amp;\ldots \\ \pi(1)&amp;\pi(2)&amp;\ldots&amp;\pi(j)&amp;\ldots \\ \ldots&amp;\ldots&amp;\ldots&amp;\ldots&amp;\ldots \end{array} \right) \tag{2}
+\pi(i)Q(i,j)\alpha(i,j) = \pi(j)Q(j,i)\alpha(j,i)
 \]</span></p>
-<p><span class="math display">\[
-\pi(j) = \sum\limits_{i=0}^{\infty}\pi(i)P_{ij} \tag{3}
+<p>此时的问题转化为什么样的<span class="math inline">\(α(i,j)\)</span>可以使等式成立, 其实很简单，只要满足下两式即可： <span class="math display">\[
+\alpha(i,j) = \pi(j)Q(j,i) \\
+\alpha(j,i) = \pi(i)Q(i,j)
 \]</span></p>
-<p>π 是方程<span class="math inline">\(πP=π\)</span>的唯一非负解，其中 <span class="math display">\[
-\pi = [\pi(1),\pi(2),...,\pi(j),...]\;\; , \sum\limits_{i=0}^{\infty}\pi(i) = 1 \tag{4}
+<p>这样，我们就得到了我们的分布<span class="math inline">\(π(x)\)</span>对应的马尔科夫链状态转移矩阵<span class="math inline">\(P\)</span>，满足： <span class="math display">\[
+P(i,j) = Q(i,j)\alpha(i,j)
 \]</span></p>
-<p>上面的性质中需要解释的有：</p>
+<p>也就是说，我们的目标矩阵<span class="math inline">\(P\)</span>可以通过任意一个马尔科夫链状态转移矩阵<span class="math inline">\(Q\)</span>乘以<span class="math inline">\(α(i,j)\)</span>得到。<span class="math inline">\(α(i,j)\)</span>我们有一般称之为接受率。取值在[0,1]之间，可以理解为一个概率值。即目标矩阵<span class="math inline">\(P\)</span>可以通过任意一个马尔科夫链状态转移矩阵<span class="math inline">\(Q\)</span>以一定的接受率获得。这个很像我们在<a href="https://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-1/">蒙特卡罗方法</a>讲到的接受-拒绝采样，那里是以一个常用分布通过一定的接受-拒绝概率得到一个非常见分布，这里是以一个常见的马尔科夫链状态转移矩阵<span class="math inline">\(Q\)</span>通过一定的接受-拒绝概率得到目标转移矩阵<span class="math inline">\(P\)</span>,两者的解决问题思路是类似的。</p>
+<p><strong>MCMC的采样过程</strong>如下</p>
 <ol type="1">
-<li>非周期的马尔科夫链：定理中的“非周期“这个概念不解释，因为我们遇到的绝大多数马氏链都是非周期的；这个主要是指马尔科夫链的状态转化不是循环的，如果是循环的则永远不会收敛。幸运的是我们遇到的马尔科夫链一般都是非周期性的。用数学方式表述则是：对于任意某一状态i，d为集合<span class="math inline">\(\{n \mid n \geq 1,P_{ii}^n&gt;0 \}\)</span>的最大公约数，如果 d=1 ，则该状态为非周期的</li>
-<li>任何两个状态是连通的：这个指的是从任意一个状态可以通过有限步到达其他的任意一个状态，不会出现条件概率一直为0导致不可达的情况。</li>
-<li>马尔科夫链的状态数可以是有限的，也可以是无限的。因此可以用于连续概率分布和离散概率分布。</li>
-<li>π 通常称为马尔科夫链的平稳分布。</li>
-<li>我们用<span class="math inline">\(X_i\)</span>表示在马氏链上跳转第 i 步所处的状态，如果<span class="math inline">\(\lim_{n \rightarrow \infty}P_{ij}^{n} = \pi(j)\)</span>存在,很容易证明定理第二个结论 <span class="math display">\[
-P(X_{n+1}=j) = \sum_{i=1}^{\infty}P(X_{n}=i)P(X_{n+1}=j\mid x_{n}=i)=\sum_{i=1}^{\infty}P(X_{n}=i) p_{ij}
-\]</span></li>
-</ol>
-<h2 id="基于马尔科夫链采样">基于马尔科夫链采样</h2>
-<p>对于给定的概率分布<span class="math inline">\(p(x)\)</span> ，我们希望能有便捷的方式生成它对应的样本。由于马尔科夫链能收敛到平稳分布，于是一个很的漂亮想法是：如果我们能构造一个转移矩阵为 P 的马尔科夫链，使得该马尔科夫链的平稳分布恰好是<span class="math inline">\(p(x)\)</span>，那么我们从任何一个初始状态<span class="math inline">\(x_0\)</span>出发沿着马尔科夫链转移，得到一个转移序列<span class="math inline">\(x_0,x_1,x_2,\ldots,x_n,x_{n+1},\ldots\)</span>, 如果马尔科夫在第n步已经收敛了，于是我们就得到了<span class="math inline">\(p(x)\)</span>的样本<span class="math inline">\(x_n,x_{n+1},\ldots\)</span></p>
-<p>总结下基于马尔科夫链的采样过程：</p>
-<ol type="1">
-<li>输入马尔科夫链状态转移矩阵P，设定状态转移次数阈值<span class="math inline">\(n_1\)</span>，需要的样本个数<span class="math inline">\(n_2\)</span></li>
+<li>输入我们任意选定的马尔科夫链状态转移矩阵<span class="math inline">\(Q\)</span>，平稳分布<span class="math inline">\(π(x)\)</span>，设定状态转移次数阈值<span class="math inline">\(n_1\)</span>，需要的样本个数<span class="math inline">\(n_2\)</span></li>
 <li>从任意简单概率分布采样得到初始状态值<span class="math inline">\(x_0\)</span></li>
-<li><span class="math inline">\(for t=0 to n_1+n_2−1:\)</span> 从条件概率分布<span class="math inline">\(P(x|x_t)\)</span>中采样得到样本<span class="math inline">\(x_t+1\)</span></li>
+<li><span class="math inline">\(for\; t=0 \; to \; n_1+n_2−1:\)</span>
+<ol type="1">
+<li>从条件概率分布<span class="math inline">\(Q(x|x_t)\)</span>中采样得到样本<span class="math inline">\(x_∗\)</span></li>
+<li>从均匀分布采样<span class="math inline">\(u∼uniform[0,1]\)</span></li>
+<li>如果<span class="math inline">\(u &lt; \alpha(x_t,x_{*}) = \pi(x_{*})Q(x_{*},x_t)\)</span>, 则接受转移<span class="math inline">\(x_t \to x_{*}\)</span>，即<span class="math inline">\(x_{t+1}= x_{*}\)</span></li>
+<li>否则不接受转移，<span class="math inline">\(t=max(t−1,0)\)</span></li>
+</ol></li>
+<li>样本集<span class="math inline">\((x_{n_1}, x_{n_1+1},..., x_{n_1+n_2-1})\)</span>即为我们需要的平稳分布对应的样本集。</li>
 </ol>
-<p>样本集<span class="math inline">\((x_{n1},x_{n_1+1},\ldots,...,x_{n1+n2−1})\)</span>即为我们需要的平稳分布对应的样本集。</p>
-<h2 id="小结">小结</h2>
-<p>马尔科夫链的收敛性质主要由转移矩阵P决定， 所以基于马尔科夫链做采样的关键问题是如何构造转移矩阵P，使得平稳分布恰好是我们要的分布<span class="math inline">\(p(x)\)</span>。</p>
-<p>如何能做到这一点呢？</p>
-<p>幸运的是，MCMC采样通过迂回的方式解决了上面这个大问题，我们在下一篇来讨论MCMC的采样，以及它的使用改进版采样: M-H(Metropolis-Hastings)采样和Gibbs采样.</p>
+<p>以上的MCMC采样算法已经能很漂亮的工作了，不过它有一个小的问题：马尔科夫链<span class="math inline">\(Q\)</span>在转移的过程中的接受率<span class="math inline">\(α(i,j)\)</span>可能偏小，这样采样过程中容易原地踏步，拒绝大量的跳转，使得马尔科夫链收敛到平稳分布<span class="math inline">\(p(x)\)</span>的速度太慢。有可能我们采样了上百万次马尔可夫链还没有收敛，也就是上面这个<span class="math inline">\(n_1\)</span>要非常非常的大，这让人难以接受，怎么办呢？</p>
+<p>看下节.</p>
+<h2 id="m-h采样">M-H采样</h2>
+<p>M-H采样是Metropolis-Hastings采样的简称，这个算法首先由Metropolis提出，被Hastings改进，因此被称之为Metropolis-Hastings采样或M-H采样.</p>
+<p>M-H采样解决了我们上一节MCMC采样接受率过低的问题。</p>
+<p>假设<span class="math inline">\(α(i,j)=0.1,α(j,i)=0.2\)</span>此时满足细致平稳条件，于是: <span class="math display">\[
+p(i)q(i,j) \cdot 0.1=p(j)q(j,i) \cdot 0.2
+\]</span></p>
+<p>上式两边同时扩大5倍，等式变为: <span class="math display">\[
+p(i)q(i,j) \cdot 0.5=p(j)q(j,i) \cdot 1
+\]</span></p>
+<p>我们提高了接受率，而细致平稳条件并没有打破。这启发我们可以把细致平稳条件中<span class="math inline">\(α(i,j),α(j,i)\)</span>等比例放大，使得两数中较大的一个放大到1，如此提高了采样中的跳转接受率。 这样我们的接受率可以做如下改进，即： <span class="math display">\[
+\alpha(i,j) = min\{ \frac{\pi(j)Q(j,i)}{\pi(i)Q(i,j)},1\}
+\]</span></p>
+<p>通过这个微小的改造，我们就得到了可以在实际应用中使用的M-H采样算法过程如下：</p>
+<ol type="1">
+<li>输入我们任意选定的马尔科夫链状态转移矩阵<span class="math inline">\(Q\)</span>，平稳分布<span class="math inline">\(π(x)\)</span>，设定状态转移次数阈值<span class="math inline">\(n_1\)</span>，需要的样本个数<span class="math inline">\(n_2\)</span></li>
+<li>从任意简单概率分布采样得到初始状态值<span class="math inline">\(x_0\)</span></li>
+<li><span class="math inline">\(for\; t=0 \;to\; n_1+n_2−1:\)</span>
+<ol type="1">
+<li>从条件概率分布<span class="math inline">\(Q(x|x_t)\)</span>中采样得到样本<span class="math inline">\(x_∗\)</span></li>
+<li>从均匀分布采样<span class="math inline">\(u∼uniform[0,1]\)</span></li>
+<li>如果<span class="math inline">\(u &lt; \alpha(x_t,x_{*}) = min\{ \frac{\pi(j)Q(j,i)}{\pi(i)Q(i,j)},1\}\)</span>, 则接受转移<span class="math inline">\(x_t \to x_{*}\)</span>，即<span class="math inline">\(x_{t+1}=x_∗\)</span></li>
+<li>否则不接受转移，<span class="math inline">\(t=max(t-1,0)\)</span></li>
+</ol></li>
+<li>样本集<span class="math inline">\((x_{n_1}, x_{n_1+1},..., x_{n_1+n_2-1})\)</span>即为我们需要的平稳分布对应的样本集。</li>
+</ol>
+<p>很多时候，我们选择的马尔科夫链状态转移矩阵<span class="math inline">\(Q\)</span>如果是对称的，即满足<span class="math inline">\(Q(i,j)=Q(j,i)\)</span>,这时我们的接受率可以进一步简化为： <span class="math display">\[
+\alpha(i,j) = min\{ \frac{\pi(j)}{\pi(i)},1\}
+\]</span></p>
+<h2 id="note注意点">Note注意点</h2>
+<ul>
+<li>具体的关于上述两个采样的方法的转移矩阵<span class="math inline">\(Q\)</span>的选择，如果是离散的分布，那么只要这个矩阵满足每行概率和为1即可，没有特殊要求。如果是连续分布，则一般会选择正态分布作为<span class="math inline">\(Q\)</span>，因为正态分布的联合分布，条件分布，边缘分布都是正态分布，所以后面计算条件概率比较的容易。对采样的好坏一般影响都不大，只能说不同的<span class="math inline">\(Q\)</span>对算法的收敛速度会快有慢，只要收敛了，最后的采样结果都是可以的。</li>
+<li>这里<span class="math inline">\(α(i,j)\)</span>是某一个位置的<span class="math inline">\((i,j)\)</span>的接受率，所以α实际上也是一个矩阵，如果按矩阵的写法，就是:<span class="math inline">\(P=Qα^T\)</span>, 不要理解为所有的位置都乘以的是同一个α(i,j),这是不对的。</li>
+</ul>
+<p> ### M-H采样实例</p>
+<p>我们的目标平稳分布是一个均值3，标准差2的正态分布，而选择的马尔可夫链状态转移矩阵<span class="math inline">\(Q(i,j)\)</span>的条件转移概率是以<span class="math inline">\(i\)</span>为均值,方差<span class="math inline">\(1\)</span>的正态分布在位置<span class="math inline">\(j\)</span>的值。这个例子仅仅用来加深对M-H采样过程的理解。毕竟一个普通的一维正态分布用不着去用M-H采样来获得样本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> norm</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">norm_dist_prob</span><span class="params">(theta)</span>:</span></span><br><span class="line">    y = norm.pdf(theta, loc=<span class="number">3</span>, scale=<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line">T = <span class="number">100000</span></span><br><span class="line">pi = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(T)]</span><br><span class="line">sigma = <span class="number">1</span></span><br><span class="line">t = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> t &lt; T<span class="number">-1</span>:</span><br><span class="line">    t = t + <span class="number">1</span></span><br><span class="line">    pi_star = norm.rvs(loc=pi[t - <span class="number">1</span>], scale=sigma, size=<span class="number">1</span>, random_state=<span class="keyword">None</span>)</span><br><span class="line">    alpha = min(<span class="number">1</span>, (norm_dist_prob(pi_star[<span class="number">0</span>]) / norm_dist_prob(pi[t - <span class="number">1</span>])))</span><br><span class="line"></span><br><span class="line">    u = random.uniform(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> u &lt; alpha:</span><br><span class="line">        pi[t] = pi_star[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pi[t] = pi[t - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">plt.scatter(pi, norm.pdf(pi, loc=<span class="number">3</span>, scale=<span class="number">2</span>))</span><br><span class="line">num_bins = <span class="number">1000</span></span><br><span class="line">plt.hist(pi, num_bins, density=<span class="number">1</span>, facecolor=<span class="string">'red'</span>, alpha=<span class="number">0.7</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>结果如下： <img src="media/977C93F7-DC2F-4E60-BC0F-820B055DF4C4.png" alt="采样结果"></p>
+<h2 id="m-h采样总结">M-H采样总结</h2>
+<p>M-H采样完整解决了使用蒙特卡罗方法需要的任意概率分布样本集的问题，因此在实际生产环境得到了广泛的应用。</p>
+<p>但是在大数据时代，M-H采样面临着两大难题：</p>
+<ol type="1">
+<li><p>我们的数据特征非常的多，M-H采样由于接受率计算式<span class="math inline">\(\frac{\pi(j)Q(j,i)}{\pi(i)Q(i,j)}\)</span>的存在，在高维时需要的计算时间非常的可观，算法效率很低。同时<span class="math inline">\(α(i,j)\)</span>一般小于1，有时候辛苦计算出来却被拒绝了。能不能做到不拒绝转移呢？</p></li>
+<li><p>由于特征维度大，很多时候我们甚至很难求出目标的各特征维度联合分布，但是可以方便求出各个特征之间的条件概率分布。这时候我们能不能只有各维度之间条件概率分布的情况下方便的采样呢？</p></li>
+</ol>
+<p>Gibbs采样解决了上面两个问题，因此在大数据时代，MCMC采样基本是Gibbs采样的天下，下一篇我们就来学习Gibbs采样。</p>
 
       
     </div>
@@ -559,8 +594,8 @@ P(X_{n+1}=j) = \sum_{i=1}^{\infty}P(X_{n}=i)P(X_{n+1}=j\mid x_{n}=i)=\sum_{i=1}^
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/16/Markov-Chain-Monte-Carlo-1/" rel="next" title="蒙特卡罗方法概述">
-                <i class="fa fa-chevron-left"></i> 蒙特卡罗方法概述
+              <a href="/2018/11/16/HMM-Viterbi/" rel="next" title="隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用">
+                <i class="fa fa-chevron-left"></i> 隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用
               </a>
             
           </div>
@@ -568,10 +603,6 @@ P(X_{n+1}=j) = \sum_{i=1}^{\infty}P(X_{n}=i)P(X_{n+1}=j\mid x_{n}=i)=\sum_{i=1}^
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/16/Text-Segmentation-1/" rel="prev" title="NLP 之分词技术概述">
-                NLP 之分词技术概述 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -736,7 +767,7 @@ P(X_{n+1}=j) = \sum_{i=1}^{\infty}P(X_{n}=i)P(X_{n+1}=j\mid x_{n}=i)=\sum_{i=1}^
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义及性质"><span class="nav-number">2.</span> <span class="nav-text">定义及性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性质的数学语言描述"><span class="nav-number">2.1.</span> <span class="nav-text">性质的数学语言描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于马尔科夫链采样"><span class="nav-number">3.</span> <span class="nav-text">基于马尔科夫链采样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔科夫链的细致平稳条件"><span class="nav-number">1.</span> <span class="nav-text">马尔科夫链的细致平稳条件</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#mcmc采样"><span class="nav-number"></span> <span class="nav-text">MCMC采样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#m-h采样"><span class="nav-number"></span> <span class="nav-text">M-H采样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#note注意点"><span class="nav-number"></span> <span class="nav-text">Note注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#m-h采样总结"><span class="nav-number"></span> <span class="nav-text">M-H采样总结</span></a></li></div>
             
 
           </div>
@@ -908,9 +939,9 @@ P(X_{n+1}=j) = \sum_{i=1}^{\infty}P(X_{n}=i)P(X_{n+1}=j\mid x_{n}=i)=\sum_{i=1}^
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/';
-          this.page.identifier = '2018/11/16/Markov-Chain-Monte-Carlo-2/';
-          this.page.title = '马尔科夫链及其采样方法';
+          this.page.url = 'http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/';
+          this.page.identifier = '2018/11/17/Markov-Chain-Monte-Carlo-3/';
+          this.page.title = 'MCMC采样及M-H采样';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://suool.disqus.com/embed.js';

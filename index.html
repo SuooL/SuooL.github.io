@@ -283,6 +283,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SuooL">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuooL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/17/Markov-Chain-Monte-Carlo-3/" itemprop="url">MCMC采样及M-H采样</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-17T10:12:15+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-17T11:18:42+08:00">
+                2018-11-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/17/Markov-Chain-Monte-Carlo-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/17/Markov-Chain-Monte-Carlo-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/17/Markov-Chain-Monte-Carlo-3/" class="leancloud_visitors" data-flag-title="MCMC采样及M-H采样">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,616 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##前言</p>
+<p><a href="https://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/">前面的文章</a>已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。</p>
+<p>如何能做到这一点呢？我们主要使用如下的定理。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/17/Markov-Chain-Monte-Carlo-3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/16/HMM-Viterbi/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -452,6 +664,7 @@
         
           
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">
+
           
         
       
@@ -617,7 +830,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,278 字
+                  1,345 字
                 </span>
               
 
@@ -633,7 +846,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -655,7 +868,8 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。<br>
+          <h2 id="前言">前言</h2>
+<p>NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/16/Text-Segmentation-1/#more" rel="contents">
@@ -756,8 +970,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T16:31:43+08:00">
-                2018-11-16
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-17T10:15:23+08:00">
+                2018-11-17
               </time>
             
           </span>
@@ -1041,7 +1255,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,016 字
+                  2,139 字
                 </span>
               
 
@@ -1057,7 +1271,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -1079,8 +1293,9 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。</p>
-<p>从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先得搞清楚蒙特卡罗方法和马尔科夫链的原理。<br>
+          <h2 id="前言">前言</h2>
+<p>作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。</p>
+<p>从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先得搞清楚蒙特卡罗方法和马尔科夫链的原理。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/16/Markov-Chain-Monte-Carlo-1/#more" rel="contents">
@@ -1290,8 +1505,9 @@
 
       
         
-          <h2 id="说明前面"><a href="#说明前面" class="headerlink" title="说明前面"></a>说明前面</h2><p>这是一篇去年差不多这个时候写的东西，现在读起来依然适用现在的自己。</p>
-<p>最近这几天是真的有点不好受，昨晚几乎失眠了一整晚，缺少很多的东西，对未来看不清楚，对自己没有信心，心里面就充满了怀疑。<br>
+          <h2 id="说明前面">说明前面</h2>
+<p>这是一篇去年差不多这个时候写的东西，现在读起来依然适用现在的自己。</p>
+<p>最近这几天是真的有点不好受，昨晚几乎失眠了一整晚，缺少很多的东西，对未来看不清楚，对自己没有信心，心里面就充满了怀疑。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/01/self-analysis/#more" rel="contents">
@@ -1501,11 +1717,9 @@
 
       
         
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>前面的文章中使用 feed forward neural network 实现了简单的手写数字识别，但是这不能直接照搬到 kaggle上面，因为 kaggle 使用的数据集是 CSV 文件，因此需要自定义一个 pytorch 的数据类型，来完成这个入门题目。</p>
-<p>本文的提纲如下:</p>
-<ol>
-<li>自定义 Dataset </li>
-<li>模型搭建保存与读取
+          <h2 id="引言">引言</h2>
+<p>前面的文章中使用 feed forward neural network 实现了简单的手写数字识别，但是这不能直接照搬到 kaggle上面，因为 kaggle 使用的数据集是 CSV 文件，因此需要自定义一个 pytorch 的数据类型，来完成这个入门题目。</p>
+<p>本文的提纲如下: 1. 自定义 Dataset 2. 模型搭建保存与读取
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/29/custom-dataset-use-pytorch/#more" rel="contents">
@@ -1515,7 +1729,7 @@
           <!--/noindex-->
         
       
-    </li></ol></div>
+    </p></div>
     
     
     
@@ -1677,7 +1891,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,676 字
+                  1,686 字
                 </span>
               
 
@@ -1715,15 +1929,13 @@
 
       
         
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>上一篇文章提到了 logistics regression 、多分类的 softmax 算法及梯度等概念，其实就可以很自然的引出深度学习了。</p>
-<p>引用WiKi的定义：</p>
-<blockquote>
-<p>深度学习（deep learning）是机器学习的分支，是一种试图使用包含复杂结构或由多重非线性变换构成的多个处理层对数据进行高层抽象的算法。</p>
-</blockquote>
+          <h2 id="引言">引言</h2>
+<p>上一篇文章提到了 logistics regression 、多分类的 softmax 算法及梯度等概念，其实就可以很自然的引出深度学习了。</p>
+<p>引用WiKi的定义： &gt;深度学习（deep learning）是机器学习的分支，是一种试图使用包含复杂结构或由多重非线性变换构成的多个处理层对数据进行高层抽象的算法。</p>
 <p>早在1958年就提出了 perceptron 的模型，即最简单的线性感知机模型，在当时引起了很大的轰动，甚至提出了机器可以取代人的说法，然而后来就被人质疑，现在看来线性感知机的限制显而易见。</p>
 <p>然后在20世纪80年代，根据之前 perceptron 提出了 multi-layer perceptron（又叫 Neural Network）， 这个模型和当今的深度神经网络是没有显著区别的。1986年提出了反向传播的概念，但是通常大于三层的 hidden layer 就没有效果了，神经网络学习出现了梯度消失的问题。</p>
 <p>后来在 2006年，在上述神经网络的算法模型上，取得了一些改进（RBM initialization），将之前 multi-layer perceptron 改了个名字 —— Deep Learning 重新提了出来，2009年的时候 DL 的运算开始利用 GPU，后面其在各个领域取得了一些突破性的应用进展，就火起来了。</p>
-<p>所以，深度学习并不是什么新鲜事物，只是换了个名字的稍微改进的旧模型。<br>
+<p>所以，深度学习并不是什么新鲜事物，只是换了个名字的稍微改进的旧模型。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/#more" rel="contents">
@@ -1895,7 +2107,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,176 字
+                  2,585 字
                 </span>
               
 
@@ -1911,7 +2123,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -1933,7 +2145,8 @@
 
       
         
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>逻辑斯谛回归（logistic regression）是统计学习中的经典分类算法。最大熵模型是概率模型学习的一个准则，将其推广到分类问题得到最大熵模型（maximum entropy model). 逻辑斯谛回归模型与最大熵模型都是对数线性模型.<br>
+          <h2 id="引言">引言</h2>
+<p>逻辑斯谛回归（logistic regression）是统计学习中的经典分类算法。最大熵模型是概率模型学习的一个准则，将其推广到分类问题得到最大熵模型（maximum entropy model). 逻辑斯谛回归模型与最大熵模型都是对数线性模型.
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/05/logistic-mnist/#more" rel="contents">
@@ -2143,12 +2356,11 @@
 
       
         
-          <h2 id="系统问题"><a href="#系统问题" class="headerlink" title="系统问题"></a>系统问题</h2><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><strong>1.Ubuntu 下安装 <code>docker</code> 使用非 <code>sudo</code> 命令的问题</strong>：</p>
+          <h2 id="系统问题">系统问题</h2>
+<h3 id="docker">Docker</h3>
+<p><strong>1.Ubuntu 下安装 <code>docker</code> 使用非 <code>sudo</code> 命令的问题</strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/images/json: dial unix /var/run/docker.sock: connect: permission denied</span><br></pre></td></tr></table></figure>
-<p>解决方法：</p>
-<blockquote>
-<p>the error message tells you that your current user can’t access the docker engine, because you’re lacking permissions to access the unix socket to communicate with the engine.<br><strong>Temporary solution</strong><br>Use the <code>sudo</code> command to execute the commands with elevated permissions every time.<br><strong>Permanent (suggested) solution</strong><br>Add the current user to the docker group. This can be achieved by typing<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -<span class="selector-tag">a</span> -G docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
+<p>解决方法： &gt;the error message tells you that your current user can’t access the docker engine, because you’re lacking permissions to access the unix socket to communicate with the engine. <strong>Temporary solution</strong> Use the <code>sudo</code> command to execute the commands with elevated permissions every time. <strong>Permanent (suggested) solution</strong> Add the current user to the docker group. This can be achieved by typing <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -<span class="selector-tag">a</span> -G docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>You have to log out and log in again</strong> for the group membership to take effect.</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -2160,216 +2372,6 @@
         
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/07/19/Mnist-With-Decision-Tree-ID3/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SuooL">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SuooL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/19/Mnist-With-Decision-Tree-ID3/" itemprop="url">决策树及其在手写数字识别的实践</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T10:32:03+08:00">
-                2018-07-19
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-29T20:53:08+08:00">
-                2018-10-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/07/19/Mnist-With-Decision-Tree-ID3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/19/Mnist-With-Decision-Tree-ID3/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/07/19/Mnist-With-Decision-Tree-ID3/" class="leancloud_visitors" data-flag-title="决策树及其在手写数字识别的实践">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2,274 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  10 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 <code>if-then</code> 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/19/Mnist-With-Decision-Tree-ID3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
     
     
     
@@ -2450,7 +2452,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2546,7 +2548,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.0k</span>
+    <span title="Site words total count">52.1k</span>
   
 </div>
 
