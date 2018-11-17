@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://suool.net/"/>
-  <updated>2018-11-17T03:26:34.297Z</updated>
+  <updated>2018-11-17T03:28:45.645Z</updated>
   <id>http://suool.net/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用</title>
+    <link href="http://suool.net/2018/11/18/HMM-Viterbi/"/>
+    <id>http://suool.net/2018/11/18/HMM-Viterbi/</id>
+    <published>2018-11-18T14:32:35.000Z</published>
+    <updated>2018-11-17T03:28:45.645Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;
+
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://suool.net/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="NLP" scheme="http://suool.net/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/NLP/"/>
+    
+    
+      <category term="NLP" scheme="http://suool.net/tags/NLP/"/>
+    
+  </entry>
   
   <entry>
     <title>MCMC采样及M-H采样</title>
@@ -38,34 +66,6 @@
     
     
       <category term="机器学习" scheme="http://suool.net/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用</title>
-    <link href="http://suool.net/2018/11/16/HMM-Viterbi/"/>
-    <id>http://suool.net/2018/11/16/HMM-Viterbi/</id>
-    <published>2018-11-16T14:32:35.000Z</published>
-    <updated>2018-11-16T07:11:12.847Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;
-
-      
-    
-    </summary>
-    
-      <category term="机器学习" scheme="http://suool.net/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="NLP" scheme="http://suool.net/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/NLP/"/>
-    
-    
-      <category term="NLP" scheme="http://suool.net/tags/NLP/"/>
     
   </entry>
   
