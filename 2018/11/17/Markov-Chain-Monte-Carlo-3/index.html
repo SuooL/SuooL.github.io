@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,">
+  <meta name="keywords" content="算法,">
 
 
 
@@ -82,19 +82,19 @@
 
 
 <meta name="description" content="MCMC采样及M-H采样 前言 前面的文章已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。 如何能做到这一点呢？我们主要使用如下的定理。">
-<meta name="keywords" content="机器学习">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MCMC采样及M-H采样">
 <meta property="og:url" content="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
 <meta property="og:description" content="MCMC采样及M-H采样 前言 前面的文章已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。 如何能做到这一点呢？我们主要使用如下的定理。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/media/977C93F7-DC2F-4E60-BC0F-820B055DF4C4.png">
-<meta property="og:updated_time" content="2018-11-17T03:26:34.297Z">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/19/977C93F7-DC2F-4E60-BC0F-820B055DF4C4.png">
+<meta property="og:updated_time" content="2018-11-19T10:56:31.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MCMC采样及M-H采样">
 <meta name="twitter:description" content="MCMC采样及M-H采样 前言 前面的文章已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。 如何能做到这一点呢？我们主要使用如下的定理。">
-<meta name="twitter:image" content="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-3/media/977C93F7-DC2F-4E60-BC0F-820B055DF4C4.png">
+<meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/11/19/977C93F7-DC2F-4E60-BC0F-820B055DF4C4.png">
 
 
 
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-17T11:26:34+08:00">
-                2018-11-17
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-19T18:56:31+08:00">
+                2018-11-19
               </time>
             
           </span>
@@ -350,8 +350,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/统计学/" itemprop="url" rel="index">
+                    <span itemprop="name">统计学</span>
                   </a>
                 </span>
 
@@ -527,7 +527,7 @@ p(i)q(i,j) \cdot 0.5=p(j)q(j,i) \cdot 1
 <h3 id="m-h采样实例">M-H采样实例</h3>
 <p>我们的目标平稳分布是一个均值3，标准差2的正态分布，而选择的马尔可夫链状态转移矩阵<span class="math inline">\(Q(i,j)\)</span>的条件转移概率是以<span class="math inline">\(i\)</span>为均值,方差<span class="math inline">\(1\)</span>的正态分布在位置<span class="math inline">\(j\)</span>的值。这个例子仅仅用来加深对M-H采样过程的理解。毕竟一个普通的一维正态分布用不着去用M-H采样来获得样本。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> norm</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">norm_dist_prob</span><span class="params">(theta)</span>:</span></span><br><span class="line">    y = norm.pdf(theta, loc=<span class="number">3</span>, scale=<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line">T = <span class="number">100000</span></span><br><span class="line">pi = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(T)]</span><br><span class="line">sigma = <span class="number">1</span></span><br><span class="line">t = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> t &lt; T<span class="number">-1</span>:</span><br><span class="line">    t = t + <span class="number">1</span></span><br><span class="line">    pi_star = norm.rvs(loc=pi[t - <span class="number">1</span>], scale=sigma, size=<span class="number">1</span>, random_state=<span class="keyword">None</span>)</span><br><span class="line">    alpha = min(<span class="number">1</span>, (norm_dist_prob(pi_star[<span class="number">0</span>]) / norm_dist_prob(pi[t - <span class="number">1</span>])))</span><br><span class="line"></span><br><span class="line">    u = random.uniform(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> u &lt; alpha:</span><br><span class="line">        pi[t] = pi_star[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pi[t] = pi[t - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">plt.scatter(pi, norm.pdf(pi, loc=<span class="number">3</span>, scale=<span class="number">2</span>))</span><br><span class="line">num_bins = <span class="number">1000</span></span><br><span class="line">plt.hist(pi, num_bins, density=<span class="number">1</span>, facecolor=<span class="string">'red'</span>, alpha=<span class="number">0.7</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>结果如下： <img src="media/977C93F7-DC2F-4E60-BC0F-820B055DF4C4.png" alt="采样结果"></p>
+<p>结果如下： <img src="https://suool-bolg.b0.upaiyun.com/2018/11/19/977C93F7-DC2F-4E60-BC0F-820B055DF4C4.png" alt="采样结果"></p>
 <h2 id="m-h采样总结">M-H采样总结</h2>
 <p>M-H采样完整解决了使用蒙特卡罗方法需要的任意概率分布样本集的问题，因此在实际生产环境得到了广泛的应用。</p>
 <p>但是在大数据时代，M-H采样面临着两大难题：</p>
@@ -582,7 +582,7 @@ p(i)q(i,j) \cdot 0.5=p(j)q(j,i) \cdot 1
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -605,8 +605,8 @@ p(i)q(i,j) \cdot 0.5=p(j)q(j,i) \cdot 1
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/18/HMM-Viterbi/" rel="prev" title="隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用">
-                隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/17/Markov-Chain-Monte-Carlo-4/" rel="prev" title="Gibbs采样">
+                Gibbs采样 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -694,7 +694,7 @@ p(i)q(i,j) \cdot 0.5=p(j)q(j,i) \cdot 1
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -705,7 +705,7 @@ p(i)q(i,j) \cdot 0.5=p(j)q(j,i) \cdot 1
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -716,7 +716,7 @@ p(i)q(i,j) \cdot 0.5=p(j)q(j,i) \cdot 1
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -806,7 +806,7 @@ p(i)q(i,j) \cdot 0.5=p(j)q(j,i) \cdot 1
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">52.1k</span>
+    <span title="Site words total count">52.8k</span>
   
 </div>
 

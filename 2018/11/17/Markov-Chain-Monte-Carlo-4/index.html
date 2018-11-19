@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="SuooL, 胡振生">
+  <meta name="keywords" content="算法,">
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="胡振生写字的地方">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SuooL&#39;s Blog">
-<meta property="og:url" content="http://suool.net/tags/反思/index.html">
+<meta name="description" content="前言 M-H采样已经可以很好的解决蒙特卡罗方法需要的任意概率分布的样本集的问题。但是M-H采样有两个缺点：一是需要计算接受率，在高维时计算量大。并且由于接受率的原因导致算法收敛时间变长。二是有些高维数据，特征的条件概率分布好求，但是特征的联合分布不好求。因此需要一个好的方法来改进M-H采样，这就是我们下面讲到的Gibbs采样。">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gibbs采样">
+<meta property="og:url" content="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-4/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="胡振生写字的地方">
+<meta property="og:description" content="前言 M-H采样已经可以很好的解决蒙特卡罗方法需要的任意概率分布的样本集的问题。但是M-H采样有两个缺点：一是需要计算接受率，在高维时计算量大。并且由于接受率的原因导致算法收敛时间变长。二是有些高维数据，特征的条件概率分布好求，但是特征的联合分布不好求。因此需要一个好的方法来改进M-H采样，这就是我们下面讲到的Gibbs采样。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-19T10:55:47.116Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SuooL&#39;s Blog">
-<meta name="twitter:description" content="胡振生写字的地方">
+<meta name="twitter:title" content="Gibbs采样">
+<meta name="twitter:description" content="前言 M-H采样已经可以很好的解决蒙特卡罗方法需要的任意概率分布的样本集的问题。但是M-H采样有两个缺点：一是需要计算接受率，在高维时计算量大。并且由于接受率的原因导致算法收敛时间变长。二是有些高维数据，特征的条件概率分布好求，但是特征的联合分布不好求。因此需要一个好的方法来改进M-H采样，这就是我们下面讲到的Gibbs采样。">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://suool.net/tags/反思/">
+  <link rel="canonical" href="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-4/">
 
 
 
 
 
-  <title>标签: 反思 | SuooL's Blog</title>
+  <title>Gibbs采样 | SuooL's Blog</title>
   
 
 
@@ -154,7 +156,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -268,52 +270,297 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>反思<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-4/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SuooL">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuooL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/11/01/self-analysis/" itemprop="url">
-              
-                <span itemprop="name">自剖</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Gibbs采样</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-01T07:15:32+08:00" content="2018-11-01">
-          11-01
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-17T11:43:35+08:00">
+                2018-11-17
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-19T18:55:47+08:00">
+                2018-11-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/统计学/" itemprop="url" rel="index">
+                    <span itemprop="name">统计学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/17/Markov-Chain-Monte-Carlo-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/17/Markov-Chain-Monte-Carlo-4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/17/Markov-Chain-Monte-Carlo-4/" class="leancloud_visitors" data-flag-title="Gibbs采样">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  736 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2>
+<p>M-H采样已经可以很好的解决蒙特卡罗方法需要的任意概率分布的样本集的问题。但是M-H采样有两个缺点：一是需要计算接受率，在高维时计算量大。并且由于接受率的原因导致算法收敛时间变长。二是有些高维数据，特征的条件概率分布好求，但是特征的联合分布不好求。因此需要一个好的方法来改进M-H采样，这就是我们下面讲到的Gibbs采样。 <a id="more"></a></p>
+<h3 id="重新寻找合适的细致平稳条件">重新寻找合适的细致平稳条件</h3>
+<p>之前在 MCMC 采样及 M-H 采样的时候提到一个细致平稳条件,其表述如下:</p>
+<p>如果非周期马尔科夫链的状态转移矩阵<span class="math inline">\(P\)</span>和概率分布<span class="math inline">\(π(x)\)</span>对于所有的<span class="math inline">\(i,j\)</span>满足： <span class="math display">\[
+\pi(i)P(i,j) = \pi(j)P(j,i)
+\]</span></p>
+<p>则称概率分布<span class="math inline">\(π(x)\)</span>是状态转移矩阵<span class="math inline">\(P\)</span>的平稳分布。上式被称为细致平稳条件(<code>detailed balance condition</code>)。</p>
+<p>现在我们换一个思路。</p>
+<p>从二维的数据分布开始，假设<span class="math inline">\(π(x_1,x_2)\)</span>是一个二维联合数据分布，观察第一个特征维度相同的两个点A<span class="math inline">\(A(x_1^{(1)},x_2^{(1)})\)</span>和B<span class="math inline">\(A(x_1^{(1)},x_2^{(2)})\)</span>，容易发现下面两式成立：</p>
+<p><span class="math display">\[
+\pi(x_1^{(1)},x_2^{(1)}) \pi(x_2^{(2)} | x_1^{(1)}) = \pi(x_1^{(1)})\pi(x_2^{(1)}|x_1^{(1)}) \pi(x_2^{(2)} | x_1^{(1)}) \\
+\pi(x_1^{(1)},x_2^{(2)}) \pi(x_2^{(1)} | x_1^{(1)}) = \pi(x_1^{(1)}) \pi(x_2^{(2)} | x_1^{(1)})\pi(x_2^{(1)}|x_1^{(1)})
+\]</span></p>
+<p>由于两式的右边相等，因此我们有： <span class="math display">\[
+\pi(x_1^{(1)},x_2^{(1)}) \pi(x_2^{(2)} | x_1^{(1)})  = \pi(x_1^{(1)},x_2^{(2)}) \pi(x_2^{(1)} | x_1^{(1)})
+\]</span></p>
+<p>也就是： <span class="math display">\[
+\pi(A) \pi(x_2^{(2)} | x_1^{(1)})  = \pi(B) \pi(x_2^{(1)} | x_1^{(1)})
+\]</span></p>
+<p>观察上式再观察细致平稳条件的公式，我们发现在<span class="math inline">\(x_1=x^{(1)}_1\)</span>这条直线上，如果用条件概率分布<span class="math inline">\(π(x_2|x^{(1)}_1)\)</span>作为马尔科夫链的状态转移概率，则任意两个点之间的转移满足细致平稳条件！同样的道理，在<span class="math inline">\(x_2=x^{(1)}_2\)</span>这条直线上，如果用条件概率分布<span class="math inline">\(π(x_1|x^{(1)}_2)\)</span>作为马尔科夫链的状态转移概率，则任意两个点之间的转移也满足细致平稳条件。那是因为假如有一点C<span class="math inline">\((x^{(2)}_1,x^{(1)}_2)\)</span>,我们可以得到： <span class="math display">\[
+\pi(A) \pi(x_1^{(2)} | x_2^{(1)})  = \pi(C) \pi(x_1^{(1)} | x_2^{(1)})
+\]</span></p>
+<p>基于上面的发现，我们可以这样构造分布<span class="math inline">\(π(x_1,x_2)\)</span>的马尔可夫链对应的状态转移矩阵P： <span class="math display">\[
+P(A \to B) = \pi(x_2^{(B)}|x_1^{(1)})\;\; if\; x_1^{(A)} = x_1^{(B)} =x_1^{(1)} \\
+P(A \to C) = \pi(x_1^{(C)}|x_2^{(1)})\;\; if\; x_2^{(A)} = x_2^{(C)} =x_2^{(1)} \\
+P(A \to D) = 0\;\; else
+\]</span></p>
+<p>有了上面这个状态转移矩阵，我们很容易验证平面上的任意两点E,F，满足细致平稳条件：</p>
+<p><span class="math display">\[
+\pi(E)P(E \to F)  = \pi(F)P(F \to E)
+\]</span></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>向我开炮</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/qr-wechat.jpeg" alt="SuooL 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/qr-alipay.jpeg" alt="SuooL 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/17/Markov-Chain-Monte-Carlo-3/" rel="next" title="MCMC采样及M-H采样">
+                <i class="fa fa-chevron-left"></i> MCMC采样及M-H采样
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/18/HMM-Viterbi/" rel="prev" title="隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用">
+                隐马尔科夫模型（HMM）与维特比（Veterbi）算法及其在分词上的应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -321,6 +568,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -341,8 +602,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -425,6 +695,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重新寻找合适的细致平稳条件"><span class="nav-number">1.1.</span> <span class="nav-text">重新寻找合适的细致平稳条件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -567,6 +853,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -584,6 +874,18 @@
       <script id="dsq-count-scr" src="https://suool.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://suool.net/2018/11/17/Markov-Chain-Monte-Carlo-4/';
+          this.page.identifier = '2018/11/17/Markov-Chain-Monte-Carlo-4/';
+          this.page.title = 'Gibbs采样';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://suool.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
