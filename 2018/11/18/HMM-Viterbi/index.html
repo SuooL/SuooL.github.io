@@ -81,15 +81,21 @@
 
 
 
+<meta name="description" content="前言 同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
 <meta name="keywords" content="NLP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="隐马尔科夫模型（HMM）与其在分词上的应用">
 <meta property="og:url" content="http://suool.net/2018/11/18/HMM-Viterbi/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
+<meta property="og:description" content="前言 同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-24T10:24:44.029Z">
+<meta property="og:image" content="http://suool.net/2018/11/18/HMM-Viterbi/media/15439271020806.jpg">
+<meta property="og:image" content="http://suool.net/2018/11/18/HMM-Viterbi/media/D5B700EB-22B4-487C-9C7D-1AC101E2E7BD.png">
+<meta property="og:updated_time" content="2018-12-14T02:52:55.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐马尔科夫模型（HMM）与其在分词上的应用">
+<meta name="twitter:description" content="前言 同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
+<meta name="twitter:image" content="http://suool.net/2018/11/18/HMM-Viterbi/media/15439271020806.jpg">
 
 
 
@@ -326,8 +332,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-24T18:24:44+08:00">
-                2018-11-24
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-14T10:52:55+08:00">
+                2018-12-14
               </time>
             
           </span>
@@ -408,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  1,575 字
                 </span>
               
 
@@ -424,7 +430,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -445,7 +451,59 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2>
+<p>同时在<a href="https://suool.net/2018/11/16/Text-Segmentation-1/">LP 之分词技术概述</a>中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。 <a id="more"></a> 本文的基本提纲如下： 1. 基础知识 1. 定义 2. 适用场景 3. 隐马尔科夫模型的两个基本假设 4. 实例 2. HMM模型的三个基本问题 1. 前向后向算法评估观察序列概率 2. 鲍姆-韦尔奇算法求解HMM参数 3. 维特比算法解码隐藏状态序列 3. 分词实战</p>
+<h2 id="基础知识">基础知识</h2>
+<h3 id="定义">定义</h3>
+<p><strong>直观定义</strong> 首先看一个图： <img src="media/15439271020806.jpg" alt="状态序列图"></p>
+<p>该图的文字描述是其分成两排，第一排是<span class="math inline">\(y\)</span>序列，第二排是<span class="math inline">\(x\)</span>序列。每个<span class="math inline">\(x\)</span>都只有一个<span class="math inline">\(y\)</span>指向它，每个<span class="math inline">\(y\)</span>也都有另一个<span class="math inline">\(y\)</span>指向它。</p>
+<p>下面按照上述描述给出一个定义： - <strong>状态序列（上图中的<span class="math inline">\(y\)</span>，下面的<span class="math inline">\(I\)</span>）</strong>：隐藏的马尔科夫链随机生成的状态序列，称为状态序列（state sequence） - <strong>观测序列（上图中的<span class="math inline">\(x\)</span>，下面的<span class="math inline">\(O\)</span>）</strong>: 每个状态生成一个观测，而由此产生的观测的随机序列，称为观测序列（obeservation sequence） - <strong>隐马尔科夫模型</strong>：隐马尔科夫模型是关于时序的概率模型，描述由一个隐藏的马尔科夫链随机生成不可观测的状态随机序列，再由各个状态生成一个观测而产生观测随机序列的过程。 序列的每一个位置可以看做是一个时刻，HMM 由初始概率分布、状态转移概率分布和观测概率分布确定。</p>
+<p>形式化的定义如下： <strong>形式化定义</strong> 设<span class="math inline">\(Q\)</span>是所有可能的状态的集合，<span class="math inline">\(V\)</span>是所有可能的观测的集合，如下:</p>
+<p><span class="math display">\[Q={q_1,q_2,...,q_N},V={v_1,v_2,...,v_M}\]</span> 其中，<span class="math inline">\(N\)</span>是可能的状态数，<span class="math inline">\(M\)</span>是可能的观测数。</p>
+<p><span class="math inline">\(I\)</span>是长度为<span class="math inline">\(T\)</span>的状态序列，<span class="math inline">\(O\)</span>是对应的观测序列。 <span class="math display">\[I=(i_1,i_2,...,i_T),O=(o_1,o_2,...,o_T)\]</span></p>
+<p>A是状态转移概率矩阵： <span class="math display">\[A=[a_{ij}]_{N×N}\]</span></p>
+<p>其中。，在时刻<span class="math inline">\(t\)</span>，处于<span class="math inline">\(q_i\)</span> 状态的条件下在时刻<span class="math inline">\(t+1\)</span>转移到状态<span class="math inline">\(q_j\)</span> 的概率【齐次马尔科夫链假设,下面的第一个假设】： <span class="math display">\[a_{ij}=P(i_{t+1}=q_j|i_t=q_i)\]</span></p>
+<p>B是观测概率矩阵: <span class="math display">\[B=[b_j(k)]_{N×M}\]</span> 其中<span class="math inline">\(k=1,2,...,M; j=1,2,...,N\)</span> 其中，在时刻<span class="math inline">\(t\)</span>处于状态<span class="math inline">\(q_j\)</span> 的条件下生成观测<span class="math inline">\(v_k\)</span> 的概率【观测独立性假设，下面第二个假设】： <span class="math display">\[b_j(k)=P(o_t=v_k|i_t=q_j)\]</span></p>
+<p>π是初始状态概率向量: <span class="math display">\[π=(π_i)\]</span> 其中，<span class="math inline">\(π_i=P(i_1=q_i)\)</span> 隐马尔科夫模型由初始状态概率向量<span class="math inline">\(π\)</span>、状态转移概率矩阵A和观测概率矩阵<span class="math inline">\(B\)</span>决定。<span class="math inline">\(π\)</span>和<span class="math inline">\(A\)</span>决定状态序列，<span class="math inline">\(B\)</span>决定观测序列。因此，隐马尔科夫模型<span class="math inline">\(λ\)</span>可以由三元符号表示，即：<span class="math inline">\(λ=(A,B,π)\)</span>。<span class="math inline">\(A,B,π\)</span>称为隐马尔科夫模型的<strong>三要素</strong>。</p>
+<h3 id="适用场景">适用场景</h3>
+<p>有了上述的定义可以看出使用HMM模型时我们的问题一般有这两个特征： - 我们的问题是基于序列的，比如时间序列，或者状态序列。 - 我们的问题中有两类数据，一类序列数据是可以观测到的，即观测序列；而另一类数据是不能观察到的，即隐藏状态序列，简称状态序列。</p>
+<p>比如语言转文字的问题，发出的一串连续的声音就是观测序列，而实际要表达的一段话的文字就是状态序列，机器的任务，就是从这一串连续的声音中判断出最可能要表达的文字的内容。</p>
+<h3 id="隐马尔科夫模型的两个基本假设">隐马尔科夫模型的两个基本假设</h3>
+<ol type="1">
+<li>设隐马尔科夫链在任意时刻<span class="math inline">\(t\)</span>的状态只依赖于其前一时刻的状态，与其他时刻的状态及观测无关，也与时刻<span class="math inline">\(t\)</span>无关。（齐次马尔科夫性假设）</li>
+<li>假设任意时刻的观测只依赖于该时刻的马尔科夫链的状态，与其他观测和状态无关。（观测独立性假设）</li>
+</ol>
+<h3 id="一个例子">一个例子</h3>
+<p>李航的《统计学习方法》的例子，假设我们有3个盒子，每个盒子里都有红色和白色两种球，这三个盒子里球的数量分别是：</p>
+<table>
+<thead>
+<tr class="header">
+<th>盒子</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>红球数</td>
+<td>5</td>
+<td>4</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>白球数</td>
+<td>5</td>
+<td>6</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>按照下面的方法从盒子里抽球: 1. 开始的时候，从第一个盒子抽球的概率是0.2，从第二个盒子抽球的概率是0.4，从第三个盒子抽球的概率是0.4。以这个概率抽一次球后，将球放回。 2. 从当前盒子转移到下一个盒子进行抽球。规则是： 1. 如果当前抽球的盒子是第一个盒子，则以0.5的概率仍然留在第一个盒子继续抽球，以0.2的概率去第二个盒子抽球，以0.3的概率去第三个盒子抽球。 2. 如果当前抽球的盒子是第二个盒子，则以0.5的概率仍然留在第二个盒子继续抽球，以0.3的概率去第一个盒子抽球，以0.2的概率去第三个盒子抽球。 3. 如果当前抽球的盒子是第三个盒子，则以0.5的概率仍然留在第三个盒子继续抽球，以0.2的概率去第一个盒子抽球，以0.3的概率去第二个盒子抽球。 4. 如此下去，直到重复三次.</p>
+<p>得到一个球的颜色的观测序列: <img src="media/D5B700EB-22B4-487C-9C7D-1AC101E2E7BD.png" alt="参数"></p>
+<p><strong>HMM观测序列的生成</strong> 从上面的例子，我们也可以抽象出HMM观测序列生成的过程。 输入的模型是<span class="math inline">\(\lambda = (A, B, \Pi)\)</span>，观测序列长度是<span class="math inline">\(T\)</span>. 输出是观测序列：<span class="math inline">\(O =\{o_1,o_2,...o_T\}\)</span></p>
+<p>##HMM模型的三个基本问题 ###前向后向算法评估观察序列概率 ###鲍姆-韦尔奇算法求解HMM参数 ###维特比算法解码隐藏状态序列 ##分词实战</p>
+
       
     </div>
     
@@ -578,8 +636,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -594,7 +661,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -605,7 +672,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -616,7 +683,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -663,6 +730,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">2.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适用场景"><span class="nav-number">2.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔科夫模型的两个基本假设"><span class="nav-number">2.3.</span> <span class="nav-text">隐马尔科夫模型的两个基本假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个例子"><span class="nav-number">2.4.</span> <span class="nav-text">一个例子</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -690,7 +773,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">51.2k</span>
+    <span title="Site words total count">56.1k</span>
   
 </div>
 

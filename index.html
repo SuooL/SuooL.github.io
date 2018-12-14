@@ -283,6 +283,448 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/12/14/Numpy-Where/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SuooL">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuooL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/14/Numpy-Where/" itemprop="url">Numpy  API函数用法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-14T14:25:21+08:00">
+                2018-12-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-14T21:06:55+08:00">
+                2018-12-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础学习/" itemprop="url" rel="index">
+                    <span itemprop="name">基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/14/Numpy-Where/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/14/Numpy-Where/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/14/Numpy-Where/" class="leancloud_visitors" data-flag-title="Numpy  API函数用法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  339 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="where函数">Where函数</h2>
+<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html" target="_blank" rel="noopener">官方文档的解释</a></p>
+<figure>
+<img src="media/9D71420E-7E75-4B4F-AA0A-63E3F8EAA0B3.png" alt="官方文档"><figcaption>官方文档</figcaption>
+</figure>
+<p>然而看的没怎么明白。</p>
+<p>numpy.where() 有两种用法：</p>
+<ol type="1">
+<li><code>np.where(condition, x, y)</code> 满足条件<code>(condition)</code>，输出<code>x</code>，不满足输出<code>y</code>。</li>
+<li><code>np.where(condition)</code> 只有条件 <code>(condition)</code>，没有<code>x</code>和<code>y</code>，则输出满足条件 (即非0) 元素的坐标 (等价于<code>numpy.nonzero</code>)。这里的坐标以<code>tuple</code>的形式给出，通常原数组有多少维，输出的<code>tuple</code>中就包含几个数组，分别对应符合条件元素的各维坐标。</li>
+</ol>
+<p>看到<a href="https://www.zhihu.com/question/62844162/answer/300561552" target="_blank" rel="noopener">知乎回答</a>的图示非常清晰，如下</p>
+<p>第一种用法的图示:</p>
+<p>输出位置的对应如下： <img src="media/15447692455357.jpg"></p>
+<p>同理： <img src="media/15447691065494.jpg"></p>
+<p>第二种用法的图示： 只有条件 (condition)，没有x和y，则输出满足条件 (即非0) 元素的坐标 (等价于numpy.nonzero)。这里的坐标以tuple的形式给出，通常原数组有多少维，输出的tuple中就包含几个数组，分别对应符合条件元素的各维坐标。即是第一组为第一维度的坐标，依次对应，每列对应一个元素完整的坐标，如下: <img src="media/15447691689662.jpg"> 即有: <img src="media/15447691891533.jpg"></p>
+<h2 id="numpy.random.multinomial函数">numpy.random.multinomial函数</h2>
+<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.multinomial.html" target="_blank" rel="noopener">官方文档地址</a></p>
+<figure>
+<img src="media/D3481F88-A58F-429F-A43C-A09F515DB3DF.png" alt="官方介绍"><figcaption>官方介绍</figcaption>
+</figure>
+<p>这是 numpy 提供的随机二项式分布实现，二项式分布(<code>binomial distribution</code>)如下表示: <span class="math display">\[
+P(N)=\begin{pmatrix}n \\
+ N
+\end{pmatrix}p^N(1-p)^{n-N}
+\]</span></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/27/maximum-entropy-model/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SuooL">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuooL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/27/maximum-entropy-model/" itemprop="url">“熵”不起：从熵、最大熵原理到最大熵模型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T08:50:23+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-27T10:25:01+08:00">
+                2018-11-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/27/maximum-entropy-model/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/27/maximum-entropy-model/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/27/maximum-entropy-model/" class="leancloud_visitors" data-flag-title="“熵”不起：从熵、最大熵原理到最大熵模型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,005 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##引言 “熵”最初是热力学中的一个概念，之前关于<a href="https://suool.net/2018/07/19/Mnist-With-Decision-Tree-ID3/">决策树算法</a>的部分涉及到一部分熵的知识，上世纪40年代，香农首先在信息论中引入了信息熵的概念。信息熵用来表示不确定度的度量，不确定度越大，熵值越大。极限情况，当一个随机变量均匀分布时，熵值最大；完全确定时，熵值为0。</p>
+<p>什么是最大熵原理呢？我们常常讲不要把所有鸡蛋放在一个篮子里，这样可以降低风险，这其实就是最大熵原理的一个朴素说法，因为当我们遇到不确定性时，就要保留各种可能性。在信息处理中，这个原理同样适用。在数学上，这个原理被称为<code>最大熵原理</code>（<code>the maximum entropy principle</code>）。同样的，当我们在回答，扔一个色子的时候，每个面朝上的概率分别是多少？所有人都会回答说是<span class="math inline">\(\frac{1}{6}\)</span>。这个回答是正确的，但是为什么是<span class="math inline">\(\frac{1}{6}\)</span>而不是其他呢？这里就应用到最大熵原理。对这个“一无所知”的色子，假定每一面朝上的概率相同是最保险的做法。从信息论的角度来解释，就是保留了最大的不确定性，也就是让熵达到最大。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/27/maximum-entropy-model/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/19/keywords-extract-1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -451,7 +893,8 @@
       
         
           
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2>
+
           
         
       
@@ -546,8 +989,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-24T18:24:44+08:00">
-                2018-11-24
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-14T10:52:55+08:00">
+                2018-12-14
               </time>
             
           </span>
@@ -628,7 +1071,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  1,575 字
                 </span>
               
 
@@ -644,7 +1087,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -666,12 +1109,18 @@
 
       
         
-          
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">
-          
+          <h2 id="前言">前言</h2>
+<p>同时在<a href="https://suool.net/2018/11/16/Text-Segmentation-1/">LP 之分词技术概述</a>中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/18/HMM-Viterbi/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -833,7 +1282,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  735 字
+                  889 字
                 </span>
               
 
@@ -849,7 +1298,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -871,7 +1320,8 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>M-H采样已经可以很好的解决蒙特卡罗方法需要的任意概率分布的样本集的问题。但是M-H采样有两个缺点：一是需要计算接受率，在高维时计算量大。并且由于接受率的原因导致算法收敛时间变长。二是有些高维数据，特征的条件概率分布好求，但是特征的联合分布不好求。因此需要一个好的方法来改进M-H采样，这就是我们下面讲到的Gibbs采样。<br>
+          <h2 id="前言">前言</h2>
+<p>M-H采样已经可以很好的解决蒙特卡罗方法需要的任意概率分布的样本集的问题。但是M-H采样有两个缺点：一是需要计算接受率，在高维时计算量大。并且由于接受率的原因导致算法收敛时间变长。二是有些高维数据，特征的条件概率分布好求，但是特征的联合分布不好求。因此需要一个好的方法来改进M-H采样，这就是我们下面讲到的Gibbs采样。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/17/Markov-Chain-Monte-Carlo-4/#more" rel="contents">
@@ -1043,7 +1493,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,458 字
+                  2,623 字
                 </span>
               
 
@@ -1059,7 +1509,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9 分钟
+                  11 分钟
                 </span>
               
             </div>
@@ -1081,8 +1531,10 @@
 
       
         
-          <h1 id="MCMC采样及M-H采样"><a href="#MCMC采样及M-H采样" class="headerlink" title="MCMC采样及M-H采样"></a>MCMC采样及M-H采样</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/">前面的文章</a>已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。</p>
-<p>如何能做到这一点呢？我们主要使用如下的定理。<br>
+          <h1 id="mcmc采样及m-h采样">MCMC采样及M-H采样</h1>
+<h2 id="前言">前言</h2>
+<p><a href="https://suool.net/2018/11/16/Markov-Chain-Monte-Carlo-2/">前面的文章</a>已经说到给定一个概率平稳分布π, 只要能够其马尔科夫链状态转移矩阵P，我们就可以找到一种通用的概率分布采样方法，进而用于蒙特卡罗模拟。现在就学习下解决这个问题的办法：MCMC采样和它的易用版M-H采样。</p>
+<p>如何能做到这一点呢？我们主要使用如下的定理。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/17/Markov-Chain-Monte-Carlo-3/#more" rel="contents">
@@ -1254,7 +1706,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,440 字
+                  1,507 字
                 </span>
               
 
@@ -1292,7 +1744,8 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。<br>
+          <h2 id="前言">前言</h2>
+<p>NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/16/Text-Segmentation-1/#more" rel="contents">
@@ -1464,7 +1917,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,207 字
+                  2,379 字
                 </span>
               
 
@@ -1480,7 +1933,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -1502,9 +1955,10 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解了什么是蒙特卡罗方法之后，自然引出了马尔可夫链这个概念，其在 WIKI 的解释如下：</p>
+          <h2 id="前言">前言</h2>
+<p>了解了什么是蒙特卡罗方法之后，自然引出了马尔可夫链这个概念，其在 WIKI 的解释如下：</p>
 <blockquote>
-<p>马尔可夫链（英语：Markov chain），又称离散时间马尔可夫链（discrete-time Markov chain，缩写为DTMC），因俄国数学家安德烈·马尔可夫得名，为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备“无记忆”的性质：下一状态的概率分布只能由当前状态决定，在时间序列中它前面的事件均与之无关。这种特定类型的“无记忆性”称作马尔可夫性质。<br>在马尔可夫链的每一步，系统根据概率分布，可以从一个状态变到另一个状态，也可以保持当前状态。状态的改变叫做转移，与不同的状态改变相关的概率叫做转移概率。</p>
+<p>马尔可夫链（英语：Markov chain），又称离散时间马尔可夫链（discrete-time Markov chain，缩写为DTMC），因俄国数学家安德烈·马尔可夫得名，为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备“无记忆”的性质：下一状态的概率分布只能由当前状态决定，在时间序列中它前面的事件均与之无关。这种特定类型的“无记忆性”称作马尔可夫性质。 在马尔可夫链的每一步，系统根据概率分布，可以从一个状态变到另一个状态，也可以保持当前状态。状态的改变叫做转移，与不同的状态改变相关的概率叫做转移概率。</p>
 </blockquote>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1606,8 +2060,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-17T11:50:37+08:00">
-                2018-11-17
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-04T20:28:40+08:00">
+                2018-12-04
               </time>
             
           </span>
@@ -1677,7 +2131,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,016 字
+                  2,139 字
                 </span>
               
 
@@ -1693,7 +2147,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -1715,8 +2169,9 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。</p>
-<p>从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先得搞清楚蒙特卡罗方法和马尔科夫链的原理。<br>
+          <h2 id="前言">前言</h2>
+<p>作为一种随机采样方法，马尔科夫链蒙特卡罗（Markov Chain Monte Carlo，以下简称MCMC）在机器学习,深度学习以及自然语言处理等领域都有广泛的应用，是很多复杂算法求解的基础。</p>
+<p>从名字我们可以看出，MCMC由两个MC组成，即蒙特卡罗方法（Monte Carlo Simulation，简称MC）和马尔科夫链（Markov Chain ，也简称MC）。要弄懂MCMC的原理我们首先得搞清楚蒙特卡罗方法和马尔科夫链的原理。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/16/Markov-Chain-Monte-Carlo-1/#more" rel="contents">
@@ -1817,8 +2272,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-01T07:29:09+08:00">
-                2018-11-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-27T09:44:25+08:00">
+                2018-11-27
               </time>
             
           </span>
@@ -1926,443 +2381,12 @@
 
       
         
-          <h2 id="说明前面"><a href="#说明前面" class="headerlink" title="说明前面"></a>说明前面</h2><p>这是一篇去年差不多这个时候写的东西，现在读起来依然适用现在的自己。</p>
-<p>最近这几天是真的有点不好受，昨晚几乎失眠了一整晚，缺少很多的东西，对未来看不清楚，对自己没有信心，心里面就充满了怀疑。<br>
+          <h2 id="说明前面">说明前面</h2>
+<p>这是一篇去年差不多这个时候写的东西，现在读起来依然适用现在的自己。</p>
+<p>最近这几天是真的有点不好受，昨晚几乎失眠了一整晚，缺少很多的东西，对未来看不清楚，对自己没有信心，心里面就充满了怀疑。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/01/self-analysis/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/10/29/custom-dataset-use-pytorch/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SuooL">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SuooL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/29/custom-dataset-use-pytorch/" itemprop="url">pytorch 自定义数据集及 Kaggle 101 数字识别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T20:54:46+08:00">
-                2018-10-29
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-30T10:39:59+08:00">
-                2018-10-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/10/29/custom-dataset-use-pytorch/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/29/custom-dataset-use-pytorch/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/10/29/custom-dataset-use-pytorch/" class="leancloud_visitors" data-flag-title="pytorch 自定义数据集及 Kaggle 101 数字识别">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2,661 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  14 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>前面的文章中使用 feed forward neural network 实现了简单的手写数字识别，但是这不能直接照搬到 kaggle上面，因为 kaggle 使用的数据集是 CSV 文件，因此需要自定义一个 pytorch 的数据类型，来完成这个入门题目。</p>
-<p>本文的提纲如下:</p>
-<ol>
-<li>自定义 Dataset </li>
-<li>模型搭建保存与读取
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/29/custom-dataset-use-pytorch/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </li></ol></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SuooL">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SuooL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/" itemprop="url">全连接前向神经网络与手写数字的实践</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T18:15:42+08:00">
-                2018-10-07
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-29T20:53:08+08:00">
-                2018-10-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/" class="leancloud_visitors" data-flag-title="全连接前向神经网络与手写数字的实践">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,676 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>上一篇文章提到了 logistics regression 、多分类的 softmax 算法及梯度等概念，其实就可以很自然的引出深度学习了。</p>
-<p>引用WiKi的定义：</p>
-<blockquote>
-<p>深度学习（deep learning）是机器学习的分支，是一种试图使用包含复杂结构或由多重非线性变换构成的多个处理层对数据进行高层抽象的算法。</p>
-</blockquote>
-<p>早在1958年就提出了 perceptron 的模型，即最简单的线性感知机模型，在当时引起了很大的轰动，甚至提出了机器可以取代人的说法，然而后来就被人质疑，现在看来线性感知机的限制显而易见。</p>
-<p>然后在20世纪80年代，根据之前 perceptron 提出了 multi-layer perceptron（又叫 Neural Network）， 这个模型和当今的深度神经网络是没有显著区别的。1986年提出了反向传播的概念，但是通常大于三层的 hidden layer 就没有效果了，神经网络学习出现了梯度消失的问题。</p>
-<p>后来在 2006年，在上述神经网络的算法模型上，取得了一些改进（RBM initialization），将之前 multi-layer perceptron 改了个名字 —— Deep Learning 重新提了出来，2009年的时候 DL 的运算开始利用 GPU，后面其在各个领域取得了一些突破性的应用进展，就火起来了。</p>
-<p>所以，深度学习并不是什么新鲜事物，只是换了个名字的稍微改进的旧模型。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2450,7 +2474,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2461,7 +2485,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2472,7 +2496,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2546,7 +2570,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">51.2k</span>
+    <span title="Site words total count">56.1k</span>
   
 </div>
 
