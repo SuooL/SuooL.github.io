@@ -81,25 +81,26 @@
 
 
 
-<meta name="description" content="Where函数 官方文档的解释  官方文档  然而看的没怎么明白。 numpy.where() 有两种用法：  np.where(condition, x, y) 满足条件(condition)，输出x，不满足输出y。 np.where(condition) 只有条件 (condition)，没有x和y，则输出满足条件 (即非0) 元素的坐标 (等价于numpy.nonzero)。这里的坐标以tu">
+<meta name="description" content="此部分主要是学习过程中的一些函数笔记.">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Numpy  API函数用法">
 <meta property="og:url" content="http://suool.net/2018/12/14/Numpy-Where/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="Where函数 官方文档的解释  官方文档  然而看的没怎么明白。 numpy.where() 有两种用法：  np.where(condition, x, y) 满足条件(condition)，输出x，不满足输出y。 np.where(condition) 只有条件 (condition)，没有x和y，则输出满足条件 (即非0) 元素的坐标 (等价于numpy.nonzero)。这里的坐标以tu">
+<meta property="og:description" content="此部分主要是学习过程中的一些函数笔记.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://suool.net/2018/12/14/Numpy-Where/media/9D71420E-7E75-4B4F-AA0A-63E3F8EAA0B3.png">
-<meta property="og:image" content="http://suool.net/2018/12/14/Numpy-Where/media/15447692455357.jpg">
-<meta property="og:image" content="http://suool.net/2018/12/14/Numpy-Where/media/15447691065494.jpg">
-<meta property="og:image" content="http://suool.net/2018/12/14/Numpy-Where/media/15447691689662.jpg">
-<meta property="og:image" content="http://suool.net/2018/12/14/Numpy-Where/media/15447691891533.jpg">
-<meta property="og:image" content="http://suool.net/2018/12/14/Numpy-Where/media/D3481F88-A58F-429F-A43C-A09F515DB3DF.png">
-<meta property="og:updated_time" content="2018-12-14T13:06:55.308Z">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/9D71420E-7E75-4B4F-AA0A-63E3F8EAA0B3.png">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447692455357.jpg">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691065494.jpg">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691689662.jpg">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691891533.jpg">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/D3481F88-A58F-429F-A43C-A09F515DB3DF.png">
+<meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/4B6FFD2C-82EC-4C9C-82E2-9808FA9560F4.png">
+<meta property="og:updated_time" content="2018-12-14T13:47:27.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Numpy  API函数用法">
-<meta name="twitter:description" content="Where函数 官方文档的解释  官方文档  然而看的没怎么明白。 numpy.where() 有两种用法：  np.where(condition, x, y) 满足条件(condition)，输出x，不满足输出y。 np.where(condition) 只有条件 (condition)，没有x和y，则输出满足条件 (即非0) 元素的坐标 (等价于numpy.nonzero)。这里的坐标以tu">
-<meta name="twitter:image" content="http://suool.net/2018/12/14/Numpy-Where/media/9D71420E-7E75-4B4F-AA0A-63E3F8EAA0B3.png">
+<meta name="twitter:description" content="此部分主要是学习过程中的一些函数笔记.">
+<meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/9D71420E-7E75-4B4F-AA0A-63E3F8EAA0B3.png">
 
 
 
@@ -336,7 +337,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-14T21:06:55+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-14T21:47:27+08:00">
                 2018-12-14
               </time>
             
@@ -407,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  339 字
+                  555 字
                 </span>
               
 
@@ -423,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -444,11 +445,10 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="where函数">Where函数</h2>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>此部分主要是学习过程中的一些函数笔记. <a id="more"></a></p>
+<h2 id="where函数">Where函数</h2>
 <p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html" target="_blank" rel="noopener">官方文档的解释</a></p>
-<figure>
-<img src="media/9D71420E-7E75-4B4F-AA0A-63E3F8EAA0B3.png" alt="官方文档"><figcaption>官方文档</figcaption>
-</figure>
+<p><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/9D71420E-7E75-4B4F-AA0A-63E3F8EAA0B3.png"></p>
 <p>然而看的没怎么明白。</p>
 <p>numpy.where() 有两种用法：</p>
 <ol type="1">
@@ -457,19 +457,24 @@
 </ol>
 <p>看到<a href="https://www.zhihu.com/question/62844162/answer/300561552" target="_blank" rel="noopener">知乎回答</a>的图示非常清晰，如下</p>
 <p>第一种用法的图示:</p>
-<p>输出位置的对应如下： <img src="media/15447692455357.jpg"></p>
-<p>同理： <img src="media/15447691065494.jpg"></p>
-<p>第二种用法的图示： 只有条件 (condition)，没有x和y，则输出满足条件 (即非0) 元素的坐标 (等价于numpy.nonzero)。这里的坐标以tuple的形式给出，通常原数组有多少维，输出的tuple中就包含几个数组，分别对应符合条件元素的各维坐标。即是第一组为第一维度的坐标，依次对应，每列对应一个元素完整的坐标，如下: <img src="media/15447691689662.jpg"> 即有: <img src="media/15447691891533.jpg"></p>
+<p>输出位置的对应如下： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447692455357.jpg"></p>
+<p>同理： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691065494.jpg"></p>
+<p>第二种用法的图示： 只有条件 (condition)，没有x和y，则输出满足条件 (即非0) 元素的坐标 (等价于numpy.nonzero)。这里的坐标以tuple的形式给出，通常原数组有多少维，输出的tuple中就包含几个数组，分别对应符合条件元素的各维坐标。即是第一组为第一维度的坐标，依次对应，每列对应一个元素完整的坐标，如下: <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691689662.jpg"> 即有: <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691891533.jpg"></p>
 <h2 id="numpy.random.multinomial函数">numpy.random.multinomial函数</h2>
 <p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.multinomial.html" target="_blank" rel="noopener">官方文档地址</a></p>
 <figure>
-<img src="media/D3481F88-A58F-429F-A43C-A09F515DB3DF.png" alt="官方介绍"><figcaption>官方介绍</figcaption>
+<img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/D3481F88-A58F-429F-A43C-A09F515DB3DF.png" alt="官方介绍"><figcaption>官方介绍</figcaption>
 </figure>
 <p>这是 numpy 提供的随机二项式分布实现，二项式分布(<code>binomial distribution</code>)如下表示: <span class="math display">\[
 P(N)=\begin{pmatrix}n \\
  N
 \end{pmatrix}p^N(1-p)^{n-N}
+\]</span> 函数原型如下： <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy<span class="selector-class">.random</span><span class="selector-class">.RandomState</span><span class="selector-class">.binomial</span>(n, <span class="selector-tag">p</span>, size=None)</span><br></pre></td></tr></table></figure></p>
+<p>表示对一个二项分布进行采样，<code>size</code>表示采样的次数，参数中的<code>n, p</code>分别对应于公式中的<span class="math inline">\(n,p\)</span>，函数的返回值表示<code>n</code>中<code>成功（success）</code>的次数（也即<span class="math inline">\(N\)</span>）。 举个例子，比如掷骰子，一共3个硬币，每个都投一次，三个都是正面朝上的概率是多少？</p>
+<p>这个使用简单的概率统计知识很容易计算得到： <span class="math display">\[
+ P=\begin{pmatrix}n \\ N\end{pmatrix}p^N(1-p)^{n-N}=\begin{pmatrix}3 \\ 0\end{pmatrix}0.5^0(1-0.5)^3=0.5^3 = 0.125
 \]</span></p>
+<p>使用上述函数计算大概值则是做足够多次的试验，统计其中全为正面朝上的概率，通过频率计算概率，如下： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/4B6FFD2C-82EC-4C9C-82E2-9808FA9560F4.png" alt="实验结果"></p>
 
       
     </div>
@@ -736,7 +741,7 @@ P(N)=\begin{pmatrix}n \\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">56.1k</span>
+    <span title="Site words total count">55.5k</span>
   
 </div>
 
