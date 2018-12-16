@@ -96,7 +96,7 @@
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691891533.jpg">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/D3481F88-A58F-429F-A43C-A09F515DB3DF.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/4B6FFD2C-82EC-4C9C-82E2-9808FA9560F4.png">
-<meta property="og:updated_time" content="2018-12-14T13:47:27.443Z">
+<meta property="og:updated_time" content="2018-12-16T08:13:29.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Numpy  API函数用法">
 <meta name="twitter:description" content="此部分主要是学习过程中的一些函数笔记.">
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-14T21:47:27+08:00">
-                2018-12-14
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-16T16:13:29+08:00">
+                2018-12-16
               </time>
             
           </span>
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  555 字
+                  631 字
                 </span>
               
 
@@ -445,36 +445,37 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>此部分主要是学习过程中的一些函数笔记. <a id="more"></a></p>
-<h2 id="where函数">Where函数</h2>
-<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html" target="_blank" rel="noopener">官方文档的解释</a></p>
-<p><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/9D71420E-7E75-4B4F-AA0A-63E3F8EAA0B3.png"></p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>此部分主要是学习过程中的一些函数笔记.<br><a id="more"></a></p>
+<h2 id="Where函数"><a href="#Where函数" class="headerlink" title="Where函数"></a>Where函数</h2><p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html" target="_blank" rel="noopener">官方文档的解释</a></p>
+<p><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/9D71420E-7E75-4B4F-AA0A-63E3F8EAA0B3.png" alt=""></p>
 <p>然而看的没怎么明白。</p>
 <p>numpy.where() 有两种用法：</p>
-<ol type="1">
-<li><code>np.where(condition, x, y)</code> 满足条件<code>(condition)</code>，输出<code>x</code>，不满足输出<code>y</code>。</li>
-<li><code>np.where(condition)</code> 只有条件 <code>(condition)</code>，没有<code>x</code>和<code>y</code>，则输出满足条件 (即非0) 元素的坐标 (等价于<code>numpy.nonzero</code>)。这里的坐标以<code>tuple</code>的形式给出，通常原数组有多少维，输出的<code>tuple</code>中就包含几个数组，分别对应符合条件元素的各维坐标。</li>
+<ol>
+<li><code>np.where(condition, x, y)</code><br>满足条件<code>(condition)</code>，输出<code>x</code>，不满足输出<code>y</code>。</li>
+<li><code>np.where(condition)</code><br>只有条件 <code>(condition)</code>，没有<code>x</code>和<code>y</code>，则输出满足条件 (即非0) 元素的坐标 (等价于<code>numpy.nonzero</code>)。这里的坐标以<code>tuple</code>的形式给出，通常原数组有多少维，输出的<code>tuple</code>中就包含几个数组，分别对应符合条件元素的各维坐标。</li>
 </ol>
 <p>看到<a href="https://www.zhihu.com/question/62844162/answer/300561552" target="_blank" rel="noopener">知乎回答</a>的图示非常清晰，如下</p>
 <p>第一种用法的图示:</p>
-<p>输出位置的对应如下： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447692455357.jpg"></p>
-<p>同理： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691065494.jpg"></p>
-<p>第二种用法的图示： 只有条件 (condition)，没有x和y，则输出满足条件 (即非0) 元素的坐标 (等价于numpy.nonzero)。这里的坐标以tuple的形式给出，通常原数组有多少维，输出的tuple中就包含几个数组，分别对应符合条件元素的各维坐标。即是第一组为第一维度的坐标，依次对应，每列对应一个元素完整的坐标，如下: <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691689662.jpg"> 即有: <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691891533.jpg"></p>
-<h2 id="numpy.random.multinomial函数">numpy.random.multinomial函数</h2>
-<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.multinomial.html" target="_blank" rel="noopener">官方文档地址</a></p>
-<figure>
-<img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/D3481F88-A58F-429F-A43C-A09F515DB3DF.png" alt="官方介绍"><figcaption>官方介绍</figcaption>
-</figure>
-<p>这是 numpy 提供的随机二项式分布实现，二项式分布(<code>binomial distribution</code>)如下表示: <span class="math display">\[
+<p>输出位置的对应如下：<br><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447692455357.jpg" alt=""></p>
+<p>同理：<br><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691065494.jpg" alt=""></p>
+<p>第二种用法的图示：<br>只有条件 (condition)，没有x和y，则输出满足条件 (即非0) 元素的坐标 (等价于numpy.nonzero)。这里的坐标以tuple的形式给出，通常原数组有多少维，输出的tuple中就包含几个数组，分别对应符合条件元素的各维坐标。即是第一组为第一维度的坐标，依次对应，每列对应一个元素完整的坐标，如下:<br><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691689662.jpg" alt=""><br>即有:<br><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15447691891533.jpg" alt=""></p>
+<h2 id="numpy-random-multinomial函数"><a href="#numpy-random-multinomial函数" class="headerlink" title="numpy.random.multinomial函数"></a>numpy.random.multinomial函数</h2><p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.multinomial.html" target="_blank" rel="noopener">官方文档地址</a></p>
+<p><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/D3481F88-A58F-429F-A43C-A09F515DB3DF.png" alt="官方介绍"></p>
+<p>这是 numpy 提供的随机二项式分布实现，二项式分布(<code>binomial distribution</code>)如下表示:</p>
+<script type="math/tex; mode=display">
 P(N)=\begin{pmatrix}n \\
  N
-\end{pmatrix}p^N(1-p)^{n-N}
-\]</span> 函数原型如下： <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy<span class="selector-class">.random</span><span class="selector-class">.RandomState</span><span class="selector-class">.binomial</span>(n, <span class="selector-tag">p</span>, size=None)</span><br></pre></td></tr></table></figure></p>
-<p>表示对一个二项分布进行采样，<code>size</code>表示采样的次数，参数中的<code>n, p</code>分别对应于公式中的<span class="math inline">\(n,p\)</span>，函数的返回值表示<code>n</code>中<code>成功（success）</code>的次数（也即<span class="math inline">\(N\)</span>）。 举个例子，比如掷骰子，一共3个硬币，每个都投一次，三个都是正面朝上的概率是多少？</p>
-<p>这个使用简单的概率统计知识很容易计算得到： <span class="math display">\[
- P=\begin{pmatrix}n \\ N\end{pmatrix}p^N(1-p)^{n-N}=\begin{pmatrix}3 \\ 0\end{pmatrix}0.5^0(1-0.5)^3=0.5^3 = 0.125
-\]</span></p>
-<p>使用上述函数计算大概值则是做足够多次的试验，统计其中全为正面朝上的概率，通过频率计算概率，如下： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/4B6FFD2C-82EC-4C9C-82E2-9808FA9560F4.png" alt="实验结果"></p>
+\end{pmatrix}p^N(1-p)^{n-N}</script><p>函数原型如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy<span class="selector-class">.random</span><span class="selector-class">.RandomState</span><span class="selector-class">.binomial</span>(n, <span class="selector-tag">p</span>, size=None)</span><br></pre></td></tr></table></figure></p>
+<p>表示对一个二项分布进行采样，<code>size</code>表示采样的次数，参数中的<code>n, p</code>分别对应于公式中的$n,p$，函数的返回值表示<code>n</code>中<code>成功（success）</code>的次数（也即$N$）。<br> 举个例子，比如掷骰子，一共3个硬币，每个都投一次，三个都是正面朝上的概率是多少？</p>
+<p> 这个使用简单的概率统计知识很容易计算得到：</p>
+<script type="math/tex; mode=display">
+ P=\begin{pmatrix}n \\ N\end{pmatrix}p^N(1-p)^{n-N}=\begin{pmatrix}3 \\ 0\end{pmatrix}0.5^0(1-0.5)^3=0.5^3 = 0.125</script><p>使用上述函数计算大概值则是做足够多次的试验，统计其中全为正面朝上的概率，通过频率计算概率，如下：<br><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/4B6FFD2C-82EC-4C9C-82E2-9808FA9560F4.png" alt="实验结果"></p>
+<h2 id="numpy中矩阵乘法，星乘-和点乘-dot-的区别"><a href="#numpy中矩阵乘法，星乘-和点乘-dot-的区别" class="headerlink" title="numpy中矩阵乘法，星乘(*)和点乘(.dot)的区别"></a>numpy中矩阵乘法，星乘(*)和点乘(.dot)的区别</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line">a = numpy.array([[<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line">b = numpy.array([[<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">                 [<span class="number">7</span>,<span class="number">8</span>]])</span><br></pre></td></tr></table></figure>
+<p>计算结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a*b</span><br><span class="line">&gt;&gt;&gt;array([[ <span class="number">5</span>, <span class="number">12</span>],</span><br><span class="line">          [<span class="number">21</span>, <span class="number">32</span>]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.dot(b)</span><br><span class="line">&gt;&gt;&gt;array([[<span class="number">19</span>, <span class="number">22</span>],</span><br><span class="line">          [<span class="number">43</span>, <span class="number">50</span>]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">numpy.dot(a,b)</span><br><span class="line">&gt;&gt;&gt;array([[<span class="number">19</span>, <span class="number">22</span>],</span><br><span class="line">          [<span class="number">43</span>, <span class="number">50</span>]])</span><br><span class="line">          </span><br><span class="line">numpy.dot(b,a)</span><br><span class="line">&gt;&gt;&gt;array([[<span class="number">23</span>, <span class="number">34</span>],</span><br><span class="line">          [<span class="number">31</span>, <span class="number">46</span>]])</span><br></pre></td></tr></table></figure>
+<p><strong>星乘表示矩阵内各对应位置相乘，保证矩阵size 相同。<br>点乘表示求矩阵内积，遵循矩阵乘法的规则。</strong></p>
 
       
     </div>
@@ -707,7 +708,7 @@ P(N)=\begin{pmatrix}n \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#where函数"><span class="nav-number">1.</span> <span class="nav-text">Where函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy.random.multinomial函数"><span class="nav-number">2.</span> <span class="nav-text">numpy.random.multinomial函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Where函数"><span class="nav-number">1.</span> <span class="nav-text">Where函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy-random-multinomial函数"><span class="nav-number">2.</span> <span class="nav-text">numpy.random.multinomial函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy中矩阵乘法，星乘-和点乘-dot-的区别"><span class="nav-number">3.</span> <span class="nav-text">numpy中矩阵乘法，星乘(*)和点乘(.dot)的区别</span></a></li></ol></div>
             
 
           </div>
