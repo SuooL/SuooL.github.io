@@ -85,7 +85,7 @@
 <meta name="keywords" content="NLP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="隐马尔科夫模型（HMM）">
-<meta property="og:url" content="http://suool.net/2018/11/18/HMM-Viterbi/index.html">
+<meta property="og:url" content="https://suool.net/2018/11/18/HMM-Viterbi/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
 <meta property="og:description" content="前言 同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
 <meta property="og:locale" content="zh-Hans">
@@ -93,7 +93,8 @@
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/D5B700EB-22B4-487C-9C7D-1AC101E2E7BD.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/16/423B35A6-5DE4-432E-A68D-CD4FB933C0C9.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/16/238936F0-D7CC-4527-9C36-B7AA0B9D25FB.png">
-<meta property="og:updated_time" content="2018-12-16T08:02:38.552Z">
+<meta property="og:image" content="https://suool.net/2018/11/18/HMM-Viterbi/media/76C08584-F650-4B94-90DC-0C18D99EC5B0.png">
+<meta property="og:updated_time" content="2018-12-16T13:48:54.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐马尔科夫模型（HMM）">
 <meta name="twitter:description" content="前言 同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
@@ -127,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://suool.net/2018/11/18/HMM-Viterbi/">
+  <link rel="canonical" href="https://suool.net/2018/11/18/HMM-Viterbi/">
 
 
 
@@ -289,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suool.net/2018/11/18/HMM-Viterbi/">
+    <link itemprop="mainEntityOfPage" href="https://suool.net/2018/11/18/HMM-Viterbi/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SuooL">
@@ -334,7 +335,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-16T16:02:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-16T21:48:54+08:00">
                 2018-12-16
               </time>
             
@@ -13934,6 +13935,8 @@ P(O|\lambda) = \sum\limits_{i=1}^N\alpha_T(i)
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 接上面代码</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(obs_seq)</span>:</span></span><br><span class="line">    <span class="string">"""前向算法"""</span></span><br><span class="line">    N = A.shape[<span class="number">0</span>]</span><br><span class="line">    T = len(obs_seq)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># F保存前向概率矩阵</span></span><br><span class="line">    F = np.zeros((N,T))</span><br><span class="line">    F[:,<span class="number">0</span>] = pi * B[:, obs_seq[<span class="number">0</span>]]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">1</span>, T):</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> range(N):</span><br><span class="line">            F[n,t] = np.dot(F[:,t<span class="number">-1</span>], (A[:,n])) * B[n, obs_seq[t]]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> F, sum(F[:,T<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backward</span><span class="params">(obs_seq)</span>:</span></span><br><span class="line">    <span class="string">"""后向算法"""</span></span><br><span class="line">    N = A.shape[<span class="number">0</span>]</span><br><span class="line">    T = len(obs_seq)</span><br><span class="line">    <span class="comment"># X保存后向概率矩阵</span></span><br><span class="line">    X = np.zeros((N,T))</span><br><span class="line">    X[:,<span class="number">-1</span>:] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> reversed(range(T<span class="number">-1</span>)):</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> range(N):</span><br><span class="line">            X[n,t] = np.sum(X[:,t+<span class="number">1</span>] * A[n,:] * B[:, obs_seq[t+<span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> X, sum(pi*B[:,<span class="number">0</span>]*X[:,<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
 <p>结果如下： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/16/238936F0-D7CC-4527-9C36-B7AA0B9D25FB.png" alt="结果"></p>
 <h3 id="鲍姆-韦尔奇算法求解hmm参数">鲍姆-韦尔奇算法求解HMM参数</h3>
+<p>HMM模型参数求解根据已知的条件可以分为两种情况。 第一种情况较为简单，就是我们已知<span class="math inline">\(D\)</span>个长度为<span class="math inline">\(T\)</span>的观测序列和对应的隐藏状态序列，<span class="math inline">\(\{(O_1, I_1), (O_2, I_2), ...(O_D, I_D)\}\)</span>是已知的，此时我们可以很容易的用最大似然来求解模型参数。 <img src="media/76C08584-F650-4B94-90DC-0C18D99EC5B0.png" alt="求解步骤"></p>
+<p>可见第一种情况下求解模型还是很简单的。但是在很多时候，我们无法得到HMM样本观察序列对应的隐藏序列，只有D个长度为T的观测序列，即是<span class="math inline">\(\{(O_1), (O_2), ...(O_D)\}\)</span>是已知的，此时我们能不能求出合适的HMM模型参数呢？这就是我们的第二种情况，它的解法最常用的是鲍姆-韦尔奇算法，其实就是基于EM算法的求解。</p>
 <h3 id="维特比算法解码隐藏状态序列">维特比算法解码隐藏状态序列</h3>
 <h2 id="分词实战">分词实战</h2>
 
@@ -14344,7 +14347,7 @@ P(O|\lambda) = \sum\limits_{i=1}^N\alpha_T(i)
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://suool.net/2018/11/18/HMM-Viterbi/';
+          this.page.url = 'https://suool.net/2018/11/18/HMM-Viterbi/';
           this.page.identifier = '2018/11/18/HMM-Viterbi/';
           this.page.title = '隐马尔科夫模型（HMM）';
         };
