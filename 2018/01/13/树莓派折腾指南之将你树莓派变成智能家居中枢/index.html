@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,10 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
 
 
 
@@ -40,8 +51,27 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  
+  
 
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
@@ -50,45 +80,64 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="树莓派,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="SuooL's Blog" type="application/atom+xml">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
 
 
 
 
 
 
-<meta name="description" content="将你树莓派变成智能家居中枢 树莓派由于本身足够的小巧且扩展性极高，所以它智能家居方面的应用具有天然的优势。对于喜欢折腾和 Geek 的人的而言，其扩展性具有无比的吸引力。">
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="将你树莓派变成智能家居中枢 树莓派由于本身足够的小巧且扩展性极高，所以它智能家居方面的应用具有天然的优势。对于喜欢折腾和 Geek 的人的而言，其扩展性具有无比的吸引力。">
 <meta name="keywords" content="树莓派">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派折腾指南之将你树莓派变成智能家居中枢">
 <meta property="og:url" content="https://suool.net/2018/01/13/树莓派折腾指南之将你树莓派变成智能家居中枢/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
 <meta property="og:description" content="将你树莓派变成智能家居中枢 树莓派由于本身足够的小巧且扩展性极高，所以它智能家居方面的应用具有天然的优势。对于喜欢折腾和 Geek 的人的而言，其扩展性具有无比的吸引力。">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15158306050366.jpg">
 <meta property="og:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15158306313468.jpg">
 <meta property="og:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15158331055340.jpg">
@@ -104,29 +153,8 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+  <link rel="alternate" href="/atom.xml" title="SuooL's Blog" type="application/atom+xml">
+
 
 
 
@@ -134,7 +162,11 @@
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>树莓派折腾指南之将你树莓派变成智能家居中枢 | SuooL's Blog</title>
   
@@ -142,22 +174,51 @@
 
 
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-61498523-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-61498523-1', 'auto');
-  ga('send', 'pageview');
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-61498523-1');
+</script>
 
 
 
 
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -179,13 +240,15 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
-        <p class="site-subtitle">蛰伏于盛夏 藏华于当春</p>
+        <h1 class="site-subtitle" itemprop="description">蛰伏于盛夏 藏华于当春</h1>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -193,75 +256,111 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+
+    
+
+    <a href="/about/" rel="section">关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+
+    
+
+    <a href="/tags/" rel="section">标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+
+    
+
+    <a href="/categories/" rel="section">分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+
+    
+
+    <a href="/archives/" rel="section">归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+
+    
+
+    <a href="/404.html" rel="section">公益 404</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -269,12 +368,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -287,6 +394,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -296,7 +405,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SuooL">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="胡振生写字的地方">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -309,11 +418,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">树莓派折腾指南之将你树莓派变成智能家居中枢</h1>
+          <h2 class="post-title" itemprop="name headline">树莓派折腾指南之将你树莓派变成智能家居中枢
+
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -321,25 +439,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T17:45:13+08:00">
-                2018-01-13
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-13 17:45:13" itemprop="dateCreated datePublished" datetime="2018-01-13T17:45:13+08:00">2018-01-13</time>
             
 
             
-              <span class="post-meta-divider">|</span>
-            
+              
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">更新于&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-29 20:53:08" itemprop="dateModified" datetime="2018-10-29T20:53:08+08:00">2018-10-29</time>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-29T20:53:08+08:00">
-                2018-10-29
-              </time>
             
           </span>
 
@@ -355,11 +478,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/硬件/" itemprop="url" rel="index">
-                    <span itemprop="name">硬件</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/硬件/" itemprop="url" rel="index"><span itemprop="name">硬件</span></a></span>
 
                 
                 
@@ -375,7 +494,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/01/13/树莓派折腾指南之将你树莓派变成智能家居中枢/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/13/树莓派折腾指南之将你树莓派变成智能家居中枢/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/01/13/树莓派折腾指南之将你树莓派变成智能家居中枢/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,51 +502,9 @@
 
           
           
-             <span id="/2018/01/13/树莓派折腾指南之将你树莓派变成智能家居中枢/" class="leancloud_visitors" data-flag-title="树莓派折腾指南之将你树莓派变成智能家居中枢">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
           
 
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,998 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7 分钟
-                </span>
-              
-            </div>
           
 
           
@@ -462,7 +539,7 @@
 <li>Raspberry Pi</li>
 <li>小米智能家居产品</li>
 </ul>
-<p>软件： * <a href="https://github.com/nfarina/homebridge" target="_blank" rel="noopener">HomeBridge</a> * <a href="https://github.com/YinHangCode/homebridge-mi-aqara" target="_blank" rel="noopener">homebridge-mi-aqara</a></p>
+<p>软件： * <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25mYXJpbmEvaG9tZWJyaWRnZQ==" title="https://github.com/nfarina/homebridge">HomeBridge<i class="fa fa-external-link"></i></span> * <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1lpbkhhbmdDb2RlL2hvbWVicmlkZ2UtbWktYXFhcmE=" title="https://github.com/YinHangCode/homebridge-mi-aqara">homebridge-mi-aqara<i class="fa fa-external-link"></i></span></p>
 <h3 id="基本步骤">基本步骤</h3>
 <ol type="1">
 <li>硬件准备和连接</li>
@@ -473,7 +550,7 @@
 <li>其他</li>
 </ol>
 <h2 id="步骤一硬件准备和连接">步骤一：硬件准备和连接</h2>
-<p>首先将你的<a href="https://www.jianshu.com/p/b62a8229a74c" target="_blank" rel="noopener">树莓派安装好系统并配置好</a>，最好可以使用 SSR 全局代理可以科学上网，这样可以改善你的树莓派网络环境，一定程度加快安装过程。具体的方法参考<a href="https://www.jianshu.com/p/445256a2367b" target="_blank" rel="noopener">之前的文章</a>。</p>
+<p>首先将你的<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9iNjJhODIyOWE3NGM=" title="https://www.jianshu.com/p/b62a8229a74c">树莓派安装好系统并配置好<i class="fa fa-external-link"></i></span>，最好可以使用 SSR 全局代理可以科学上网，这样可以改善你的树莓派网络环境，一定程度加快安装过程。具体的方法参考<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC80NDUyNTZhMjM2N2I=" title="https://www.jianshu.com/p/445256a2367b">之前的文章<i class="fa fa-external-link"></i></span>。</p>
 <p>使用 SSH 远程连接你的树莓派：</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="literal">pi</span><span class="meta">@raspberrypi</span>.<span class="keyword">local</span></span><br></pre></td></tr></table></figure>
 <p>更新树莓派相关依赖环境</p>
@@ -484,7 +561,7 @@
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sL http<span class="variable">s:</span>//<span class="keyword">deb</span>.nodesource.<span class="keyword">com</span>/setup_8.<span class="keyword">x</span> | sudo -E bash -</span><br><span class="line">sudo apt-<span class="built_in">get</span> install -<span class="keyword">y</span> nodejs</span><br></pre></td></tr></table></figure>
 <p>其次需要安装 <code>avahi</code> 包</p>
 <figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libavahi-compat-libdnssd-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
-<p>如果上述包安装出现错误，可以参考这里的<a href="https://stackoverflow.com/questions/26571326/how-do-i-resolve-the-following-packages-have-unmet-dependencies" target="_blank" rel="noopener">解决方法</a></p>
+<p>如果上述包安装出现错误，可以参考这里的<span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMjY1NzEzMjYvaG93LWRvLWktcmVzb2x2ZS10aGUtZm9sbG93aW5nLXBhY2thZ2VzLWhhdmUtdW5tZXQtZGVwZW5kZW5jaWVz" title="https://stackoverflow.com/questions/26571326/how-do-i-resolve-the-following-packages-have-unmet-dependencies">解决方法<i class="fa fa-external-link"></i></span></p>
 <p>尝试使用</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo aptitude <span class="keyword">install</span> libavahi-compat-libdnssd-dev</span><br></pre></td></tr></table></figure>
 <p>命令安装依赖，可能需要将相关软件包降级就可以顺利安装了。</p>
@@ -496,7 +573,7 @@
 <p>上面的 <code>/usr/lib/</code> 目录，如果你不是使用的 <code>apt-get</code> 命令安装的 <code>Node</code>，需要换成 <code>/usr/local/lib/</code> 。 一定要严格安装上述命令的步骤来安装，该切换目录就切换目录。</p>
 <p>此时安装应该不会有什么问题了。</p>
 <h2 id="步骤四安装及配置-homebridge-mi-aqara">步骤四：安装及配置 homebridge-mi-aqara</h2>
-<p>其项目主页是 <a href="https://github.com/YinHangCode/homebridge-mi-aqara" target="_blank" rel="noopener">homebridge-mi-aqara</a>，可以在他的项目主页看到其支持的小米硬件，基本是非常全面的。</p>
+<p>其项目主页是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1lpbkhhbmdDb2RlL2hvbWVicmlkZ2UtbWktYXFhcmE=" title="https://github.com/YinHangCode/homebridge-mi-aqara">homebridge-mi-aqara<i class="fa fa-external-link"></i></span>，可以在他的项目主页看到其支持的小米硬件，基本是非常全面的。</p>
 <p>安装命令如下：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm <span class="keyword">install</span> -g homebridge-mi-aqara</span><br></pre></td></tr></table></figure>
 <p>安装完成之后，需要对其进行基本的配置，从而能够将你的小米全家桶硬件加入到 <code>HomeBridge</code> 中。</p>
@@ -522,20 +599,30 @@
 <p>然后所打开的 <code>screen</code> 进程中开启一个 <code>homebridge</code> 进程</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">homebridge -D</span></span><br></pre></td></tr></table></figure>
 <p>在 <code>screen</code> 里开启的 <code>homebridge</code> 不会随着 SSH 关闭而被关闭。使用 <code>Ctrl+A</code> 然后按 <code>d</code> 就可以跳出来了。</p>
-<p>具体关于 <code>screen</code> 命令的用法你可以查看这里的文章: <a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/" target="_blank" rel="noopener">linux 技巧：使用 screen 管理你的远程会话</a> 及 <a href="http://www.runoob.com/linux/linux-comm-screen.html" target="_blank" rel="noopener">Linux screen命令</a>。</p>
+<p>具体关于 <code>screen</code> 命令的用法你可以查看这里的文章: <span class="exturl" data-url="aHR0cHM6Ly93d3cuaWJtLmNvbS9kZXZlbG9wZXJ3b3Jrcy9jbi9saW51eC9sLWNuLXNjcmVlbi8=" title="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/">linux 技巧：使用 screen 管理你的远程会话<i class="fa fa-external-link"></i></span> 及 <span class="exturl" data-url="aHR0cDovL3d3dy5ydW5vb2IuY29tL2xpbnV4L2xpbnV4LWNvbW0tc2NyZWVuLmh0bWw=" title="http://www.runoob.com/linux/linux-comm-screen.html">Linux screen命令<i class="fa fa-external-link"></i></span>。</p>
 <h2 id="其他">其他</h2>
-<p>完成上面的步骤，此时你只能在你的路由器所在的局域网内完成智能家居的控制，如果要在外网实现操作，及 home 的自动化操作，你需要一台 iPad 作为家居中枢，具体的参考 <a href="https://support.apple.com/zh-cn/HT207057" target="_blank" rel="noopener">自动化和远程访问 HomeKit 配件</a></p>
+<p>完成上面的步骤，此时你只能在你的路由器所在的局域网内完成智能家居的控制，如果要在外网实现操作，及 home 的自动化操作，你需要一台 iPad 作为家居中枢，具体的参考 <span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0LmFwcGxlLmNvbS96aC1jbi9IVDIwNzA1Nw==" title="https://support.apple.com/zh-cn/HT207057">自动化和远程访问 HomeKit 配件<i class="fa fa-external-link"></i></span></p>
 <p>上面就是一个利用树莓派实现让 Siri 帮你开关灯的过程，下一步可以使用 <code>HomeAssistant</code> 来实现更加智能化和扩展化的家居管理。</p>
 <p>更下一步的尝试可能会比较底层一些了： * 尝试一下扩展温湿度感应器模块 * 尝试使用 <code>GPIO</code> 控制 RGB 彩色 LED 灯 * 扩展摄像头模块，尝试一下人脸识别等基本的人工智能 * 扩展私有云存储及远程下载</p>
 
       
     </div>
+
+    
+      
+
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
@@ -614,27 +701,14 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
     </div>
 
   
@@ -670,7 +744,7 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -678,42 +752,102 @@
               <p class="site-description motion-element" itemprop="description">胡振生写字的地方</p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">33</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
@@ -726,36 +860,59 @@
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/suool" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:hu1020935219@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3N1b29s" title="GitHub &rarr; https://github.com/suool"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="bWFpbHRvOmh1MTAyMDkzNTIxOUBnbWFpbC5jb20=" title="E-Mail &rarr; mailto:hu1020935219@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cDovL2RvdWJhbi5jb20vcGVvcGxlL3N1b29s" title="豆瓣 &rarr; http://douban.com/people/suool"><i class="fa fa-fw fa-globe"></i>豆瓣</span>
+                </span>
+              
             </div>
           
 
           
-          
 
           
           
 
+          
+            
+          
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
@@ -767,7 +924,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -783,26 +940,19 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2013 &mdash; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+        <div class="copyright">&copy; 2013 – <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">SuooL</span>
 
   
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Site words total count&#58;</span>
-    
-    <span title="Site words total count">55.6k</span>
+
   
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
 
 
 
@@ -810,12 +960,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Muse</span> v6.6.0</div>
 
 
 
 
         
+
 
 
 
@@ -836,11 +987,14 @@
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -854,110 +1008,9 @@
 
 
 
-  
 
 
 
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://suool.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'https://suool.net/2018/01/13/树莓派折腾指南之将你树莓派变成智能家居中枢/';
-          this.page.identifier = '2018/01/13/树莓派折腾指南之将你树莓派变成智能家居中枢/';
-          this.page.title = '树莓派折腾指南之将你树莓派变成智能家居中枢';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://suool.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
 
 
 
@@ -973,121 +1026,113 @@
 
 
   
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
 
 
 
   
 
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("yklxnryiir1hbibxgmomfcifj3d8nl19hu01hlebjx5rncjx", "pw34xu53fh6a7j1eat1gdbj16y6ratoqnd6xyy6uknvcn3ul");</script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: '5usifk9CwDO081OoaWOEWckx-gzGzoHsz',
+        appKey: 'eGyonkL7T0t7fW3DlmM4NnPQ',
+        placeholder: '留下点什么吧',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
     });
   </script>
 
 
 
+
   
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 
@@ -1096,27 +1141,52 @@
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
         for (i=0; i < all.length; i += 1) {
           all[i].SourceElement().parentNode.className += ' has-jax';
         }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+    overflow: auto hidden;
+}
+</style>
+
+    
   
 
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/exturl.js?v=6.6.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
 
   
 
