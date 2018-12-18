@@ -90,7 +90,7 @@
 <meta property="og:description" content="树莓派折腾指南之使用 SSR 实现科学上网 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15154976353553.jpg">
-<meta property="og:updated_time" content="2018-12-18T03:29:38.236Z">
+<meta property="og:updated_time" content="2018-12-18T03:31:39.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派折腾指南之使用 SSR 实现科学上网">
 <meta name="twitter:description" content="树莓派折腾指南之使用 SSR 实现科学上网 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-18T11:29:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-18T11:31:39+08:00">
                 2018-12-18
               </time>
             
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,583 字
+                  1,589 字
                 </span>
               
 
@@ -464,7 +464,8 @@
 <p>等待完成之后，编辑配置文件，在命令行输入：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano user-config.json</span><br></pre></td></tr></table></figure>
 <p>具体参数的意义及作用，参照 <a href="https://github.com/ssrbackup/shadowsocks-rss/wiki/config.json" target="_blank" rel="noopener">config.json</a> 。</p>
-<p>local_address 和 local_port 不需要修改，其余的按照 Wiki 修改，基本上配置好： server 填服务器地址 server_port 填服务器端口 password 密码 method 加密方法 obfs 混淆插件 protocol 协议插件 等关键参数，具体看你的 SSR 服务端的设置。</p>
+<p>local_address 和 local_port 不需要修改，其余的按照 Wiki 修改，基本上配置好： <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server 填服务器地址</span><br><span class="line">server_port 填服务器端口</span><br><span class="line">password 密码</span><br><span class="line"><span class="function"><span class="keyword">method</span> 加密方法</span></span><br><span class="line"><span class="function"><span class="title">obfs</span> 混淆插件</span></span><br><span class="line"><span class="function"><span class="title">protocol</span> 协议插件</span></span><br></pre></td></tr></table></figure></p>
+<p>等关键参数，具体看你的 SSR 服务端的设置。</p>
 <p>编辑好后，运行一下命令测试一下是否能运行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python shadowsocks/local.py</span><br></pre></td></tr></table></figure>
 <p>没报错的话 Ctrl+C 结束继续下一步，如果有报错继续改配置文件。</p>
@@ -492,7 +493,7 @@
 <p>保存规则</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "iptables-save &gt; /etc/iptables.up.rules"</span><br></pre></td></tr></table></figure>
 <h2 id="开机自动加载规则">开机自动加载规则</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "cat &gt; /etc/network/if-pre-up.d/iptables" &lt;&lt;EOF</span><br><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">/sbin/iptables-restore &lt; /etc/iptables.up.rules</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "cat &gt; /etc/network/if-pre-up.d/iptables" &lt;&lt;EOF</span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">/sbin/iptables-restore &lt; /etc/iptables.up.rules</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 <p>添加执行权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /etc/network/if-pre-up.d/iptables</span><br></pre></td></tr></table></figure>
 <p>使用</p>
@@ -778,7 +779,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">55.5k</span>
+    <span title="Site words total count">55.6k</span>
   
 </div>
 
