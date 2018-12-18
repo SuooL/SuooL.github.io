@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="树莓派折腾指南之使用 SSR 实现科学上网 p## 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
+<meta name="description" content="树莓派折腾指南之使用 SSR 实现科学上网 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta name="keywords" content="树莓派">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派折腾指南之使用 SSR 实现科学上网">
 <meta property="og:url" content="https://suool.net/2018/01/09/树莓派折腾指南之使用-SSR-实现科学上网/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="树莓派折腾指南之使用 SSR 实现科学上网 p## 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
+<meta property="og:description" content="树莓派折腾指南之使用 SSR 实现科学上网 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15154976353553.jpg">
-<meta property="og:updated_time" content="2018-10-29T12:53:08.547Z">
+<meta property="og:updated_time" content="2018-12-18T03:29:38.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派折腾指南之使用 SSR 实现科学上网">
-<meta name="twitter:description" content="树莓派折腾指南之使用 SSR 实现科学上网 p## 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
+<meta name="twitter:description" content="树莓派折腾指南之使用 SSR 实现科学上网 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta name="twitter:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15154976353553.jpg">
 
 
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-29T20:53:08+08:00">
-                2018-10-29
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-18T11:29:38+08:00">
+                2018-12-18
               </time>
             
           </span>
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,584 字
+                  1,583 字
                 </span>
               
 
@@ -440,7 +440,8 @@
 
       
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="树莓派折腾指南之使用-ssr-实现科学上网">树莓派折腾指南之使用 SSR 实现科学上网</h1>
-<p>p## 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 <a href="https://github.com/jedisct1/libsodium/" target="_blank" rel="noopener">libsodium</a> ，编译安装的步骤如下：</p>
+<h2 id="预备工作">预备工作</h2>
+<p>首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 <a href="https://github.com/jedisct1/libsodium/" target="_blank" rel="noopener">libsodium</a> ，编译安装的步骤如下：</p>
 <a id="more"></a>
 <p>首先安装 build-essential 软件包，其作用是提供编译程序必须软件包的列表信息，也即是，编译程序有了这个软件包它才能确定头文件在哪，才知道库函数在哪，还会下载依赖的软件包，最后才组成一个开发环境。 安装命令是：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install build-essential</span><br></pre></td></tr></table></figure>
@@ -491,7 +492,7 @@
 <p>保存规则</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "iptables-save &gt; /etc/iptables.up.rules"</span><br></pre></td></tr></table></figure>
 <h2 id="开机自动加载规则">开机自动加载规则</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "cat &gt; /etc/network/if-pre-up.d/iptables" &lt;&lt;EOF</span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">/sbin/iptables-restore &lt; /etc/iptables.up.rules</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "cat &gt; /etc/network/if-pre-up.d/iptables" &lt;&lt;EOF</span><br><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">/sbin/iptables-restore &lt; /etc/iptables.up.rules</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 <p>添加执行权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /etc/network/if-pre-up.d/iptables</span><br></pre></td></tr></table></figure>
 <p>使用</p>
@@ -743,7 +744,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树莓派折腾指南之使用-ssr-实现科学上网"><span class="nav-number">1.</span> <span class="nav-text">树莓派折腾指南之使用 SSR 实现科学上网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译-ssr-及基本配置"><span class="nav-number">1.1.</span> <span class="nav-text">编译 SSR 及基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议转换代理"><span class="nav-number">1.2.</span> <span class="nav-text">协议转换代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssr-开机自启"><span class="nav-number">1.3.</span> <span class="nav-text">SSR 开机自启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-iptables-实现-nat-转发"><span class="nav-number">1.4.</span> <span class="nav-text">设置 iptables 实现 nat 转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开机自动加载规则"><span class="nav-number">1.5.</span> <span class="nav-text">开机自动加载规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭全局代理"><span class="nav-number">1.6.</span> <span class="nav-text">关闭全局代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.7.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next"><span class="nav-number">2.</span> <span class="nav-text">NEXT</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树莓派折腾指南之使用-ssr-实现科学上网"><span class="nav-number">1.</span> <span class="nav-text">树莓派折腾指南之使用 SSR 实现科学上网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备工作"><span class="nav-number">1.1.</span> <span class="nav-text">预备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译-ssr-及基本配置"><span class="nav-number">1.2.</span> <span class="nav-text">编译 SSR 及基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议转换代理"><span class="nav-number">1.3.</span> <span class="nav-text">协议转换代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssr-开机自启"><span class="nav-number">1.4.</span> <span class="nav-text">SSR 开机自启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-iptables-实现-nat-转发"><span class="nav-number">1.5.</span> <span class="nav-text">设置 iptables 实现 nat 转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开机自动加载规则"><span class="nav-number">1.6.</span> <span class="nav-text">开机自动加载规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭全局代理"><span class="nav-number">1.7.</span> <span class="nav-text">关闭全局代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.8.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next"><span class="nav-number">2.</span> <span class="nav-text">NEXT</span></a></li></ol></div>
             
 
           </div>
