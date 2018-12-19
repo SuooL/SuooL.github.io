@@ -104,18 +104,18 @@
 
 
 
-  <meta name="description" content="前言 NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
+  <meta name="description" content="前言NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NLP 之分词技术概述">
 <meta property="og:url" content="https://suool.net/2018/11/16/Text-Segmentation-1/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="前言 NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
+<meta property="og:description" content="前言NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-11-24T10:31:55.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NLP 之分词技术概述">
-<meta name="twitter:description" content="前言 NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
+<meta name="twitter:description" content="前言NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。">
 
 
 
@@ -483,6 +483,34 @@
           
 
           
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
 
           
 
@@ -499,51 +527,43 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2>
-<p>NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。 <a id="more"></a></p>
-<h3 id="基于规则的分词">基于规则的分词</h3>
-<p>中文分词技术是中文 NLP 领域一个非常基础而核心的问题。在此问题被提出来之后，主要有三种思路出现，分别是：基于规则的分词、基于统计的分词、混合方式分词（规则+统计）。</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>NLP 的问题领域中，首先的要解决核心问题就是分词。在英文以空格来作为天然的词语间隔的语言中，分词是非常容易的；但是在中文领域，词以汉字为单位组成，词语与词语之间并无天然的界限，句子或短语之间以标点符号作为间隔。这就导致在中文领域做 NLP 的前提是做好中文分词技术。<br><a id="more"></a></p>
+<h3 id="基于规则的分词"><a href="#基于规则的分词" class="headerlink" title="基于规则的分词"></a>基于规则的分词</h3><p>中文分词技术是中文 NLP 领域一个非常基础而核心的问题。在此问题被提出来之后，主要有三种思路出现，分别是：基于规则的分词、基于统计的分词、混合方式分词（规则+统计）。</p>
 <p>基于规则的分词是一种机械的分词方法，主要通过维护词典，在切分语句的时候，通过将语句中的每个字符串与词表中的词语逐一匹配，找到即切分，否则不切分。按照匹配切分的方法，主要有：正向最大匹配法（MM），逆向最大匹配法（RMM）以及双向最大匹配法（BM）。</p>
 <p>基于规则的方式其优点和缺点都显而易见，当今的环境下，这种方式已不再是主流，不再细说。</p>
-<p>###基于统计的分词</p>
-<p>基于统计的分词其主要思想是把每个词看作是由词的最小单位的各个字组成的，如果相连的字在不同的文本中出现的次数越多，就说明这个相连的字很可能就是一个词。因此可以利用字与字相邻出现的频率来反映其组成词的可靠度，统计语料库中相邻共现的各个字的组合的频度，当这个频度高于某一个临界值的时候，便可以认为这个字的组合是一个词语。</p>
-<p>基于统计的分词，基本操作有两个： 1. 建立语言模型 2. 对句子进行单词划分，然后对划分结果进行概率计算，获得概率最大的分词方式，这里面用到的统计算法主要有隐马尔科夫模型（HMM）、条件随机场（CRF）等。</p>
-<h2 id="语言模型">语言模型</h2>
-<p>语言模型主要有统计语言模型（n-gram语言模型）和神经网络语言模型等，这里主要详细说明统计语言模型。</p>
-<h3 id="n-gram语言模型">n-gram语言模型</h3>
-<p>统计语言模型简单来讲，就是计算一个句子的概率，更确切的说是计算组成这个句子一系列词语的概率。</p>
-<p>比如给定一个已知词语序列的句子： <span class="math display">\[
-S = W_1,W_2,\cdots,W_n
-\]</span></p>
-<p>一个好的语言模型应该会给这个句子比较高的概率。因为这个句子在语义语法上都没有任何问题。我们可以用如下的公式来计算概率： <span class="math display">\[
+<h3 id="基于统计的分词"><a href="#基于统计的分词" class="headerlink" title="基于统计的分词"></a>基于统计的分词</h3><p>基于统计的分词其主要思想是把每个词看作是由词的最小单位的各个字组成的，如果相连的字在不同的文本中出现的次数越多，就说明这个相连的字很可能就是一个词。因此可以利用字与字相邻出现的频率来反映其组成词的可靠度，统计语料库中相邻共现的各个字的组合的频度，当这个频度高于某一个临界值的时候，便可以认为这个字的组合是一个词语。</p>
+<p>基于统计的分词，基本操作有两个：</p>
+<ol>
+<li>建立语言模型</li>
+<li>对句子进行单词划分，然后对划分结果进行概率计算，获得概率最大的分词方式，这里面用到的统计算法主要有隐马尔科夫模型（HMM）、条件随机场（CRF）等。</li>
+</ol>
+<h2 id="语言模型"><a href="#语言模型" class="headerlink" title="语言模型"></a>语言模型</h2><p>语言模型主要有统计语言模型（n-gram语言模型）和神经网络语言模型等，这里主要详细说明统计语言模型。</p>
+<h3 id="n-gram语言模型"><a href="#n-gram语言模型" class="headerlink" title="n-gram语言模型"></a>n-gram语言模型</h3><p>统计语言模型简单来讲，就是计算一个句子的概率，更确切的说是计算组成这个句子一系列词语的概率。</p>
+<p>比如给定一个已知词语序列的句子：</p>
+<script type="math/tex; mode=display">
+S = W_1,W_2,\cdots,W_n</script><p>一个好的语言模型应该会给这个句子比较高的概率。因为这个句子在语义语法上都没有任何问题。我们可以用如下的公式来计算概率：</p>
+<script type="math/tex; mode=display">
 \begin{align}
-P(S)&amp;=P(W_1,W_2,...,W_n) \\
-&amp;=P(W_1)P(W_2|W_1)\cdots P(W_n|W_1,W_2,...W_{n−1})
-\end{align}
-\]</span></p>
-<p>可是这样的方法存在两个致命的缺陷：</p>
+P(S)&=P(W_1,W_2,...,W_n) \\
+&=P(W_1)P(W_2|W_1)\cdots P(W_n|W_1,W_2,...W_{n−1})
+\end{align}</script><p>可是这样的方法存在两个致命的缺陷：</p>
 <ul>
-<li><strong>參数空间过大</strong>：条件概率 <span class="math inline">\(P(W_n|W_1,W_2,...W_{n−1})\)</span> 的可能性太多，无法估算，不可能有用；</li>
+<li><strong>參数空间过大</strong>：条件概率 $P(W<em>n|W_1,W_2,…W</em>{n−1})$ 的可能性太多，无法估算，不可能有用；</li>
 <li><strong>数据稀疏严重</strong>：对于非常多词对的组合，在语料库中都没有出现，依据最大似然估计得到的概率将会是0。</li>
 </ul>
 <p>为了解决參数空间过大的问题。引入了<strong>马尔科夫假设：随意一个词出现的概率只与它前面出现的有限的一个或者几个词有关</strong>。</p>
-<p>如果 n=1，即假设每个单词之间相互独立，那么就会得到 unigram 也就是一元语言模型： <strong>Unigram model</strong> <span class="math display">\[ 
-P(W_1,W_2,W_3,...,W_n)=∏^n_{i=1}P(W_i)
-\]</span></p>
-<p>如果 n=2 则为 bi-gram 模型表示，因为，下一个单词和之前一个单词是有很强的关联性 <strong>Bigram model</strong> <span class="math display">\[
-P(W_1,W_2,W_3,...,W_n)=∏^n_{i=2}P(W_i|W_{i−1})
-\]</span></p>
-<p>假设一个词的出现仅依赖于它前面出现的两个词，即是 n=3，那么我们就称之为trigram： <strong>Trigram model</strong> <span class="math display">\[
-P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})
-\]</span></p>
-<p>一般来说，N 元模型就是假设当前词的出现概率只与它前面的 N-1 个词有关。而这些概率参数都是可以通过大规模语料库来计算.</p>
+<p>如果 n=1，即假设每个单词之间相互独立，那么就会得到 unigram 也就是一元语言模型：<br><strong>Unigram model</strong></p>
+<script type="math/tex; mode=display">
+P(W_1,W_2,W_3,...,W_n)=∏^n_{i=1}P(W_i)</script><p>如果 n=2 则为 bi-gram 模型表示，因为，下一个单词和之前一个单词是有很强的关联性<br><strong>Bigram model</strong></p>
+<script type="math/tex; mode=display">
+P(W_1,W_2,W_3,...,W_n)=∏^n_{i=2}P(W_i|W_{i−1})</script><p>假设一个词的出现仅依赖于它前面出现的两个词，即是 n=3，那么我们就称之为trigram：<br><strong>Trigram model</strong></p>
+<script type="math/tex; mode=display">
+P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})</script><p>一般来说，N 元模型就是假设当前词的出现概率只与它前面的 N-1 个词有关。而这些概率参数都是可以通过大规模语料库来计算.</p>
 <p>同时，n一般不会超过3, 否则参数空间过大，数据稀疏严重，时间复杂度高，精度却提高的不多。对于非常对多词对的组合，在语料库中没有出现，依据最大似然估计得到的概率将会是0。</p>
 <p>当然，对于n-gram模型来说，有很多的平滑方法。即对频率为0的n元对进行估计，典型的平滑算法有加法平滑、Good-Turing平滑、Katz平滑、插值平滑，等等</p>
-<h3 id="隐马尔科夫模型">隐马尔科夫模型</h3>
-<p>隐马尔科夫模型（Hidden Markov Model，以下简称HMM）是比较经典的机器学习模型，它在语言识别，自然语言处理，模式识别等领域得到广泛的应用。当然，随着目前深度学习的崛起，尤其是RNN，LSTM等神经网络序列模型的火热，HMM的地位有所下降。</p>
+<h3 id="隐马尔科夫模型"><a href="#隐马尔科夫模型" class="headerlink" title="隐马尔科夫模型"></a>隐马尔科夫模型</h3><p>隐马尔科夫模型（Hidden Markov Model，以下简称HMM）是比较经典的机器学习模型，它在语言识别，自然语言处理，模式识别等领域得到广泛的应用。当然，随着目前深度学习的崛起，尤其是RNN，LSTM等神经网络序列模型的火热，HMM的地位有所下降。</p>
 <p>这部分内容会在后面专门说明,在 HMM 中也面临着计算复杂度过高等问题.</p>
-<h2 id="结语">结语</h2>
-<p>对于文本挖掘中需要的分词功能，一般我们会用现有的工具。简单的英文分词不需要任何工具，通过空格和标点符号就可以分词了，而进一步的英文分词推荐使用 <span class="exturl" data-url="aHR0cDovL3d3dy5ubHRrLm9yZy8=" title="http://www.nltk.org/">nltk<i class="fa fa-external-link"></i></span>。对于中文分词，则推荐用<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Z4c2p5L2ppZWJhLw==" title="https://github.com/fxsjy/jieba/">结巴分词<i class="fa fa-external-link"></i></span>（jieba）。这些工具使用都很简单。你的分词没有特别的需求直接使用这些分词工具就可以了。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>对于文本挖掘中需要的分词功能，一般我们会用现有的工具。简单的英文分词不需要任何工具，通过空格和标点符号就可以分词了，而进一步的英文分词推荐使用 <span class="exturl" data-url="aHR0cDovL3d3dy5ubHRrLm9yZy8=" title="http://www.nltk.org/">nltk<i class="fa fa-external-link"></i></span>。对于中文分词，则推荐用<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Z4c2p5L2ppZWJhLw==" title="https://github.com/fxsjy/jieba/">结巴分词<i class="fa fa-external-link"></i></span>（jieba）。这些工具使用都很简单。你的分词没有特别的需求直接使用这些分词工具就可以了。</p>
 <p>分词是传统中文 NLP 的第一步.</p>
 
       
@@ -867,7 +887,7 @@ P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于规则的分词"><span class="nav-number">1.1.</span> <span class="nav-text">基于规则的分词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语言模型"><span class="nav-number">2.</span> <span class="nav-text">语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#n-gram语言模型"><span class="nav-number">2.1.</span> <span class="nav-text">n-gram语言模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔科夫模型"><span class="nav-number">2.2.</span> <span class="nav-text">隐马尔科夫模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于规则的分词"><span class="nav-number">1.1.</span> <span class="nav-text">基于规则的分词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于统计的分词"><span class="nav-number">1.2.</span> <span class="nav-text">基于统计的分词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语言模型"><span class="nav-number">2.</span> <span class="nav-text">语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#n-gram语言模型"><span class="nav-number">2.1.</span> <span class="nav-text">n-gram语言模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔科夫模型"><span class="nav-number">2.2.</span> <span class="nav-text">隐马尔科夫模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
 
           </div>
@@ -894,7 +914,21 @@ P(W_1,W_2,W_3,...,W_n)=∏^n_{i=3}P(W_i|W_{i−1},W_{i−2})
   <span class="author" itemprop="copyrightHolder">SuooL</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">130k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:58</span>
   
 </div>
 

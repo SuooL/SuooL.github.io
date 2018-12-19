@@ -104,19 +104,19 @@
 
 
 
-  <meta name="description" content="树莓派折腾指南之使用 SSR 实现科学上网 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
+  <meta name="description" content="树莓派折腾指南之使用 SSR 实现科学上网预备工作首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta name="keywords" content="树莓派">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派折腾指南之使用 SSR 实现科学上网">
 <meta property="og:url" content="https://suool.net/2018/01/09/树莓派折腾指南之使用-SSR-实现科学上网/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="树莓派折腾指南之使用 SSR 实现科学上网 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
+<meta property="og:description" content="树莓派折腾指南之使用 SSR 实现科学上网预备工作首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15154976353553.jpg">
 <meta property="og:updated_time" content="2018-12-18T03:31:39.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派折腾指南之使用 SSR 实现科学上网">
-<meta name="twitter:description" content="树莓派折腾指南之使用 SSR 实现科学上网 预备工作 首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 libsodium ，编译安装的步骤如下：">
+<meta name="twitter:description" content="树莓派折腾指南之使用 SSR 实现科学上网预备工作首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。其 github 地址是 libsodium ，编译安装的步骤如下：">
 <meta name="twitter:image" content="http://7xjsv3.com1.z0.glb.clouddn.com/15154976353553.jpg">
 
 
@@ -485,6 +485,34 @@
           
 
           
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
 
           
 
@@ -501,11 +529,9 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="树莓派折腾指南之使用-ssr-实现科学上网">树莓派折腾指南之使用 SSR 实现科学上网</h1>
-<h2 id="预备工作">预备工作</h2>
-<p>首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。 其 github 地址是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2plZGlzY3QxL2xpYnNvZGl1bS8=" title="https://github.com/jedisct1/libsodium/">libsodium<i class="fa fa-external-link"></i></span> ，编译安装的步骤如下：</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="树莓派折腾指南之使用-SSR-实现科学上网"><a href="#树莓派折腾指南之使用-SSR-实现科学上网" class="headerlink" title="树莓派折腾指南之使用 SSR 实现科学上网"></a>树莓派折腾指南之使用 SSR 实现科学上网</h1><h2 id="预备工作"><a href="#预备工作" class="headerlink" title="预备工作"></a>预备工作</h2><p>首先确定你的 SSR 混淆加密方法，如果是 salsa20 或 chacha20 或 chacha20-ietf 就需要编译安装 libsodium 这个库。<br>其 github 地址是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2plZGlzY3QxL2xpYnNvZGl1bS8=" title="https://github.com/jedisct1/libsodium/">libsodium<i class="fa fa-external-link"></i></span> ，编译安装的步骤如下：</p>
 <a id="more"></a>
-<p>首先安装 build-essential 软件包，其作用是提供编译程序必须软件包的列表信息，也即是，编译程序有了这个软件包它才能确定头文件在哪，才知道库函数在哪，还会下载依赖的软件包，最后才组成一个开发环境。 安装命令是：</p>
+<p>首先安装 build-essential 软件包，其作用是提供编译程序必须软件包的列表信息，也即是，编译程序有了这个软件包它才能确定头文件在哪，才知道库函数在哪，还会下载依赖的软件包，最后才组成一个开发环境。<br>安装命令是：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install build-essential</span><br></pre></td></tr></table></figure>
 <p>安装完成后，就是下载编译 libsodium 库了，首先你要去它的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2plZGlzY3QxL2xpYnNvZGl1bS9yZWxlYXNlcw==" title="https://github.com/jedisct1/libsodium/releases">发布页<i class="fa fa-external-link"></i></span>，确定当前最新的发布版本，替代我下面的当前的 VERSION 。主要命令如下：</p>
 <p>打开终端，首先定义两个变量，在命令行中输入：</p>
@@ -517,8 +543,7 @@
 <p>出栈目录，并删除编译目录。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">popd</span><br><span class="line">rm -rf libsodium-$&#123;VERSION&#125;*</span><br></pre></td></tr></table></figure>
 <p>关于 pushd，popd 等目录操作命令，具体可以参见 <span class="exturl" data-url="aHR0cDovL3d3dy4zNjF3YXkuY29tL3B1c2hkLzExMTguaHRtbA==" title="http://www.361way.com/pushd/1118.html">方便的目录切换——dirs、pushd、popd命令<i class="fa fa-external-link"></i></span>。</p>
-<h2 id="编译-ssr-及基本配置">编译 SSR 及基本配置</h2>
-<p>SSR 当前的 Python 版本的项目地址是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoYWRvd3NvY2tzci1iYWNrdXAvc2hhZG93c29ja3Ny" title="https://github.com/shadowsocksr-backup/shadowsocksr">shadowsocksr<i class="fa fa-external-link"></i></span> 。</p>
+<h2 id="编译-SSR-及基本配置"><a href="#编译-SSR-及基本配置" class="headerlink" title="编译 SSR 及基本配置"></a>编译 SSR 及基本配置</h2><p>SSR 当前的 Python 版本的项目地址是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoYWRvd3NvY2tzci1iYWNrdXAvc2hhZG93c29ja3Ny" title="https://github.com/shadowsocksr-backup/shadowsocksr">shadowsocksr<i class="fa fa-external-link"></i></span> 。</p>
 <p>首先安装 m2crypto，git，supervisor 等相关依赖软件包：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install m2crypto git supervisor libevent-dev</span><br></pre></td></tr></table></figure>
 <p>下载编译如下命令：</p>
@@ -526,23 +551,20 @@
 <p>等待完成之后，编辑配置文件，在命令行输入：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano user-config.json</span><br></pre></td></tr></table></figure>
 <p>具体参数的意义及作用，参照 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NzcmJhY2t1cC9zaGFkb3dzb2Nrcy1yc3Mvd2lraS9jb25maWcuanNvbg==" title="https://github.com/ssrbackup/shadowsocks-rss/wiki/config.json">config.json<i class="fa fa-external-link"></i></span> 。</p>
-<p>local_address 和 local_port 不需要修改，其余的按照 Wiki 修改，基本上配置好： <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server 填服务器地址</span><br><span class="line">server_port 填服务器端口</span><br><span class="line">password 密码</span><br><span class="line"><span class="function"><span class="keyword">method</span> 加密方法</span></span><br><span class="line"><span class="function"><span class="title">obfs</span> 混淆插件</span></span><br><span class="line"><span class="function"><span class="title">protocol</span> 协议插件</span></span><br></pre></td></tr></table></figure></p>
+<p>local_address 和 local_port 不需要修改，其余的按照 Wiki 修改，基本上配置好：<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server 填服务器地址</span><br><span class="line">server_port 填服务器端口</span><br><span class="line">password 密码</span><br><span class="line"><span class="function"><span class="keyword">method</span> 加密方法</span></span><br><span class="line"><span class="function"><span class="title">obfs</span> 混淆插件</span></span><br><span class="line"><span class="function"><span class="title">protocol</span> 协议插件</span></span><br></pre></td></tr></table></figure></p>
 <p>等关键参数，具体看你的 SSR 服务端的设置。</p>
 <p>编辑好后，运行一下命令测试一下是否能运行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python shadowsocks/local.py</span><br></pre></td></tr></table></figure>
 <p>没报错的话 Ctrl+C 结束继续下一步，如果有报错继续改配置文件。</p>
-<h2 id="协议转换代理">协议转换代理</h2>
-<p>因为 SS 系的协议走的是 Socks5 协议，对于 Terminal 的 get,wget 等走 Http 协议的地方是无能为力的，所以需要转换成 Http 代理。 此时可以选择使用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RhcmtrL3JlZHNvY2tz" title="https://github.com/darkk/redsocks">redsocks<i class="fa fa-external-link"></i></span> 来实现。</p>
+<h2 id="协议转换代理"><a href="#协议转换代理" class="headerlink" title="协议转换代理"></a>协议转换代理</h2><p>因为 SS 系的协议走的是 Socks5 协议，对于 Terminal 的 get,wget 等走 Http 协议的地方是无能为力的，所以需要转换成 Http 代理。<br>此时可以选择使用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RhcmtrL3JlZHNvY2tz" title="https://github.com/darkk/redsocks">redsocks<i class="fa fa-external-link"></i></span> 来实现。</p>
 <p>下载编译的命令如下:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">git clone https://github.com/darkk/redsocks</span><br><span class="line">pushd redsocks</span><br><span class="line">make</span><br><span class="line">cp redsocks.conf.example redsocks.conf</span><br><span class="line">sed -i "s/ip = example.org/ip = 127.0.0.1/" redsocks.conf</span><br><span class="line">popd</span><br></pre></td></tr></table></figure>
-<h2 id="ssr-开机自启">SSR 开机自启</h2>
-<p>首先新建一个用户专门用来运行 SSR 和 redsocks 的账号：</p>
+<h2 id="SSR-开机自启"><a href="#SSR-开机自启" class="headerlink" title="SSR 开机自启"></a>SSR 开机自启</h2><p>首先新建一个用户专门用来运行 SSR 和 redsocks 的账号：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -M -s /sbin/nologin ss</span><br></pre></td></tr></table></figure>
 <p>然后使用 supervisor 守护进程和开机自启，直接将下面的命令全部粘贴进入命令行回车即可。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "cat &gt; /etc/supervisor/conf.d/ss.conf" &lt;&lt;EOF</span><br><span class="line">[program:ss]</span><br><span class="line">directory = /home/pi/shadowsocksr/shadowsocks</span><br><span class="line">command = python /home/pi/shadowsocksr/shadowsocks/local.py</span><br><span class="line">autostart = true</span><br><span class="line">autorestart = true</span><br><span class="line">startsecs = 10</span><br><span class="line">startretries = 36</span><br><span class="line">user = ss</span><br><span class="line">redirect_stderr = true</span><br><span class="line">stdout_logfile = /dev/null</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">sudo bash -c "cat &gt; /etc/supervisor/conf.d/redsocks.conf" &lt;&lt;EOF</span><br><span class="line">[program:redsocks]</span><br><span class="line">directory = /home/pi/redsocks</span><br><span class="line">command = /home/pi/redsocks/redsocks -c /home/pi/redsocks/redsocks.conf</span><br><span class="line">autostart = true</span><br><span class="line">autorestart = true</span><br><span class="line">startsecs = 10</span><br><span class="line">startretries = 36</span><br><span class="line">user = ss</span><br><span class="line">redirect_stderr = true</span><br><span class="line">stdout_logfile = /dev/null</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">sudo supervisorctl update</span><br></pre></td></tr></table></figure>
 <p>上面的配置把 log 全部扔掉了，如果有需要的可以自己改 stdout_logfile 项。</p>
-<h2 id="设置-iptables-实现-nat-转发">设置 iptables 实现 nat 转发</h2>
-<p>主要步骤如下， 首先创建一个叫 REDSOCKS 的链</p>
+<h2 id="设置-iptables-实现-nat-转发"><a href="#设置-iptables-实现-nat-转发" class="headerlink" title="设置 iptables 实现 nat 转发"></a>设置 iptables 实现 nat 转发</h2><p>主要步骤如下，<br>首先创建一个叫 REDSOCKS 的链</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -N REDSOCKS</span><br></pre></td></tr></table></figure>
 <p>然后进行基本的规则定制，首先忽略服务器的地址，下面的 server_ip 填服务器 ip 或域名，这里和 SSR 配置文件里的 server 值要一样</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A REDSOCKS -d server_ip -j RETURN</span><br></pre></td></tr></table></figure>
@@ -554,20 +576,16 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A OUTPUT -p tcp -j REDSOCKS</span><br></pre></td></tr></table></figure>
 <p>保存规则</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "iptables-save &gt; /etc/iptables.up.rules"</span><br></pre></td></tr></table></figure>
-<h2 id="开机自动加载规则">开机自动加载规则</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "cat &gt; /etc/network/if-pre-up.d/iptables" &lt;&lt;EOF</span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">/sbin/iptables-restore &lt; /etc/iptables.up.rules</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<h2 id="开机自动加载规则"><a href="#开机自动加载规则" class="headerlink" title="开机自动加载规则"></a>开机自动加载规则</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "cat &gt; /etc/network/if-pre-up.d/iptables" &lt;&lt;EOF</span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">/sbin/iptables-restore &lt; /etc/iptables.up.rules</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 <p>添加执行权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /etc/network/if-pre-up.d/iptables</span><br></pre></td></tr></table></figure>
 <p>使用</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl myip.ipip.net</span><br></pre></td></tr></table></figure>
-<p>可以查看当前的ip，如果是你的服务器 IP 就表示可以了。 比如： <img src="http://7xjsv3.com1.z0.glb.clouddn.com/15154976353553.jpg"></p>
-<h2 id="关闭全局代理">关闭全局代理</h2>
-<p>执行下面的命令</p>
+<p>可以查看当前的ip，如果是你的服务器 IP 就表示可以了。<br>比如：<br><img src="http://7xjsv3.com1.z0.glb.clouddn.com/15154976353553.jpg" alt=""></p>
+<h2 id="关闭全局代理"><a href="#关闭全局代理" class="headerlink" title="关闭全局代理"></a>关闭全局代理</h2><p>执行下面的命令</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面的server_ip填服务器ip或域名，和上面添加的值要一样</span></span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -d server_ip -j RETURN</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -d 0.0.0.0/8 -j RETURN</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -d 10.0.0.0/8 -j RETURN</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -d 127.0.0.0/8 -j RETURN</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -d 169.254.0.0/16 -j RETURN</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -d 172.16.0.0/12 -j RETURN</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -d 192.168.0.0/16 -j RETURN</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -d 224.0.0.0/4 -j RETURN</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -d 240.0.0.0/4 -j RETURN</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D REDSOCKS -p tcp -j REDIRECT --to-ports 12345</span><br><span class="line">sudo iptables -t<span class="built_in"> nat </span>-D OUTPUT -p tcp -j REDSOCKS</span><br></pre></td></tr></table></figure>
-<h2 id="其他">其他</h2>
-<p>更多关 iptables 的学习可以去 <span class="exturl" data-url="aHR0cHM6Ly9sZXNjYS5tZS9hcmNoaXZlcy9pcHRhYmxlcy1uYXQtbWFuZ2xlLWNsZWFyLXJ1bGVzLmh0bWw=" title="https://lesca.me/archives/iptables-nat-mangle-clear-rules.html">iptables应用：NAT、数据报处理、清空iptables规则<i class="fa fa-external-link"></i></span></p>
-<h1 id="next">NEXT</h1>
-<ol type="1">
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>更多关 iptables 的学习可以去 <span class="exturl" data-url="aHR0cHM6Ly9sZXNjYS5tZS9hcmNoaXZlcy9pcHRhYmxlcy1uYXQtbWFuZ2xlLWNsZWFyLXJ1bGVzLmh0bWw=" title="https://lesca.me/archives/iptables-nat-mangle-clear-rules.html">iptables应用：NAT、数据报处理、清空iptables规则<i class="fa fa-external-link"></i></span></p>
+<h1 id="NEXT"><a href="#NEXT" class="headerlink" title="NEXT"></a>NEXT</h1><ol>
 <li>实现了科学上网之后，下一步就可以 Google Assistant 的安装和试用，把你的树莓派变身成为一个 Google Home</li>
 <li>接入 HomeKit，连入小米家具全家桶，让树莓派变身成为你的智能家居中枢。</li>
 </ol>
@@ -893,7 +911,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树莓派折腾指南之使用-ssr-实现科学上网"><span class="nav-number">1.</span> <span class="nav-text">树莓派折腾指南之使用 SSR 实现科学上网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备工作"><span class="nav-number">1.1.</span> <span class="nav-text">预备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译-ssr-及基本配置"><span class="nav-number">1.2.</span> <span class="nav-text">编译 SSR 及基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议转换代理"><span class="nav-number">1.3.</span> <span class="nav-text">协议转换代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssr-开机自启"><span class="nav-number">1.4.</span> <span class="nav-text">SSR 开机自启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-iptables-实现-nat-转发"><span class="nav-number">1.5.</span> <span class="nav-text">设置 iptables 实现 nat 转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开机自动加载规则"><span class="nav-number">1.6.</span> <span class="nav-text">开机自动加载规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭全局代理"><span class="nav-number">1.7.</span> <span class="nav-text">关闭全局代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.8.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next"><span class="nav-number">2.</span> <span class="nav-text">NEXT</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树莓派折腾指南之使用-SSR-实现科学上网"><span class="nav-number">1.</span> <span class="nav-text">树莓派折腾指南之使用 SSR 实现科学上网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备工作"><span class="nav-number">1.1.</span> <span class="nav-text">预备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译-SSR-及基本配置"><span class="nav-number">1.2.</span> <span class="nav-text">编译 SSR 及基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议转换代理"><span class="nav-number">1.3.</span> <span class="nav-text">协议转换代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSR-开机自启"><span class="nav-number">1.4.</span> <span class="nav-text">SSR 开机自启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-iptables-实现-nat-转发"><span class="nav-number">1.5.</span> <span class="nav-text">设置 iptables 实现 nat 转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开机自动加载规则"><span class="nav-number">1.6.</span> <span class="nav-text">开机自动加载规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭全局代理"><span class="nav-number">1.7.</span> <span class="nav-text">关闭全局代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.8.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NEXT"><span class="nav-number">2.</span> <span class="nav-text">NEXT</span></a></li></ol></div>
             
 
           </div>
@@ -920,7 +938,21 @@
   <span class="author" itemprop="copyrightHolder">SuooL</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">130k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:58</span>
   
 </div>
 
