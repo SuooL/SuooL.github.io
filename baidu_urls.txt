@@ -1,3 +1,3 @@
+https://suool.net/2018/12/18/pytorch-basic/
 https://suool.net/2018/12/14/Numpy-Where/
 https://suool.net/2018/11/27/maximum-entropy-model/
-https://suool.net/2018/11/19/keywords-extract-1/

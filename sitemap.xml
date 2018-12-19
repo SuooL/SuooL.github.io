@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://suool.net/2018/12/18/pytorch-basic/</loc>
+    
+    <lastmod>2018-12-19T05:42:43.576Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/12/14/Numpy-Where/</loc>
+    
+    <lastmod>2018-12-18T07:39:16.338Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://suool.net/2018/01/09/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E4%BD%BF%E7%94%A8-SSR-%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
     
     <lastmod>2018-12-18T03:31:39.827Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>https://suool.net/2018/11/18/HMM-Viterbi/</loc>
     
     <lastmod>2018-12-16T13:48:54.196Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://suool.net/2018/12/14/Numpy-Where/</loc>
-    
-    <lastmod>2018-12-16T08:13:29.318Z</lastmod>
     
   </url>
   
@@ -93,14 +100,14 @@
   </url>
   
   <url>
-    <loc>https://suool.net/tags/index.html</loc>
+    <loc>https://suool.net/categories/index.html</loc>
     
     <lastmod>2018-10-29T12:53:08.549Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://suool.net/categories/index.html</loc>
+    <loc>https://suool.net/tags/index.html</loc>
     
     <lastmod>2018-10-29T12:53:08.549Z</lastmod>
     
@@ -149,13 +156,6 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
-    
-    <lastmod>2018-10-29T12:53:08.547Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://suool.net/2016/10/27/%E6%97%A0%E9%A2%98/</loc>
     
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
@@ -163,9 +163,9 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2016/12/28/%E4%BA%91%E5%8D%97%E4%BA%94%E5%A4%A9%E5%9B%9B%E6%99%9A%E6%B8%B8/</loc>
+    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
     
-    <lastmod>2018-10-29T12:53:08.546Z</lastmod>
+    <lastmod>2018-10-29T12:53:08.547Z</lastmod>
     
   </url>
   
@@ -177,9 +177,23 @@
   </url>
   
   <url>
+    <loc>https://suool.net/2016/12/28/%E4%BA%91%E5%8D%97%E4%BA%94%E5%A4%A9%E5%9B%9B%E6%99%9A%E6%B8%B8/</loc>
+    
+    <lastmod>2018-10-29T12:53:08.546Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://suool.net/2018/07/08/navie-bayes-handwriting-recognition/</loc>
     
     <lastmod>2018-10-29T12:53:08.545Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
+    
+    <lastmod>2018-10-29T12:53:08.400Z</lastmod>
     
   </url>
   
@@ -198,21 +212,7 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
-    
-    <lastmod>2018-10-29T12:53:08.400Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://suool.net/2018/07/09/from-the-soil-first/</loc>
-    
-    <lastmod>2018-10-29T12:53:08.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://suool.net/2016/08/17/hello-world/</loc>
     
     <lastmod>2018-10-29T12:53:08.399Z</lastmod>
     
@@ -226,9 +226,9 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2018/07/19/Mnist-With-Decision-Tree-ID3/</loc>
+    <loc>https://suool.net/2016/08/17/hello-world/</loc>
     
-    <lastmod>2018-10-29T12:53:08.398Z</lastmod>
+    <lastmod>2018-10-29T12:53:08.399Z</lastmod>
     
   </url>
   
@@ -240,14 +240,21 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/24/Least-Squares/</loc>
+    <loc>https://suool.net/2018/07/19/Mnist-With-Decision-Tree-ID3/</loc>
+    
+    <lastmod>2018-10-29T12:53:08.398Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/06/26/Least-Squares-with-Matrix-Nolinear/</loc>
     
     <lastmod>2018-10-29T12:53:08.397Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/26/Least-Squares-with-Matrix-Nolinear/</loc>
+    <loc>https://suool.net/2018/06/24/Least-Squares/</loc>
     
     <lastmod>2018-10-29T12:53:08.397Z</lastmod>
     

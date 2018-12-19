@@ -49,32 +49,6 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
@@ -497,10 +471,14 @@
                     
                   
                 
-                目前共计 17 个标签
+                  
+                    
+                  
+                
+                目前共计 18 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/NLP/" style="font-size: 18px; color: #8e8e8e">NLP</a> <a href="/tags/Python/" style="font-size: 12px; color: #ccc">Python</a> <a href="/tags/iOS/" style="font-size: 18px; color: #8e8e8e">iOS</a> <a href="/tags/书摘/" style="font-size: 12px; color: #ccc">书摘</a> <a href="/tags/反思/" style="font-size: 12px; color: #ccc">反思</a> <a href="/tags/希望/" style="font-size: 18px; color: #8e8e8e">希望</a> <a href="/tags/循环/" style="font-size: 12px; color: #ccc">循环</a> <a href="/tags/思考/" style="font-size: 12px; color: #ccc">思考</a> <a href="/tags/未来/" style="font-size: 12px; color: #ccc">未来</a> <a href="/tags/机器学习/" style="font-size: 30px; color: #111">机器学习</a> <a href="/tags/杂感/" style="font-size: 12px; color: #ccc">杂感</a> <a href="/tags/树莓派/" style="font-size: 24px; color: #4f4f4f">树莓派</a> <a href="/tags/矩阵论/" style="font-size: 12px; color: #ccc">矩阵论</a> <a href="/tags/算法/" style="font-size: 24px; color: #4f4f4f">算法</a> <a href="/tags/线性代数/" style="font-size: 18px; color: #8e8e8e">线性代数</a> <a href="/tags/组件文档/" style="font-size: 18px; color: #8e8e8e">组件文档</a> <a href="/tags/记录/" style="font-size: 12px; color: #ccc">记录</a>
+              <a href="/tags/NLP/" style="font-size: 18px; color: #8e8e8e">NLP</a> <a href="/tags/Python/" style="font-size: 12px; color: #ccc">Python</a> <a href="/tags/Pytorch/" style="font-size: 12px; color: #ccc">Pytorch</a> <a href="/tags/iOS/" style="font-size: 18px; color: #8e8e8e">iOS</a> <a href="/tags/书摘/" style="font-size: 12px; color: #ccc">书摘</a> <a href="/tags/反思/" style="font-size: 12px; color: #ccc">反思</a> <a href="/tags/希望/" style="font-size: 18px; color: #8e8e8e">希望</a> <a href="/tags/循环/" style="font-size: 12px; color: #ccc">循环</a> <a href="/tags/思考/" style="font-size: 12px; color: #ccc">思考</a> <a href="/tags/未来/" style="font-size: 12px; color: #ccc">未来</a> <a href="/tags/机器学习/" style="font-size: 30px; color: #111">机器学习</a> <a href="/tags/杂感/" style="font-size: 12px; color: #ccc">杂感</a> <a href="/tags/树莓派/" style="font-size: 24px; color: #4f4f4f">树莓派</a> <a href="/tags/矩阵论/" style="font-size: 12px; color: #ccc">矩阵论</a> <a href="/tags/算法/" style="font-size: 24px; color: #4f4f4f">算法</a> <a href="/tags/线性代数/" style="font-size: 18px; color: #8e8e8e">线性代数</a> <a href="/tags/组件文档/" style="font-size: 18px; color: #8e8e8e">组件文档</a> <a href="/tags/记录/" style="font-size: 12px; color: #ccc">记录</a>
             </div>
           </div>
         
@@ -565,7 +543,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -600,7 +578,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -647,7 +629,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -904,6 +888,75 @@
 
 
   
+
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+        .done(function ({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yklxnryiir1hbibxgmomfcifj3d8nl19hu01hlebjx5rncjx")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "yklxnryiir1hbibxgmomfcifj3d8nl19hu01hlebjx5rncjx",
+                'X-LC-Key': "pw34xu53fh6a7j1eat1gdbj16y6ratoqnd6xyy6uknvcn3ul",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          if ($('.post-title-link').length >= 1) {
+            showTime(Counter);
+          }
+          
+        })
+    });
+  </script>
+
+
 
   
 
