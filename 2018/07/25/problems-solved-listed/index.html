@@ -104,18 +104,18 @@
 
 
 
-  <meta name="description" content="系统问题Docker1.Ubuntu 下安装 docker 使用非 sudo 命令的问题： 1Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/ima">
+  <meta name="description" content="系统问题 Docker 1.Ubuntu 下安装 docker 使用非 sudo 命令的问题： 1Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/i">
 <meta name="keywords" content="记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="问题解决记录">
 <meta property="og:url" content="https://suool.net/2018/07/25/problems-solved-listed/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="系统问题Docker1.Ubuntu 下安装 docker 使用非 sudo 命令的问题： 1Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/ima">
+<meta property="og:description" content="系统问题 Docker 1.Ubuntu 下安装 docker 使用非 sudo 命令的问题： 1Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/i">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-12-14T14:54:16.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问题解决记录">
-<meta name="twitter:description" content="系统问题Docker1.Ubuntu 下安装 docker 使用非 sudo 命令的问题： 1Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/ima">
+<meta name="twitter:description" content="系统问题 Docker 1.Ubuntu 下安装 docker 使用非 sudo 命令的问题： 1Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/i">
 
 
 
@@ -493,7 +493,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.6k</span>
+                <span title="本文字数">2.7k</span>
               
 
               
@@ -507,7 +507,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -527,12 +527,11 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="系统问题"><a href="#系统问题" class="headerlink" title="系统问题"></a>系统问题</h2><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><strong>1.Ubuntu 下安装 <code>docker</code> 使用非 <code>sudo</code> 命令的问题</strong>：</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="系统问题">系统问题</h2>
+<h3 id="docker">Docker</h3>
+<p><strong>1.Ubuntu 下安装 <code>docker</code> 使用非 <code>sudo</code> 命令的问题</strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/images/json: dial unix /var/run/docker.sock: connect: permission denied</span><br></pre></td></tr></table></figure>
-<p>解决方法：</p>
-<blockquote>
-<p>the error message tells you that your current user can’t access the docker engine, because you’re lacking permissions to access the unix socket to communicate with the engine.<br><strong>Temporary solution</strong><br>Use the <code>sudo</code> command to execute the commands with elevated permissions every time.<br><strong>Permanent (suggested) solution</strong><br>Add the current user to the docker group. This can be achieved by typing<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -<span class="selector-tag">a</span> -G docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
+<p>解决方法： &gt;the error message tells you that your current user can’t access the docker engine, because you’re lacking permissions to access the unix socket to communicate with the engine. <strong>Temporary solution</strong> Use the <code>sudo</code> command to execute the commands with elevated permissions every time. <strong>Permanent (suggested) solution</strong> Add the current user to the docker group. This can be achieved by typing <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -<span class="selector-tag">a</span> -G docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>You have to log out and log in again</strong> for the group membership to take effect.</p>
 <a id="more"></a>
 <p><strong>2.Docker 换源</strong></p>
@@ -541,45 +540,46 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"registry-mirrors"</span>: [<span class="string">"https://docker.mirrors.ustc.edu.cn"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>完成上述配置后，执行如下命令即可：</p>
 <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="keyword"> system</span>ctl daemon-reload</span><br><span class="line">sudo<span class="keyword"> system</span>ctl restart docker</span><br></pre></td></tr></table></figure>
-<h3 id="替换及重置Homebrew默认源"><a href="#替换及重置Homebrew默认源" class="headerlink" title="替换及重置Homebrew默认源"></a>替换及重置Homebrew默认源</h3><p>替换 <code>brew.git</code>:</p>
+<h3 id="替换及重置homebrew默认源">替换及重置Homebrew默认源</h3>
+<p>替换 <code>brew.git</code>:</p>
 <figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">cd </span><span class="string">"$(brew --repo)"</span></span><br><span class="line"><span class="string">git </span><span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">brew.</span><span class="string">git</span></span><br></pre></td></tr></table></figure>
 <p>替换 <code>homebrew-core.git</code>:</p>
 <figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">cd </span><span class="string">"$(brew --repo)/Library/Taps/homebrew/homebrew-core"</span></span><br><span class="line"><span class="string">git </span><span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-core.</span><span class="string">git</span></span><br></pre></td></tr></table></figure>
 <p>替换 <code>Homebrew Bottles</code> 源: 参考:<span class="exturl" data-url="aHR0cHM6Ly9sdWcudXN0Yy5lZHUuY24vd2lraS9taXJyb3JzL2hlbHAvaG9tZWJyZXctYm90dGxlcw==" title="https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles">替换 Homebrew Bottles 源<i class="fa fa-external-link"></i></span></p>
-<p>在中科大源失效或宕机时可以： </p>
-<ol>
-<li><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuL2hlbHAvaG9tZWJyZXcv" title="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">使用清华源设置参考<i class="fa fa-external-link"></i></span>。</li>
-<li>切换回官方源：</li>
-</ol>
+<p>在中科大源失效或宕机时可以： 1. <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuL2hlbHAvaG9tZWJyZXcv" title="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">使用清华源设置参考<i class="fa fa-external-link"></i></span>。 2. 切换回官方源：</p>
 <p>重置 <code>brew.git</code>:</p>
 <figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">cd </span><span class="string">"$(brew --repo)"</span></span><br><span class="line"><span class="string">git </span><span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">github.</span><span class="string">com/</span><span class="string">Homebrew/</span><span class="string">brew.</span><span class="string">git</span></span><br></pre></td></tr></table></figure>
 <p>重置 <code>homebrew-core.git</code>:</p>
 <figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">cd </span><span class="string">"$(brew --repo)/Library/Taps/homebrew/homebrew-core"</span></span><br><span class="line"><span class="string">git </span><span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">github.</span><span class="string">com/</span><span class="string">Homebrew/</span><span class="string">homebrew-core.</span><span class="string">git</span></span><br></pre></td></tr></table></figure>
 <p>注释掉bash配置文件里的有关Homebrew Bottles即可恢复官方源。 重启bash或让bash重读配置文件。</p>
-<h3 id="Xcode-高亮和提示失效"><a href="#Xcode-高亮和提示失效" class="headerlink" title="Xcode 高亮和提示失效"></a>Xcode 高亮和提示失效</h3><p>Xcode 在长时间运行之后，会出现一个问题，那就是 例如 return 不再高亮显示了。<br>重启Xcode 重启机器 也不能解决和个问题。<br>后来找了一些资料 解决了这个问题</p>
-<ol>
-<li>由于 DerivedData 问题<ul>
+<h3 id="xcode-高亮和提示失效">Xcode 高亮和提示失效</h3>
+<p>Xcode 在长时间运行之后，会出现一个问题，那就是 例如 return 不再高亮显示了。 重启Xcode 重启机器 也不能解决和个问题。 后来找了一些资料 解决了这个问题</p>
+<ol type="1">
+<li>由于 DerivedData 问题
+<ul>
 <li>关闭项目，Xcode 设置，选择 Localtions 点击 Derived Data 的的箭头进入 DerivedData 目录</li>
 <li>直接进入 /Users/jingwenzheng/Library/Developer/Xcode/DerivedData 目录，删除这里面所有的文件</li>
 <li>重启Xcode</li>
-</ul>
-</li>
-<li>由于 pch 文件的问题<ul>
+</ul></li>
+<li>由于 pch 文件的问题
+<ul>
 <li>把.pch里的内容全部注释掉，clean掉项目里的内容，把.pch里的注释去掉，编译。代码高亮，语法提示功能都回来了。</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h3 id="Mac-OS-Linux命令查询网络端口占用情况"><a href="#Mac-OS-Linux命令查询网络端口占用情况" class="headerlink" title="Mac OS/Linux命令查询网络端口占用情况"></a>Mac OS/Linux命令查询网络端口占用情况</h3><p><strong>netstat命令</strong></p>
+<h3 id="mac-oslinux命令查询网络端口占用情况">Mac OS/Linux命令查询网络端口占用情况</h3>
+<p><strong>netstat命令</strong></p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -<span class="keyword">an</span> | <span class="keyword">grep</span> <span class="symbol">&lt;port&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>lsof命令</strong><br>通过list open file命令可以查看到当前打开文件，在linux中所有事物都是以文件形式存在，包括网络连接及硬件设备。</p>
+<p><strong>lsof命令</strong> 通过list open file命令可以查看到当前打开文件，在linux中所有事物都是以文件形式存在，包括网络连接及硬件设备。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -<span class="selector-tag">i</span>:<span class="number">80</span></span><br></pre></td></tr></table></figure>
 <p>-i参数表示网络链接，:80指明端口号，该命令会同时列出PID，方便kill</p>
 <p>查看所有进程监听的端口</p>
 <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo lsof -i -P <span class="string">| grep -i "</span>listen<span class="string">"</span></span><br></pre></td></tr></table></figure>
-<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><p><span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDAxMjMyMjUzMw==" title="https://segmentfault.com/a/1190000012322533">mac vscode Python配置<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2V2ZXJfbm93X2Z1dHVyZS9hcnRpY2xlL2RldGFpbHMvNzkwNzU1ODE=" title="https://blog.csdn.net/ever_now_future/article/details/79075581">使用vs(visual studio code)写python代码遇到的import requests失败问题<i class="fa fa-external-link"></i></span></p>
-<h2 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8xZDMwNWFjNDdkNjE=" title="https://www.jianshu.com/p/1d305ac47d61">源码编译安装TensorFlow<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cDovL25vb3ZlcmZpdC5jb20vd3AvdGVuc29yZmxvdyVFNSVBNiU4MiVFNCVCRCU5NSVFNSU4NSU4NSVFNSU4OCU4NiVFNCVCRCVCRiVFNyU5NCVBOCVFNiU4OSU4MCVFNiU5QyU4OWNwdSVFNiVBMCVCOCVFNiU5NSVCMCVFRiVCQyU4QyVFNiU4RiU5MCVFOSVBQiU5OHRlbnNvcmZsb3clRTclOUElODRjcHUlRTQlQkQlQkYlRTclOTQlQTglRTclOEUlODclRUYlQkMlOEMlRTQlQkIlQTUv" title="http://nooverfit.com/wp/tensorflow%E5%A6%82%E4%BD%95%E5%85%85%E5%88%86%E4%BD%BF%E7%94%A8%E6%89%80%E6%9C%89cpu%E6%A0%B8%E6%95%B0%EF%BC%8C%E6%8F%90%E9%AB%98tensorflow%E7%9A%84cpu%E4%BD%BF%E7%94%A8%E7%8E%87%EF%BC%8C%E4%BB%A5/">TensorFlow如何充分使用所有CPU核数，提高TensorFlow的CPU使用率，以及Intel的MKL加速<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3JvY2tpbmdkaW5nby9hcnRpY2xlL2RldGFpbHMvNTU2NTI2NjI=" title="https://blog.csdn.net/rockingdingo/article/details/55652662">Tensorflow并行计算：多核(multicore)，多线程(multi-thread)，图分割(Graph Partition)<i class="fa fa-external-link"></i></span></p>
-<h2 id="DL"><a href="#DL" class="headerlink" title="DL"></a>DL</h2><h3 id="Jupyter"><a href="#Jupyter" class="headerlink" title="Jupyter"></a>Jupyter</h3><ol>
-<li>Jupyter python3 notebook cannot recognize pandas<br>in jupyter notebook:<br><code>!pip install pandas</code></li>
+<h2 id="vscode">VSCode</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDAxMjMyMjUzMw==" title="https://segmentfault.com/a/1190000012322533">mac vscode Python配置<i class="fa fa-external-link"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2V2ZXJfbm93X2Z1dHVyZS9hcnRpY2xlL2RldGFpbHMvNzkwNzU1ODE=" title="https://blog.csdn.net/ever_now_future/article/details/79075581">使用vs(visual studio code)写python代码遇到的import requests失败问题<i class="fa fa-external-link"></i></span> ## TensorFlow <span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8xZDMwNWFjNDdkNjE=" title="https://www.jianshu.com/p/1d305ac47d61">源码编译安装TensorFlow<i class="fa fa-external-link"></i></span> <span class="exturl" data-url="aHR0cDovL25vb3ZlcmZpdC5jb20vd3AvdGVuc29yZmxvdyVFNSVBNiU4MiVFNCVCRCU5NSVFNSU4NSU4NSVFNSU4OCU4NiVFNCVCRCVCRiVFNyU5NCVBOCVFNiU4OSU4MCVFNiU5QyU4OWNwdSVFNiVBMCVCOCVFNiU5NSVCMCVFRiVCQyU4QyVFNiU4RiU5MCVFOSVBQiU5OHRlbnNvcmZsb3clRTclOUElODRjcHUlRTQlQkQlQkYlRTclOTQlQTglRTclOEUlODclRUYlQkMlOEMlRTQlQkIlQTUv" title="http://nooverfit.com/wp/tensorflow%E5%A6%82%E4%BD%95%E5%85%85%E5%88%86%E4%BD%BF%E7%94%A8%E6%89%80%E6%9C%89cpu%E6%A0%B8%E6%95%B0%EF%BC%8C%E6%8F%90%E9%AB%98tensorflow%E7%9A%84cpu%E4%BD%BF%E7%94%A8%E7%8E%87%EF%BC%8C%E4%BB%A5/">TensorFlow如何充分使用所有CPU核数，提高TensorFlow的CPU使用率，以及Intel的MKL加速<i class="fa fa-external-link"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3JvY2tpbmdkaW5nby9hcnRpY2xlL2RldGFpbHMvNTU2NTI2NjI=" title="https://blog.csdn.net/rockingdingo/article/details/55652662">Tensorflow并行计算：多核(multicore)，多线程(multi-thread)，图分割(Graph Partition)<i class="fa fa-external-link"></i></span></p>
+<h2 id="dl">DL</h2>
+<h3 id="jupyter">Jupyter</h3>
+<ol type="1">
+<li>Jupyter python3 notebook cannot recognize pandas in jupyter notebook: <code>!pip install pandas</code></li>
 </ol>
 
       
@@ -903,7 +903,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统问题"><span class="nav-number">1.</span> <span class="nav-text">系统问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker"><span class="nav-number">1.1.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换及重置Homebrew默认源"><span class="nav-number">1.2.</span> <span class="nav-text">替换及重置Homebrew默认源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode-高亮和提示失效"><span class="nav-number">1.3.</span> <span class="nav-text">Xcode 高亮和提示失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac-OS-Linux命令查询网络端口占用情况"><span class="nav-number">1.4.</span> <span class="nav-text">Mac OS/Linux命令查询网络端口占用情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VSCode"><span class="nav-number">2.</span> <span class="nav-text">VSCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow"><span class="nav-number">3.</span> <span class="nav-text">TensorFlow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DL"><span class="nav-number">4.</span> <span class="nav-text">DL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jupyter"><span class="nav-number">4.1.</span> <span class="nav-text">Jupyter</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统问题"><span class="nav-number">1.</span> <span class="nav-text">系统问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker"><span class="nav-number">1.1.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换及重置homebrew默认源"><span class="nav-number">1.2.</span> <span class="nav-text">替换及重置Homebrew默认源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xcode-高亮和提示失效"><span class="nav-number">1.3.</span> <span class="nav-text">Xcode 高亮和提示失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mac-oslinux命令查询网络端口占用情况"><span class="nav-number">1.4.</span> <span class="nav-text">Mac OS/Linux命令查询网络端口占用情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode"><span class="nav-number">2.</span> <span class="nav-text">VSCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dl"><span class="nav-number">3.</span> <span class="nav-text">DL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jupyter"><span class="nav-number">3.1.</span> <span class="nav-text">Jupyter</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -935,7 +935,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">130k</span>
+    <span title="站点总字数">132k</span>
   
 
   
@@ -944,7 +944,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">4:14</span>
+    <span title="站点阅读时长">5:30</span>
   
 </div>
 

@@ -104,13 +104,13 @@
 
 
 
-  <meta name="description" content="前言同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
+  <meta name="description" content="前言 同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
 <meta name="keywords" content="NLP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="隐马尔科夫模型（HMM）">
 <meta property="og:url" content="https://suool.net/2018/11/18/HMM-Viterbi/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="前言同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
+<meta property="og:description" content="前言 同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/15439271020806.jpg">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/D5B700EB-22B4-487C-9C7D-1AC101E2E7BD.png">
@@ -120,7 +120,7 @@
 <meta property="og:updated_time" content="2018-12-16T13:48:54.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐马尔科夫模型（HMM）">
-<meta name="twitter:description" content="前言同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
+<meta name="twitter:description" content="前言 同时在LP 之分词技术概述中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。">
 <meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/12/14/15439271020806.jpg">
 
 
@@ -506,7 +506,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.1k</span>
+                <span title="本文字数">2.3k</span>
               
 
               
@@ -520,7 +520,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -540,58 +540,45 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>同时在<a href="https://suool.net/2018/11/16/Text-Segmentation-1/">LP 之分词技术概述</a>中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。<br><a id="more"></a><br>本文的基本提纲如下：</p>
-<ol>
-<li>基础知识<ol>
-<li>定义</li>
-<li>适用场景</li>
-<li>隐马尔科夫模型的两个基本假设</li>
-<li>实例</li>
-</ol>
-</li>
-<li>HMM模型的三个基本问题<ol>
-<li>前向后向算法评估观察序列概率</li>
-<li>鲍姆-韦尔奇算法求解HMM参数</li>
-<li>维特比算法解码隐藏状态序列</li>
-</ol>
-</li>
-<li>分词实战</li>
-</ol>
-<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>直观定义</strong><br>首先看一个图：<br><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15439271020806.jpg" alt="状态序列图"></p>
-<p>该图的文字描述是其分成两排，第一排是$y$序列，第二排是$x$序列。每个$x$都只有一个$y$指向它，每个$y$也都有另一个$y$指向它。</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2>
+<p>同时在<a href="https://suool.net/2018/11/16/Text-Segmentation-1/">LP 之分词技术概述</a>中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。 <a id="more"></a> 本文的基本提纲如下： 1. 基础知识 1. 定义 2. 适用场景 3. 隐马尔科夫模型的两个基本假设 4. 实例 2. HMM模型的三个基本问题 1. 前向后向算法评估观察序列概率 2. 鲍姆-韦尔奇算法求解HMM参数 3. 维特比算法解码隐藏状态序列 3. 分词实战</p>
+<h2 id="基础知识">基础知识</h2>
+<h3 id="定义">定义</h3>
+<p><strong>直观定义</strong> 首先看一个图： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/15439271020806.jpg" alt="状态序列图"></p>
+<p>该图的文字描述是其分成两排，第一排是<span class="math inline">\(y\)</span>序列，第二排是<span class="math inline">\(x\)</span>序列。每个<span class="math inline">\(x\)</span>都只有一个<span class="math inline">\(y\)</span>指向它，每个<span class="math inline">\(y\)</span>也都有另一个<span class="math inline">\(y\)</span>指向它。</p>
 <p>下面按照上述描述给出一个定义：</p>
 <ul>
-<li><strong>状态序列（上图中的$y$，下面的$I$）</strong>：隐藏的马尔科夫链随机生成的状态序列，称为状态序列（state sequence）</li>
-<li><strong>观测序列（上图中的$x$，下面的$O$）</strong>: 每个状态生成一个观测，而由此产生的观测的随机序列，称为观测序列（obeservation sequence）</li>
+<li><strong>状态序列（上图中的<span class="math inline">\(y\)</span>，下面的<span class="math inline">\(I\)</span>）</strong>：隐藏的马尔科夫链随机生成的状态序列，称为状态序列（state sequence）</li>
+<li><strong>观测序列（上图中的<span class="math inline">\(x\)</span>，下面的<span class="math inline">\(O\)</span>）</strong>: 每个状态生成一个观测，而由此产生的观测的随机序列，称为观测序列（obeservation sequence）</li>
 <li><strong>隐马尔科夫模型</strong>：隐马尔科夫模型是关于时序的概率模型，描述由一个隐藏的马尔科夫链随机生成不可观测的状态随机序列，再由各个状态生成一个观测而产生观测随机序列的过程。</li>
 </ul>
 <p>序列的每一个位置可以看做是一个时刻，HMM 由初始概率分布、状态转移概率分布和观测概率分布确定。</p>
 <p>形式化的定义如下：</p>
 <p><strong>形式化定义</strong></p>
-<p>设$Q$是所有可能的状态的集合，$V$是所有可能的观测的集合，如下:</p>
-<script type="math/tex; mode=display">Q={q_1,q_2,...,q_N},V={v_1,v_2,...,v_M}</script><p>其中，$N$是可能的状态数，$M$是可能的观测数。</p>
-<p>$I$是长度为$T$的状态序列，$O$是对应的观测序列。</p>
-<script type="math/tex; mode=display">I=(i_1,i_2,...,i_T),O=(o_1,o_2,...,o_T)</script><p>A是状态转移概率矩阵：</p>
-<script type="math/tex; mode=display">A=[a_{ij}]_{N×N}</script><p>在时刻$t$，处于$q_i$ 状态的条件下在时刻$t+1$转移到状态$q_j$ 的概率【<strong>齐次马尔科夫链假设,下面的第一个假设</strong>】：</p>
-<script type="math/tex; mode=display">a_{ij}=P(i_{t+1}=q_j|i_t=q_i)</script><p>B是观测概率矩阵:</p>
-<script type="math/tex; mode=display">B=[b_j(k)]_{N×M}</script><p>其中$k=1,2,…,M; j=1,2,…,N$<br>其中，在时刻$t$处于状态$q_j$ 的条件下生成观测$v_k$ 的概率【<strong>观测独立性假设，下面第二个假设</strong>】：</p>
-<script type="math/tex; mode=display">b_j(k)=P(o_t=v_k|i_t=q_j)</script><p>π是初始状态概率向量:</p>
-<script type="math/tex; mode=display">π=(π_i)</script><p>其中，$π_i=P(i_1=q_i)$<br>隐马尔科夫模型由初始状态概率向量$π$、状态转移概率矩阵A和观测概率矩阵$B$决定。$π$和$A$决定状态序列，$B$决定观测序列。因此，隐马尔科夫模型$λ$可以由三元符号表示，即：$λ=(A,B,π)$。$A,B,π$称为隐马尔科夫模型的<strong>三要素</strong>。</p>
-<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><p>有了上述的定义可以看出使用HMM模型时我们的问题一般有这两个特征：</p>
+<p>设<span class="math inline">\(Q\)</span>是所有可能的状态的集合，<span class="math inline">\(V\)</span>是所有可能的观测的集合，如下:</p>
+<p><span class="math display">\[Q={q_1,q_2,...,q_N},V={v_1,v_2,...,v_M}\]</span> 其中，<span class="math inline">\(N\)</span>是可能的状态数，<span class="math inline">\(M\)</span>是可能的观测数。</p>
+<p><span class="math inline">\(I\)</span>是长度为<span class="math inline">\(T\)</span>的状态序列，<span class="math inline">\(O\)</span>是对应的观测序列。 <span class="math display">\[I=(i_1,i_2,...,i_T),O=(o_1,o_2,...,o_T)\]</span></p>
+<p>A是状态转移概率矩阵： <span class="math display">\[A=[a_{ij}]_{N×N}\]</span></p>
+<p>在时刻<span class="math inline">\(t\)</span>，处于<span class="math inline">\(q_i\)</span> 状态的条件下在时刻<span class="math inline">\(t+1\)</span>转移到状态<span class="math inline">\(q_j\)</span> 的概率【<strong>齐次马尔科夫链假设,下面的第一个假设</strong>】： <span class="math display">\[a_{ij}=P(i_{t+1}=q_j|i_t=q_i)\]</span></p>
+<p>B是观测概率矩阵: <span class="math display">\[B=[b_j(k)]_{N×M}\]</span> 其中<span class="math inline">\(k=1,2,...,M; j=1,2,...,N\)</span> 其中，在时刻<span class="math inline">\(t\)</span>处于状态<span class="math inline">\(q_j\)</span> 的条件下生成观测<span class="math inline">\(v_k\)</span> 的概率【<strong>观测独立性假设，下面第二个假设</strong>】： <span class="math display">\[b_j(k)=P(o_t=v_k|i_t=q_j)\]</span></p>
+<p>π是初始状态概率向量: <span class="math display">\[π=(π_i)\]</span> 其中，<span class="math inline">\(π_i=P(i_1=q_i)\)</span> 隐马尔科夫模型由初始状态概率向量<span class="math inline">\(π\)</span>、状态转移概率矩阵A和观测概率矩阵<span class="math inline">\(B\)</span>决定。<span class="math inline">\(π\)</span>和<span class="math inline">\(A\)</span>决定状态序列，<span class="math inline">\(B\)</span>决定观测序列。因此，隐马尔科夫模型<span class="math inline">\(λ\)</span>可以由三元符号表示，即：<span class="math inline">\(λ=(A,B,π)\)</span>。<span class="math inline">\(A,B,π\)</span>称为隐马尔科夫模型的<strong>三要素</strong>。</p>
+<h3 id="适用场景">适用场景</h3>
+<p>有了上述的定义可以看出使用HMM模型时我们的问题一般有这两个特征：</p>
 <ul>
 <li>我们的问题是基于序列的，比如时间序列，或者状态序列。</li>
 <li>我们的问题中有两类数据，一类序列数据是可以观测到的，即观测序列；而另一类数据是不能观察到的，即隐藏状态序列，简称状态序列。</li>
 </ul>
 <p>比如语言转文字的问题，发出的一串连续的声音就是观测序列，而实际要表达的一段话的文字就是状态序列，机器的任务，就是从这一串连续的声音中判断出最可能要表达的文字的内容。</p>
-<h3 id="隐马尔科夫模型的两个基本假设"><a href="#隐马尔科夫模型的两个基本假设" class="headerlink" title="隐马尔科夫模型的两个基本假设"></a>隐马尔科夫模型的两个基本假设</h3><ol>
-<li>设隐马尔科夫链在任意时刻$t$的状态只依赖于其前一时刻的状态，与其他时刻的状态及观测无关，也与时刻$t$无关。（齐次马尔科夫性假设）</li>
+<h3 id="隐马尔科夫模型的两个基本假设">隐马尔科夫模型的两个基本假设</h3>
+<ol type="1">
+<li>设隐马尔科夫链在任意时刻<span class="math inline">\(t\)</span>的状态只依赖于其前一时刻的状态，与其他时刻的状态及观测无关，也与时刻<span class="math inline">\(t\)</span>无关。（齐次马尔科夫性假设）</li>
 <li>假设任意时刻的观测只依赖于该时刻的马尔科夫链的状态，与其他观测和状态无关。（观测独立性假设）</li>
 </ol>
-<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><p>李航的《统计学习方法》的例子，假设我们有3个盒子，每个盒子里都有红色和白色两种球，这三个盒子里球的数量分别是：</p>
-<div class="table-container">
+<h3 id="一个例子">一个例子</h3>
+<p>李航的《统计学习方法》的例子，假设我们有3个盒子，每个盒子里都有红色和白色两种球，这三个盒子里球的数量分别是：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>盒子</th>
 <th>1</th>
 <th>2</th>
@@ -599,13 +586,13 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>红球数</td>
 <td>5</td>
 <td>4</td>
 <td>7</td>
 </tr>
-<tr>
+<tr class="even">
 <td>白球数</td>
 <td>5</td>
 <td>6</td>
@@ -613,22 +600,12 @@
 </tr>
 </tbody>
 </table>
-</div>
-<p>按照下面的方法从盒子里抽球:</p>
-<ol>
-<li>开始的时候，从第一个盒子抽球的概率是0.2，从第二个盒子抽球的概率是0.4，从第三个盒子抽球的概率是0.4。以这个概率抽一次球后，将球放回。</li>
-<li>从当前盒子转移到下一个盒子进行抽球。规则是：<ol>
-<li>如果当前抽球的盒子是第一个盒子，则以0.5的概率仍然留在第一个盒子继续抽球，以0.2的概率去第二个盒子抽球，以0.3的概率去第三个盒子抽球。</li>
-<li>如果当前抽球的盒子是第二个盒子，则以0.5的概率仍然留在第二个盒子继续抽球，以0.3的概率去第一个盒子抽球，以0.2的概率去第三个盒子抽球。</li>
-<li>如果当前抽球的盒子是第三个盒子，则以0.5的概率仍然留在第三个盒子继续抽球，以0.2的概率去第一个盒子抽球，以0.3的概率去第二个盒子抽球。</li>
-<li>如此下去，直到重复三次.</li>
-</ol>
-</li>
-</ol>
-<p>得到一个球的颜色的观测序列:<br><img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/D5B700EB-22B4-487C-9C7D-1AC101E2E7BD.png" alt="参数"></p>
-<p><strong>HMM观测序列的生成</strong><br>从上面的例子，我们也可以抽象出HMM观测序列生成的过程。<br>输入的模型是$\lambda = (A, B, \Pi)$，观测序列长度是$T$.<br>输出是观测序列：$O ={o_1,o_2,…o_T}$</p>
+<p>按照下面的方法从盒子里抽球: 1. 开始的时候，从第一个盒子抽球的概率是0.2，从第二个盒子抽球的概率是0.4，从第三个盒子抽球的概率是0.4。以这个概率抽一次球后，将球放回。 2. 从当前盒子转移到下一个盒子进行抽球。规则是： 1. 如果当前抽球的盒子是第一个盒子，则以0.5的概率仍然留在第一个盒子继续抽球，以0.2的概率去第二个盒子抽球，以0.3的概率去第三个盒子抽球。 2. 如果当前抽球的盒子是第二个盒子，则以0.5的概率仍然留在第二个盒子继续抽球，以0.3的概率去第一个盒子抽球，以0.2的概率去第三个盒子抽球。 3. 如果当前抽球的盒子是第三个盒子，则以0.5的概率仍然留在第三个盒子继续抽球，以0.2的概率去第一个盒子抽球，以0.3的概率去第二个盒子抽球。 4. 如此下去，直到重复三次.</p>
+<p>得到一个球的颜色的观测序列: <img src="https://suool-bolg.b0.upaiyun.com/2018/12/14/D5B700EB-22B4-487C-9C7D-1AC101E2E7BD.png" alt="参数"></p>
+<p><strong>HMM观测序列的生成</strong> 从上面的例子，我们也可以抽象出HMM观测序列生成的过程。 输入的模型是<span class="math inline">\(\lambda = (A, B, \Pi)\)</span>，观测序列长度是<span class="math inline">\(T\)</span>. 输出是观测序列：<span class="math inline">\(O =\{o_1,o_2,...o_T\}\)</span></p>
 <p>以下代码是 HMM 一个模拟，</p>
-<p><script text="text/javascript" src="/lib/jquery/index.js"></script><br>
+<script text="text/javascript" src="/lib/jquery/index.js"></script>
+
 <iframe id="ipynb" marginheight="0" frameborder="0" width="824px" srcdoc="<!DOCTYPE html>
 <html>
 <head><meta charset='utf-8' />
@@ -13991,54 +13968,64 @@ document.getElementById('ipynb').height=$("#ipynb").contents().find("#notebook")
 })
 </script> 
     
-</p>
-<h2 id="HMM模型的三个基本问题"><a href="#HMM模型的三个基本问题" class="headerlink" title="HMM模型的三个基本问题"></a>HMM模型的三个基本问题</h2><p>HMM在实际应用中，一般会遇上三种问题：</p>
-<ol>
-<li><strong>概率计算问题</strong>：给定模型$\lambda = (A,B,\pi)$ 和观测序列$O={o_1,o_2,…,o_T}$，计算在模型$\lambda$下观测序列$O$出现的概率$P(O|\lambda)$</li>
-<li><strong>学习问题</strong>：已知观测序列$O={o_1,o_2,\cdots,o_T}$，估计模型$\lambda= (A,B,\pi)$，使得$P(O|\lambda)$最大。即是用最大似然法的方法估计参数。</li>
-<li><strong>预测问题</strong>：（亦称为 decoding 解码问题）已知观测序列$O={o_1,o_2,…,o_T}$和模型$\lambda = (A,B,\pi)$，求给定的观测序列条件概率$P(I|O)$最大的状态序列$I = (i_1,i_2,\cdots,i_T)$，即是给定观测序列，求最有可能的状态序列。</li>
+
+<h2 id="hmm模型的三个基本问题">HMM模型的三个基本问题</h2>
+<p>HMM在实际应用中，一般会遇上三种问题：</p>
+<ol type="1">
+<li><strong>概率计算问题</strong>：给定模型<span class="math inline">\(\lambda = (A,B,\pi)\)</span> 和观测序列<span class="math inline">\(O={o_1,o_2,...,o_T}\)</span>，计算在模型<span class="math inline">\(\lambda\)</span>下观测序列<span class="math inline">\(O\)</span>出现的概率<span class="math inline">\(P(O|\lambda)\)</span></li>
+<li><strong>学习问题</strong>：已知观测序列<span class="math inline">\(O={o_1,o_2,\cdots,o_T}\)</span>，估计模型<span class="math inline">\(\lambda= (A,B,\pi)\)</span>，使得<span class="math inline">\(P(O|\lambda)\)</span>最大。即是用最大似然法的方法估计参数。</li>
+<li><strong>预测问题</strong>：（亦称为 decoding 解码问题）已知观测序列<span class="math inline">\(O={o_1,o_2,...,o_T}\)</span>和模型<span class="math inline">\(\lambda = (A,B,\pi)\)</span>，求给定的观测序列条件概率<span class="math inline">\(P(I|O)\)</span>最大的状态序列<span class="math inline">\(I = (i_1,i_2,\cdots,i_T)\)</span>，即是给定观测序列，求最有可能的状态序列。</li>
 </ol>
 <p>回到上面的例子，这三个问题就是：</p>
-<ol>
+<ol type="1">
 <li><strong>概率计算问题</strong>：如果给定模型参数，抽球结果某一系列观测的序列状态出现的概率</li>
 <li><strong>学习问题</strong>：根据抽球结果某一些列观测的状态，学习模型参数。</li>
 <li><strong>预测问题</strong>：根据学到的模型，预测抽球的序列。</li>
 </ol>
-<h3 id="前向后向算法评估观察序列概率"><a href="#前向后向算法评估观察序列概率" class="headerlink" title="前向后向算法评估观察序列概率"></a>前向后向算法评估观察序列概率</h3><p>首先要解决的问题是上面的问题一，即是概率计算问题，在模型$\lambda$下观测序列$O$出现的概率$P(O|\lambda)$。</p>
-<h4 id="直接计算法"><a href="#直接计算法" class="headerlink" title="直接计算法"></a>直接计算法</h4><p>因为我们知道所有的隐藏状态之间的转移概率和所有从隐藏状态到观测状态生成概率，那么我们是可以暴力求解的。<br>我们可以列举出所有可能出现的长度为T的隐藏序列$I = (i_1,i_2,\cdots,i_T)$，分布求出这些隐藏序列与观测序列$O={o_1,o_2,…,o_T}$的联合概率分布$P(O,I|\lambda)$，这样我们就可以求出边缘分布$P(O|\lambda)$</p>
+<h3 id="前向后向算法评估观察序列概率">前向后向算法评估观察序列概率</h3>
+<p>首先要解决的问题是上面的问题一，即是概率计算问题，在模型<span class="math inline">\(\lambda\)</span>下观测序列<span class="math inline">\(O\)</span>出现的概率<span class="math inline">\(P(O|\lambda)\)</span>。</p>
+<h4 id="直接计算法">直接计算法</h4>
+<p>因为我们知道所有的隐藏状态之间的转移概率和所有从隐藏状态到观测状态生成概率，那么我们是可以暴力求解的。 我们可以列举出所有可能出现的长度为T的隐藏序列<span class="math inline">\(I = (i_1,i_2,\cdots,i_T)\)</span>，分布求出这些隐藏序列与观测序列<span class="math inline">\(O={o_1,o_2,...,o_T}\)</span>的联合概率分布<span class="math inline">\(P(O,I|\lambda)\)</span>，这样我们就可以求出边缘分布<span class="math inline">\(P(O|\lambda)\)</span></p>
 <p>算法步骤如下：</p>
-<ol>
-<li>任意一个隐藏序列$I = (i_1,i_2,\cdots,i_T)$出现的概率是:<script type="math/tex; mode=display">
-P(I|\lambda) = \pi_{i_1} a_{i_1i_2} a_{i_2i_3}... a_{i_{T-1}\;\;i_T}</script></li>
-<li>对上面这种状态序列，产生观测序列$O={o_1,o_2,…,o_T}$的概率是：<script type="math/tex; mode=display">
-P(O|I,\lambda)=b_{i_1}(o_1)b_{i_2}(o_2)...b_{i_T}(o_{T})</script></li>
-<li>则O和I联合出现的概率是：<script type="math/tex; mode=display">
-P(O,I|\lambda)=P(O|I,\lambda)P(I|\lambda)=\pi_{i_1}b_{i_1}(o_1)a_{i_1i_2}b_{i_2}(o_2)...a_{i_{T-1}i_T}b_{i_T}(o_{T})</script></li>
-<li>对所有可能的$I$求和，得到:<script type="math/tex; mode=display">
-P(O|λ)=\sum_IP(O,I|\lambda)=\sum_{i_1,...,i_T}\pi_{i_1}b_{i_1}(o_1)a_{i_1i_2}b_{i_2}(o_2)...a_{i_{T-1}i_T}b_{i_T}(o_{T})</script>如果直接计算，时间复杂度太高，是$O(TN^T)$</li>
+<ol type="1">
+<li>任意一个隐藏序列<span class="math inline">\(I = (i_1,i_2,\cdots,i_T)\)</span>出现的概率是: <span class="math display">\[
+P(I|\lambda) = \pi_{i_1} a_{i_1i_2} a_{i_2i_3}... a_{i_{T-1}\;\;i_T}
+\]</span></li>
+<li>对上面这种状态序列，产生观测序列<span class="math inline">\(O={o_1,o_2,...,o_T}\)</span>的概率是： <span class="math display">\[
+P(O|I,\lambda)=b_{i_1}(o_1)b_{i_2}(o_2)...b_{i_T}(o_{T})
+\]</span></li>
+<li>则O和I联合出现的概率是： <span class="math display">\[
+P(O,I|\lambda)=P(O|I,\lambda)P(I|\lambda)=\pi_{i_1}b_{i_1}(o_1)a_{i_1i_2}b_{i_2}(o_2)...a_{i_{T-1}i_T}b_{i_T}(o_{T})
+\]</span></li>
+<li>对所有可能的<span class="math inline">\(I\)</span>求和，得到: <span class="math display">\[
+P(O|λ)=\sum_IP(O,I|\lambda)=\sum_{i_1,...,i_T}\pi_{i_1}b_{i_1}(o_1)a_{i_1i_2}b_{i_2}(o_2)...a_{i_{T-1}i_T}b_{i_T}(o_{T})
+\]</span> 如果直接计算，时间复杂度太高，是<span class="math inline">\(O(TN^T)\)</span></li>
 </ol>
 <p>因此对于一些隐藏状态数极少的模型，我们可以用暴力求解法来得到观测序列出现的概率，但是如果隐藏状态多，则上述算法太耗时，我们需要寻找其他简洁的算法。</p>
-<p>前向后向算法就是来帮助我们在较低的时间复杂度情况下求解这个问题的。</p>
-<h4 id="前向算法（或者后向算法）"><a href="#前向算法（或者后向算法）" class="headerlink" title="前向算法（或者后向算法）"></a>前向算法（或者后向算法）</h4><p>前向算法本质上属于动态规划的算法，也就是我们要通过找到局部状态递推的公式，这样一步步的从子问题的最优解拓展到整个问题的最优解。</p>
+<p>前向后向算法就是来帮助我们在较低的时间复杂度情况下求解这个问题的。 #### 前向算法（或者后向算法） 前向算法本质上属于动态规划的算法，也就是我们要通过找到局部状态递推的公式，这样一步步的从子问题的最优解拓展到整个问题的最优解。</p>
 <p>在前向算法中，通过定义“前向概率”来定义动态规划的这个局部状态。</p>
-<p><strong>前向概率：</strong>定义时刻$t$时隐藏状态为$q_i$, 观测状态的序列为$o_1,o_2,\cdots,o_t$的概率为前向概率，记做：</p>
-<script type="math/tex; mode=display">
-\alpha_t(i) = P(o_1,o_2,...o_t, i_t =q_i | \lambda)</script><p>利用的思想是动态规划中的递推：</p>
-<p>即是利用在时刻$t$掌握的前向概率信息推出$t+1$时刻各个隐藏状态的前向概率。具体步骤如下：<br><img src="https://suool-bolg.b0.upaiyun.com/2018/12/16/423B35A6-5DE4-432E-A68D-CD4FB933C0C9.png" alt="前向算法递推步骤"><br>算法步骤如下：</p>
-<p><strong>输入</strong>：隐马模型$\lambda = (A, B, \Pi)$，观测序列$O=(o_1,o_2,…o_T)$;<br><strong>输出</strong>：观测序列概率$P(O|λ)$.</p>
-<p><strong>step 1：</strong> 计算$t=1$时刻的各个隐藏状态初始前向概率：</p>
-<script type="math/tex; mode=display">\alpha_1(i) = \pi_ib_i(o_1),\; i=1,2,...N</script><p><strong>step 2：</strong>递推时刻$2,3,\cdots,T$时刻的前向概率：</p>
-<script type="math/tex; mode=display">
-\alpha_{t+1}(i) = \Big[\sum\limits_{j=1}^N\alpha_t(j)a_{ji}\Big]b_i(o_{t+1}),\; i=1,2,...N</script><p><strong>step 3：</strong>计算最终结果：</p>
-<script type="math/tex; mode=display">
-P(O|\lambda) = \sum\limits_{i=1}^N\alpha_T(i)</script><p>从递推公式可以看出，我们的算法时间复杂度是$O(TN^2)$</p>
+<p><strong>前向概率：</strong>定义时刻<span class="math inline">\(t\)</span>时隐藏状态为<span class="math inline">\(q_i\)</span>, 观测状态的序列为<span class="math inline">\(o_1,o_2,\cdots,o_t\)</span>的概率为前向概率，记做： <span class="math display">\[
+\alpha_t(i) = P(o_1,o_2,...o_t, i_t =q_i | \lambda)
+\]</span></p>
+<p>利用的思想是动态规划中的递推：</p>
+<p>即是利用在时刻<span class="math inline">\(t\)</span>掌握的前向概率信息推出<span class="math inline">\(t+1\)</span>时刻各个隐藏状态的前向概率。具体步骤如下： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/16/423B35A6-5DE4-432E-A68D-CD4FB933C0C9.png" alt="前向算法递推步骤"> 算法步骤如下：</p>
+<p><strong>输入</strong>：隐马模型<span class="math inline">\(\lambda = (A, B, \Pi)\)</span>，观测序列<span class="math inline">\(O=(o_1,o_2,...o_T)\)</span>; <strong>输出</strong>：观测序列概率<span class="math inline">\(P(O|λ)\)</span>.</p>
+<p><strong>step 1：</strong> 计算<span class="math inline">\(t=1\)</span>时刻的各个隐藏状态初始前向概率： <span class="math display">\[\alpha_1(i) = \pi_ib_i(o_1),\; i=1,2,...N\]</span> <strong>step 2：</strong>递推时刻<span class="math inline">\(2,3,\cdots,T\)</span>时刻的前向概率： <span class="math display">\[
+\alpha_{t+1}(i) = \Big[\sum\limits_{j=1}^N\alpha_t(j)a_{ji}\Big]b_i(o_{t+1}),\; i=1,2,...N
+\]</span> <strong>step 3：</strong>计算最终结果： <span class="math display">\[
+P(O|\lambda) = \sum\limits_{i=1}^N\alpha_T(i)
+\]</span></p>
+<p>从递推公式可以看出，我们的算法时间复杂度是<span class="math inline">\(O(TN^2)\)</span></p>
 <p>后向算法原理亦是如此。</p>
 <p>实现代码如下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 接上面代码</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(obs_seq)</span>:</span></span><br><span class="line">    <span class="string">"""前向算法"""</span></span><br><span class="line">    N = A.shape[<span class="number">0</span>]</span><br><span class="line">    T = len(obs_seq)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># F保存前向概率矩阵</span></span><br><span class="line">    F = np.zeros((N,T))</span><br><span class="line">    F[:,<span class="number">0</span>] = pi * B[:, obs_seq[<span class="number">0</span>]]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">1</span>, T):</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> range(N):</span><br><span class="line">            F[n,t] = np.dot(F[:,t<span class="number">-1</span>], (A[:,n])) * B[n, obs_seq[t]]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> F, sum(F[:,T<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backward</span><span class="params">(obs_seq)</span>:</span></span><br><span class="line">    <span class="string">"""后向算法"""</span></span><br><span class="line">    N = A.shape[<span class="number">0</span>]</span><br><span class="line">    T = len(obs_seq)</span><br><span class="line">    <span class="comment"># X保存后向概率矩阵</span></span><br><span class="line">    X = np.zeros((N,T))</span><br><span class="line">    X[:,<span class="number">-1</span>:] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> reversed(range(T<span class="number">-1</span>)):</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> range(N):</span><br><span class="line">            X[n,t] = np.sum(X[:,t+<span class="number">1</span>] * A[n,:] * B[:, obs_seq[t+<span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> X, sum(pi*B[:,<span class="number">0</span>]*X[:,<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-<p>结果如下：<br><img src="https://suool-bolg.b0.upaiyun.com/2018/12/16/238936F0-D7CC-4527-9C36-B7AA0B9D25FB.png" alt="结果"></p>
-<h3 id="鲍姆-韦尔奇算法求解HMM参数"><a href="#鲍姆-韦尔奇算法求解HMM参数" class="headerlink" title="鲍姆-韦尔奇算法求解HMM参数"></a>鲍姆-韦尔奇算法求解HMM参数</h3><p>HMM模型参数求解根据已知的条件可以分为两种情况。<br>第一种情况较为简单，就是我们已知$D$个长度为$T$的观测序列和对应的隐藏状态序列，${(O_1, I_1), (O_2, I_2), …(O_D, I_D)}$是已知的，此时我们可以很容易的用最大似然来求解模型参数。<br><img src="media/76C08584-F650-4B94-90DC-0C18D99EC5B0.png" alt="求解步骤"></p>
-<p>可见第一种情况下求解模型还是很简单的。但是在很多时候，我们无法得到HMM样本观察序列对应的隐藏序列，只有D个长度为T的观测序列，即是${(O_1), (O_2), …(O_D)}$是已知的，此时我们能不能求出合适的HMM模型参数呢？这就是我们的第二种情况，它的解法最常用的是鲍姆-韦尔奇算法，其实就是基于EM算法的求解。</p>
-<h3 id="维特比算法解码隐藏状态序列"><a href="#维特比算法解码隐藏状态序列" class="headerlink" title="维特比算法解码隐藏状态序列"></a>维特比算法解码隐藏状态序列</h3><h2 id="分词实战"><a href="#分词实战" class="headerlink" title="分词实战"></a>分词实战</h2>
+<p>结果如下： <img src="https://suool-bolg.b0.upaiyun.com/2018/12/16/238936F0-D7CC-4527-9C36-B7AA0B9D25FB.png" alt="结果"></p>
+<h3 id="鲍姆-韦尔奇算法求解hmm参数">鲍姆-韦尔奇算法求解HMM参数</h3>
+<p>HMM模型参数求解根据已知的条件可以分为两种情况。 第一种情况较为简单，就是我们已知<span class="math inline">\(D\)</span>个长度为<span class="math inline">\(T\)</span>的观测序列和对应的隐藏状态序列，<span class="math inline">\(\{(O_1, I_1), (O_2, I_2), ...(O_D, I_D)\}\)</span>是已知的，此时我们可以很容易的用最大似然来求解模型参数。 <img src="media/76C08584-F650-4B94-90DC-0C18D99EC5B0.png" alt="求解步骤"></p>
+<p>可见第一种情况下求解模型还是很简单的。但是在很多时候，我们无法得到HMM样本观察序列对应的隐藏序列，只有D个长度为T的观测序列，即是<span class="math inline">\(\{(O_1), (O_2), ...(O_D)\}\)</span>是已知的，此时我们能不能求出合适的HMM模型参数呢？这就是我们的第二种情况，它的解法最常用的是鲍姆-韦尔奇算法，其实就是基于EM算法的求解。</p>
+<h3 id="维特比算法解码隐藏状态序列">维特比算法解码隐藏状态序列</h3>
+<h2 id="分词实战">分词实战</h2>
+
       
     </div>
 
@@ -14360,7 +14347,7 @@ P(O|\lambda) = \sum\limits_{i=1}^N\alpha_T(i)</script><p>从递推公式可以�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">2.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适用场景"><span class="nav-number">2.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔科夫模型的两个基本假设"><span class="nav-number">2.3.</span> <span class="nav-text">隐马尔科夫模型的两个基本假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个例子"><span class="nav-number">2.4.</span> <span class="nav-text">一个例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HMM模型的三个基本问题"><span class="nav-number">3.</span> <span class="nav-text">HMM模型的三个基本问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前向后向算法评估观察序列概率"><span class="nav-number">3.1.</span> <span class="nav-text">前向后向算法评估观察序列概率</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接计算法"><span class="nav-number">3.1.1.</span> <span class="nav-text">直接计算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前向算法（或者后向算法）"><span class="nav-number">3.1.2.</span> <span class="nav-text">前向算法（或者后向算法）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鲍姆-韦尔奇算法求解HMM参数"><span class="nav-number">3.2.</span> <span class="nav-text">鲍姆-韦尔奇算法求解HMM参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#维特比算法解码隐藏状态序列"><span class="nav-number">3.3.</span> <span class="nav-text">维特比算法解码隐藏状态序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分词实战"><span class="nav-number">4.</span> <span class="nav-text">分词实战</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">2.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适用场景"><span class="nav-number">2.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔科夫模型的两个基本假设"><span class="nav-number">2.3.</span> <span class="nav-text">隐马尔科夫模型的两个基本假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个例子"><span class="nav-number">2.4.</span> <span class="nav-text">一个例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hmm模型的三个基本问题"><span class="nav-number">3.</span> <span class="nav-text">HMM模型的三个基本问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前向后向算法评估观察序列概率"><span class="nav-number">3.1.</span> <span class="nav-text">前向后向算法评估观察序列概率</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接计算法"><span class="nav-number">3.1.1.</span> <span class="nav-text">直接计算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鲍姆-韦尔奇算法求解hmm参数"><span class="nav-number">3.2.</span> <span class="nav-text">鲍姆-韦尔奇算法求解HMM参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#维特比算法解码隐藏状态序列"><span class="nav-number">3.3.</span> <span class="nav-text">维特比算法解码隐藏状态序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分词实战"><span class="nav-number">4.</span> <span class="nav-text">分词实战</span></a></li></ol></div>
             
 
           </div>
@@ -14392,7 +14379,7 @@ P(O|\lambda) = \sum\limits_{i=1}^N\alpha_T(i)</script><p>从递推公式可以�
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">130k</span>
+    <span title="站点总字数">132k</span>
   
 
   
@@ -14401,7 +14388,7 @@ P(O|\lambda) = \sum\limits_{i=1}^N\alpha_T(i)</script><p>从递推公式可以�
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">4:14</span>
+    <span title="站点阅读时长">5:30</span>
   
 </div>
 
