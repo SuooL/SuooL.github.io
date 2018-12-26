@@ -33,4 +33,7 @@
 {"title":"“熵”不起：从熵、最大熵原理到最大熵模型","url":"/2018/11/27/maximum-entropy-model/"},
 {"title":"Numpy  API函数用法","url":"/2018/12/14/Numpy-Where/"},
 {"title":"pytorch 基础笔记","url":"/2018/12/18/pytorch-basic/"},
+{"title":"正向代理、反向代理和透明代理","url":"/2018/12/26/Forward-Reverse-Transparent-proxy/"},
+{"title":"docker 基础笔记","url":"/2018/12/26/docker-basic/"},
+{"title":"nginx 基础笔记","url":"/2018/12/26/nginx-basic/"},
 ]
