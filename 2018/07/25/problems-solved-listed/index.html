@@ -104,18 +104,18 @@
 
 
 
-  <meta name="description" content="系统问题 Docker 1.Ubuntu 下安装 docker 使用非 sudo 命令的问题： 1Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/i">
+  <meta name="description" content="系统问题 Docker 1.Ubuntu 下安装 docker 使用非 sudo 命令的问题：">
 <meta name="keywords" content="记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="问题解决记录">
 <meta property="og:url" content="https://suool.net/2018/07/25/problems-solved-listed/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="系统问题 Docker 1.Ubuntu 下安装 docker 使用非 sudo 命令的问题： 1Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/i">
+<meta property="og:description" content="系统问题 Docker 1.Ubuntu 下安装 docker 使用非 sudo 命令的问题：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-25T12:54:34.296Z">
+<meta property="og:updated_time" content="2018-12-27T05:56:39.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问题解决记录">
-<meta name="twitter:description" content="系统问题 Docker 1.Ubuntu 下安装 docker 使用非 sudo 命令的问题： 1Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/i">
+<meta name="twitter:description" content="系统问题 Docker 1.Ubuntu 下安装 docker 使用非 sudo 命令的问题：">
 
 
 
@@ -427,7 +427,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-25 20:54:34" itemprop="dateModified" datetime="2018-12-25T20:54:34+08:00">2018-12-25</time>
+                <time title="修改时间：2018-12-27 13:56:39" itemprop="dateModified" datetime="2018-12-27T13:56:39+08:00">2018-12-27</time>
               
             
           </span>
@@ -529,11 +529,11 @@
       
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="系统问题">系统问题</h2>
 <h3 id="docker">Docker</h3>
-<p><strong>1.Ubuntu 下安装 <code>docker</code> 使用非 <code>sudo</code> 命令的问题</strong>：</p>
+<p><strong>1.Ubuntu 下安装 <code>docker</code> 使用非 <code>sudo</code> 命令的问题</strong>： <a id="more"></a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/images/json: dial unix /var/run/docker.sock: connect: permission denied</span><br></pre></td></tr></table></figure>
 <p>解决方法： &gt;the error message tells you that your current user can’t access the docker engine, because you’re lacking permissions to access the unix socket to communicate with the engine. <strong>Temporary solution</strong> Use the <code>sudo</code> command to execute the commands with elevated permissions every time. <strong>Permanent (suggested) solution</strong> Add the current user to the docker group. This can be achieved by typing <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -<span class="selector-tag">a</span> -G docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>You have to log out and log in again</strong> for the group membership to take effect.</p>
-<a id="more"></a>
+<!--more-->
 <p><strong>2.Docker 换源</strong></p>
 <p>新版的 <code>Docker</code> 使用 <code>/etc/docker/daemon.json（Linux）</code> 或者 <code>%programdata%\docker\config\daemon.json（Windows）</code> 来配置 Daemon 。</p>
 <p>请在该配置文件中加入（没有该文件的话，请先建一个）：</p>
@@ -738,7 +738,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -781,7 +781,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -836,7 +840,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -956,7 +966,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:37</span>
+    <span title="站点阅读时长">5:39</span>
   
 </div>
 

@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://suool.net/2018/12/26/Forward-Reverse-Transparent-proxy/</loc>
-    <lastmod>2018-12-26T17:02:31.838Z</lastmod>
-  </url>  <url>
-    <loc>https://suool.net/2018/12/26/docker-basic/</loc>
-    <lastmod>2018-12-26T16:57:11.268Z</lastmod>
+    <loc>https://suool.net/2018/07/25/problems-solved-listed/</loc>
+    <lastmod>2018-12-27T05:56:39.809Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2018/12/26/nginx-basic/</loc>
-    <lastmod>2018-12-26T16:52:00.963Z</lastmod>
+    <lastmod>2018-12-27T05:56:14.440Z</lastmod>
   </url>  <url>
-    <loc>https://suool.net/2018/07/25/problems-solved-listed/</loc>
-    <lastmod>2018-12-25T12:54:34.296Z</lastmod>
+    <loc>https://suool.net/2018/12/27/Install-ZSH-Ubuntu/</loc>
+    <lastmod>2018-12-27T05:34:15.984Z</lastmod>
+  </url>  <url>
+    <loc>https://suool.net/2018/12/26/Forward-Reverse-Transparent-proxy/</loc>
+    <lastmod>2018-12-27T04:53:30.552Z</lastmod>
+  </url>  <url>
+    <loc>https://suool.net/2018/12/26/docker-basic/</loc>
+    <lastmod>2018-12-27T04:53:25.282Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2018/12/18/pytorch-basic/</loc>
-    <lastmod>2018-12-19T05:42:43.576Z</lastmod>
+    <lastmod>2018-12-27T04:53:17.744Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2018/12/14/Numpy-Where/</loc>
-    <lastmod>2018-12-18T07:39:16.338Z</lastmod>
+    <lastmod>2018-12-27T04:53:12.138Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2018/01/09/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E4%BD%BF%E7%94%A8-SSR-%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
     <lastmod>2018-12-18T03:31:39.827Z</lastmod>
@@ -52,9 +55,6 @@
     <loc>https://suool.net/2018/10/29/custom-dataset-use-pytorch/</loc>
     <lastmod>2018-10-30T02:39:59.258Z</lastmod>
   </url>  <url>
-    <loc>https://suool.net/2018/01/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E5%B0%86%E4%BD%A0%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E5%8F%98%E8%BA%AB-Google-Home/</loc>
-    <lastmod>2018-10-29T12:53:08.548Z</lastmod>
-  </url>  <url>
     <loc>https://suool.net/2016/10/02/%E8%B8%8F%E8%BF%87%E6%89%80%E6%9C%89%E7%9A%84%E8%BF%87%E5%BE%80/</loc>
     <lastmod>2018-10-29T12:53:08.548Z</lastmod>
   </url>  <url>
@@ -64,13 +64,16 @@
     <loc>https://suool.net/2018/01/07/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E8%AE%BE%E5%A4%87%E7%82%B9%E4%BA%AE/</loc>
     <lastmod>2018-10-29T12:53:08.548Z</lastmod>
   </url>  <url>
+    <loc>https://suool.net/2018/01/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E5%B0%86%E4%BD%A0%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E5%8F%98%E8%BA%AB-Google-Home/</loc>
+    <lastmod>2018-10-29T12:53:08.548Z</lastmod>
+  </url>  <url>
     <loc>https://suool.net/2018/01/13/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E5%B0%86%E4%BD%A0%E6%A0%91%E8%8E%93%E6%B4%BE%E5%8F%98%E6%88%90%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E4%B8%AD%E6%9E%A2/</loc>
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
   </url>  <url>
-    <loc>https://suool.net/2016/10/27/%E6%97%A0%E9%A2%98/</loc>
+    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
   </url>  <url>
-    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
+    <loc>https://suool.net/2016/10/27/%E6%97%A0%E9%A2%98/</loc>
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2016/12/28/%E4%BA%91%E5%8D%97%E4%BA%94%E5%A4%A9%E5%9B%9B%E6%99%9A%E6%B8%B8/</loc>
@@ -82,22 +85,22 @@
     <loc>https://suool.net/2018/07/08/navie-bayes-handwriting-recognition/</loc>
     <lastmod>2018-10-29T12:53:08.545Z</lastmod>
   </url>  <url>
-    <loc>https://suool.net/2018/09/05/logistic-mnist/</loc>
+    <loc>https://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
     <lastmod>2018-10-29T12:53:08.400Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2016/11/30/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AF%B4%E6%98%8E/</loc>
     <lastmod>2018-10-29T12:53:08.400Z</lastmod>
   </url>  <url>
-    <loc>https://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
+    <loc>https://suool.net/2018/09/05/logistic-mnist/</loc>
     <lastmod>2018-10-29T12:53:08.400Z</lastmod>
+  </url>  <url>
+    <loc>https://suool.net/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/</loc>
+    <lastmod>2018-10-29T12:53:08.399Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2018/07/09/from-the-soil-first/</loc>
     <lastmod>2018-10-29T12:53:08.399Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2016/08/17/hello-world/</loc>
-    <lastmod>2018-10-29T12:53:08.399Z</lastmod>
-  </url>  <url>
-    <loc>https://suool.net/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/</loc>
     <lastmod>2018-10-29T12:53:08.399Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2018/07/19/Mnist-With-Decision-Tree-ID3/</loc>
