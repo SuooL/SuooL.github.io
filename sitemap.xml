@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://suool.net/2018/12/27/Git-Setting-Github/</loc>
+    
+    <lastmod>2018-12-27T07:27:46.736Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/12/18/pytorch-basic/</loc>
+    
+    <lastmod>2018-12-27T05:59:46.486Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/12/26/docker-basic/</loc>
+    
+    <lastmod>2018-12-27T05:59:38.033Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://suool.net/2018/07/25/problems-solved-listed/</loc>
     
     <lastmod>2018-12-27T05:56:39.809Z</lastmod>
@@ -26,20 +47,6 @@
     <loc>https://suool.net/2018/12/26/Forward-Reverse-Transparent-proxy/</loc>
     
     <lastmod>2018-12-27T04:53:30.552Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://suool.net/2018/12/26/docker-basic/</loc>
-    
-    <lastmod>2018-12-27T04:53:25.282Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://suool.net/2018/12/18/pytorch-basic/</loc>
-    
-    <lastmod>2018-12-27T04:53:17.744Z</lastmod>
     
   </url>
   
@@ -142,13 +149,6 @@
   </url>
   
   <url>
-    <loc>https://suool.net/tags/index.html</loc>
-    
-    <lastmod>2018-10-29T12:53:08.549Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://suool.net/categories/index.html</loc>
     
     <lastmod>2018-10-29T12:53:08.549Z</lastmod>
@@ -156,9 +156,9 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2016/10/02/%E8%B8%8F%E8%BF%87%E6%89%80%E6%9C%89%E7%9A%84%E8%BF%87%E5%BE%80/</loc>
+    <loc>https://suool.net/tags/index.html</loc>
     
-    <lastmod>2018-10-29T12:53:08.548Z</lastmod>
+    <lastmod>2018-10-29T12:53:08.549Z</lastmod>
     
   </url>
   
@@ -171,6 +171,13 @@
   
   <url>
     <loc>https://suool.net/2018/01/07/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E8%AE%BE%E5%A4%87%E7%82%B9%E4%BA%AE/</loc>
+    
+    <lastmod>2018-10-29T12:53:08.548Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2016/10/02/%E8%B8%8F%E8%BF%87%E6%89%80%E6%9C%89%E7%9A%84%E8%BF%87%E5%BE%80/</loc>
     
     <lastmod>2018-10-29T12:53:08.548Z</lastmod>
     
@@ -191,14 +198,14 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
+    <loc>https://suool.net/2016/10/27/%E6%97%A0%E9%A2%98/</loc>
     
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://suool.net/2016/10/27/%E6%97%A0%E9%A2%98/</loc>
+    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
     
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
     
@@ -226,13 +233,6 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
-    
-    <lastmod>2018-10-29T12:53:08.400Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://suool.net/2016/11/30/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AF%B4%E6%98%8E/</loc>
     
     <lastmod>2018-10-29T12:53:08.400Z</lastmod>
@@ -241,6 +241,13 @@
   
   <url>
     <loc>https://suool.net/2018/09/05/logistic-mnist/</loc>
+    
+    <lastmod>2018-10-29T12:53:08.400Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
     
     <lastmod>2018-10-29T12:53:08.400Z</lastmod>
     
@@ -282,14 +289,14 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/24/Least-Squares/</loc>
+    <loc>https://suool.net/2018/06/26/Least-Squares-with-Matrix-Nolinear/</loc>
     
     <lastmod>2018-10-29T12:53:08.397Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/26/Least-Squares-with-Matrix-Nolinear/</loc>
+    <loc>https://suool.net/2018/06/24/Least-Squares/</loc>
     
     <lastmod>2018-10-29T12:53:08.397Z</lastmod>
     
