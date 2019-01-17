@@ -366,6 +366,271 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://suool.net/2019/01/17/swift-vapor-install-ubuntu/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SuooL">
+      <meta itemprop="description" content="胡振生写字的地方">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuooL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/17/swift-vapor-install-ubuntu/" class="post-title-link" itemprop="https://suool.net/index.html">在 Ubuntu 上安装 Vapor 和 Swift</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-17 12:55:51 / 修改时间：13:46:24" itemprop="dateCreated datePublished" datetime="2019-01-17T12:55:51+08:00">2019-01-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/基础学习/" itemprop="url" rel="index"><span itemprop="name">基础学习</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/基础学习/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/17/swift-vapor-install-ubuntu/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/17/swift-vapor-install-ubuntu/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/17/swift-vapor-install-ubuntu/" class="leancloud_visitors" data-flag-title="在 Ubuntu 上安装 Vapor 和 Swift">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYXBwbGUuY29tL3N3aWZ0Lw==" title="https://developer.apple.com/swift/">Swift<i class="fa fa-external-link"></i></span>是由苹果主导开发的编程语言，它是一门高效、安全、现代化的编程语言，其背后又十分强大的社区支持。Swift 此前主要被用来 iOS 和 macOS 的应用程序开发，但是从 Swift 3.0 开始，你也可以拿它来做服务端的开发了。 <span class="exturl" data-url="aHR0cHM6Ly92YXBvci5jb2Rlcy8=" title="https://vapor.codes/">Vapor<i class="fa fa-external-link"></i></span>是一款流行的 Swift 服务端框架，它也具有 Swift 安全、高效、现代化的特点，同时也兼具其他编程语言服务端框架所具有的许多常见的特性。 在这篇教程中，你将会在 Ubuntu 16.04 上安装 Swift 和 Vapor，并通过使用 Vapor 框架的一个模板创建一个简单的 web 应用程序来测试是否安装成功。<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" data-aria-label="[How To Install Swift and Vapor on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-swift-and-vapor-on-ubuntu-16-04)
+">[1]</span></a></sup></p>
+<h2 id="prerequisites-基础准备">Prerequisites 基础准备</h2>
+<p>为了能顺利进行以下的教程步骤，你需要:</p>
+<ul>
+<li>在 Ubuntu 服务器上创建一个非 root 用户，这个用户能够使用 sudo 命令。</li>
+<li>在你的服务器上已经安装了 git 等基本的开发工具。</li>
+</ul>
+<h2 id="第一步-安装-swift">第一步 安装 Swift</h2>
+<p>为了能够构建并运行 Vapor web 程序，你需要首先安装 Swift。</p>
+<p>首先确定你系统上的包列表是最新的：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>然后安装 Swift 的准备环境,包括以下几个软件包： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install clang libicu-dev libpython2.7</span><br></pre></td></tr></table></figure></p>
+<p>然后下载最新的 Swift 二进制包，通过 wget 命令下载，最新版本链接通过<span class="exturl" data-url="aHR0cHM6Ly9zd2lmdC5vcmcvZG93bmxvYWQ=" title="https://swift.org/download">下载页面<i class="fa fa-external-link"></i></span>获取。</p>
+<p>原文中的安装步骤较为繁琐，目前 Swift已经支持通过 APT 直接安装，使用</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install swift</span><br></pre></td></tr></table></figure>
+<p>即可完成安装。安装完成后，可以像用 Python 一样使用 Swift： <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/EA3C198A-DF06-41FB-8822-623A563F782A.png" alt="测试"></p>
+<h2 id="第二步-安装-vapor">第二步 安装 Vapor</h2>
+<p>添加Vapor APT repo，以便于访问Vapor所有的Ubuntu包。 ### 快速开始 使用如下脚本可以方便地添加Vapor的APT repo。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(curl -sL https://apt.vapor.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+<p><strong>提示</strong> - 该命令需要<code>curl</code>，可以通过<code>sudo apt-get install curl</code>来安装。</p>
+<h3 id="dockerfile">Dockerfile</h3>
+<p>想通过 Dockerfile 来配置 Ubuntu，可以通过如下命令来添加 APT repo：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="bash"> /bin/bash -c <span class="string">"<span class="variable">$(wget -qO- https://apt.vapor.sh)</span>"</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="手动">手动</h3>
+<p>或者手动添加repo。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -q https://repo.vapor.codes/apt/keyring.gpg -O- | sudo apt-key add -</span><br><span class="line">echo "deb https://repo.vapor.codes/apt $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/vapor.list</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h3 id="安装-vapor">安装 Vapor</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vapor</span><br></pre></td></tr></table></figure>
+<p>验证安装 <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/86B9F6F0-D5BD-4FDF-8DE9-547CDEA7EB22.png" alt="测试"></p>
+<h2 id="构建运行-vapor-程序">构建运行 Vapor 程序</h2>
+<p>创建第一个 Vapor 程序，利用下面的命令：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vapor <span class="keyword">new</span> Hello</span><br></pre></td></tr></table></figure>
+<p>创建完成之后进入该目录，通过执行<code>vapor xcode</code>可以生成 Xcode 项目，并可以使用 Xcode 像打开 iOS 应用项目一样打开该项目。</p>
+<p>你可以如下配置你的 Xcode ，运行项目: <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/208B0594-E314-45A2-B503-1CC10EBF7A19.png" alt="配置"></p>
+<p>会出现如下的输出结果: <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/34AB66BB-3FED-4EEA-8C0E-6B19913CC901.png" alt="output"></p>
+<p>通过访问这个目录即可看到程序的运行结果。</p>
+<hr>
+<h2 id="reference">Reference</h2>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style: none; padding-left: 0; margin-left: 40px">
+<li id="fn:1">
+<span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><span class="exturl" data-url="aHR0cHM6Ly93d3cuZGlnaXRhbG9jZWFuLmNvbS9jb21tdW5pdHkvdHV0b3JpYWxzL2hvdy10by1pbnN0YWxsLXN3aWZ0LWFuZC12YXBvci1vbi11YnVudHUtMTYtMDQ=" title="https://www.digitalocean.com/community/tutorials/how-to-install-swift-and-vapor-on-ubuntu-16-04">How To Install Swift and Vapor on Ubuntu 16.04<i class="fa fa-external-link"></i></span><a href="#fnref:1" rev="footnote"> ↩</a></span>
+</li>
+</ol>
+</div>
+</div>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://suool.net/2018/12/27/Git-Setting-Github/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1325,7 +1590,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 13:59:38" itemprop="dateModified" datetime="2018-12-27T13:59:38+08:00">2018-12-27</time>
+                <time title="修改时间：2019-01-16 12:18:53" itemprop="dateModified" datetime="2019-01-16T12:18:53+08:00">2019-01-16</time>
               
             
           </span>
@@ -2412,241 +2677,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://suool.net/2018/11/18/HMM-Viterbi/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SuooL">
-      <meta itemprop="description" content="胡振生写字的地方">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SuooL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/18/HMM-Viterbi/" class="post-title-link" itemprop="https://suool.net/index.html">隐马尔科夫模型（HMM）</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-11-18 22:32:35" itemprop="dateCreated datePublished" datetime="2018-11-18T22:32:35+08:00">2018-11-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-16 21:48:54" itemprop="dateModified" datetime="2018-12-16T21:48:54+08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/18/HMM-Viterbi/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/18/HMM-Viterbi/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/11/18/HMM-Viterbi/" class="leancloud_visitors" data-flag-title="隐马尔科夫模型（HMM）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">6 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言">前言</h2>
-<p>同时在<a href="https://suool.net/2018/11/16/Text-Segmentation-1/">LP 之分词技术概述</a>中有提到 HMM 模型，虽然此方法在现代的作用和地位有所下降，但是依然是非常值得了解的学习机器学习经典算法。
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/11/18/HMM-Viterbi/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-         
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2694,7 +2724,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2739,7 +2769,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2800,7 +2832,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2895,7 +2931,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">136k</span>
+    <span title="站点总字数">138k</span>
   
 
   
@@ -2904,7 +2940,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:41</span>
+    <span title="站点阅读时长">5:45</span>
   
 </div>
 

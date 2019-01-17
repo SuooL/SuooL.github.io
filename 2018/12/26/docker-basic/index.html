@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="SuooL&#39;s Blog">
 <meta property="og:description" content="Docker 基础学习 安装Docker 安装教程参考官方教程，比较简单，不再赘述。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-27T05:59:38.033Z">
+<meta property="og:updated_time" content="2019-01-16T04:18:53.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 基础笔记">
 <meta name="twitter:description" content="Docker 基础学习 安装Docker 安装教程参考官方教程，比较简单，不再赘述。">
@@ -427,7 +427,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 13:59:38" itemprop="dateModified" datetime="2018-12-27T13:59:38+08:00">2018-12-27</time>
+                <time title="修改时间：2019-01-16 12:18:53" itemprop="dateModified" datetime="2019-01-16T12:18:53+08:00">2019-01-16</time>
               
             
           </span>
@@ -552,10 +552,10 @@
 <p>###删除镜像 删除指定的镜像： <code>docker rmi 容器name:容器tag</code> 或者： <code>docker rmi 容器ID</code> 删除所有镜像： <code>docker rmi $(docker images -q)</code></p>
 <h3 id="交互">交互</h3>
 <p>运行<code>docker run</code>命令 比如</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -i -t 【<span class="built_in">name</span>:tag】(或者ID) bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -i -t 【name:tag】(或者ID) bash</span><br></pre></td></tr></table></figure>
 <p>表示运行指定容器的 bash，并登陆到容器内部</p>
 <p>恢复已经结束运行的容器使用：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start -<span class="selector-tag">i</span> containerID</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start -i containerID</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -711,7 +711,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -756,7 +756,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -817,7 +819,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -928,7 +934,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">136k</span>
+    <span title="站点总字数">138k</span>
   
 
   
@@ -937,7 +943,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:41</span>
+    <span title="站点阅读时长">5:45</span>
   
 </div>
 

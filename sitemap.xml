@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://suool.net/2019/01/17/swift-vapor-install-ubuntu/</loc>
+    
+    <lastmod>2019-01-17T05:46:24.090Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/12/26/docker-basic/</loc>
+    
+    <lastmod>2019-01-16T04:18:53.255Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/07/25/problems-solved-listed/</loc>
+    
+    <lastmod>2019-01-16T04:18:53.248Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/01/13/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E5%B0%86%E4%BD%A0%E6%A0%91%E8%8E%93%E6%B4%BE%E5%8F%98%E6%88%90%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E4%B8%AD%E6%9E%A2/</loc>
+    
+    <lastmod>2019-01-01T10:19:45.692Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://suool.net/2018/06/21/%E4%BF%A1%E6%81%AF%E8%AE%BA%E5%92%8C%E8%B4%9D%E5%8F%B6%E6%96%AF/</loc>
     
     <lastmod>2019-01-01T10:16:59.264Z</lastmod>
@@ -19,13 +47,6 @@
     <loc>https://suool.net/2018/01/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E5%B0%86%E4%BD%A0%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E5%8F%98%E8%BA%AB-Google-Home/</loc>
     
     <lastmod>2019-01-01T10:15:11.204Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://suool.net/2018/01/13/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97%E4%B9%8B%E5%B0%86%E4%BD%A0%E6%A0%91%E8%8E%93%E6%B4%BE%E5%8F%98%E6%88%90%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E4%B8%AD%E6%9E%A2/</loc>
-    
-    <lastmod>2019-01-01T10:11:31.197Z</lastmod>
     
   </url>
   
@@ -68,20 +89,6 @@
     <loc>https://suool.net/2018/12/18/pytorch-basic/</loc>
     
     <lastmod>2018-12-27T05:59:46.486Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://suool.net/2018/12/26/docker-basic/</loc>
-    
-    <lastmod>2018-12-27T05:59:38.033Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://suool.net/2018/07/25/problems-solved-listed/</loc>
-    
-    <lastmod>2018-12-27T05:56:39.809Z</lastmod>
     
   </url>
   
@@ -177,14 +184,14 @@
   </url>
   
   <url>
-    <loc>https://suool.net/categories/index.html</loc>
+    <loc>https://suool.net/about/index.html</loc>
     
     <lastmod>2018-10-29T12:53:08.549Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://suool.net/about/index.html</loc>
+    <loc>https://suool.net/categories/index.html</loc>
     
     <lastmod>2018-10-29T12:53:08.549Z</lastmod>
     
@@ -205,14 +212,14 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
+    <loc>https://suool.net/2016/10/27/%E6%97%A0%E9%A2%98/</loc>
     
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://suool.net/2016/10/27/%E6%97%A0%E9%A2%98/</loc>
+    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
     
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
     
@@ -233,6 +240,13 @@
   </url>
   
   <url>
+    <loc>https://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
+    
+    <lastmod>2018-10-29T12:53:08.400Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://suool.net/2018/09/05/logistic-mnist/</loc>
     
     <lastmod>2018-10-29T12:53:08.400Z</lastmod>
@@ -247,20 +261,6 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
-    
-    <lastmod>2018-10-29T12:53:08.400Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://suool.net/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/</loc>
-    
-    <lastmod>2018-10-29T12:53:08.399Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://suool.net/2018/07/09/from-the-soil-first/</loc>
     
     <lastmod>2018-10-29T12:53:08.399Z</lastmod>
@@ -269,6 +269,13 @@
   
   <url>
     <loc>https://suool.net/2016/08/17/hello-world/</loc>
+    
+    <lastmod>2018-10-29T12:53:08.399Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/</loc>
     
     <lastmod>2018-10-29T12:53:08.399Z</lastmod>
     
@@ -289,14 +296,14 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/24/Least-Squares/</loc>
+    <loc>https://suool.net/2018/06/26/Least-Squares-with-Matrix-Nolinear/</loc>
     
     <lastmod>2018-10-29T12:53:08.397Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/26/Least-Squares-with-Matrix-Nolinear/</loc>
+    <loc>https://suool.net/2018/06/24/Least-Squares/</loc>
     
     <lastmod>2018-10-29T12:53:08.397Z</lastmod>
     
