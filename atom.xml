@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://suool.net/"/>
-  <updated>2019-01-29T05:08:38.080Z</updated>
+  <updated>2019-01-28T13:57:09.992Z</updated>
   <id>https://suool.net/</id>
   
   <author>
@@ -15,34 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>python 基础笔记</title>
-    <link href="https://suool.net/2019/01/29/python-basics-memo/"/>
-    <id>https://suool.net/2019/01/29/python-basics-memo/</id>
-    <published>2019-01-29T05:04:38.000Z</published>
-    <updated>2019-01-29T05:08:38.080Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="引言">引言</h2><p>此处用来放写代码过程中看到的函数用法笔记及一些简单问题的解决方法。</p><h2 id="内建库函数">内建库函数</h2><h3 id="shuffle-函数">shuffle() 函数</h3><p><code>shuffle()</code> 方法将序列的所有元素随机排序，属于 <code>random</code>模块，该函数无返回值。 使用示例如下: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">list = [<span class="number">20</span>, <span class="number">16</span>, <span class="number">10</span>, <span class="number">5</span>];</span><br><span class="line">random.shuffle(list)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"随机排序列表 : "</span>,  list)</span><br></pre></td></tr></table></figure></p><p>output: <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">随机排序列表 :  <span class="string">[16, 5, 10, 20]</span></span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h2 id=&quot;引言&quot;&gt;引言&lt;/h2&gt;
-&lt;p&gt;此处用来放写代码过程中看到的函数用法
-      
-    
-    </summary>
-    
-      <category term="基础学习" scheme="https://suool.net/categories/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="Python" scheme="https://suool.net/categories/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Python/"/>
-    
-    
-      <category term="Python" scheme="https://suool.net/tags/Python/"/>
-    
-  </entry>
   
   <entry>
     <title>python 命名规范</title>
@@ -127,17 +99,15 @@
     <link href="https://suool.net/2019/01/17/swift-vapor-install-ubuntu/"/>
     <id>https://suool.net/2019/01/17/swift-vapor-install-ubuntu/</id>
     <published>2019-01-17T04:55:51.000Z</published>
-    <updated>2019-01-17T05:46:24.090Z</updated>
+    <updated>2019-01-29T05:53:47.361Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYXBwbGUuY29tL3N3aWZ0Lw==" title="https://developer.apple.com/swift/">Swift<i class="fa fa-external-link"></i></span>是由苹果主导开发的编程语言，它是一门高效、安全、现代化的编程语言，其背后又十分强大的社区支持。Swift 此前主要被用来 iOS 和 macOS 的应用程序开发，但是从 Swift 3.0 开始，你也可以拿它来做服务端的开发了。 <span class="exturl" data-url="aHR0cHM6Ly92YXBvci5jb2Rlcy8=" title="https://vapor.codes/">Vapor<i class="fa fa-external-link"></i></span>是一款流行的 Swift 服务端框架，它也具有 Swift 安全、高效、现代化的特点，同时也兼具其他编程语言服务端框架所具有的许多常见的特性。 在这篇教程中，你将会在 Ubuntu 16.04 上安装 Swift 和 Vapor，并通过使用 Vapor 框架的一个模板创建一个简单的 web 应用程序来测试是否安装成功。<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" data-aria-label="[How To Install Swift and Vapor on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-swift-and-vapor-on-ubuntu-16-04)">[1]</span></a></sup></p><h2 id="prerequisites-基础准备">Prerequisites 基础准备</h2><p>为了能顺利进行以下的教程步骤，你需要:</p><ul><li>在 Ubuntu 服务器上创建一个非 root 用户，这个用户能够使用 sudo 命令。</li><li>在你的服务器上已经安装了 git 等基本的开发工具。</li></ul><h2 id="第一步-安装-swift">第一步 安装 Swift</h2><p>为了能够构建并运行 Vapor web 程序，你需要首先安装 Swift。</p><p>首先确定你系统上的包列表是最新的：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><p>然后安装 Swift 的准备环境,包括以下几个软件包： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install clang libicu-dev libpython2.7</span><br></pre></td></tr></table></figure></p><p>然后下载最新的 Swift 二进制包，通过 wget 命令下载，最新版本链接通过<span class="exturl" data-url="aHR0cHM6Ly9zd2lmdC5vcmcvZG93bmxvYWQ=" title="https://swift.org/download">下载页面<i class="fa fa-external-link"></i></span>获取。</p><p>原文中的安装步骤较为繁琐，目前 Swift已经支持通过 APT 直接安装，使用</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install swift</span><br></pre></td></tr></table></figure><p>即可完成安装。安装完成后，可以像用 Python 一样使用 Swift： <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/EA3C198A-DF06-41FB-8822-623A563F782A.png" alt="测试"></p><h2 id="第二步-安装-vapor">第二步 安装 Vapor</h2><p>添加Vapor APT repo，以便于访问Vapor所有的Ubuntu包。 ### 快速开始 使用如下脚本可以方便地添加Vapor的APT repo。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(curl -sL https://apt.vapor.sh)</span>"</span></span><br></pre></td></tr></table></figure><p><strong>提示</strong> - 该命令需要<code>curl</code>，可以通过<code>sudo apt-get install curl</code>来安装。</p><h3 id="dockerfile">Dockerfile</h3><p>想通过 Dockerfile 来配置 Ubuntu，可以通过如下命令来添加 APT repo：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="bash"> /bin/bash -c <span class="string">"<span class="variable">$(wget -qO- https://apt.vapor.sh)</span>"</span></span></span><br></pre></td></tr></table></figure><h3 id="手动">手动</h3><p>或者手动添加repo。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -q https://repo.vapor.codes/apt/keyring.gpg -O- | sudo apt-key add -</span><br><span class="line">echo "deb https://repo.vapor.codes/apt $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/vapor.list</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><h3 id="安装-vapor">安装 Vapor</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vapor</span><br></pre></td></tr></table></figure><p>验证安装 <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/86B9F6F0-D5BD-4FDF-8DE9-547CDEA7EB22.png" alt="测试"></p><h2 id="构建运行-vapor-程序">构建运行 Vapor 程序</h2><p>创建第一个 Vapor 程序，利用下面的命令：</p><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vapor <span class="keyword">new</span> Hello</span><br></pre></td></tr></table></figure><p>创建完成之后进入该目录，通过执行<code>vapor xcode</code>可以生成 Xcode 项目，并可以使用 Xcode 像打开 iOS 应用项目一样打开该项目。</p><p>你可以如下配置你的 Xcode ，运行项目: <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/208B0594-E314-45A2-B503-1CC10EBF7A19.png" alt="配置"></p><p>会出现如下的输出结果: <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/34AB66BB-3FED-4EEA-8C0E-6B19913CC901.png" alt="output"></p><p>通过访问这个目录即可看到程序的运行结果。</p><hr><h2 id="reference">Reference</h2><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><span class="exturl" data-url="aHR0cHM6Ly93d3cuZGlnaXRhbG9jZWFuLmNvbS9jb21tdW5pdHkvdHV0b3JpYWxzL2hvdy10by1pbnN0YWxsLXN3aWZ0LWFuZC12YXBvci1vbi11YnVudHUtMTYtMDQ=" title="https://www.digitalocean.com/community/tutorials/how-to-install-swift-and-vapor-on-ubuntu-16-04">How To Install Swift and Vapor on Ubuntu 16.04<i class="fa fa-external-link"></i></span><a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言">前言</h2><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYXBwbGUuY29tL3N3aWZ0Lw==" title="https://developer.apple.com/swift/">Swift<i class="fa fa-external-link"></i></span>是由苹果主导开发的编程语言，它是一门高效、安全、现代化的编程语言，其背后又十分强大的社区支持。Swift 此前主要被用来 iOS 和 macOS 的应用程序开发，但是从 Swift 3.0 开始，你也可以拿它来做服务端的开发了。 <span class="exturl" data-url="aHR0cHM6Ly92YXBvci5jb2Rlcy8=" title="https://vapor.codes/">Vapor<i class="fa fa-external-link"></i></span>是一款流行的 Swift 服务端框架，它也具有 Swift 安全、高效、现代化的特点，同时也兼具其他编程语言服务端框架所具有的许多常见的特性。 在这篇教程中，你将会在 Ubuntu 16.04 上安装 Swift 和 Vapor，并通过使用 Vapor 框架的一个模板创建一个简单的 web 应用程序来测试是否安装成功。<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" data-aria-label="[How To Install Swift and Vapor on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-swift-and-vapor-on-ubuntu-16-04)">[1]</span></a></sup> <a id="more"></a></p><h2 id="prerequisites-基础准备">Prerequisites 基础准备</h2><p>为了能顺利进行以下的教程步骤，你需要:</p><ul><li>在 Ubuntu 服务器上创建一个非 root 用户，这个用户能够使用 sudo 命令。</li><li>在你的服务器上已经安装了 git 等基本的开发工具。</li></ul><h2 id="第一步-安装-swift">第一步 安装 Swift</h2><p>为了能够构建并运行 Vapor web 程序，你需要首先安装 Swift。</p><p>首先确定你系统上的包列表是最新的：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><p>然后安装 Swift 的准备环境,包括以下几个软件包： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install clang libicu-dev libpython2.7</span><br></pre></td></tr></table></figure></p><p>然后下载最新的 Swift 二进制包，通过 wget 命令下载，最新版本链接通过<span class="exturl" data-url="aHR0cHM6Ly9zd2lmdC5vcmcvZG93bmxvYWQ=" title="https://swift.org/download">下载页面<i class="fa fa-external-link"></i></span>获取。</p><p>原文中的安装步骤较为繁琐，目前 Swift已经支持通过 APT 直接安装，使用</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install swift</span><br></pre></td></tr></table></figure><p>即可完成安装。安装完成后，可以像用 Python 一样使用 Swift： <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/EA3C198A-DF06-41FB-8822-623A563F782A.png" alt="测试"></p><h2 id="第二步-安装-vapor">第二步 安装 Vapor</h2><p>添加Vapor APT repo，以便于访问Vapor所有的Ubuntu包。 ### 快速开始 使用如下脚本可以方便地添加Vapor的APT repo。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(curl -sL https://apt.vapor.sh)</span>"</span></span><br></pre></td></tr></table></figure><p><strong>提示</strong> - 该命令需要<code>curl</code>，可以通过<code>sudo apt-get install curl</code>来安装。</p><h3 id="dockerfile">Dockerfile</h3><p>想通过 Dockerfile 来配置 Ubuntu，可以通过如下命令来添加 APT repo：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="bash"> /bin/bash -c <span class="string">"<span class="variable">$(wget -qO- https://apt.vapor.sh)</span>"</span></span></span><br></pre></td></tr></table></figure><h3 id="手动">手动</h3><p>或者手动添加repo。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -q https://repo.vapor.codes/apt/keyring.gpg -O- | sudo apt-key add -</span><br><span class="line">echo "deb https://repo.vapor.codes/apt $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/vapor.list</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><h3 id="安装-vapor">安装 Vapor</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vapor</span><br></pre></td></tr></table></figure><p>验证安装 <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/86B9F6F0-D5BD-4FDF-8DE9-547CDEA7EB22.png" alt="测试"></p><h2 id="构建运行-vapor-程序">构建运行 Vapor 程序</h2><p>创建第一个 Vapor 程序，利用下面的命令：</p><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vapor <span class="keyword">new</span> Hello</span><br></pre></td></tr></table></figure><p>创建完成之后进入该目录，通过执行<code>vapor xcode</code>可以生成 Xcode 项目，并可以使用 Xcode 像打开 iOS 应用项目一样打开该项目。</p><p>你可以如下配置你的 Xcode ，运行项目: <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/208B0594-E314-45A2-B503-1CC10EBF7A19.png" alt="配置"></p><p>会出现如下的输出结果: <img src="https://suool-bolg.b0.upaiyun.com/2019/01/17/34AB66BB-3FED-4EEA-8C0E-6B19913CC901.png" alt="output"></p><p>通过访问这个目录即可看到程序的运行结果。</p><hr><h2 id="reference">Reference</h2><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><span class="exturl" data-url="aHR0cHM6Ly93d3cuZGlnaXRhbG9jZWFuLmNvbS9jb21tdW5pdHkvdHV0b3JpYWxzL2hvdy10by1pbnN0YWxsLXN3aWZ0LWFuZC12YXBvci1vbi11YnVudHUtMTYtMDQ=" title="https://www.digitalocean.com/community/tutorials/how-to-install-swift-and-vapor-on-ubuntu-16-04">How To Install Swift and Vapor on Ubuntu 16.04<i class="fa fa-external-link"></i></span><a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&quot;extur
-      
+      &lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/swift/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Swift&lt;/a&gt;是由苹果主导开发的编程语言，它是一门高效、安全、现代化的编程语言，其背后又十分强大的社区支持。Swift 此前主要被用来 iOS 和 macOS 的应用程序开发，但是从 Swift 3.0 开始，你也可以拿它来做服务端的开发了。 &lt;a href=&quot;https://vapor.codes/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Vapor&lt;/a&gt;是一款流行的 Swift 服务端框架，它也具有 Swift 安全、高效、现代化的特点，同时也兼具其他编程语言服务端框架所具有的许多常见的特性。 在这篇教程中，你将会在 Ubuntu 16.04 上安装 Swift 和 Vapor，并通过使用 Vapor 框架的一个模板创建一个简单的 web 应用程序来测试是否安装成功。&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;&lt;span class=&quot;hint--top-right hint--error hint--large&quot; data-aria-label=&quot;[How To Install Swift and Vapor on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-swift-and-vapor-on-ubuntu-16-04)
+&quot;&gt;[1]&lt;/span&gt;&lt;/a&gt;&lt;/sup&gt;
     
     </summary>
     
@@ -529,6 +499,30 @@
     
     
       <category term="算法" scheme="https://suool.net/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自剖</title>
+    <link href="https://suool.net/2018/11/01/self-analysis/"/>
+    <id>https://suool.net/2018/11/01/self-analysis/</id>
+    <published>2018-10-31T23:15:32.000Z</published>
+    <updated>2018-11-27T01:44:25.266Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="说明前面">说明前面</h2><p>这是一篇去年差不多这个时候写的东西，现在读起来依然适用现在的自己。</p><p>最近这几天是真的有点不好受，昨晚几乎失眠了一整晚，缺少很多的东西，对未来看不清楚，对自己没有信心，心里面就充满了怀疑。 <a id="more"></a> ## 正文</p><p>我终究还是成为了现在的我，我迷失了自我。</p><p>如今的我变成了什么样子呢？ 直观的感受来说，我变成了一个越来越封闭，一个离内在自我越来越远的自己了。这个过程像是我自己亲手给我自己筑了一堵墙，或者说我亲手抛弃了我自己，任由他在那里腐化、堕落、锈蚀，然后，至于此地，我越来越觉得难辨真正的自己是什么样了。</p><p>现在看上一次写这些东西，那时的我的确发现一些问题所在，但是也仅是止步于此，而后至今，我非但未能解决问题，反而使问题更加复杂和难以解决了。</p><p>现在的我越来越认同“最难也最重要的是经营好自己”这句话了。不仅是我现在近乎彻底失败于经营自己，也是在自察我的生活，直观的感觉就是众多问题都是由我而起。 自身都经营不好，谈何经营一段良好的亲密关系，谈何拥有一个好的未来。与人关系及美好的未来，如若缺少一个足够好的自己存在，怎么想都觉得不可能。</p><p>自我的经营，包括内在自我的经营和外在自我的经营。 近些日子，读了一些书，对于内在的自我和意识有了更多更深刻清晰的认识，所以，多谈一下这方面。</p><p>内在的自我不仅仅是指那个理性、逻辑的意识自我，也包括在潜意识中的自我。 内在的意识的自我是我的脑的活动的直接映射，而我的脑的活动则更多的是先验自我的映射，也即是昨日的我造就了今日的我，今日我蕴含着明日的我。 因此，经营内在自我的关键明显就在于经营当下的自我，因为当下所做的每个选择，每个情绪反应都是为以后的自我埋下伏笔，现时的每次情绪反馈和选择都不可避免的成为我的脑的先验自我的经验的一部分，从而成为其下一次重复当下的一个可能选择，重复这个选择即是再次强化意识中的自我，意识又会继续强化我的感受和情绪，进而形成了一个正向的反馈循环。 至此，改变内在自己我的唯一可能就是打破这个过去自我与当下自我的循环，从而造就新的当下自我和未来自我的新的循环的可能。说的在直接点，就是改变当下自我不如过去自我一样的选择和情绪反应，才能为产生一个新的明日自我提供可能。</p><p>纵观这些日子，我则在一遍又一遍的强化那个懒惰、消极、贪婪、放纵的自我，一次又一次的不断重复过去自我所做的错误选择，成为了今日的我，算是“修得正果”。</p><p>外在的自我的经营首先是对自己身体的经营，强身健体，其意义显然无需赘言。其次是外界关系的经营，人际沟通，心智交流。</p><p>这段时间里，在自己的亲密关系里面，因为自己不自觉的要去选择封闭自己，隐藏自己的感受，导致很多问题不仅没有被解决而且变得更加复杂和不堪。对于自己的不满意也使得自己缺少很多的耐心。</p><p>然后，现在就又回到了那个亘古难题：明明知道自己该怎么做，该做什么，但是就是不去做，做不好。</p><p>这里，我先自我剖析我的实际情况： 首先，很多情况下只有在当下这种自剖的时候，我才清醒的意识到自己该做什么，真正在日常生活中，往往是<em>由着自己的大脑做着潜意识下的决定</em>而走了。 其次，即是偶尔能够在面对选择和决定的时候（比如早上起床）意识到自己真正应该做的决定，但是要么是自己创造了一个理由没有去选择，要么是选择了但是具体执行的时候效果很不好。 最后，在自己做了不该做的选择之后，偶尔会意识到自己不应该如此，但是却无法去改变自己的方向，无法停止之前错误的选择造成的行为，而是继续任由自己错误下去。</p><p>根据上面的自己的实际情况，改变自己的可以尝试的方式是，每当自己面临比较关键的选择的时候，主动的去注意观察自己大脑的反应，观察自己潜意识的意图是什么，然后停下来，试着和自己的情绪和感受共处，不要急于做不同的决定，先试着跟它共处。 试着学会觉察自己的潜意识做决定时候的意图，站在一个第三方的角度去看自己的情绪和感受，与这个时候的自己共处，与自我的懒惰、拖延、放纵的意图保持觉察的链接。会对自己更深刻的认识和了解，多去练习这个过程。</p><p>比如早上闹钟响起，要做起不起床的决定的时候，去观察下此时自己内心的意图，不用急着说服自己起床，就纯粹是与此刻自己这个无论是要起床还是继续睡觉的意图保持链接，停下来和它共处，观察，然后再去做决定。</p><p>类似的还有在要不要锻炼，要不要赶紧关上灯关上手机睡觉等等这些决定的时候都一样，试着去观察自己当时的意图，并停下来和它共处。</p><p>这样子必然存在一定的困难，因为这是有意识的觉察无意识决定的过程，但是只要用心去做，还是做得到的，不用急着改变想法，只是尝试着要去观察并且和它共处，把它当作客观存在的东西，把自己当成一个观察的第三者。</p><p>改变，特别是向好的改变，意味着打破大脑同意识的旧有循环，而旧有循环之所以能够成为一个固化的循环，就是因为他能给大脑带来舒适，给意识带来愉悦。因此，改变，便意味这个打破这个正向反馈的“舒适愉悦”的循环，必然伴随着大脑的不适应及情绪上的痛苦体验，也必然是不易的。 但是，好的改变，都值得去尝试和牺牲。</p><p>学会和糟糕的自己和解，同做糟糕决定的大脑和意识共处，去觉察自己的懒惰、放纵等意图闪现的瞬间，然后停下来和他们共处。这是有意识觉察无意识的意图的练习。努力将有意识觉察养成无意识觉察的习惯，会发现更多关于深层次自我的东西。</p><p>这次找出了一些问题，也想了一些解决的方法，试试看吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;说明前面&quot;&gt;说明前面&lt;/h2&gt;
+&lt;p&gt;这是一篇去年差不多这个时候写的东西，现在读起来依然适用现在的自己。&lt;/p&gt;
+&lt;p&gt;最近这几天是真的有点不好受，昨晚几乎失眠了一整晚，缺少很多的东西，对未来看不清楚，对自己没有信心，心里面就充满了怀疑。
+    
+    </summary>
+    
+      <category term="心理学" scheme="https://suool.net/categories/%E5%BF%83%E7%90%86%E5%AD%A6/"/>
+    
+    
+      <category term="反思" scheme="https://suool.net/tags/%E5%8F%8D%E6%80%9D/"/>
     
   </entry>
   
