@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://suool.net/2019/01/28/python-naming-notations/</loc>
+    <lastmod>2019-01-29T05:55:14.831Z</lastmod>
+  </url>  <url>
     <loc>https://suool.net/2017/01/29/python-basics-memo/</loc>
     <lastmod>2019-01-29T05:53:55.006Z</lastmod>
   </url>  <url>
@@ -9,9 +12,6 @@
   </url>  <url>
     <loc>https://suool.net/2019/01/27/SVM-basics-exercise/</loc>
     <lastmod>2019-01-29T05:03:20.943Z</lastmod>
-  </url>  <url>
-    <loc>https://suool.net/2019/01/28/python-naming-notations/</loc>
-    <lastmod>2019-01-28T13:57:09.992Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2019/01/26/tf-tdf-exercise/</loc>
     <lastmod>2019-01-27T11:59:06.215Z</lastmod>
