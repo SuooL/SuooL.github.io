@@ -1,3 +1,3 @@
-https://suool.net/2019/01/17/swift-vapor-install-ubuntu/
-https://suool.net/2018/12/27/Git-Setting-Github/
-https://suool.net/2018/12/27/Install-ZSH-Ubuntu/
+https://suool.net/2019/01/29/python-basics-memo/
+https://suool.net/2019/01/28/python-naming-notations/
+https://suool.net/2019/01/27/SVM-basics-exercise/
