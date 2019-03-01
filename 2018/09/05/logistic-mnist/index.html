@@ -117,7 +117,7 @@
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/09/18/15366230049078.jpg">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/09/18/15366242666868.jpg">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/09/18/15366229765258.jpg">
-<meta property="og:updated_time" content="2018-10-29T12:53:08.400Z">
+<meta property="og:updated_time" content="2019-03-01T06:36:19.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="logistic 算法及其在手写数字识别的实践">
 <meta name="twitter:description" content="引言 逻辑斯谛回归（logistic regression）是统计学习中的经典分类算法。最大熵模型是概率模型学习的一个准则，将其推广到分类问题得到最大熵模型（maximum entropy model). 逻辑斯谛回归模型与最大熵模型都是对数线性模型.">
@@ -433,7 +433,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-29 20:53:08" itemprop="dateModified" datetime="2018-10-29T20:53:08+08:00">2018-10-29</time>
+                <time title="修改时间：2019-03-01 14:36:19" itemprop="dateModified" datetime="2019-03-01T14:36:19+08:00">2019-03-01</time>
               
             
           </span>
@@ -499,7 +499,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.2k</span>
+                <span title="本文字数">5.1k</span>
               
 
               
@@ -536,7 +536,8 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="引言">引言</h2>
 <p>逻辑斯谛回归（logistic regression）是统计学习中的经典分类算法。最大熵模型是概率模型学习的一个准则，将其推广到分类问题得到最大熵模型（maximum entropy model). 逻辑斯谛回归模型与最大熵模型都是对数线性模型. <a id="more"></a></p>
 <h2 id="逻辑斯谛回归模型">逻辑斯谛回归模型</h2>
-<p>###sigmoid 函数 首先我们知道，线性回归的公式如下： <span class="math display">\[
+<h3 id="sigmoid-函数">sigmoid 函数</h3>
+<p>首先我们知道，线性回归的公式如下： <span class="math display">\[
 z = \omega_0x_0+\omega_1x_1+\omega_2x_1+\cdots+\omega_nx_n = \omega^Tx \tag{1}
 \]</span></p>
 <p>其次在介绍逻辑斯谛回归模型之前，我们先引入sigmoid函数，其数学形式是： <span class="math display">\[
@@ -564,7 +565,8 @@ P(Y=0 \mid x;\omega) = 1-h_\omega(x) \tag{5}
 log \frac {P(Y=1\mid x)}{1-P(Y=1\mid x)} = w \cdot x \tag{6}
 \]</span></p>
 <p>由此可知, 在二项逻辑斯谛回归模型中, 输出 Y=1 的对数几率是输入 x 的线性函数. 又由式(3)可知,线性函数的值越接近正无穷, 概率值就越接近1, 反之越接近0, 这样子的模型就是逻辑斯谛回归模型.</p>
-<p>###参数求解之最大似然估计法 模型的数学形式确定后，剩下就是如何去求解模型中的参数。统计学中常用的一种方法是最大似然估计，即找到一组参数，使得在这组参数下，我们的数据的似然度（概率）越大.</p>
+<h3 id="参数求解之最大似然估计法">参数求解之最大似然估计法</h3>
+<p>模型的数学形式确定后，剩下就是如何去求解模型中的参数。统计学中常用的一种方法是最大似然估计，即找到一组参数，使得在这组参数下，我们的数据的似然度（概率）越大.</p>
 <p>首先通过式(4)及(5)确定的概率函数为： <span class="math display">\[
 P(y\mid x;\omega) = (h_\omega(x))^y\cdot (1-h_\omega(x))^{1-y}
 \]</span></p>
@@ -581,7 +583,8 @@ l(\omega)= \log(L(\omega)) = \sum_{i=1}^m\log((h_\omega(x^i))^{y^i})+\log((1-h_\
 J(\omega) = - \frac{1}{n}l(\omega)
 \]</span></p>
 <p>因为乘了一个负的系数,然后就可以使用梯度下降算法进行求解了.</p>
-<p>###梯度上升算法 梯度上升算法的基本思想是:要找到某个函数的最大值, 最好的方法是沿着该函数的梯度方向探寻. 如果梯度记为 <span class="math inline">\(\nabla\)</span>, 那么函数 <span class="math inline">\(f(x,y)\)</span>的梯度表示为: <span class="math display">\[
+<h3 id="梯度上升算法">梯度上升算法</h3>
+<p>梯度上升算法的基本思想是:要找到某个函数的最大值, 最好的方法是沿着该函数的梯度方向探寻. 如果梯度记为 <span class="math inline">\(\nabla\)</span>, 那么函数 <span class="math inline">\(f(x,y)\)</span>的梯度表示为: <span class="math display">\[
 \nabla f(x,y) = \begin{pmatrix}  \frac{\partial f(x,y)}{\partial x} \\
 \frac{\partial f(x,y)}{\partial y} \end{pmatrix} 
 \]</span></p>
@@ -657,7 +660,7 @@ H(p) = - \sum_i^n p_i\log p_i
 <h4 id="相对熵kl散度">相对熵（KL散度）</h4>
 <p>对同一个问题，用P、Q同时描述，用 KL 散度来衡量两个分布的差异。 <span class="math display">\[
 D_{KL}(p||q)=\sum_{i}^{n}{}p(x_{i})log(\frac{p(x_{i})}{q(x_{i})})\\
-\]</span> 在机器学习中，P往往用来表示真实的样本分布，比如[1,0,0]表示当前样本属于第一类。Q用来表示模型所预测的分布，比如[0.7,0.2,0.1]。当然Q越接近P越好，这样就说明预测值十分逼近真实值。也就是上式的 D_{KL}的值越小越好。</p>
+\]</span> 在机器学习中，P往往用来表示真实的样本分布，比如[1,0,0]表示当前样本属于第一类。Q用来表示模型所预测的分布，比如[0.7,0.2,0.1]。当然Q越接近P越好，这样就说明预测值十分逼近真实值。也就是上式的 <span class="math inline">\(D_{KL}\)</span>的值越小越好。</p>
 <h4 id="交差熵">交差熵</h4>
 <p>对 <span class="math inline">\(D_{KL}(p||q)\)</span>公式进行变形：</p>
 <p><span class="math display">\[
@@ -1019,7 +1022,7 @@ H(p,q) = - \sum_{i}^{n}{p(x_{i})log(q(x_{i}))}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑斯谛回归模型"><span class="nav-number">2.</span> <span class="nav-text">逻辑斯谛回归模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二项逻辑斯谛回归模型"><span class="nav-number">3.</span> <span class="nav-text">二项逻辑斯谛回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单的线性分类器"><span class="nav-number">3.1.</span> <span class="nav-text">简单的线性分类器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项逻辑斯谛回归模型"><span class="nav-number">4.</span> <span class="nav-text">多项逻辑斯谛回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">4.1.</span> <span class="nav-text">损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息量"><span class="nav-number">4.1.1.</span> <span class="nav-text">信息量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熵"><span class="nav-number">4.1.2.</span> <span class="nav-text">熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对熵kl散度"><span class="nav-number">4.1.3.</span> <span class="nav-text">相对熵（KL散度）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交差熵"><span class="nav-number">4.1.4.</span> <span class="nav-text">交差熵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#识别数字实践"><span class="nav-number">4.2.</span> <span class="nav-text">识别数字实践</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑斯谛回归模型"><span class="nav-number">2.</span> <span class="nav-text">逻辑斯谛回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid-函数"><span class="nav-number">2.1.</span> <span class="nav-text">sigmoid 函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二项逻辑斯谛回归模型"><span class="nav-number">3.</span> <span class="nav-text">二项逻辑斯谛回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数求解之最大似然估计法"><span class="nav-number">3.1.</span> <span class="nav-text">参数求解之最大似然估计法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度上升算法"><span class="nav-number">3.2.</span> <span class="nav-text">梯度上升算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单的线性分类器"><span class="nav-number">3.3.</span> <span class="nav-text">简单的线性分类器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项逻辑斯谛回归模型"><span class="nav-number">4.</span> <span class="nav-text">多项逻辑斯谛回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">4.1.</span> <span class="nav-text">损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息量"><span class="nav-number">4.1.1.</span> <span class="nav-text">信息量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熵"><span class="nav-number">4.1.2.</span> <span class="nav-text">熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对熵kl散度"><span class="nav-number">4.1.3.</span> <span class="nav-text">相对熵（KL散度）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交差熵"><span class="nav-number">4.1.4.</span> <span class="nav-text">交差熵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#识别数字实践"><span class="nav-number">4.2.</span> <span class="nav-text">识别数字实践</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1051,7 +1054,7 @@ H(p,q) = - \sum_{i}^{n}{p(x_{i})log(q(x_{i}))}
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">140k</span>
+    <span title="站点总字数">141k</span>
   
 
   
@@ -1060,7 +1063,7 @@ H(p,q) = - \sum_{i}^{n}{p(x_{i})log(q(x_{i}))}
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:50</span>
+    <span title="站点阅读时长">5:51</span>
   
 </div>
 

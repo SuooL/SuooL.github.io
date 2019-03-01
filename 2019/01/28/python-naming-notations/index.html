@@ -105,7 +105,7 @@
 
 
   <meta name="description" content="引言 代码强迫症... 这里的命名规范参考 PEP8">
-<meta name="keywords" content="Python,命名规范">
+<meta name="keywords" content="Python,命名规范,编码规范">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 命名规范">
 <meta property="og:url" content="https://suool.net/2019/01/28/python-naming-notations/index.html">
@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2019/01/29/DF189EE2-AD47-4C15-9C50-A91770D95CCB.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2019/01/29/F2088715-FC5A-45EC-9026-E49133F6FBC5.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2019/01/29/E615FA5F-F436-4856-868D-1095728ED2DB.png">
-<meta property="og:updated_time" content="2019-01-29T05:59:48.284Z">
+<meta property="og:updated_time" content="2019-02-23T09:31:57.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 命名规范">
 <meta name="twitter:description" content="引言 代码强迫症... 这里的命名规范参考 PEP8">
@@ -431,7 +431,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-29 13:59:48" itemprop="dateModified" datetime="2019-01-29T13:59:48+08:00">2019-01-29</time>
+                <time title="修改时间：2019-02-23 17:31:57" itemprop="dateModified" datetime="2019-02-23T17:31:57+08:00">2019-02-23</time>
               
             
           </span>
@@ -556,7 +556,10 @@
 <li>全局变量：<strong>全大写+下划线式驼峰</strong>示例：<code>GLOBAL_VAR</code></li>
 <li>类名：<strong>首字母大写式驼峰</strong> 示例：<code>ClassName()</code></li>
 <li>变量名命名：尽量体现变量的数据类型和具体意义，变量名、类名取名必须有意义，严禁用单字母，变量名不要用系统关键字，</li>
-<li>建议：bool变量一般加上前缀 is_ 如：is_success ### import 顺序</li>
+<li>建议：bool变量一般加上前缀 is_ 如：is_success</li>
+</ul>
+<h3 id="import-顺序">import 顺序</h3>
+<ul>
 <li>标准库</li>
 <li>第三方库</li>
 <li>项目本身</li>
@@ -941,7 +944,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码编码"><span class="nav-number">2.</span> <span class="nav-text">代码编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码规范"><span class="nav-number">3.</span> <span class="nav-text">编码规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命名规范"><span class="nav-number">3.1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#models-内部-定义顺序"><span class="nav-number">3.2.</span> <span class="nav-text">models 内部 定义顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常捕获处理原则"><span class="nav-number">3.3.</span> <span class="nav-text">异常捕获处理原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空格的使用"><span class="nav-number">3.4.</span> <span class="nav-text">空格的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他代码规范"><span class="nav-number">3.5.</span> <span class="nav-text">其他代码规范</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码编码"><span class="nav-number">2.</span> <span class="nav-text">代码编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码规范"><span class="nav-number">3.</span> <span class="nav-text">编码规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命名规范"><span class="nav-number">3.1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#import-顺序"><span class="nav-number">3.2.</span> <span class="nav-text">import 顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#models-内部-定义顺序"><span class="nav-number">3.3.</span> <span class="nav-text">models 内部 定义顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常捕获处理原则"><span class="nav-number">3.4.</span> <span class="nav-text">异常捕获处理原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空格的使用"><span class="nav-number">3.5.</span> <span class="nav-text">空格的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他代码规范"><span class="nav-number">3.6.</span> <span class="nav-text">其他代码规范</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -973,7 +976,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">140k</span>
+    <span title="站点总字数">141k</span>
   
 
   
@@ -982,7 +985,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:50</span>
+    <span title="站点阅读时长">5:51</span>
   
 </div>
 
