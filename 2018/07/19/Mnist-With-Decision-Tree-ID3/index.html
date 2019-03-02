@@ -104,13 +104,13 @@
 
 
 
-  <meta name="description" content="##引言 决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 if-then 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。">
+  <meta name="description" content="引言 决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 if-then 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="决策树及其在手写数字识别的实践">
 <meta property="og:url" content="https://suool.net/2018/07/19/Mnist-With-Decision-Tree-ID3/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="##引言 决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 if-then 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。">
+<meta property="og:description" content="引言 决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 if-then 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/24/D295E3E5-FD3E-4509-BBA7-D80D26317A61.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/24/02E0F04F-0D7E-463B-BBEC-92B7909204F8.png">
@@ -120,10 +120,10 @@
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/24/A2008824-0C64-4C99-AB08-27B6AD708FE0.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/24/5D4D317A-2635-47DC-81B5-CCF172A6BD72.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/24/8959541E-8E3F-4094-997E-C839D795ACA9.png">
-<meta property="og:updated_time" content="2018-10-29T12:53:08.398Z">
+<meta property="og:updated_time" content="2019-03-02T01:00:30.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树及其在手写数字识别的实践">
-<meta name="twitter:description" content="##引言 决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 if-then 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。">
+<meta name="twitter:description" content="引言 决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 if-then 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。">
 <meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2018/07/24/D295E3E5-FD3E-4509-BBA7-D80D26317A61.png">
 
 
@@ -436,7 +436,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-29 20:53:08" itemprop="dateModified" datetime="2018-10-29T20:53:08+08:00">2018-10-29</time>
+                <time title="修改时间：2019-03-02 09:00:30" itemprop="dateModified" datetime="2019-03-02T09:00:30+08:00">2019-03-02</time>
               
             
           </span>
@@ -536,7 +536,8 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>##引言 决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 <code>if-then</code> 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。 <a id="more"></a></p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="引言">引言</h2>
+<p>决策时是一种基本的分类和回归方法，现在主要讨论分类决策树。决策树模型呈树形结构，在分类问题中，表示基本特征对实例进行分类的过程，你可以认为他是一个 <code>if-then</code> 的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。 <a id="more"></a></p>
 <p>其优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测的时，对新的数据利用训练建立的决策树模型来分类。</p>
 <p>决策树学习分为三个步骤：特征选择、决策树生成和决策树的剪枝。主要的决策树生成算法有 ID3 算法、C4.5 算法、 CART 算法。</p>
 <p>本文的大纲如下： 1. 介绍决策树模型的基本概念 2. 决策树的特征选择和学习过程 3. 以 ID3 算法为例进行手写数字识别实践</p>
@@ -553,7 +554,8 @@ D=\{(x_1,y_1),(x_2,y_2),\cdots,(x_N,y_N)\}
 <p>决策树学习的算法通常是一个递归的选择最优特征，并根据该特征对训练数据进行分割，使得对各个子数据集有一个最好的分类的过程。</p>
 <h2 id="特征选择">特征选择</h2>
 <p>特征选择在于选取对训练数据具有分类能力的特征，这样可以提高决策树学习的效率，而衡量特征分类效果的函数就是信息增益函数。</p>
-<p>###信息增益 信息增益是信息论中的概念，了解信息增益，首先要了解熵和条件熵的定义。 <img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/02E0F04F-0D7E-463B-BBEC-92B7909204F8.png" alt="熵的定义"> <img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/E16F35E0-799D-4CD7-8927-2CCC0BFBBC17.png" alt="条件熵"></p>
+<h3 id="信息增益">信息增益</h3>
+<p>信息增益是信息论中的概念，了解信息增益，首先要了解熵和条件熵的定义。 <img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/02E0F04F-0D7E-463B-BBEC-92B7909204F8.png" alt="熵的定义"> <img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/E16F35E0-799D-4CD7-8927-2CCC0BFBBC17.png" alt="条件熵"></p>
 <p><strong>信息增益的定义</strong>：特征 A 对训练集 D 对信息增益 g(D,A)，定义为集合 D 的经验熵 H(D) 与特征 A 给定的条件下 D 的经验条件熵 H(D|A) 之差，即是： <span class="math display">\[
 g(D,A) = H(D)-H(D|A)
 \]</span></p>
@@ -564,7 +566,8 @@ g(D,A) = H(D)-H(D|A)
 <p>于是信息增益算法如下： <strong>输入</strong>：训练数据集 D 和特征 A； <strong>输出</strong>：特征 A 对训练数据集 D 的信息增益 g(D,A) <img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/18A795F2-9690-479B-B780-B893C562ED4D.png" alt="算法步骤"></p>
 <h2 id="决策树生成">决策树生成</h2>
 <p>ID3 算法的核心是在决策树各个节点上应用信息增益准则选择特征，递归的构建决策树。具体点方法是：从根结点开始，对节点计算所有可能的特征的信息增益，选择信息增益最大的特征作为节点的特征，由该特征的不同取值建立子节点；再对子节点递归的调用以上方法，构建决策树；知道所有的特征的信心增益均很小或者没有特征可以选择为止。最后得到一个决策树，ID3 算法相当于用最大似然估计进行概率模型的选择。</p>
-<p>###ID3 算法 <strong>输入：</strong>训练数据 D，特征集 A，阈值 <span class="math inline">\(\epsilon\)</span> <strong>输出：</strong>决策树 <img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/A2008824-0C64-4C99-AB08-27B6AD708FE0.png" alt="ID3-1"> <img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/5D4D317A-2635-47DC-81B5-CCF172A6BD72.png" alt="ID3-2"></p>
+<h3 id="id3-算法">ID3 算法</h3>
+<p><strong>输入：</strong>训练数据 D，特征集 A，阈值 <span class="math inline">\(\epsilon\)</span> <strong>输出：</strong>决策树 <img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/A2008824-0C64-4C99-AB08-27B6AD708FE0.png" alt="ID3-1"> <img src="https://suool-bolg.b0.upaiyun.com/2018/07/24/5D4D317A-2635-47DC-81B5-CCF172A6BD72.png" alt="ID3-2"></p>
 <p>ID3 算法只有树的生成，所以其生成的树很容易过拟合。</p>
 <p>以下为该算法的代码在 Mnist 数据集上实现的准确率，86.7%，比不上 KNN 的准确度，但是速度比其快的多。</p>
 <figure>
@@ -726,7 +729,7 @@ g(D,A) = H(D)-H(D|A)
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -838,7 +841,9 @@ g(D,A) = H(D)-H(D|A)
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -917,7 +922,7 @@ g(D,A) = H(D)-H(D|A)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树模型的基本概念"><span class="nav-number">1.</span> <span class="nav-text">决策树模型的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树模型"><span class="nav-number">1.1.</span> <span class="nav-text">决策树模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征选择"><span class="nav-number">2.</span> <span class="nav-text">特征选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树生成"><span class="nav-number">3.</span> <span class="nav-text">决策树生成</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树模型的基本概念"><span class="nav-number">2.</span> <span class="nav-text">决策树模型的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树模型"><span class="nav-number">2.1.</span> <span class="nav-text">决策树模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征选择"><span class="nav-number">3.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益"><span class="nav-number">3.1.</span> <span class="nav-text">信息增益</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树生成"><span class="nav-number">4.</span> <span class="nav-text">决策树生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#id3-算法"><span class="nav-number">4.1.</span> <span class="nav-text">ID3 算法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -958,7 +963,7 @@ g(D,A) = H(D)-H(D|A)
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:51</span>
+    <span title="站点阅读时长">5:52</span>
   
 </div>
 

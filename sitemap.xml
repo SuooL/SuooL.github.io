@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://suool.net/2019/02/01/math-basic/</loc>
+    
+    <lastmod>2019-03-02T01:03:08.824Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/07/19/Mnist-With-Decision-Tree-ID3/</loc>
+    
+    <lastmod>2019-03-02T01:00:30.824Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://suool.net/2018/09/05/logistic-mnist/</loc>
     
     <lastmod>2019-03-01T06:36:19.971Z</lastmod>
@@ -212,13 +226,6 @@
   </url>
   
   <url>
-    <loc>https://suool.net/categories/index.html</loc>
-    
-    <lastmod>2018-10-29T12:53:08.549Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://suool.net/about/index.html</loc>
     
     <lastmod>2018-10-29T12:53:08.549Z</lastmod>
@@ -233,9 +240,9 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2016/10/02/%E8%B8%8F%E8%BF%87%E6%89%80%E6%9C%89%E7%9A%84%E8%BF%87%E5%BE%80/</loc>
+    <loc>https://suool.net/categories/index.html</loc>
     
-    <lastmod>2018-10-29T12:53:08.548Z</lastmod>
+    <lastmod>2018-10-29T12:53:08.549Z</lastmod>
     
   </url>
   
@@ -247,14 +254,21 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2016/10/27/%E6%97%A0%E9%A2%98/</loc>
+    <loc>https://suool.net/2016/10/02/%E8%B8%8F%E8%BF%87%E6%89%80%E6%9C%89%E7%9A%84%E8%BF%87%E5%BE%80/</loc>
+    
+    <lastmod>2018-10-29T12:53:08.548Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
     
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://suool.net/2018/06/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
+    <loc>https://suool.net/2016/10/27/%E6%97%A0%E9%A2%98/</loc>
     
     <lastmod>2018-10-29T12:53:08.547Z</lastmod>
     
@@ -275,13 +289,6 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2016/11/30/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AF%B4%E6%98%8E/</loc>
-    
-    <lastmod>2018-10-29T12:53:08.400Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://suool.net/2016/12/05/iOS-%E5%BC%95%E5%AF%BC%E5%9B%BE%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
     
     <lastmod>2018-10-29T12:53:08.400Z</lastmod>
@@ -289,7 +296,14 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/</loc>
+    <loc>https://suool.net/2016/11/30/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AF%B4%E6%98%8E/</loc>
+    
+    <lastmod>2018-10-29T12:53:08.400Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://suool.net/2016/08/17/hello-world/</loc>
     
     <lastmod>2018-10-29T12:53:08.399Z</lastmod>
     
@@ -303,7 +317,7 @@
   </url>
   
   <url>
-    <loc>https://suool.net/2016/08/17/hello-world/</loc>
+    <loc>https://suool.net/2018/10/07/feed-forward-neural-network-on-tf-and-pytorch/</loc>
     
     <lastmod>2018-10-29T12:53:08.399Z</lastmod>
     
@@ -311,13 +325,6 @@
   
   <url>
     <loc>https://suool.net/2018/07/10/Mnist-With-K-Nearest-Neighbor/</loc>
-    
-    <lastmod>2018-10-29T12:53:08.398Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://suool.net/2018/07/19/Mnist-With-Decision-Tree-ID3/</loc>
     
     <lastmod>2018-10-29T12:53:08.398Z</lastmod>
     
