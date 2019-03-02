@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://suool.net/"/>
-  <updated>2019-03-02T01:06:23.843Z</updated>
+  <updated>2019-03-02T01:07:12.300Z</updated>
   <id>https://suool.net/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://suool.net/2019/02/01/math-basic/"/>
     <id>https://suool.net/2019/02/01/math-basic/</id>
     <published>2019-02-01T08:49:16.000Z</published>
-    <updated>2019-03-02T01:06:23.843Z</updated>
+    <updated>2019-03-02T01:07:12.300Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="introduction">Introduction</h2><p>本文章主要用来备忘，内容有:</p><ul><li>基本数学符号、算子</li><li>基本数学规则 <a id="more"></a></li></ul><h3 id="nabla算子">Nabla算子</h3><p>Del 算子或称 Nabla 算子，在中文中也叫向量微分算子、劈形算子、倒三角算子，符号为 <span class="math inline">\(\nabla\)</span> ，是一个向量微分算子，但本身并非一个向量。</p><p>其形式化定义如下： <span class="math display">\[\nabla ={d \over dr}\]</span></p><p>在n维空间中，分母 dr 为含 n 个分量的向量，因而 <span class="math inline">\(\nabla\)</span> 本身就是个n维向量算子。</p><p>三维情况下，<span class="math inline">\(\nabla = \frac{\partial }{\partial x} \mathbf{i} + \frac{\partial }{\partial y} \mathbf{j} + \frac{\partial }{\partial z} \mathbf{k}\)</span> 或 $ =( ,,)$</p><p>二维情况下， $ =   +  $ 或 <span class="math inline">\(\nabla =(\frac {\partial }{\partial x} , \frac {\partial }{\partial y} )\)</span></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="introduction">Introduction</h2><p>本文章主要用来备忘，内容有:</p><ul><li>基本数学符号、算子</li><li>基本数学规则 <a id="more"></a></li></ul><h3 id="nabla算子">Nabla算子</h3><p>Del 算子或称 Nabla 算子，在中文中也叫向量微分算子、劈形算子、倒三角算子，符号为 <span class="math inline">\(\nabla\)</span> ，是一个向量微分算子，但本身并非一个向量。</p><p>其形式化定义如下： <span class="math display">\[\nabla ={d \over dr}\]</span></p><p>在n维空间中，分母 dr 为含 n 个分量的向量，因而 <span class="math inline">\(\nabla\)</span> 本身就是个n维向量算子。</p><p>三维情况下，<span class="math inline">\(\nabla = \frac{\partial }{\partial x} \mathbf{i} + \frac{\partial }{\partial y} \mathbf{j} + \frac{\partial }{\partial z} \mathbf{k}\)</span> 或 $ =( ,,)$</p><p>二维情况下， $ =   +  $ 或 <span class="math inline">\(\nabla =(\frac {\partial }{\partial x} , \frac {\partial }{\partial y} )\)</span></p><p><span class="math inline">\(\nabla\)</span> 作用于不同类型的量，得到的就是不同类型的新量：</p><p><span class="math inline">\(\nabla\)</span> 直接作用于函数<span class="math inline">\(F({r})\)</span>的梯度，表示为： <span class="math inline">\(\nabla F({r})\)</span>（标量函数的梯度为向量，向量的梯度为二阶张量……）；</p><p><span class="math inline">\(\nabla\)</span> 与非标量函数<span class="math inline">\(F({r})\)</span>由点积符号<span class="math inline">\(·\)</span>连接，意味着求<span class="math inline">\(F({r})\)</span>的散度，表示为： <span class="math inline">\(\nabla · F({r})\)</span>；</p><p><span class="math inline">\(\nabla\)</span> 与非标量（三维）函数<span class="math inline">\(F({r})\)</span>由叉积符号<span class="math inline">\(×\)</span>连接，意味着求<span class="math inline">\(F({r})\)</span>的旋度，表示为： <span class="math inline">\(\nabla × F({r})\)</span>。</p>]]></content>
     
     <summary type="html">
     
