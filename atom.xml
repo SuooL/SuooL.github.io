@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://suool.net/"/>
-  <updated>2019-03-02T01:03:08.824Z</updated>
+  <updated>2019-03-02T01:06:23.843Z</updated>
   <id>https://suool.net/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://suool.net/2019/02/01/math-basic/"/>
     <id>https://suool.net/2019/02/01/math-basic/</id>
     <published>2019-02-01T08:49:16.000Z</published>
-    <updated>2019-03-02T01:03:08.824Z</updated>
+    <updated>2019-03-02T01:06:23.843Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="introduction">Introduction</h2><p>本文章主要用来备忘，内容有:</p><ul><li>基本数学符号、算子</li><li>基本数学规则 <a id="more"></a></li></ul><h3 id="nabla算子">Nabla算子</h3><p>Del 算子或称 Nabla 算子，在中文中也叫向量微分算子、劈形算子、倒三角算子，符号为 <span class="math inline">\(\nabla\)</span> ，是一个向量微分算子，但本身并非一个向量。</p><p>其形式化定义如下： <span class="math display">\[\nabla ={d \over dr}\]</span></p><p>在n维空间中，分母 dr 为含 n 个分量的向量，因而 <span class="math inline">\(\nabla\)</span> 本身就是个n维向量算子。</p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="introduction">Introduction</h2><p>本文章主要用来备忘，内容有:</p><ul><li>基本数学符号、算子</li><li>基本数学规则 <a id="more"></a></li></ul><h3 id="nabla算子">Nabla算子</h3><p>Del 算子或称 Nabla 算子，在中文中也叫向量微分算子、劈形算子、倒三角算子，符号为 <span class="math inline">\(\nabla\)</span> ，是一个向量微分算子，但本身并非一个向量。</p><p>其形式化定义如下： <span class="math display">\[\nabla ={d \over dr}\]</span></p><p>在n维空间中，分母 dr 为含 n 个分量的向量，因而 <span class="math inline">\(\nabla\)</span> 本身就是个n维向量算子。</p><p>三维情况下，<span class="math inline">\(\nabla = \frac{\partial }{\partial x} \mathbf{i} + \frac{\partial }{\partial y} \mathbf{j} + \frac{\partial }{\partial z} \mathbf{k}\)</span> 或 $ =( ,,)$</p><p>二维情况下， $ =   +  $ 或 <span class="math inline">\(\nabla =(\frac {\partial }{\partial x} , \frac {\partial }{\partial y} )\)</span></p>]]></content>
     
     <summary type="html">
     
