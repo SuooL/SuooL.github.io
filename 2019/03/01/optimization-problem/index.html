@@ -104,20 +104,20 @@
 
 
 
-  <meta name="description" content="Introduction人工神经网络求解的实质是寻找合适权重，只有权重合适的神经网络才能发挥出真正的能力，而权重的寻找过程不是靠感觉的，而是一步步优化得来的。由于参数搜索空间非常巨大，训练复杂神经网络因此非常漫长，所以如何快速的经过一定的优化算法确定合适的权重，是一个非常基础而关键的问题。">
+  <meta name="description" content="Introduction 人工神经网络求解的实质是寻找合适权重，只有权重合适的神经网络才能发挥出真正的能力，而权重的寻找过程不是靠感觉的，而是一步步优化得来的。由于参数搜索空间非常巨大，训练复杂神经网络因此非常漫长，所以如何快速的经过一定的优化算法确定合适的权重，是一个非常基础而关键的问题。">
 <meta name="keywords" content="Gradient,PyTorch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="梯度下降算法及 PyTorch 的实现">
 <meta property="og:url" content="https://suool.net/2019/03/01/optimization-problem/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
-<meta property="og:description" content="Introduction人工神经网络求解的实质是寻找合适权重，只有权重合适的神经网络才能发挥出真正的能力，而权重的寻找过程不是靠感觉的，而是一步步优化得来的。由于参数搜索空间非常巨大，训练复杂神经网络因此非常漫长，所以如何快速的经过一定的优化算法确定合适的权重，是一个非常基础而关键的问题。">
+<meta property="og:description" content="Introduction 人工神经网络求解的实质是寻找合适权重，只有权重合适的神经网络才能发挥出真正的能力，而权重的寻找过程不是靠感觉的，而是一步步优化得来的。由于参数搜索空间非常巨大，训练复杂神经网络因此非常漫长，所以如何快速的经过一定的优化算法确定合适的权重，是一个非常基础而关键的问题。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2019/03/05/B753B34B-ACDB-4C3A-8A24-20827FEEB921.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2019/03/05/5D42012F-DCDE-4C55-9DF9-5E63E3E322F2.png">
-<meta property="og:updated_time" content="2019-03-05T14:25:33.731Z">
+<meta property="og:updated_time" content="2019-03-05T14:35:50.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="梯度下降算法及 PyTorch 的实现">
-<meta name="twitter:description" content="Introduction人工神经网络求解的实质是寻找合适权重，只有权重合适的神经网络才能发挥出真正的能力，而权重的寻找过程不是靠感觉的，而是一步步优化得来的。由于参数搜索空间非常巨大，训练复杂神经网络因此非常漫长，所以如何快速的经过一定的优化算法确定合适的权重，是一个非常基础而关键的问题。">
+<meta name="twitter:description" content="Introduction 人工神经网络求解的实质是寻找合适权重，只有权重合适的神经网络才能发挥出真正的能力，而权重的寻找过程不是靠感觉的，而是一步步优化得来的。由于参数搜索空间非常巨大，训练复杂神经网络因此非常漫长，所以如何快速的经过一定的优化算法确定合适的权重，是一个非常基础而关键的问题。">
 <meta name="twitter:image" content="https://suool-bolg.b0.upaiyun.com/2019/03/05/B753B34B-ACDB-4C3A-8A24-20827FEEB921.png">
 
 
@@ -430,7 +430,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-05 22:25:33" itemprop="dateModified" datetime="2019-03-05T22:25:33+08:00">2019-03-05</time>
+                <time title="修改时间：2019-03-05 22:35:50" itemprop="dateModified" datetime="2019-03-05T22:35:50+08:00">2019-03-05</time>
               
             
           </span>
@@ -503,7 +503,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.8k</span>
+                <span title="本文字数">10k</span>
               
 
               
@@ -517,7 +517,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">24 分钟</span>
+                <span title="阅读时长">25 分钟</span>
               
             </div>
           
@@ -537,45 +537,55 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>人工神经网络求解的实质是寻找合适权重，只有权重合适的神经网络才能发挥出真正的能力，而权重的寻找过程不是靠感觉的，而是一步步优化得来的。由于参数搜索空间非常巨大，训练复杂神经网络因此非常漫长，所以如何快速的经过一定的优化算法确定合适的权重，是一个非常基础而关键的问题。<br><a id="more"></a><br>而在当今求解优化问题过程中一个非常基础重要的概念是梯度。基于此，借助 PyTorch 工具，本文主要介绍如下内容：</p>
-<ol>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="introduction">Introduction</h2>
+<p>人工神经网络求解的实质是寻找合适权重，只有权重合适的神经网络才能发挥出真正的能力，而权重的寻找过程不是靠感觉的，而是一步步优化得来的。由于参数搜索空间非常巨大，训练复杂神经网络因此非常漫长，所以如何快速的经过一定的优化算法确定合适的权重，是一个非常基础而关键的问题。 <a id="more"></a> 而在当今求解优化问题过程中一个非常基础重要的概念是梯度。基于此，借助 PyTorch 工具，本文主要介绍如下内容：</p>
+<ol type="1">
 <li>梯度的概念及性质</li>
 <li>优化算法与 torch.optim 包</li>
 <li>实例求解</li>
 </ol>
-<h2 id="梯度的概念及性质"><a href="#梯度的概念及性质" class="headerlink" title="梯度的概念及性质"></a>梯度的概念及性质</h2><h3 id="梯度的解释及形式化定义"><a href="#梯度的解释及形式化定义" class="headerlink" title="梯度的解释及形式化定义"></a>梯度的解释及形式化定义</h3><p><strong>梯度（Gradient）</strong>是表征函数上升趋势的量，也即是梯度是表征变化方向最强烈的概念，其大小对应变化方向对应的概念。</p>
-<p>比如考虑一座高度在 $ (x, y)$点是 ${\displaystyle H(x,y)} $的山。 ${\displaystyle H}$ 这一点的梯度是在该点坡度（或者说斜度）最陡的方向。梯度的大小告诉我们坡度到底有多陡。</p>
-<p>其在张量角度的数学定义如下：<br>考虑自变量为张量$X$的标量函数$f(X)$。若函数$f(X)$的自变量大小为$S = (s[0],s[1], \cdots, s[n-1])$的张量，则函数$f(X)$的梯度$\nabla_X f(X)$也是一个大小为$S = (s[0],s[1], \cdots, s[n-1])$的张量，并且它的第$I = (i[0],i[1],\cdots,i[n-1])$个元素为函数$f(X)$对元素$x[I]$的偏导数，即是：</p>
-<script type="math/tex; mode=display">
-(\nabla_X f)[I] = \frac {\partial f} {\partial {x[I]}}</script><p>简写为 $\nabla f(X)$</p>
-<p>具体的，<br><strong>实标量函数的梯度</strong></p>
+<h2 id="梯度的概念及性质">梯度的概念及性质</h2>
+<h3 id="梯度的解释及形式化定义">梯度的解释及形式化定义</h3>
+<p><strong>梯度（Gradient）</strong>是表征函数上升趋势的量，也即是梯度是表征变化方向最强烈的概念，其大小对应变化方向对应的概念。</p>
+<p>比如考虑一座高度在 $ (x, y)$点是 ${H(x,y)} $的山。 <span class="math inline">\({\displaystyle H}\)</span> 这一点的梯度是在该点坡度（或者说斜度）最陡的方向。梯度的大小告诉我们坡度到底有多陡。</p>
+<p>其在张量角度的数学定义如下： 考虑自变量为张量<span class="math inline">\(X\)</span>的标量函数<span class="math inline">\(f(X)\)</span>。若函数<span class="math inline">\(f(X)\)</span>的自变量大小为<span class="math inline">\(S = (s[0],s[1], \cdots, s[n-1])\)</span>的张量，则函数<span class="math inline">\(f(X)\)</span>的梯度<span class="math inline">\(\nabla_X f(X)\)</span>也是一个大小为<span class="math inline">\(S = (s[0],s[1], \cdots, s[n-1])\)</span>的张量，并且它的第<span class="math inline">\(I = (i[0],i[1],\cdots,i[n-1])\)</span>个元素为函数<span class="math inline">\(f(X)\)</span>对元素<span class="math inline">\(x[I]\)</span>的偏导数，即是：</p>
+<p><span class="math display">\[
+(\nabla_X f)[I] = \frac {\partial f} {\partial {x[I]}}
+\]</span></p>
+<p>简写为 <span class="math inline">\(\nabla f(X)\)</span></p>
+<p>具体的， <strong>实标量函数的梯度</strong></p>
 <ul>
-<li>相对于$n×1$向量$x$的梯度算子记作$\nabla_{\boldsymbol{x}}$定义为:<script type="math/tex; mode=display">
-\nabla_{\boldsymbol{x}} \overset{\underset{\mathrm{def}}{}}{=} \left[ \frac{\partial }{\partial x_1}, \frac{\partial }{\partial x_2},\cdots,\frac{\partial }{\partial x_n} \right]^T=\frac{\partial }{\partial \boldsymbol{x}}</script></li>
+<li>相对于<span class="math inline">\(n×1\)</span>向量<span class="math inline">\(x\)</span>的梯度算子记作<span class="math inline">\(\nabla_{\boldsymbol{x}}\)</span>定义为: <span class="math display">\[
+\nabla_{\boldsymbol{x}} \overset{\underset{\mathrm{def}}{}}{=} \left[ \frac{\partial }{\partial x_1}, \frac{\partial }{\partial x_2},\cdots,\frac{\partial }{\partial x_n} \right]^T=\frac{\partial }{\partial \boldsymbol{x}}
+\]</span></li>
 </ul>
 <p><strong>对向量的梯度</strong></p>
 <ul>
-<li>以$n×1$实向量$x$为变元的实标量函数$f(x)$相对于$x$的梯度为 —— $n×1$列向量$x$，定义为:<script type="math/tex; mode=display">
-\nabla_{\boldsymbol{x}} f(\boldsymbol{x})\overset{\underset{\mathrm{def}}{}}{=} \left[ \frac{\partial f(\boldsymbol{x})}{\partial x_1}, \frac{\partial f(\boldsymbol{x})}{\partial x_2},\cdots,\frac{\partial f(\boldsymbol{x})}{\partial x_n} \right]^T=\frac{\partial f(\boldsymbol{x})}{\partial \boldsymbol{x}}</script></li>
-<li>m维行向量函数 $\boldsymbol{f}(\boldsymbol{x})=[f_1(\boldsymbol{x}),f_2(\boldsymbol{x}),\cdots,f_m(\boldsymbol{x})]$相对于n维实向量x的梯度为 —— $n×m$矩阵，定义为:<script type="math/tex; mode=display">
+<li>以<span class="math inline">\(n×1\)</span>实向量<span class="math inline">\(x\)</span>为变元的实标量函数<span class="math inline">\(f(x)\)</span>相对于<span class="math inline">\(x\)</span>的梯度为 —— <span class="math inline">\(n×1\)</span>列向量<span class="math inline">\(x\)</span>，定义为: <span class="math display">\[
+\nabla_{\boldsymbol{x}} f(\boldsymbol{x})\overset{\underset{\mathrm{def}}{}}{=} \left[ \frac{\partial f(\boldsymbol{x})}{\partial x_1}, \frac{\partial f(\boldsymbol{x})}{\partial x_2},\cdots,\frac{\partial f(\boldsymbol{x})}{\partial x_n} \right]^T=\frac{\partial f(\boldsymbol{x})}{\partial \boldsymbol{x}}
+\]</span></li>
+<li>m维行向量函数 <span class="math inline">\(\boldsymbol{f}(\boldsymbol{x})=[f_1(\boldsymbol{x}),f_2(\boldsymbol{x}),\cdots,f_m(\boldsymbol{x})]\)</span>相对于n维实向量x的梯度为 —— <span class="math inline">\(n×m\)</span>矩阵，定义为: <span class="math display">\[
 \nabla_{\boldsymbol{x}} \boldsymbol{f}(\boldsymbol{x})\overset{\underset{\mathrm{def}}{}}{=}
 \begin{bmatrix}
-\frac{\partial f_1(\boldsymbol{x})}{\partial x_1} &\frac{\partial f_2(\boldsymbol{x})}{\partial x_1} & \cdots & \frac{\partial f_m(\boldsymbol{x})}{\partial x_1}      \\
-\frac{\partial f_1(\boldsymbol{x})}{\partial x_2} &\frac{\partial f_2(\boldsymbol{x})}{\partial x_2} & \cdots & \frac{\partial f_m(\boldsymbol{x})}{\partial x_2}      \\
-\vdots &\vdots & \ddots & \vdots \\
-\frac{\partial f_1(\boldsymbol{x})}{\partial x_n} &\frac{\partial f_2(\boldsymbol{x})}{\partial x_n} & \cdots &\frac{\partial f_m(\boldsymbol{x})}{\partial x_n}     \\
-\end{bmatrix}=\frac{\partial \boldsymbol{f}(\boldsymbol{x})}{\partial \boldsymbol{x}}</script></li>
+\frac{\partial f_1(\boldsymbol{x})}{\partial x_1} &amp;\frac{\partial f_2(\boldsymbol{x})}{\partial x_1} &amp; \cdots &amp; \frac{\partial f_m(\boldsymbol{x})}{\partial x_1}      \\
+\frac{\partial f_1(\boldsymbol{x})}{\partial x_2} &amp;\frac{\partial f_2(\boldsymbol{x})}{\partial x_2} &amp; \cdots &amp; \frac{\partial f_m(\boldsymbol{x})}{\partial x_2}      \\
+\vdots &amp;\vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial f_1(\boldsymbol{x})}{\partial x_n} &amp;\frac{\partial f_2(\boldsymbol{x})}{\partial x_n} &amp; \cdots &amp;\frac{\partial f_m(\boldsymbol{x})}{\partial x_n}     \\
+\end{bmatrix}=\frac{\partial \boldsymbol{f}(\boldsymbol{x})}{\partial \boldsymbol{x}}
+\]</span></li>
 </ul>
 <p><strong>对矩阵的梯度</strong></p>
-<p>实标量函数 $f(\boldsymbol{A})$相对于$m×n$实矩阵A的梯度为一$m×n$矩阵，简称梯度矩阵，定义为:</p>
-<script type="math/tex; mode=display">
+<p>实标量函数 <span class="math inline">\(f(\boldsymbol{A})\)</span>相对于<span class="math inline">\(m×n\)</span>实矩阵A的梯度为一<span class="math inline">\(m×n\)</span>矩阵，简称梯度矩阵，定义为: <span class="math display">\[
 \nabla_{\boldsymbol{A}} \boldsymbol f(\boldsymbol{A})\overset{\underset{\mathrm{def}}{}}{=}
 \begin{bmatrix}
-\frac{\partial f(\boldsymbol{A})}{\partial a_{11}} &\frac{\partial f(\boldsymbol{A})}{\partial a_{12}} & \cdots & \frac{\partial f(\boldsymbol{A})}{\partial a_{1n}}      \\
-\frac{\partial f(\boldsymbol{A})}{\partial a_{21}} &\frac{\partial f(\boldsymbol{A})}{\partial a_{22}} & \cdots & \frac{\partial f(\boldsymbol{A})}{\partial a_{2n}}      \\
-\vdots &\vdots & \ddots & \vdots \\
-\frac{\partial f(\boldsymbol{A})}{\partial a_{m1}} &\frac{\partial f(\boldsymbol{A})}{\partial a_{m2}} & \cdots &\frac{\partial f(\boldsymbol{A})}{\partial a_{mn}}     \\
-\end{bmatrix}=\frac{\partial \boldsymbol{f}(\boldsymbol{A})}{\partial \boldsymbol{A}}</script><h3 id="梯度的性质"><a href="#梯度的性质" class="headerlink" title="梯度的性质"></a>梯度的性质</h3><ol>
+\frac{\partial f(\boldsymbol{A})}{\partial a_{11}} &amp;\frac{\partial f(\boldsymbol{A})}{\partial a_{12}} &amp; \cdots &amp; \frac{\partial f(\boldsymbol{A})}{\partial a_{1n}}      \\
+\frac{\partial f(\boldsymbol{A})}{\partial a_{21}} &amp;\frac{\partial f(\boldsymbol{A})}{\partial a_{22}} &amp; \cdots &amp; \frac{\partial f(\boldsymbol{A})}{\partial a_{2n}}      \\
+\vdots &amp;\vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial f(\boldsymbol{A})}{\partial a_{m1}} &amp;\frac{\partial f(\boldsymbol{A})}{\partial a_{m2}} &amp; \cdots &amp;\frac{\partial f(\boldsymbol{A})}{\partial a_{mn}}     \\
+\end{bmatrix}=\frac{\partial \boldsymbol{f}(\boldsymbol{A})}{\partial \boldsymbol{A}}
+\]</span></p>
+<h3 id="梯度的性质">梯度的性质</h3>
+<ol type="1">
 <li><strong>梯度的方向就是函数上升的方向</strong></li>
 <li><strong>梯度的范数越大，函数上升越快</strong></li>
 </ol>
@@ -585,48 +595,60 @@
 <ul>
 <li><strong>线性法则</strong>：</li>
 </ul>
-<p>若 $f(\boldsymbol{A})$ 和 $g(\boldsymbol{A})$ 分别是矩阵A的实标量函数，$c_1$和$c_2$为实常数，则:</p>
-<script type="math/tex; mode=display">
-\frac{\partial [c_1 f(\boldsymbol{A})+c_2 g(\boldsymbol{A})]}{\partial \boldsymbol{A}}=c_1\frac{\partial f(\boldsymbol{A})}{\partial \boldsymbol{A}}+c_2 \frac{\partial g(\boldsymbol{A})}{\partial \boldsymbol{A}}</script><p>一般化形式简写为：</p>
-<script type="math/tex; mode=display">
-\nabla(\alpha_0 f_0 + \alpha_1 f_1 + \ldots + \alpha_{n-1} f_{n-1}) = \alpha_0 \nabla f_0 + \alpha_1 \nabla f_1 + \ldots + \alpha_{n-1} \nabla f_{n-1}</script><ul>
+<p>若 <span class="math inline">\(f(\boldsymbol{A})\)</span> 和 <span class="math inline">\(g(\boldsymbol{A})\)</span> 分别是矩阵A的实标量函数，<span class="math inline">\(c_1\)</span>和<span class="math inline">\(c_2\)</span>为实常数，则: <span class="math display">\[
+\frac{\partial [c_1 f(\boldsymbol{A})+c_2 g(\boldsymbol{A})]}{\partial \boldsymbol{A}}=c_1\frac{\partial f(\boldsymbol{A})}{\partial \boldsymbol{A}}+c_2 \frac{\partial g(\boldsymbol{A})}{\partial \boldsymbol{A}}
+\]</span></p>
+<p>一般化形式简写为： <span class="math display">\[
+\nabla(\alpha_0 f_0 + \alpha_1 f_1 + \ldots + \alpha_{n-1} f_{n-1}) = \alpha_0 \nabla f_0 + \alpha_1 \nabla f_1 + \ldots + \alpha_{n-1} \nabla f_{n-1}
+\]</span></p>
+<ul>
 <li><strong>乘积法则</strong></li>
 </ul>
-<p>若 $f(\boldsymbol{A})$ ，$g(\boldsymbol{A})$ 和 $h(\boldsymbol{A})$ 分别是矩阵A的实标量函数，则</p>
-<script type="math/tex; mode=display">
-\frac{\partial f(\boldsymbol{A})g(\boldsymbol{A})}{\partial \boldsymbol{A}}=g(\boldsymbol{A})\frac{\partial f(\boldsymbol{A})}{\partial \boldsymbol{A}}+f(\boldsymbol{A}) \frac{\partial g(\boldsymbol{A})}{\partial \boldsymbol{A}}</script><script type="math/tex; mode=display">
-\frac{\partial f(\boldsymbol{A})g(\boldsymbol{A})h(\boldsymbol{A})}{\partial \boldsymbol{A}}=g(\boldsymbol{A})h(\boldsymbol{A})\frac{\partial f(\boldsymbol{A})}{\partial \boldsymbol{A}}+f(\boldsymbol{A})h(\boldsymbol{A})\frac{\partial g(\boldsymbol{A})}{\partial \boldsymbol{A}}+f(\boldsymbol{A})g(\boldsymbol{A})\frac{\partial h(\boldsymbol{A})}{\partial \boldsymbol{A}}</script><p>一般化形式简化写为：</p>
-<script type="math/tex; mode=display">
-\nabla(f_0 f_1 \cdots f_{n-1}) = \nabla f_0 \cdot f_1 \cdot f_2 \cdot \ldots \cdot f_{n-1} +  f_0 \cdot \nabla f_1 \cdot f_2 \cdot \ldots \cdot f_{n-1} + \ldots + f_0 \cdot f_1 \cdot f_2 \ldots \cdot \nabla f_{n-1}</script><ul>
+<p>若 <span class="math inline">\(f(\boldsymbol{A})\)</span> ，<span class="math inline">\(g(\boldsymbol{A})\)</span> 和 <span class="math inline">\(h(\boldsymbol{A})\)</span> 分别是矩阵A的实标量函数，则</p>
+<p><span class="math display">\[
+\frac{\partial f(\boldsymbol{A})g(\boldsymbol{A})}{\partial \boldsymbol{A}}=g(\boldsymbol{A})\frac{\partial f(\boldsymbol{A})}{\partial \boldsymbol{A}}+f(\boldsymbol{A}) \frac{\partial g(\boldsymbol{A})}{\partial \boldsymbol{A}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial f(\boldsymbol{A})g(\boldsymbol{A})h(\boldsymbol{A})}{\partial \boldsymbol{A}}=g(\boldsymbol{A})h(\boldsymbol{A})\frac{\partial f(\boldsymbol{A})}{\partial \boldsymbol{A}}+f(\boldsymbol{A})h(\boldsymbol{A})\frac{\partial g(\boldsymbol{A})}{\partial \boldsymbol{A}}+f(\boldsymbol{A})g(\boldsymbol{A})\frac{\partial h(\boldsymbol{A})}{\partial \boldsymbol{A}}
+\]</span></p>
+<p>一般化形式简化写为： <span class="math display">\[
+\nabla(f_0 f_1 \cdots f_{n-1}) = \nabla f_0 \cdot f_1 \cdot f_2 \cdot \ldots \cdot f_{n-1} +  f_0 \cdot \nabla f_1 \cdot f_2 \cdot \ldots \cdot f_{n-1} + \ldots + f_0 \cdot f_1 \cdot f_2 \ldots \cdot \nabla f_{n-1}
+\]</span></p>
+<ul>
 <li><strong>链式法则</strong></li>
 </ul>
-<p>若A为m×n矩阵，且 $y=f(\boldsymbol{A})$ 和 $g (y)$分别是以矩阵A和标量y为变元的实标量函数，则：</p>
-<script type="math/tex; mode=display">
-{\displaystyle {\frac {\partial g(f({\boldsymbol {A}}))}{\partial {\boldsymbol {A}}}}={\frac {dg(y)}{dy}}{\frac {\partial f({\boldsymbol {A}})}{\partial {\boldsymbol {A}}}}}</script><p>一般化写作：</p>
-<script type="math/tex; mode=display">
-\nabla (f \circ g) = (f ^\prime \circ g) \cdot \nabla g</script><h2 id="优化算法与-torch-optim-包"><a href="#优化算法与-torch-optim-包" class="headerlink" title="优化算法与 torch.optim 包"></a>优化算法与 torch.optim 包</h2><h3 id="梯度下降算法"><a href="#梯度下降算法" class="headerlink" title="梯度下降算法"></a>梯度下降算法</h3><p>上面我们讲到梯度的相关性质，由此可以作出如下的简单推论：对于某个自变量，如果自变量顺着梯度的方向改变那么函数值就有可能变大，如果自变量逆着梯度方向改变，那么函数值就有可能变小。梯度下降算法就是基于这一基本原理求解函数最小值的。</p>
+<p>若A为m×n矩阵，且 <span class="math inline">\(y=f(\boldsymbol{A})\)</span> 和 <span class="math inline">\(g (y)\)</span>分别是以矩阵A和标量y为变元的实标量函数，则： <span class="math display">\[
+{\displaystyle {\frac {\partial g(f({\boldsymbol {A}}))}{\partial {\boldsymbol {A}}}}={\frac {dg(y)}{dy}}{\frac {\partial f({\boldsymbol {A}})}{\partial {\boldsymbol {A}}}}}
+\]</span></p>
+<p>一般化写作： <span class="math display">\[
+\nabla (f \circ g) = (f ^\prime \circ g) \cdot \nabla g
+\]</span></p>
+<h2 id="优化算法与-torch.optim-包">优化算法与 torch.optim 包</h2>
+<h3 id="梯度下降算法">梯度下降算法</h3>
+<p>上面我们讲到梯度的相关性质，由此可以作出如下的简单推论：对于某个自变量，如果自变量顺着梯度的方向改变那么函数值就有可能变大，如果自变量逆着梯度方向改变，那么函数值就有可能变小。梯度下降算法就是基于这一基本原理求解函数最小值的。</p>
 <p>梯度下降算法的相关概念定义：</p>
-<ol>
+<ol type="1">
 <li>步长（Learning rate）：步长决定了在梯度下降迭代的过程中，每一步沿梯度负方向前进的长度。</li>
-<li>特征（feature）：指的是样本中输入部分，比如2个单特征的样本$（x^{(0)},y^{(0)}）,（x^{(1)},y^{(1)}）$,则第一个样本特征为$x^{(0)}$，第一个样本输出为$y^{(0)}$。</li>
-<li>假设函数（hypothesis function）：在监督学习中，为了拟合输入样本，而使用的假设函数，记为$h<em>{\theta}(x)$。比如对于单个特征的m个样本$（x^{(i)},y^{(i)}）(i=1,2,…m)$,可以采用拟合函数如下：$h</em>{\theta}(x) = \theta_0+\theta_1x$。</li>
-<li><p>损失函数（loss function）：为了评估模型拟合的好坏，通常用损失函数来度量拟合的程度。损失函数极小化，意味着拟合程度最好，对应的模型参数即为最优参数。在线性回归中，损失函数通常为样本输出和假设函数的差取平方。比如对于m个样本$（x_i,y_i）(i=1,2,…m)$,采用线性回归，损失函数为：</p>
-<script type="math/tex; mode=display">
-J(\theta_0, \theta_1) = \sum\limits_{i=1}^{m}(h_\theta(x_i) - y_i)^2</script><p>其中$x<em>i$表示第i个样本特征，$y_i$表示第i个样本对应的输出，$h</em>θ(x_i)$为假设函数。  </p>
-<p>更多关于 gradient descent 算法的内容<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vcGluYXJkL3AvNTk3MDUwMy5odG1s" title="https://www.cnblogs.com/pinard/p/5970503.html">见此文章<i class="fa fa-external-link"></i></span></p>
-</li>
+<li>特征（feature）：指的是样本中输入部分，比如2个单特征的样本<span class="math inline">\((x^{(0)},y^{(0)}）,(x^{(1)},y^{(1)})\)</span>,则第一个样本特征为<span class="math inline">\(x^{(0)}\)</span>，第一个样本输出为<span class="math inline">\(y^{(0)}\)</span>。</li>
+<li>假设函数（hypothesis function）：在监督学习中，为了拟合输入样本，而使用的假设函数，记为<span class="math inline">\(h_{\theta}(x)\)</span>。比如对于单个特征的m个样本<span class="math inline">\((x^{(i)},y^{(i)}）(i=1,2,...m)\)</span>,可以采用拟合函数如下：<span class="math inline">\(h_{\theta}(x) = \theta_0+\theta_1x\)</span>。</li>
+<li>损失函数（loss function）：为了评估模型拟合的好坏，通常用损失函数来度量拟合的程度。损失函数极小化，意味着拟合程度最好，对应的模型参数即为最优参数。在线性回归中，损失函数通常为样本输出和假设函数的差取平方。比如对于m个样本<span class="math inline">\((x_i,y_i)(i=1,2,...m)\)</span>,采用线性回归，损失函数为： <span class="math display">\[
+J(\theta_0, \theta_1) = \sum\limits_{i=1}^{m}(h_\theta(x_i) - y_i)^2
+\]</span> 其中<span class="math inline">\(x_i\)</span>表示第i个样本特征，<span class="math inline">\(y_i\)</span>表示第i个样本对应的输出，<span class="math inline">\(h_θ(x_i)\)</span>为假设函数。</li>
 </ol>
-<h3 id="PyTorch-实现"><a href="#PyTorch-实现" class="headerlink" title="PyTorch 实现"></a>PyTorch 实现</h3><p> <span class="exturl" data-url="aHR0cHM6Ly9weXRvcmNoLm9yZy9kb2NzL3N0YWJsZS9vcHRpbS5odG1s" title="https://pytorch.org/docs/stable/optim.html">torch.optim<i class="fa fa-external-link"></i></span>包内包含了一系列的优化算法，其中包含了<code>optim.SGD</code>就实现了梯度下降算法。</p>
-<p> 如下示例是求解函数 $f(x) = -(\cos^2x[0]+\cos^2x[1])^2$ 最小值的代码：</p>
+<p>更多关于 gradient descent 算法的内容<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vcGluYXJkL3AvNTk3MDUwMy5odG1s" title="https://www.cnblogs.com/pinard/p/5970503.html">见此文章<i class="fa fa-external-link"></i></span></p>
+<h3 id="pytorch-实现">PyTorch 实现</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9weXRvcmNoLm9yZy9kb2NzL3N0YWJsZS9vcHRpbS5odG1s" title="https://pytorch.org/docs/stable/optim.html">torch.optim<i class="fa fa-external-link"></i></span>包内包含了一系列的优化算法，其中包含了<code>optim.SGD</code>就实现了梯度下降算法。</p>
+<p>如下示例是求解函数 <span class="math inline">\(f(x) = -(\cos^2x[0]+\cos^2x[1])^2\)</span> 最小值的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> pi</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.optim</span><br><span class="line"></span><br><span class="line">x = torch.tensor([<span class="number">1.0</span>, <span class="number">1.0</span>], requires_grad=<span class="keyword">True</span>)</span><br><span class="line">f = - ((x.cos() ** <span class="number">2</span>).sum()) ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line">optimizer = torch.optim.SGD([x,], lr=<span class="number">0.1</span>, momentum=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">81</span>):</span><br><span class="line">    <span class="keyword">if</span> step:</span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        f.backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line">    f = - ((x.cos() ** <span class="number">2</span>).sum()) ** <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> step % <span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">'step &#123;&#125;: x = &#123;&#125;, f(x) = &#123;&#125;'</span>.format(step, x.tolist(), f))</span><br></pre></td></tr></table></figure>
-<p> 运行结果如下:<br> <img src="https://suool-bolg.b0.upaiyun.com/2019/03/05/B753B34B-ACDB-4C3A-8A24-20827FEEB921.png" alt="B753B34B-ACDB-4C3A-8A24-20827FEEB921"></p>
+<p>运行结果如下: <img src="https://suool-bolg.b0.upaiyun.com/2019/03/05/B753B34B-ACDB-4C3A-8A24-20827FEEB921.png" alt="B753B34B-ACDB-4C3A-8A24-20827FEEB921"></p>
 <p>上述代码首先定义了要求梯度的自变量 x 及其初始值<code>1.0，1.0</code>,<code>requires_grad=True</code>表示要对此变量求梯度。</p>
 <p>然后定义了关于自变量 x 的函数<code>f</code>，并定义了优化器实例 <code>optimizer</code>，使用的优化方法是 随机梯度下降方法，学习率是 0.1。</p>
-<p>最后定义了一个循环，再次循环内：<br>首先调用了优化器实例的函数<code>zero_grad()</code>，将其内部存储的之前的梯度值清零，之后利用<code>f.backward()</code>求解梯度值，再利用<code>optimizer.step()</code>根据优化器的优化算法更新<code>x</code>的值，最后将新更新后的<code>x</code>值代入到函数<code>f</code>中，更新函数值。直至循环结束。</p>
+<p>最后定义了一个循环，再次循环内： 首先调用了优化器实例的函数<code>zero_grad()</code>，将其内部存储的之前的梯度值清零，之后利用<code>f.backward()</code>求解梯度值，再利用<code>optimizer.step()</code>根据优化器的优化算法更新<code>x</code>的值，最后将新更新后的<code>x</code>值代入到函数<code>f</code>中，更新函数值。直至循环结束。</p>
 <p>上述的运算过程中，首先计算当前位置的梯度值，根据此梯度值更新下一步变量的值，再将更新后的变量值代入目标函数表达式，求出下一步的函数值，再次循环上述步骤。由于梯度的相关性质，只要更新算法得当，最后就会得到一个合适的结果。</p>
-<h3 id="梯度下降算法存在的问题及解决"><a href="#梯度下降算法存在的问题及解决" class="headerlink" title="梯度下降算法存在的问题及解决"></a>梯度下降算法存在的问题及解决</h3><p>上面我们定义的梯度下降算法的基本形式，对于最基本的梯度下降算法，在第 t (t=1,2,3,4,…) 步迭代的时候，需要定义学习率 $\eta<em>t = \eta$，计算梯度$G</em>{t-1} = \nabla f(X_{t-1})$，并按照下面的式子来更新自变量：</p>
-<script type="math/tex; mode=display">
-X_t = X_{t-1} - \eta_t V_t</script><p>其中 $V<em>i = G</em>{t-1}$。</p>
+<h3 id="梯度下降算法存在的问题及解决">梯度下降算法存在的问题及解决</h3>
+<p>上面我们定义的梯度下降算法的基本形式，对于最基本的梯度下降算法，在第 t (t=1,2,3,4,...) 步迭代的时候，需要定义学习率 <span class="math inline">\(\eta_t = \eta\)</span>，计算梯度<span class="math inline">\(G_{t-1} = \nabla f(X_{t-1})\)</span>，并按照下面的式子来更新自变量： <span class="math display">\[
+X_t = X_{t-1} - \eta_t V_t
+\]</span> 其中 <span class="math inline">\(V_i = G_{t-1}\)</span>。</p>
 <p>上面的算法存在明显的问题：</p>
 <ul>
 <li>容易陷入局部极小值，甚至陷入鞍点，凡是梯度值为 0 的地方，该算法就陷入停滞，但是梯度值为0并不一定恰好是全局最小值。</li>
@@ -634,24 +656,33 @@ X_t = X_{t-1} - \eta_t V_t</script><p>其中 $V<em>i = G</em>{t-1}$。</p>
 </ul>
 <p>对于上述的两个两个问题都有对应的解决办法:</p>
 <p>前一个问题使用“动量”，后一个问题使用“动态调整学习率”。</p>
-<h4 id="动量引入"><a href="#动量引入" class="headerlink" title="动量引入"></a>动量引入</h4><p>动量听起来很高深，其实放在物理上的理解就是增加“惯性势能”，为梯度增加一个惯性值，当梯度到达一个为零的点的时候，回顾其之前的变化过程，如果之前一直是以比较陡峭的速度下降，那么落到该点的时候给其在改点的梯度值加上一个额外的惯性，即是动量，这样它就不是零了，就能继续向前行走，走出鞍点、甚至走出局部最小值。</p>
-<p>一般而言，动量的表达式可以是：</p>
-<script type="math/tex; mode=display">
-V_t = \rho V_{t-1} + \rho^\prime \nabla f(X_{t-1})</script><p>其中，$\rho 和 \rho^\prime$是预设的函数，$V<em>t$将用于更新$X</em>{t-1}$，入上述梯度下降算法的基本形式中：</p>
-<script type="math/tex; mode=display">
-X_t = X_{t-1} - \eta_t V_t</script><h2 id="学习率的动态调整"><a href="#学习率的动态调整" class="headerlink" title="学习率的动态调整"></a>学习率的动态调整</h2><p>理想情况下学习率的变化是这样的:在迭代刚开始的时候学习率比较大，从而让自变量的变化尽可能的大，然后快接近最优点的时候，学习率变得比较小，从而自变量也可以慢慢接近最优点不至于跳过去来回震荡。</p>
+<h4 id="动量引入">动量引入</h4>
+<p>动量听起来很高深，其实放在物理上的理解就是增加“惯性势能”，为梯度增加一个惯性值，当梯度到达一个为零的点的时候，回顾其之前的变化过程，如果之前一直是以比较陡峭的速度下降，那么落到该点的时候给其在改点的梯度值加上一个额外的惯性，即是动量，这样它就不是零了，就能继续向前行走，走出鞍点、甚至走出局部最小值。</p>
+<p>一般而言，动量的表达式可以是： <span class="math display">\[
+V_t = \rho V_{t-1} + \rho^\prime \nabla f(X_{t-1})
+\]</span></p>
+<p>其中，<span class="math inline">\(\rho 和 \rho^\prime\)</span>是预设的函数，<span class="math inline">\(V_t\)</span>将用于更新<span class="math inline">\(X_{t-1}\)</span>，入上述梯度下降算法的基本形式中： <span class="math display">\[
+X_t = X_{t-1} - \eta_t V_t
+\]</span></p>
+<h2 id="学习率的动态调整">学习率的动态调整</h2>
+<p>理想情况下学习率的变化是这样的:在迭代刚开始的时候学习率比较大，从而让自变量的变化尽可能的大，然后快接近最优点的时候，学习率变得比较小，从而自变量也可以慢慢接近最优点不至于跳过去来回震荡。</p>
 <p>这就要求能够让学习率动态调整，在迭代过程中变化，而且对于多元素的自变量的学习率不一样，有必要为张量的不同元素设置不同的学习率。</p>
-<p>其中一个实现方法就是根据历次梯度的各元素平滑的二范数。比如，对于自变量 X 中的元素$X[I]$，设其在第 t 次的梯度 $G<em>t = \nabla f(X_t)$处的第 I 个元素为 g[I], 则可以让第 t 次迭代作用于自变量 $x</em>{t-1}[I]$的学习率为：</p>
-<script type="math/tex; mode=display">
-\eta_t[I] = \frac {l} {\sqrt {g_0^2[I] + g_1^2[I] + \dots + g_{t-1}^2[I] + \epsilon}}</script><p>其中 $l 和 \epsilon$ 是预设的，随着迭代的进行，分母不断变大，学习率不断的变小，一定程度上实现了学习率的动态调整。</p>
+<p>其中一个实现方法就是根据历次梯度的各元素平滑的二范数。比如，对于自变量 X 中的元素<span class="math inline">\(X[I]\)</span>，设其在第 t 次的梯度 <span class="math inline">\(G_t = \nabla f(X_t)\)</span>处的第 I 个元素为 g[I], 则可以让第 t 次迭代作用于自变量 <span class="math inline">\(x_{t-1}[I]\)</span>的学习率为：</p>
+<p><span class="math display">\[
+\eta_t[I] = \frac {l} {\sqrt {g_0^2[I] + g_1^2[I] + \dots + g_{t-1}^2[I] + \epsilon}}
+\]</span></p>
+<p>其中 <span class="math inline">\(l 和 \epsilon\)</span> 是预设的，随着迭代的进行，分母不断变大，学习率不断的变小，一定程度上实现了学习率的动态调整。</p>
 <p>但是上述的调整还是不尽合理的，因为按照正常的逻辑，距离当前迭代位置的远近对于学习率变化的贡献不应该是一致的，而且有可能学习率的变化不一定是越来越小。</p>
 <p>不过上述的式子提供了一种思路，另外一个根据距离远近调整的方法是结合“指数权重平均”的算法来实现的。</p>
 <p>更多关于学习率调整的思路可以参看这篇文章：<span class="exturl" data-url="aHR0cHM6Ly9sdW1pbmdkb25nLmNuL3NldHRpbmctc3RyYXRlZ3ktb2YtZ3JhZGllbnQtZGVzY2VudC1sZWFybmluZy1yYXRlLmh0bWw=" title="https://lumingdong.cn/setting-strategy-of-gradient-descent-learning-rate.html">梯度下降学习率的设定策略<i class="fa fa-external-link"></i></span></p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>根据以上对梯度更新、学习率相关的介绍，研究演化了各种优化器，具体的可以参考这篇论文器，具体的可以参考这篇论文<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE2MDkuMDQ3NDcucGRm" title="https://arxiv.org/pdf/1609.04747.pdf">An overview of gradient descent optimizati<i class="fa fa-external-link"></i></span></p>
+<h3 id="小结">小结</h3>
+<p>根据以上对梯度更新、学习率相关的介绍，研究演化了各种优化器，具体的可以参考这篇论文器，具体的可以参考这篇论文<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE2MDkuMDQ3NDcucGRm" title="https://arxiv.org/pdf/1609.04747.pdf">An overview of gradient descent optimizati<i class="fa fa-external-link"></i></span></p>
 <p>中文文章参考:<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZ3VveWFvaHVhL3AvODU0MjU1NC5odG1s" title="https://www.cnblogs.com/guoyaohua/p/8542554.html">深度学习——优化器算法Optimizer详解（BGD、SGD、MBGD、Momentum、NAG、Adagrad、Adadelta、RMSprop、Adam）<i class="fa fa-external-link"></i></span></p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>主要是求 himmelblau 函数最小值。<br>该函数的图像如下所示：<br><img src="https://suool-bolg.b0.upaiyun.com/2019/03/05/5D42012F-DCDE-4C55-9DF9-5E63E3E322F2.png" alt="5D42012F-DCDE-4C55-9DF9-5E63E3E322F2-w457"><br> 该函数有四个极小值点。</p>
-<p> 使用 adam 优化器的代码如下</p>
+<h2 id="实例">实例</h2>
+<p>主要是求 himmelblau 函数最小值。 该函数的图像如下所示： <img src="https://suool-bolg.b0.upaiyun.com/2019/03/05/5D42012F-DCDE-4C55-9DF9-5E63E3E322F2.png" alt="5D42012F-DCDE-4C55-9DF9-5E63E3E322F2-w457"> 该函数有四个极小值点。</p>
+<p>使用 adam 优化器的代码如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib.colors <span class="keyword">import</span> LinearSegmentedColormap</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">himmelblau</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (x[<span class="number">0</span>] ** <span class="number">2</span> + x[<span class="number">1</span>] - <span class="number">11</span>) ** <span class="number">2</span> + (x[<span class="number">0</span>] + x[<span class="number">1</span>] ** <span class="number">2</span> - <span class="number">7</span>) ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">-6</span>, <span class="number">6</span>, <span class="number">0.1</span>)</span><br><span class="line">y = np.arange(<span class="number">-6</span>, <span class="number">6</span>, <span class="number">0.1</span>)</span><br><span class="line">X, Y = np.meshgrid(x, y)</span><br><span class="line">Z = himmelblau([X, Y])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可视化函数图像</span></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.gca(projection=<span class="string">'3d'</span>)  <span class="comment">#Axes3D(fig)</span></span><br><span class="line">ax.plot_surface(X, Y, Z, cmap=<span class="string">'rainbow'</span>)</span><br><span class="line">ax.set_xlabel(<span class="string">'x[0]'</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">'x[1]'</span>)</span><br><span class="line"><span class="comment"># 画出图像</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line">x = torch.tensor([<span class="number">0.</span>, <span class="number">0.</span>], requires_grad=<span class="keyword">True</span>)  <span class="comment"># 收敛到 (3, 2)</span></span><br><span class="line"><span class="comment"># x = torch.tensor([-1., 0.], requires_grad=True) # 收敛到 (-2.81, 3.13)</span></span><br><span class="line"><span class="comment"># x = torch.tensor([-4., 0..], requires_grad=True) # 收敛到 (-3.78, -3.28)</span></span><br><span class="line"><span class="comment"># x = torch.tensor([4., 0.], requires_grad=True) # 收敛到 (3.58, -1.85)</span></span><br><span class="line"><span class="comment"># 定义优化器</span></span><br><span class="line"><span class="comment"># 求极小值</span></span><br><span class="line">optimizer = torch.optim.Adam([x,])</span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">20001</span>):</span><br><span class="line">    <span class="keyword">if</span> step:</span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        f.backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line">    f = himmelblau(x)</span><br><span class="line">    <span class="keyword">if</span> step % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'step &#123;&#125;: x = &#123;&#125;, f(x) = &#123;&#125;'</span>.format(step, x.tolist(), f))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求局部极大值</span></span><br><span class="line">x = torch.tensor([<span class="number">0.</span>, <span class="number">0.</span>], requires_grad=<span class="keyword">True</span>)</span><br><span class="line">optimizer = torch.optim.Adam([x,])</span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">20001</span>):</span><br><span class="line">    <span class="keyword">if</span> step:</span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        (-f).backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line">    f = himmelblau(x)</span><br><span class="line">    <span class="keyword">if</span> step % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">'step &#123;&#125;: x = &#123;&#125;, f(x) = &#123;&#125;'</span>.format(step, x.tolist(), f))</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -1003,7 +1034,7 @@ X_t = X_{t-1} - \eta_t V_t</script><h2 id="学习率的动态调整"><a href="#�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度的概念及性质"><span class="nav-number">2.</span> <span class="nav-text">梯度的概念及性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度的解释及形式化定义"><span class="nav-number">2.1.</span> <span class="nav-text">梯度的解释及形式化定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度的性质"><span class="nav-number">2.2.</span> <span class="nav-text">梯度的性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化算法与-torch-optim-包"><span class="nav-number">3.</span> <span class="nav-text">优化算法与 torch.optim 包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降算法"><span class="nav-number">3.1.</span> <span class="nav-text">梯度下降算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PyTorch-实现"><span class="nav-number">3.2.</span> <span class="nav-text">PyTorch 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降算法存在的问题及解决"><span class="nav-number">3.3.</span> <span class="nav-text">梯度下降算法存在的问题及解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动量引入"><span class="nav-number">3.3.1.</span> <span class="nav-text">动量引入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习率的动态调整"><span class="nav-number">4.</span> <span class="nav-text">学习率的动态调整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">4.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">5.</span> <span class="nav-text">实例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度的概念及性质"><span class="nav-number">2.</span> <span class="nav-text">梯度的概念及性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度的解释及形式化定义"><span class="nav-number">2.1.</span> <span class="nav-text">梯度的解释及形式化定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度的性质"><span class="nav-number">2.2.</span> <span class="nav-text">梯度的性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化算法与-torch.optim-包"><span class="nav-number">3.</span> <span class="nav-text">优化算法与 torch.optim 包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降算法"><span class="nav-number">3.1.</span> <span class="nav-text">梯度下降算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pytorch-实现"><span class="nav-number">3.2.</span> <span class="nav-text">PyTorch 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降算法存在的问题及解决"><span class="nav-number">3.3.</span> <span class="nav-text">梯度下降算法存在的问题及解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动量引入"><span class="nav-number">3.3.1.</span> <span class="nav-text">动量引入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习率的动态调整"><span class="nav-number">4.</span> <span class="nav-text">学习率的动态调整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">4.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">5.</span> <span class="nav-text">实例</span></a></li></ol></div>
             
 
           </div>
@@ -1044,7 +1075,7 @@ X_t = X_{t-1} - \eta_t V_t</script><h2 id="学习率的动态调整"><a href="#�
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:20</span>
+    <span title="站点阅读时长">6:21</span>
   
 </div>
 
