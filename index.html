@@ -411,7 +411,7 @@
                 
               
 
-              <time title="创建时间：2019-03-09 11:07:45 / 修改时间：14:15:33" itemprop="dateCreated datePublished" datetime="2019-03-09T11:07:45+08:00">2019-03-09</time>
+              <time title="创建时间：2019-03-09 11:07:45 / 修改时间：14:17:35" itemprop="dateCreated datePublished" datetime="2019-03-09T11:07:45+08:00">2019-03-09</time>
             
 
             
@@ -489,7 +489,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8k</span>
+                <span title="本文字数">8.1k</span>
               
 
               
@@ -597,6 +597,8 @@
 <h2 id="测试及结果">测试及结果</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">for_f1_score = []</span><br><span class="line"></span><br><span class="line">accuracy = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> test <span class="keyword">in</span> test_data:</span><br><span class="line">    x, y = test[<span class="number">0</span>], test[<span class="number">1</span>]</span><br><span class="line">    input_ = prepare_sequence(x, word2index).view(<span class="number">1</span>, <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">    i = model(input_).max(<span class="number">1</span>)[<span class="number">1</span>]</span><br><span class="line">    pred = index2tag[i.data.tolist()[<span class="number">0</span>]]</span><br><span class="line">    for_f1_score.append([pred, y])</span><br><span class="line">    <span class="keyword">if</span> pred == y:</span><br><span class="line">        accuracy += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(accuracy/len(test_data) * <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">y_pred, y_test = list(zip(*for_f1_score))</span><br><span class="line"></span><br><span class="line">sorted_labels = sorted(list(set(y_test) - &#123;<span class="string">'o'</span>&#125;), key=<span class="keyword">lambda</span> name: (name[<span class="number">1</span>:], name[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 混淆矩阵</span></span><br><span class="line">y_pred = [[y] <span class="keyword">for</span> y <span class="keyword">in</span> y_pred] <span class="comment"># this is because sklearn_crfsuite.metrics function flatten inputs</span></span><br><span class="line">y_test = [[y] <span class="keyword">for</span> y <span class="keyword">in</span> y_test]</span><br><span class="line"></span><br><span class="line">print(metrics.flat_classification_report(y_test, y_pred, labels = sorted_labels, digits=<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
 <p>输出结果如下: <img src="https://suool-bolg.b0.upaiyun.com/2019/03/09/Screenshot%20from%202019-03-09%2014-10-14.png" alt="Screenshot from 2019-03-09 14-10-14"></p>
+<h2 id="next">Next</h2>
+<p>这里的处理使用的是最直接的标签体系，神经网络模型的架构也比较简单，下一步计划将现有的预料数据标签体系转换为 BIO 标签，并搭建更为复杂的网络模型来尝试这一任务。</p>
 
           
         
@@ -2941,7 +2943,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">160k</span>
+    <span title="站点总字数">161k</span>
   
 
   

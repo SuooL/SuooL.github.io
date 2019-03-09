@@ -48,4 +48,5 @@
 {"title":"数学备忘录 微积分","url":"/2019/02/01/math-basic/"},
 {"title":"数学备忘录","url":"/2019/02/01/math-basic/"},
 {"title":"梯度下降算法及 PyTorch 的实现","url":"/2019/03/01/optimization-problem/"},
+{"title":"基于浅层前馈神经网络和词窗口的命名实体识别实践","url":"/2019/03/09/ner-nn-pytorch/"},
 ]
