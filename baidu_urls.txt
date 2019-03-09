@@ -1,3 +1,3 @@
+https://suool.net/2019/03/09/ner-nn-pytorch/
 https://suool.net/2019/03/01/optimization-problem/
 https://suool.net/2019/02/01/math-basic/
-https://suool.net/2019/01/28/python-naming-notations/
