@@ -104,15 +104,22 @@
 
 
 
-  <meta name="keywords" content="NLP">
+  <meta name="description" content="Introduction tf-idf（英语：term frequency–inverse document frequency）是一种用于信息检索与文本挖掘的常用加权技术。 TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。TF-IDF加权的各种形式常被搜寻">
+<meta name="keywords" content="TF-IDF,NLP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="文本处理之 tf-idf 算法">
+<meta property="og:title" content="文本处理之 tf-idf 算法及其实践">
 <meta property="og:url" content="https://suool.net/2019/01/26/tf-tdf-exercise/index.html">
 <meta property="og:site_name" content="SuooL&#39;s Blog">
+<meta property="og:description" content="Introduction tf-idf（英语：term frequency–inverse document frequency）是一种用于信息检索与文本挖掘的常用加权技术。 TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。TF-IDF加权的各种形式常被搜寻">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-29T06:06:29.146Z">
+<meta property="og:image" content="https://suool.net/2019/01/26/tf-tdf-exercise/media/8097401A-1A0F-49DA-8017-1AA4E6BAE745.png">
+<meta property="og:image" content="https://suool.net/2019/01/26/tf-tdf-exercise/media/409DCB9C-64CB-4B3D-8CF2-3EC86B8C3CBB.png">
+<meta property="og:image" content="https://suool.net/2019/01/26/tf-tdf-exercise/media/7426796A-6957-4100-B22B-F0BD6361142E.png">
+<meta property="og:updated_time" content="2019-03-23T02:52:53.225Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="文本处理之 tf-idf 算法">
+<meta name="twitter:title" content="文本处理之 tf-idf 算法及其实践">
+<meta name="twitter:description" content="Introduction tf-idf（英语：term frequency–inverse document frequency）是一种用于信息检索与文本挖掘的常用加权技术。 TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。TF-IDF加权的各种形式常被搜寻">
+<meta name="twitter:image" content="https://suool.net/2019/01/26/tf-tdf-exercise/media/8097401A-1A0F-49DA-8017-1AA4E6BAE745.png">
 
 
 
@@ -131,7 +138,7 @@
   };
 </script>
 
-  <title>文本处理之 tf-idf 算法 | SuooL's Blog</title>
+  <title>文本处理之 tf-idf 算法及其实践 | SuooL's Blog</title>
   
 
 
@@ -381,7 +388,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">文本处理之 tf-idf 算法
+          <h2 class="post-title" itemprop="name headline">文本处理之 tf-idf 算法及其实践
 
               
             
@@ -424,7 +431,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-29 14:06:29" itemprop="dateModified" datetime="2019-01-29T14:06:29+08:00">2019-01-29</time>
+                <time title="修改时间：2019-03-23 10:52:53" itemprop="dateModified" datetime="2019-03-23T10:52:53+08:00">2019-03-23</time>
               
             
           </span>
@@ -472,7 +479,7 @@
 
           
           
-             <span id="/2019/01/26/tf-tdf-exercise/" class="leancloud_visitors" data-flag-title="文本处理之 tf-idf 算法">
+             <span id="/2019/01/26/tf-tdf-exercise/" class="leancloud_visitors" data-flag-title="文本处理之 tf-idf 算法及其实践">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -497,7 +504,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1</span>
+                <span title="本文字数">4.7k</span>
               
 
               
@@ -511,7 +518,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">12 分钟</span>
               
             </div>
           
@@ -531,7 +538,62 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="introduction">Introduction</h2>
+<p>tf-idf（英语：term frequency–inverse document frequency）是一种用于信息检索与文本挖掘的常用加权技术。 TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。TF-IDF加权的各种形式常被搜寻引擎应用，作为文件与用户查询之间相关程度的度量或评级。除了TF-IDF以外，因特网上的搜寻引擎还会使用基于连结分析的评级方法，以确定文件在搜寻结果中出现的顺序。</p>
+<p>TF-IDF有两层意思，一层是&quot;词频&quot;（Term Frequency，缩写为TF），另一层是&quot;逆文档频率&quot;（Inverse Document Frequency，缩写为IDF）。</p>
+<h2 id="原理及计算方法">原理及计算方法</h2>
+<p>在一份给定的文件里，词频 (term frequency, TF) 指的是某一个给定的词语在该文件中出现的次数。这个数字通常会被归一化（分子一般小于分母 区别于IDF），以防止它偏向长的文件。（同一个词语在长文件里可能会比短文件有更高的词频，而不管该词语重要与否。）</p>
+<p>对于在某一特定文件里的词语 <span class="math inline">\(t_{i}\)</span> 来说，它的重要性可表示为： <span class="math display">\[
+tf_{i,j}= \frac {n_{i,j}}{\sum _k n_{k,j}}
+\]</span></p>
+<p>以上式子中 <span class="math inline">\(n_{i,j}\)</span> 是该词在文件 <span class="math inline">\(d_{j}\)</span> 中的出现次数，而分母则是在文件 <span class="math inline">\(d_{j}\)</span> 中所有字词的出现次数之和。</p>
+<p>逆向文件频率 (inverse document frequency, IDF) 是一个词语普遍重要性的度量。某一特定词语的IDF，可以由<strong>总文件数目除以包含该词语之文件的数目，再将得到的商取对数得到</strong>。</p>
+<p><span class="math display">\[
+idf_{i} =\lg {\frac {|D|}{|\{j:t_i\in d_j\}|}}
+\]</span></p>
+<p>其中</p>
+<ul>
+<li><span class="math inline">\(|D|\)</span>：语料库中的文件总数</li>
+<li><span class="math inline">\(|\{j:t_i\in d_j\}|\)</span>：包含词语 <span class="math inline">\(t_i\)</span> 的文件数目（即<span class="math inline">\(n_{i,j}\neq 0\)</span>的文件数目）如果词语不在数据中，就导致分母为零，因此一般情况下使用 <span class="math inline">\(1+|\{j:t_i\in d_j\}|\)</span></li>
+</ul>
+<p>然后</p>
+<p><span class="math display">\[tfidf_{i,j}= tf_{i,j}\times idf_i\]</span></p>
+<p>某一特定文件内的高词语频率，以及该词语在整个文件集合中的低文件频率，可以产生出高权重的tf-idf。因此，tf-idf倾向于过滤掉常见的词语，保留重要的词语。并且一般会预先去除无意义的停用词，进一步增强效果。</p>
+<h2 id="使用-sklearn-tfidfvectorizer">使用 sklearn: TfidfVectorizer</h2>
+<p><code>TfidfVectorizer</code>可以把原始文本转化为tf-idf的特征矩阵，从而为后续的文本相似度计算，主题模型(如LSI)，文本搜索排序等一系列应用奠定基础。</p>
+<p>简单的使用如下：</p>
+<figure>
+<img src="media/8097401A-1A0F-49DA-8017-1AA4E6BAE745.png" alt="结果"><figcaption>结果</figcaption>
+</figure>
+<p>上述输出中，第一次稀疏矩阵的输出，第一列为对应一般矩阵的下标，第二列为值。</p>
+<p>第三个字典输出，键为统计的单词，数字为对应的列。比如，apple 对应第一列的。</p>
+<p>要把它运用到中文上还需要一些特别的处理</p>
+<h3 id="分词">分词</h3>
+<p>英文可以直接使用空格分割，中文分词则要借助专门的工具，比如结巴分词。</p>
+<h3 id="参数">参数</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9zY2lraXQtbGVhcm4ub3JnL3N0YWJsZS9tb2R1bGVzL2dlbmVyYXRlZC9za2xlYXJuLmZlYXR1cmVfZXh0cmFjdGlvbi50ZXh0LlRmaWRmVmVjdG9yaXplci5odG1s" title="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">文档地址<i class="fa fa-external-link"></i></span></p>
+<p>介绍其中几个重要的参数：</p>
+<ul>
+<li><code>token_pattern</code>：这个参数使用正则表达式来分词，其默认参数为<code>r&quot;(?u)\b\w\w+\b&quot;</code>，其中的两个<code>\w</code>决定了其匹配长度至少为2的单词</li>
+<li><code>max_df/min_df</code>: [0.0, 1.0]内浮点数或正整数, 默认值=1.0。当设置为浮点数时，过滤出现在<code>超过max_df/低于min_df</code>比例的句子中的词语；正整数时,则是<code>超过max_df</code>句句子。这样就可以帮助我们过滤掉出现太多的无意义词语，如下面的&quot;我&quot;就被过滤（虽然这里“我”的排比在文学上是很重要的）。</li>
+<li><code>stop_words</code>: list类型，直接过滤指定的停用词。</li>
+<li><code>vocabulary</code>: dict类型。只使用特定的词汇，其形式与上面看到的输出<code>vocabulary_</code>相同，也是指定对应关系。这一参数的使用有时能帮助我们专注于一些词语，比如我对本诗中表达感情的一些特定词语（甚至标点符号）感兴趣，就可以设定这一参数，只考虑他们： 比如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tfidf_model5 = TfidfVectorizer(token_pattern=<span class="string">r"(?u)\b\w+\b"</span>,vocabulary=&#123;<span class="string">"我"</span>:<span class="number">0</span>, <span class="string">"呀"</span>:<span class="number">1</span>,<span class="string">"!"</span>:<span class="number">2</span>&#125;).fit(document)</span><br><span class="line">    print(tfidf_model5.vocabulary_)</span><br><span class="line">    <span class="comment"># &#123;'我': 0, '呀': 1, '!': 2&#125;</span></span><br><span class="line">    print(tfidf_model5.transform(document).todense())</span><br><span class="line">    <span class="comment"># [[ 0.40572238  0.91399636  0.        ]</span></span><br><span class="line">    <span class="comment">#  [ 1.          0.          0.        ]</span></span><br><span class="line">    <span class="comment">#  [ 1.          0.          0.        ]</span></span><br><span class="line">    <span class="comment">#  [ 1.          0.          0.        ]</span></span><br><span class="line">    <span class="comment">#  [ 1.          0.          0.        ]</span></span><br></pre></td></tr></table></figure>
+<h2 id="实践">实践</h2>
+<p>Kaggle 的<span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9jL3dvcmQydmVjLW5scC10dXRvcmlhbA==" title="https://www.kaggle.com/c/word2vec-nlp-tutorial">Bag of Words Meets Bags of Popcorn 题目<i class="fa fa-external-link"></i></span>，这个题目是电影评论文本情感分类问题。</p>
+<p>拿到预料后，因为是英文语料，首先进行数据清洗和分词预处理，原始语料如下： <img src="media/409DCB9C-64CB-4B3D-8CF2-3EC86B8C3CBB.png" alt="原始语料"></p>
+<p>导入库及读入数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer <span class="keyword">as</span> TFIDF</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> MultinomialNB <span class="keyword">as</span> MNB</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">train=pd.read_csv(<span class="string">'data/labeledTrainData.tsv'</span>, sep=<span class="string">'\t'</span>,header=<span class="number">0</span>)</span><br><span class="line">test=pd.read_csv(<span class="string">'data/testData.tsv'</span>, sep=<span class="string">'\t'</span>,header=<span class="number">0</span>)</span><br><span class="line">print(train[<span class="number">0</span>:<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<p>预处理代码如下： <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">review_to_wordlist</span><span class="params">(review_text)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    把IMDB的评论转成词序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment"># 去掉涉及的电影名等标签</span></span><br><span class="line">    review_text = re.sub(<span class="string">r'\\.*?\\"'</span>, <span class="string">""</span>, review_text)</span><br><span class="line">    <span class="comment"># 去掉HTML标签</span></span><br><span class="line">    review_text = BeautifulSoup(review_text, <span class="string">"html.parser"</span>).get_text()</span><br><span class="line">    <span class="comment"># 用正则表达式除去非数字、字母外的内容</span></span><br><span class="line">    review_text = re.sub(<span class="string">"[^a-zA-Z0-9]"</span>,<span class="string">" "</span>, review_text)</span><br><span class="line">    <span class="comment"># 小写化所有的词，并转成词list</span></span><br><span class="line">    words = review_text.lower().split()</span><br><span class="line">    <span class="comment"># 返回words</span></span><br><span class="line">    <span class="keyword">return</span> words</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取标签序列和评论数据及测试评论数据</span></span><br><span class="line">label = train[<span class="string">'sentiment'</span>]</span><br><span class="line">train_data = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(train[<span class="string">'review'</span>])):</span><br><span class="line">    train_data.append(<span class="string">' '</span>.join(review_to_wordlist(train[<span class="string">'review'</span>][i])))</span><br><span class="line">test_data = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(test[<span class="string">'review'</span>])):</span><br><span class="line">    test_data.append(<span class="string">' '</span>.join(review_to_wordlist(test[<span class="string">'review'</span>][i])))</span><br></pre></td></tr></table></figure></p>
+<p>TF-IDF 处理：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">tfidf = TFIDF(min_df=<span class="number">2</span>, <span class="comment"># 最小支持度为2</span></span><br><span class="line">           max_features=<span class="keyword">None</span>,</span><br><span class="line">           strip_accents=<span class="string">'unicode'</span>,</span><br><span class="line">           analyzer=<span class="string">'word'</span>,</span><br><span class="line">           token_pattern=<span class="string">r'\w&#123;1,&#125;'</span>,</span><br><span class="line">           ngram_range=(<span class="number">1</span>, <span class="number">2</span>),  <span class="comment"># 二元文法模型</span></span><br><span class="line">           use_idf=<span class="number">1</span>,</span><br><span class="line">           smooth_idf=<span class="number">1</span>,</span><br><span class="line">           sublinear_tf=<span class="number">1</span>,</span><br><span class="line">           stop_words = <span class="string">'english'</span>) <span class="comment"># 去掉英文停用词</span></span><br><span class="line"><span class="comment"># 合并训练和测试集以便进行TFIDF向量化操作</span></span><br><span class="line">data_all = train_data + test_data</span><br><span class="line">len_train = len(train_data)</span><br><span class="line">tfidf.fit(data_all)</span><br><span class="line">data_all = tfidf.transform(data_all)</span><br><span class="line"><span class="comment"># 恢复成训练集和测试集部分</span></span><br><span class="line">train_x = data_all[:len_train]</span><br><span class="line">test_x = data_all[len_train:]</span><br><span class="line">print(<span class="string">'TF-IDF处理结束.'</span>)</span><br></pre></td></tr></table></figure>
+<p>使用多项式贝叶斯分类器进行分类训练和交叉验证：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">model_NB = MNB()</span><br><span class="line">model_NB.fit(train_x, label)</span><br><span class="line">MNB(alpha=<span class="number">1.0</span>, class_prior=<span class="keyword">None</span>, fit_prior=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"多项式贝叶斯分类器10折交叉验证得分: "</span>, np.mean(cross_val_score(model_NB, train_x, label, cv=<span class="number">10</span>, scoring=<span class="string">'roc_auc'</span>)))</span><br></pre></td></tr></table></figure>
+<p>测试预测输出结果:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test_predicted = np.array(model_NB.predict(test_x))</span><br><span class="line">print(<span class="string">'保存结果...'</span>)</span><br><span class="line">nb_output = pd.DataFrame(data=test_predicted, columns=[<span class="string">'sentiment'</span>])</span><br><span class="line">nb_output[<span class="string">'id'</span>] = test[<span class="string">'id'</span>]</span><br><span class="line">nb_output = nb_output[[<span class="string">'id'</span>, <span class="string">'sentiment'</span>]]</span><br><span class="line">nb_output.to_csv(<span class="string">'nb_output.csv'</span>, index=<span class="keyword">False</span>)</span><br><span class="line">print(<span class="string">'结束.'</span>)</span><br></pre></td></tr></table></figure>
+<p>最后结果为 86.692% <img src="media/7426796A-6957-4100-B22B-F0BD6361142E.png" alt="7426796A-6957-4100-B22B-F0BD6361142E"></p>
+<p>准确率显然有待提升，下一步计划使用词向量及神经网络相关技术进一步优化。</p>
 
       
     </div>
@@ -662,8 +724,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -872,6 +943,22 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理及计算方法"><span class="nav-number">2.</span> <span class="nav-text">原理及计算方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-sklearn-tfidfvectorizer"><span class="nav-number">3.</span> <span class="nav-text">使用 sklearn: TfidfVectorizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分词"><span class="nav-number">3.1.</span> <span class="nav-text">分词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">3.2.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实践"><span class="nav-number">4.</span> <span class="nav-text">实践</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -897,7 +984,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">161k</span>
+    <span title="站点总字数">166k</span>
   
 
   
@@ -906,7 +993,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:42</span>
+    <span title="站点阅读时长">6:54</span>
   
 </div>
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://suool.net/2019/01/26/tf-tdf-exercise/</loc>
+    <lastmod>2019-03-23T02:52:53.225Z</lastmod>
+  </url>  <url>
     <loc>https://suool.net/2019/03/09/ner-nn-pytorch/</loc>
     <lastmod>2019-03-09T07:10:00.926Z</lastmod>
   </url>  <url>
@@ -27,9 +30,6 @@
   </url>  <url>
     <loc>https://suool.net/2017/01/29/python-basics-memo/</loc>
     <lastmod>2019-01-29T12:29:40.206Z</lastmod>
-  </url>  <url>
-    <loc>https://suool.net/2019/01/26/tf-tdf-exercise/</loc>
-    <lastmod>2019-01-29T06:06:29.146Z</lastmod>
   </url>  <url>
     <loc>https://suool.net/2019/01/17/swift-vapor-install-ubuntu/</loc>
     <lastmod>2019-01-29T05:53:47.361Z</lastmod>
