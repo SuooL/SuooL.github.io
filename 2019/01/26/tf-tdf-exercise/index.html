@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2019/03/23/8097401A-1A0F-49DA-8017-1AA4E6BAE745.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2019/03/23/409DCB9C-64CB-4B3D-8CF2-3EC86B8C3CBB.png">
 <meta property="og:image" content="https://suool-bolg.b0.upaiyun.com/2019/03/23/7426796A-6957-4100-B22B-F0BD6361142E.png">
-<meta property="og:updated_time" content="2019-03-23T02:53:39.427Z">
+<meta property="og:updated_time" content="2019-03-23T02:58:22.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文本处理之 tf-idf 算法及其实践">
 <meta name="twitter:description" content="Introduction tf-idf（英语：term frequency–inverse document frequency）是一种用于信息检索与文本挖掘的常用加权技术。 TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。TF-IDF加权的各种形式常被搜寻">
@@ -431,7 +431,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-23 10:53:39" itemprop="dateModified" datetime="2019-03-23T10:53:39+08:00">2019-03-23</time>
+                <time title="修改时间：2019-03-23 10:58:22" itemprop="dateModified" datetime="2019-03-23T10:58:22+08:00">2019-03-23</time>
               
             
           </span>
@@ -540,7 +540,7 @@
       
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="introduction">Introduction</h2>
 <p>tf-idf（英语：term frequency–inverse document frequency）是一种用于信息检索与文本挖掘的常用加权技术。 TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。TF-IDF加权的各种形式常被搜寻引擎应用，作为文件与用户查询之间相关程度的度量或评级。除了TF-IDF以外，因特网上的搜寻引擎还会使用基于连结分析的评级方法，以确定文件在搜寻结果中出现的顺序。</p>
-<p>TF-IDF有两层意思，一层是&quot;词频&quot;（Term Frequency，缩写为TF），另一层是&quot;逆文档频率&quot;（Inverse Document Frequency，缩写为IDF）。</p>
+<p>TF-IDF有两层意思，一层是&quot;词频&quot;（Term Frequency，缩写为TF），另一层是&quot;逆文档频率&quot;（Inverse Document Frequency，缩写为IDF）。 <a id="more"></a></p>
 <h2 id="原理及计算方法">原理及计算方法</h2>
 <p>在一份给定的文件里，词频 (term frequency, TF) 指的是某一个给定的词语在该文件中出现的次数。这个数字通常会被归一化（分子一般小于分母 区别于IDF），以防止它偏向长的文件。（同一个词语在长文件里可能会比短文件有更高的词频，而不管该词语重要与否。）</p>
 <p>对于在某一特定文件里的词语 <span class="math inline">\(t_{i}\)</span> 来说，它的重要性可表示为： <span class="math display">\[
@@ -577,9 +577,9 @@ idf_{i} =\lg {\frac {|D|}{|\{j:t_i\in d_j\}|}}
 <li><code>token_pattern</code>：这个参数使用正则表达式来分词，其默认参数为<code>r&quot;(?u)\b\w\w+\b&quot;</code>，其中的两个<code>\w</code>决定了其匹配长度至少为2的单词</li>
 <li><code>max_df/min_df</code>: [0.0, 1.0]内浮点数或正整数, 默认值=1.0。当设置为浮点数时，过滤出现在<code>超过max_df/低于min_df</code>比例的句子中的词语；正整数时,则是<code>超过max_df</code>句句子。这样就可以帮助我们过滤掉出现太多的无意义词语，如下面的&quot;我&quot;就被过滤（虽然这里“我”的排比在文学上是很重要的）。</li>
 <li><code>stop_words</code>: list类型，直接过滤指定的停用词。</li>
-<li><code>vocabulary</code>: dict类型。只使用特定的词汇，其形式与上面看到的输出<code>vocabulary_</code>相同，也是指定对应关系。这一参数的使用有时能帮助我们专注于一些词语，比如我对本诗中表达感情的一些特定词语（甚至标点符号）感兴趣，就可以设定这一参数，只考虑他们： 比如：</li>
+<li><code>vocabulary</code>: dict类型。只使用特定的词汇，其形式与上面看到的输出<code>vocabulary_</code>相同，也是指定对应关系。这一参数的使用有时能帮助我们专注于一些词语，比如我对本诗中表达感情的一些特定词语（甚至标点符号）感兴趣，就可以设定这一参数，只考虑他们，比如：</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tfidf_model5 = TfidfVectorizer(token_pattern=<span class="string">r"(?u)\b\w+\b"</span>,vocabulary=&#123;<span class="string">"我"</span>:<span class="number">0</span>, <span class="string">"呀"</span>:<span class="number">1</span>,<span class="string">"!"</span>:<span class="number">2</span>&#125;).fit(document)</span><br><span class="line">    print(tfidf_model5.vocabulary_)</span><br><span class="line">    <span class="comment"># &#123;'我': 0, '呀': 1, '!': 2&#125;</span></span><br><span class="line">    print(tfidf_model5.transform(document).todense())</span><br><span class="line">    <span class="comment"># [[ 0.40572238  0.91399636  0.        ]</span></span><br><span class="line">    <span class="comment">#  [ 1.          0.          0.        ]</span></span><br><span class="line">    <span class="comment">#  [ 1.          0.          0.        ]</span></span><br><span class="line">    <span class="comment">#  [ 1.          0.          0.        ]</span></span><br><span class="line">    <span class="comment">#  [ 1.          0.          0.        ]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tfidf_model5 = TfidfVectorizer(token_pattern=<span class="string">r"(?u)\b\w+\b"</span>,vocabulary=&#123;<span class="string">"我"</span>:<span class="number">0</span>, <span class="string">"呀"</span>:<span class="number">1</span>,<span class="string">"!"</span>:<span class="number">2</span>&#125;).fit(document)</span><br><span class="line">print(tfidf_model5.vocabulary_)</span><br><span class="line"><span class="comment"># &#123;'我': 0, '呀': 1, '!': 2&#125;</span></span><br><span class="line">print(tfidf_model5.transform(document).todense())</span><br><span class="line"></span><br><span class="line"><span class="comment"># [[ 0.40572238  0.91399636  0.        ]</span></span><br><span class="line"><span class="comment">#  [ 1.          0.          0.        ]</span></span><br><span class="line"><span class="comment">#  [ 1.          0.          0.        ]</span></span><br><span class="line"><span class="comment">#  [ 1.          0.          0.        ]</span></span><br><span class="line"><span class="comment">#  [ 1.          0.          0.        ]</span></span><br></pre></td></tr></table></figure>
 <h2 id="实践">实践</h2>
 <p>Kaggle 的<span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9jL3dvcmQydmVjLW5scC10dXRvcmlhbA==" title="https://www.kaggle.com/c/word2vec-nlp-tutorial">Bag of Words Meets Bags of Popcorn 题目<i class="fa fa-external-link"></i></span>，这个题目是电影评论文本情感分类问题。</p>
 <p>拿到预料后，因为是英文语料，首先进行数据清洗和分词预处理，原始语料如下： <img src="https://suool-bolg.b0.upaiyun.com/2019/03/23/409DCB9C-64CB-4B3D-8CF2-3EC86B8C3CBB.png" alt="原始语料"></p>
